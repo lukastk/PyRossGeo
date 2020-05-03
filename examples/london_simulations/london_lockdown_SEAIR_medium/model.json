@@ -1,0 +1,28 @@
+{
+    "classes" : ["S", "E", "A", "I", "R"],
+
+    "S" : {
+        "linear"    : [],
+        "nonlinear" : [ ["I", "-betaI"], ["A", "-betaA"] ]
+    },
+
+    "E" : {
+        "linear"    : [ ["E", "-gammaE"] ],
+        "nonlinear" : [ ["I", "betaI"], ["A", "betaA"] ]
+    },
+
+    "A" : {
+        "linear"    : [ ["E", "gammaE"], ["A", "-gammaA"] ],
+        "nonlinear" : []
+    },
+
+    "I" : {
+        "linear"    : [ ["A", "gammaA"], ["I", "-gammaI"] ],
+        "nonlinear" : []
+    },
+
+    "R" : {
+        "linear"    : [ ["I", "gammaI"] ],
+        "nonlinear" : []
+    }
+}

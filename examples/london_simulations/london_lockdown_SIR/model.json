@@ -1,0 +1,18 @@
+{
+    "classes" : ["S", "I", "R"],
+
+    "S" : {
+        "linear"    : [],
+        "nonlinear" : [ ["I", "-beta"] ]
+    },
+
+    "I" : {
+        "linear"    : [ ["I", "-gamma"] ],
+        "nonlinear" : [ ["I", "beta"] ]
+    },
+
+    "R" : {
+        "linear"    : [ ["I", "gamma"] ],
+        "nonlinear" : []
+    }
+}

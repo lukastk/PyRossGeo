@@ -1,0 +1,6 @@
+build
+simulation_results
+.nfs*
+pyrossgeo/*.c
+pyrossgeo/*.html
+.vscode

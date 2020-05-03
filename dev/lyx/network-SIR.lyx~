@@ -1,0 +1,1409 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+The geographical SIR model
+\end_layout
+
+\begin_layout Section
+Lukas and Fernando
+\end_layout
+
+\begin_layout Standard
+The following model tries to implement an SIR model with geographical informatio
+n.
+ For simplicity we consider an SIR model, but the idea can be generalized
+ easily to any of its variants with more classes.
+ We consider a network of nodes 
+\begin_inset Formula $i=1,\dots,M$
+\end_inset
+
+, where typically 
+\begin_inset Formula $M\sim10^{3}$
+\end_inset
+
+, that represent geographical locations in which we assume people are well
+ mixed, and therefore each node has an SIR model sitting on it.
+ To approach traveling, we then expand the variables of the SIR model to
+ tensors, 
+\begin_inset Formula $S\rightarrow S_{ij}^{\alpha}$
+\end_inset
+
+, in which the first index points to where they live, and the second where
+ they are currently located, and where we allow for different age brackets
+ through the superscript 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ This allows us to keep track or where they come from so at the end of the
+ day we can send them back to the node where they started, thus modeling
+ tipical commuting to and from school, work.
+\end_layout
+
+\begin_layout Standard
+The second main ingredient of our model is what we call the 
+\emph on
+commuterverse
+\emph default
+, designed to account for infections that happen whilst traveling between
+ different nodes of the network.
+ This commuterverse is built as a secondary network that introduces a new
+ node in each link between connected nodes of the background network.
+ For instance, consider the scenario where there are susceptibles in age
+ brackets 
+\begin_inset Formula $\alpha=1,\dots,K$
+\end_inset
+
+, who are currently located at node 
+\begin_inset Formula $j$
+\end_inset
+
+, who live at node 
+\begin_inset Formula $i$
+\end_inset
+
+, and wants to travel to node 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ Then these people will first have to spend the requisite amount of commuting
+ time in a commuterverse node 
+\begin_inset Formula $S_{i(j\to k)}^{\alpha}$
+\end_inset
+
+, before arriving at 
+\begin_inset Formula $S_{ik}^{\alpha}$
+\end_inset
+
+.
+ The dynamics of the commuting node is slightly different from the normal
+ SIR dynamics.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $O$
+\end_inset
+
+ mark a general class (
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+ or 
+\begin_inset Formula $R$
+\end_inset
+
+ in this case), then the sub- and superscripts of the nodes represent
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}O_{ij}^{\alpha} & \Longrightarrow O_{\text{home},\text{current location}}^{\text{age bracket}}\\
+O_{i(j\to k)}^{\alpha} & \Longrightarrow O_{\text{home,\text{commuting from }}j\text{ to }k}^{\text{age bracket}}
+\end{aligned}
+.
+\]
+
+\end_inset
+
+In words, 
+\emph on
+
+\begin_inset Formula $O_{ij}^{\alpha}$
+\end_inset
+
+ is the number of people living at 
+\begin_inset Formula $i$
+\end_inset
+
+ and are located at 
+\begin_inset Formula $j$
+\end_inset
+
+, are of the age bracket 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and the class 
+\begin_inset Formula $O$
+\end_inset
+
+.
+ 
+\begin_inset Formula $O_{i(j\to k)}^{\alpha}$
+\end_inset
+
+ is the number of people living at 
+\begin_inset Formula $i$
+\end_inset
+
+ and are travelling from 
+\begin_inset Formula $j$
+\end_inset
+
+ to 
+\begin_inset Formula $k$
+\end_inset
+
+, are of the age bracket 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and the class 
+\begin_inset Formula $O$
+\end_inset
+
+.
+ 
+\emph default
+In our nomenclature, all peoples living at 
+\begin_inset Formula $i$
+\end_inset
+
+ is a 
+\emph on
+community
+\emph default
+, each 
+\begin_inset Formula $j$
+\end_inset
+
+ is a 
+\emph on
+location
+\emph default
+, the tuple 
+\begin_inset Formula $(i,j,\alpha)$
+\end_inset
+
+ is a 
+\emph on
+node
+\emph default
+, and the tuple 
+\begin_inset Formula $(i,(j\to k),\alpha)$
+\end_inset
+
+ is a 
+\emph on
+commuterverse node
+\emph default
+ or 
+\emph on
+cnode
+\emph default
+.
+ The total population of a community is thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+N_{i}=\sum_{O,j,\alpha}O_{ij}^{\alpha}+\sum_{O,j,k,\alpha}O_{i(j\to k)}^{\alpha}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The movement between nodes is modelled using the transport matrix 
+\begin_inset Formula $T_{i,j(j\to k)}^{O,\alpha}$
+\end_inset
+
+ which contains the rate at which people who live in 
+\begin_inset Formula $i$
+\end_inset
+
+ move from location 
+\begin_inset Formula $j$
+\end_inset
+
+ to location to the commuterverse 
+\begin_inset Formula $j\to k$
+\end_inset
+
+, where 
+\begin_inset Formula $O$
+\end_inset
+
+ marks the class (
+\begin_inset Formula $S$
+\end_inset
+
+, 
+\begin_inset Formula $I$
+\end_inset
+
+ or 
+\begin_inset Formula $R$
+\end_inset
+
+ in this case).
+ 
+\begin_inset Formula $T_{i,(j\to k)k}^{O,\alpha}$
+\end_inset
+
+ gives the rate at which people move from the 
+\begin_inset Formula $j\to k$
+\end_inset
+
+ commuterverse into node 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+An example of a commuter network is shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:network-fig"
+
+\end_inset
+
+.
+ The figure illustrates that there are separate commuterverses for population
+ resident at different nodes, as the 
+\begin_inset Formula $4$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+ nodes both have their own 
+\begin_inset Formula $(1\to4)$
+\end_inset
+
+ and 
+\begin_inset Formula $(4\to1)$
+\end_inset
+
+ commuterverses.
+\end_layout
+
+\begin_layout Standard
+Strictly speaking, 
+\begin_inset Formula $T_{i,ab}^{O,\alpha}$
+\end_inset
+
+ should be seen as a matrix with components 
+\begin_inset Formula $a,b\in\{1,2,\dots,M\}\cup\{(j\to k)\ :\ j=1,2,\dots,M,\ k=1,2,\dots,M\}$
+\end_inset
+
+, for each 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ This is of course a very large matrix with around 
+\begin_inset Formula $M\times M^{2}\sim10^{9}$
+\end_inset
+
+ components.
+ In reality 
+\begin_inset Formula $T_{i,ab}^{O,\alpha}$
+\end_inset
+
+ will only have around 
+\begin_inset Formula $\sim10$
+\end_inset
+
+ non-zero elements for each 
+\begin_inset Formula $i$
+\end_inset
+
+, and this sparsity will be taken advantage of in implementations.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename network2.pdf
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+An example of a 4-node system.
+ The graph shows the commuter networks of node 1 (red), 3 (green) and 4
+ (blue).
+ The commuter networks of 2 and 5 are not displayed.
+ Hollow nodes denote commuterverse nodes, and filled nodes denote geographic
+ nodes.
+ Note that there are both red and blue 
+\begin_inset Formula $(1\to4)$
+\end_inset
+
+ and 
+\begin_inset Formula $(4\to1)$
+\end_inset
+
+ commuterverses.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:network-fig"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Transport terms of the variables 
+\begin_inset Formula $O_{ij}^{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $O_{i(j\to k)}^{\alpha}$
+\end_inset
+
+ comes into their equations for each location as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\dot{O}_{ij}^{\alpha}= & \text{local terms}+\sum_{k}[T_{i,(k\to j)j}^{O,\alpha}-T_{i,j(j\to k)}^{O,\alpha}]\\
+\dot{O}_{i(j\to k)}^{\alpha}= & \text{local terms}+T_{i,j(j\to k)}^{O,\alpha}-T_{i,(j\to k)k}^{O,\alpha}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The local terms, in the case of the variable 
+\begin_inset Formula $O_{ij}^{r}$
+\end_inset
+
+ are the local terms of the SIR model, while the local terms of the variable
+ 
+\begin_inset Formula $O_{i(j\to k)}^{\alpha}$
+\end_inset
+
+ are only the linear terms of the SIR model and the nonlinearities responsible
+ for infection.
+\end_layout
+
+\begin_layout Standard
+The full equation for the simplest SIR model would then be
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+\dot{S}_{ij}^{\alpha} & = & -\lambda_{ij}^{\alpha}S_{ij}^{\alpha} & + & \sum_{k}[T_{i,(k\to j)j}^{S,\alpha}-T_{i,j(j\to k)}^{S,\alpha}]\\
+\dot{I}_{ij}^{\alpha} & = & \lambda_{ij}^{\alpha}S_{ij}^{\alpha}-\gamma_{ij}^{\alpha}I_{ij}^{\alpha} & + & \sum_{k}[T_{i,(k\to j)j}^{I,\alpha}-T_{i,j(j\to k)}^{I,\alpha}]\\
+\dot{R}_{ij}^{\alpha} & = & \gamma_{ij}^{\alpha}I_{ij}^{\alpha} & + & \sum_{k}[T_{i,(k\to j)j}^{R,\alpha}-T_{i,j(j\to k)}^{R,\alpha}]\\
+\dot{S}_{i(j\to k)}^{\alpha} & = & -\tau_{i(j\to k)}^{\alpha}S_{i(j\to k)}^{\alpha} & + & T_{i,j(j\to k)}^{S,\alpha}-T_{i,(j\to k)k}^{S,\alpha}\\
+\dot{I}_{i(j\to k)}^{\alpha} & = & \tau_{i(j\to k)}^{\alpha}S_{i(j\to k)}^{\alpha}-\gamma_{i(j\to k)}^{\alpha}I_{i(j\to k)}^{\alpha} & + & T_{i,j(j\to k)}^{I,\alpha}-T_{i,(j\to k)k}^{I,\alpha}\\
+\dot{R}_{i(j\to k)}^{\alpha} & = & \gamma_{i(j\to k)}^{\alpha}I_{i(j\to k)}^{\alpha} & + & T_{i,j(j\to k)}^{R,\alpha}-T_{i,(j\to k)k}^{R,\alpha}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\tau_{i(j\to k)}^{\alpha}=\left(\frac{1}{\sum_{l,m}N_{l(m\to k)}}\sum_{\gamma=1}^{K}C_{\alpha\gamma}\sum_{l,m}I_{l(m\to k)}^{\gamma}\right)\beta_{i(j\to k)}^{\alpha}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{ij}^{\alpha}=\beta_{ij}^{\alpha}\sum_{\gamma=1}^{K}C^{\alpha\gamma}\frac{\sum_{k}I_{kj}^{\gamma}}{\sum_{k}N_{kj}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $N_{k,j}$
+\end_inset
+
+ is the population at 
+\begin_inset Formula $j$
+\end_inset
+
+ who live at 
+\begin_inset Formula $k$
+\end_inset
+
+, and 
+\begin_inset Formula $N_{l(m\to k)}$
+\end_inset
+
+ is the population in the 
+\begin_inset Formula $m\to k$
+\end_inset
+
+ commuterverse living at 
+\begin_inset Formula $l$
+\end_inset
+
+.
+ Note that we allow for different infection and and recovery rates for each
+ node and commuterverse node.
+ Without the age-brackets, we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+\dot{S}_{ij} & = & -\left(\beta_{ij}\frac{\sum_{k}I_{kj}}{\sum_{k}N_{kj}}\right)S_{ij} & + & \sum_{k}[T_{i,(k\to j)j}^{S}-T_{i,j(j\to k)}^{S}]\\
+\dot{I}_{ij} & = & \left(\beta_{ij}\frac{\sum_{k}I_{kj}}{\sum_{k}N_{kj}}\right)S_{ij}-\gamma_{ij}I_{ij}^{\alpha} & + & \sum_{k}[T_{i,(k\to j)j}^{I}-T_{i,j(j\to k)}^{I}]\\
+\dot{R}_{ij} & = & \gamma_{ij}I_{ij}^{\alpha} & + & \sum_{k}[T_{i,(k\to j)j}^{R}-T_{i,j(j\to k)}^{R}]\\
+\dot{S}_{i(j\to k)} & = & -\tau_{i(j\to k)}S_{i(j\to k)} & + & T_{i,j(j\to k)}^{S}-T_{i,(j\to k)k}^{S}\\
+\dot{I}_{i(j\to k)} & = & \tau_{i(j\to k)}S_{i(j\to k)}-\gamma_{i(j\to k)}I_{i(j\to k)} & + & T_{i,j(j\to k)}^{I}-T_{i,(j\to k)k}^{I}\\
+\dot{R}_{i(j\to k)} & = & \gamma_{i(j\to k)}I_{i(j\to k)} & + & T_{i,j(j\to k)}^{R}-T_{i,(j\to k)k}^{R}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The home index 
+\begin_inset Formula $i$
+\end_inset
+
+ is for book-keeping purposes, to make sure that we can conserve the total
+ home population of each geographical node, and it does not affect the local
+ SIR dynamics.
+ To see this, we can sum over 
+\begin_inset Formula $i$
+\end_inset
+
+ in the equation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+S_{j}=-\beta\frac{I_{j}}{N_{j}}+\dots
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $S_{j}=\sum_{k}S_{k,j}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{j}=\sum_{k}I_{k,j}$
+\end_inset
+
+.
+ In other words, all people at location 
+\begin_inset Formula $j$
+\end_inset
+
+, regardless of what home 
+\begin_inset Formula $i$
+\end_inset
+
+ they come from, interact homogeneously with age-bracketed SIR dynamics.
+\end_layout
+
+\begin_layout Standard
+We can write the model in a compactified manner by letting 
+\begin_inset Formula $\boldsymbol{X}_{ij}^{\alpha}=(S_{ij}^{\alpha},I_{ij}^{\alpha},R_{ij}^{\alpha})^{T}$
+\end_inset
+
+, we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccccc}
+\dot{\boldsymbol{X}_{ij}^{\alpha}} & = & \boldsymbol{F}_{ij}^{\alpha}(t,\boldsymbol{X}_{ij}^{\alpha},\boldsymbol{\theta}_{ij}) & + & \sum_{k}[\boldsymbol{T}_{i,(k\to j)j}^{\alpha}-\boldsymbol{T}_{i,j(j\to k)}^{\alpha}]\\
+\dot{\boldsymbol{X}}_{i(j\to k)}^{\alpha} & = & \boldsymbol{G}_{i(j\to k)}^{\alpha}(t,\boldsymbol{X}_{i(j\to k)}^{\alpha},\boldsymbol{\theta}_{i(j\to k)}) & + & \boldsymbol{T}_{i,j(j\to k)}^{\alpha}-\boldsymbol{T}_{i,(j\to k)k}^{\alpha}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\boldsymbol{X}_{ij}^{\alpha} & =(S_{ij}^{\alpha},I_{ij}^{\alpha},R_{ij}^{\alpha})^{T}\\
+\boldsymbol{X}_{i(j\to k)}^{\alpha} & =(S_{i(j\to k)}^{\alpha},I_{i(j\to k)}^{\alpha},R_{i(j\to k)}^{\alpha})^{T}\\
+\boldsymbol{T}_{i,j(j\to k)}^{\alpha} & =(T_{i,j(j\to k)}^{S,\alpha},T_{i,j(j\to k)}^{I,\alpha},T_{i,j(j\to k)}^{R,\alpha})^{T}\\
+\boldsymbol{T}_{i,(j\to k)k}^{\alpha} & =(T_{i,(j\to k)k}^{S,\alpha},T_{i,(j\to k)k}^{I,\alpha},T_{i,(j\to k)k}^{R,\alpha})^{T}\\
+\boldsymbol{F}_{ij}^{\alpha}(t,\boldsymbol{X}_{ij}^{\alpha},\boldsymbol{\theta}_{ij}) & =\left(\begin{array}{c}
+-\lambda_{ij}^{\alpha}S_{ij}^{\alpha}\\
+\lambda_{ij}^{\alpha}(t)S_{ij}^{\alpha}-\gamma_{ij}^{\alpha}I_{ij}^{\alpha}\\
+\gamma_{ij}^{\alpha}I_{ij}^{\alpha}
+\end{array}\right)\\
+\boldsymbol{G}_{i(j\to k)}^{\alpha}(t,\boldsymbol{X}_{i(j\to k)}^{\alpha},\boldsymbol{\theta}_{i(j\to k)}) & =\left(\begin{array}{c}
+-\tau_{i(j\to k)}^{\alpha}S_{i(j\to k)}^{\alpha}\\
+\tau_{i(j\to k)}^{\alpha}S_{i(j\to k)}^{\alpha}-\gamma_{i(j\to k)}^{\alpha}I_{i(j\to k)}^{\alpha}\\
+\gamma_{i(j\to k)}^{\alpha}I_{i(j\to k)}^{\alpha}
+\end{array}\right)
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\tau_{i(j\to k)}^{\alpha} & =\left(\frac{1}{\sum_{l,m}N_{l(m\to k)}}\sum_{\gamma=1}^{K}C^{\alpha\gamma}\sum_{l,m}I_{l(m\to k)}^{\gamma}\right)\beta_{i(j\to k)}^{\alpha}\\
+\lambda_{ij}^{\alpha} & =\beta_{ij}^{\alpha}\sum_{\gamma=1}^{K}C^{\alpha\gamma}\frac{\sum_{k}I_{kj}^{\gamma}}{\sum_{k}N_{kj}^{\gamma}}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+RA
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Specification of the metapopulation
+\emph default
+: The metapopulation in our model is labelled by their epidemiological state
+ (susceptible, infected, recovered, etc), their age cohort (grouped in 5
+ year brackets), their residence and the their current location.
+ This variable we denote by 
+\begin_inset Formula 
+\[
+\mathbf{\boldsymbol{X}}_{ij}^{\alpha}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha\rightarrow\text{age cohort }$
+\end_inset
+
+, 
+\begin_inset Formula $i\rightarrow\text{residence index}$
+\end_inset
+
+, 
+\begin_inset Formula $j\rightarrow\text{current location index}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{\boldsymbol{X}}_{ij}^{\alpha}=(S_{ij}^{\alpha},I_{ij}^{\alpha},\ldots R_{ij}^{\alpha})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Specification of commuting metapopulation
+\emph default
+: To explicitly model commuters and the possibility of catching an infection
+ in the process of commuting, we define another metapopulation which is
+ labelled by epidemiological state, age, and residence, as before, but now
+ additionally the pair of locations 
+\begin_inset Formula $j$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ between which they are commuting.
+ This variable we denote by 
+\begin_inset Formula 
+\[
+\mathbf{\boldsymbol{X}}_{i(j\rightarrow k)}^{\alpha}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $(j\rightarrow k)$
+\end_inset
+
+ is the 
+\emph on
+route 
+\emph default
+in which they commute.
+ 
+\end_layout
+
+\begin_layout Section
+Coding architecture
+\end_layout
+
+\begin_layout Standard
+The number of geographical locations is 
+\begin_inset Formula $M\sim10^{3}$
+\end_inset
+
+, and thus the number of possible nodes 
+\begin_inset Formula $\boldsymbol{X}_{ij}^{\alpha}$
+\end_inset
+
+ are 
+\begin_inset Formula $M^{2}\sim10^{6}$
+\end_inset
+
+.
+ Additionally, the number of possible commuter nodes 
+\begin_inset Formula $\boldsymbol{X}_{i(j\to k)}^{\alpha}$
+\end_inset
+
+ are of the order 
+\begin_inset Formula $M\times M^{2}\sim10^{9}$
+\end_inset
+
+.
+ In other words, the matrices are too large to be dealt with computationally.
+ The matrices are also very sparse (the nodes 
+\begin_inset Formula $\boldsymbol{X}_{ij}^{\alpha}$
+\end_inset
+
+ will on average only interact with very few other nodes 
+\begin_inset Formula $\sim10$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+To set the stage for the optimisations to come, we will introduce some terminolo
+gy.
+ Let 
+\begin_inset Formula $V_{i}^{\alpha}$
+\end_inset
+
+ be the set of nodes in the commuter network of the 
+\begin_inset Formula $i$
+\end_inset
+
+-population in age-bracket 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ In other words, the set of nodes that the 
+\begin_inset Formula $i$
+\end_inset
+
+-population travel to.
+ Formally, we define
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V_{i}^{\alpha}=\{j\ :\ \phi_{i}^{\alpha}(i,j)=1\}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\phi_{i}^{\alpha}(j,k)=1$
+\end_inset
+
+ if 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ are part of the same connected commuter-network, and 
+\begin_inset Formula $\phi_{i}^{\alpha}(j,k)=0$
+\end_inset
+
+ otherwise.
+ We define the analogous set for the commuterverses
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+W_{i}^{\alpha}=\{(j\to k)\ :\ \psi_{i}^{\alpha}(j,k)\}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\psi_{i}^{\alpha}(j,k)=1$
+\end_inset
+
+ if 
+\begin_inset Formula $\exists t$
+\end_inset
+
+ such that 
+\begin_inset Formula $T_{i,j(j\to k)}\neq0$
+\end_inset
+
+ or 
+\begin_inset Formula $T_{i,k(k\to j)}\neq0$
+\end_inset
+
+, and 
+\begin_inset Formula $\psi_{i}^{\alpha}(j,k)=0$
+\end_inset
+
+ otherwise.
+ Finally, let 
+\begin_inset Formula $V_{\text{tot}}^{\alpha}=\{(i,j)\ :\ j\in V_{i}^{\alpha},\ i=1,\dots,M\}$
+\end_inset
+
+.
+ and 
+\begin_inset Formula $W_{\text{tot}}^{\alpha}=\{(i,j\to k)\ :\ j\to k\in W_{i}^{\alpha},\ i=1,\dots,M\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The main sources of potential computational complexity are from the sums
+ in 
+\begin_inset Formula $\lambda_{j}$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{j\to k}$
+\end_inset
+
+ and in 
+\begin_inset Formula $\dot{\boldsymbol{X}_{ij}^{\alpha}}$
+\end_inset
+
+.
+ Regard the the sums of the former two
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{aligned}\tau_{j\to k}^{\alpha} & =\left(\frac{1}{\sum_{l,m}N_{l,m\to k}}\sum_{\gamma=1}^{K}C_{\alpha\gamma}\sum_{l,m}I_{l(m\to k)}^{\gamma}\right)\beta_{j\to k}\\
+\lambda_{j}^{\alpha} & =\beta\sum_{\gamma=1}^{M}C_{\alpha\gamma}\sum_{k}\frac{I_{kj}^{\gamma}}{N_{j}}
+\end{aligned}
+.\label{eq:hard sums}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If done naively, 
+\begin_inset Formula $\sum_{l,m}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{k}$
+\end_inset
+
+ would run over the entirety of the 
+\begin_inset Formula $M\sim10^{3}$
+\end_inset
+
+ nodes.
+ In reality there will only be on the order of 
+\begin_inset Formula $\sim10$
+\end_inset
+
+ non-zero summands, and the set of non-zero summands can also be determined
+ during pre-processing.
+ Let 
+\begin_inset Formula $v_{j}^{\alpha}=\{k\ :\ j\in V_{k}^{\alpha}\}$
+\end_inset
+
+, in other words the set of 
+\begin_inset Formula $k$
+\end_inset
+
+-populations who has 
+\begin_inset Formula $j$
+\end_inset
+
+ in their commuter-network.
+ Let 
+\begin_inset Formula $w_{j\to k}=\{(l,m)\ :\ (m\to k)\in W_{l}^{\alpha}\}$
+\end_inset
+
+, in other words the set of 
+\begin_inset Formula $l$
+\end_inset
+
+-populations that has a commuter-verse linking to node 
+\begin_inset Formula $k$
+\end_inset
+
+.
+ We can replace the sums in Eq.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hard sums"
+
+\end_inset
+
+ with
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\tau_{j\to k}^{\alpha} & =\left(\frac{1}{\sum_{l,m}N_{l,m\to k}}\sum_{\gamma=1}^{K}C_{\alpha\gamma}\sum_{l,m\in w_{j\to k}}I_{l(m\to k)}^{\gamma}\right)\beta_{j\to k}\\
+\lambda_{j}^{\alpha} & =\beta\sum_{\gamma=1}^{M}C_{\alpha\gamma}\sum_{k\in v_{j}^{\alpha}}\frac{I_{kj}^{\gamma}}{N_{j}}
+\end{aligned}
+.
+\]
+
+\end_inset
+
+Consider now the sum
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\boldsymbol{X}}_{ij}^{\alpha}=\dots+\sum_{k}[\boldsymbol{T}_{i,(k\to j)j}^{\alpha}-\boldsymbol{T}_{i,j(j\to k)}^{\alpha}]
+\]
+
+\end_inset
+
+this can be replaced by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\boldsymbol{X}}_{ij}^{\alpha}=\dots+\sum_{k\in\overset{\to}{\chi}_{ij}^{\alpha}}\boldsymbol{T}_{i,(k\to j)j}^{\alpha}-\sum_{k\in\overset{\leftarrow}{\chi}_{ij}^{\alpha}}\boldsymbol{T}_{i,j(j\to k)}^{\alpha}]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\overset{\to}{\chi}_{ij}^{\alpha}$
+\end_inset
+
+ is the set of commuterverses incoming into 
+\begin_inset Formula $j$
+\end_inset
+
+, for population 
+\begin_inset Formula $i$
+\end_inset
+
+, and 
+\begin_inset Formula $\overset{\leftarrow}{\chi}_{ij}^{\alpha}$
+\end_inset
+
+ is the set of commuterverses leading out of 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Now 
+\begin_inset Formula $v_{j}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $w_{j\to k}$
+\end_inset
+
+, 
+\begin_inset Formula $\overset{\to}{\chi}_{ij}^{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $\overset{\leftarrow}{\chi}_{ij}^{\alpha}$
+\end_inset
+
+ can all be computed during a pre-processing step, greatly reducing the
+ complexity of the model.
+ Furthermore, note that 
+\begin_inset Formula $\tau_{j\to k}^{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda_{j}^{\alpha}$
+\end_inset
+
+ do not have a home index 
+\begin_inset Formula $i$
+\end_inset
+
+, so they only need to computed once every loop, and can then be used for
+ every 
+\begin_inset Formula $i$
+\end_inset
+
+ at 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pseudocode
+\end_layout
+
+\begin_layout Standard
+The core element of the implementation is the 
+\family typewriter
+node
+\begin_inset Formula $_{ij}^{\alpha}$
+\end_inset
+
+
+\family default
+ struct.
+ It will contain pointers to all the necessary information to integrate
+ its own local dynamics.
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+node
+\begin_inset Formula $_{ij}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to\mathbf{\boldsymbol{X}}_{ij}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Formula $\lambda_{j}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+List of incoming commuter nodes: 
+\begin_inset Formula $\{\mathbf{\boldsymbol{X}}_{i(k\to j)}^{\alpha}\}_{k\in\overset{\to}{\chi}_{ij}^{\alpha}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+List of outgoing commuter nodes: 
+\begin_inset Formula $\{\mathbf{\boldsymbol{X}}_{i(j\to k)}^{\alpha}\}_{k\in\overset{\leftarrow}{\chi}_{ij}^{\alpha}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The commuter nodes are
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+node
+\begin_inset Formula $_{i(j\to k)}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to\mathbf{\boldsymbol{X}}_{i(j\to k)}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+node
+\begin_inset Formula $_{ij}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+node
+\begin_inset Formula $_{ik}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Formula $\mathbf{T}_{i,j(j\to k)}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Formula $\mathbf{T}_{i,(j\to k)k}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\paragraph_spacing single
+
+\size scriptsize
+ 
+\begin_inset Formula $\to$
+\end_inset
+
+
+\begin_inset Formula $\tau_{j\to k}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The simulation is then
+\end_layout
+
+\begin_layout LyX-Code
+# Preprocessing
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+Compute 
+\begin_inset Formula $v_{j}^{\alpha}$
+\end_inset
+
+, 
+\begin_inset Formula $w_{j\to k}$
+\end_inset
+
+, 
+\begin_inset Formula $\overset{\to}{\chi}_{ij}^{\alpha}$
+\end_inset
+
+ and 
+\begin_inset Formula $\overset{\leftarrow}{\chi}_{ij}^{\alpha}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+# Simulation
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+Main loop
+\end_layout
+
+\begin_layout LyX-Code
+  Compute 
+\begin_inset Formula $\lambda_{j}^{\alpha}$
+\end_inset
+
+, for all 
+\begin_inset Formula $j=1,\dots,M$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha=1,\dots,K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+  Compute 
+\begin_inset Formula $\tau_{j\to k}^{\alpha}$
+\end_inset
+
+, for all 
+\begin_inset Formula $j,k\in\cup_{i=1}^{M}W_{i}^{\alpha}$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha=1,\dots,K$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+  For 
+\begin_inset Formula $i,j\ \in\ V_{\text{tot}}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+    Update node
+\begin_inset Formula $_{ij}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+  For 
+\begin_inset Formula $i,j\to k\ \in\ W_{\text{tot}}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+    Update node
+\begin_inset Formula $_{i(j\to k)}^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+Let $90\%$ residents of $i$ commute back and forth to their workplace at $j$. Residents start travelling from $i$ between $t_1$ and $t_2$, and arrive at $j$ between $t_{c1}$ and $t_{c2}$. Let $T_{ij}(t)$ be a commuter pulse that is non-zero between $t_1$ and $t_2$ that satisfies
+\[
+\int_{t_1}^{t_2}\ T_{ij}\ dt = 0.9 N_i(t_1)
+\]
+where $N_i(t)$ is the population of node $i$ at time $t$. The transport is then
+\[
+\begin{aligned}
+\dot{S}_i & = \dots - \frac{S_i(t)}{N_i(t)} T_{ij} \\
+\dot{I}_i & = \dots - \frac{I_i(t)}{N_i(t)} T_{ij} \\
+\dot{R}_i & = \dots - \frac{R_i(t)}{N_i(t)} T_{ij}
+\end{aligned}.
+\]
+where $\dots$ refers to the standard SIR terms. The total number of people leaving $i$ between $t_1$ and $t_2$ is then
+\[
+- \int_{t_1}^{t_2} \left(\dot{S}_i + \dot{I}_i + \dot{R}_i\right) dt = \int_{t_1}^{t_2} T_{ij} dt = 0.9 N_i(t_1)
+\]
+
+If we disallow $I(t)$ to leave home, we get
+\[
+\begin{aligned}
+\dot{S}_i & = \dots - \frac{S_i(t)}{N_i(t)} T_{ij} \\
+\dot{I}_i & = \dots \\
+\dot{R}_i & = \dots - \frac{R_i(t)}{N_i(t)} T_{ij}
+\end{aligned}.
+\]
+and the total number of people leaving is
+\[
+0.9 N_i(t_1) - \int_{t_1}^{t_2} \dot{I}_i dt \quad (1)
+\]
+which is in general a difficult integral to compute, but we are guaranted that (1) has a lower and upper bound of $0$ and $0.9 N_i(t_1)$ respectively.
+
+\end{document}
