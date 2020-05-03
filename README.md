@@ -1,4 +1,4 @@
-## PyRoss: Spatially resolved infectious disease models in Python 
+## PyRossGeo: Spatially resolved infectious disease models in Python 
 
 [About](#about) | [Contact](#contact) | [Publications ](#publications) | [News](#news) | [Installation](#installation) | [Examples](#examples) | [License](#license) | [Wiki](https://github.com/lukastk/PyRossGeo/wiki)
 
