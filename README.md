@@ -1,10 +1,21 @@
-## Code architecture
+## PyRoss: Spatially resolved infectious disease models in Python 
+
+[About](#about) | [Contact](#contact) | [Publications ](#publications) | [News](#news) | [Installation](#installation) | [Examples](#examples) | [License](#license) | [Wiki](https://github.com/lukastk/PyRossGeo/wiki)
+
+![Imagel](examples/banner.png)
+
+## About
+
+PyRossGeo is a numerical library for spatially resolved mathematical modelling of infectious disease in Python 
+
+
+### Code architecture
 
 The main principle informing the structure of the code is reducing sparsity in the equations. As the degrees of each node in the commuting network is - in general - several orders of magnitude smaller than the total number of nodes, this should be taken into account in the code.
 
 The code can be broadly separated into two parts: The initialisation stage, and the simulation stage. 
 
-## Notes about simulation
+### Notes about simulation
 
 - Infection dynamics for infection classes that have populations smaller than 1 is disabled.
 
