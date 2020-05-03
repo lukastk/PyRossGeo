@@ -2,7 +2,7 @@
 
 [About](#about) | [Contact](#contact) | [Publications ](#publications) | [News](#news) | [Installation](#installation) | [Examples](#examples) | [License](#license) | [Wiki](https://github.com/lukastk/PyRossGeo/wiki)
 
-![Imagel](examples/banner.png)
+![Imagel](examples/banner.jpg)
 
 ## About
 
