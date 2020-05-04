@@ -81,7 +81,7 @@ def event_function(cg, step_i, t, dt, X_state, dX_state):
     
 # Run simulation
 
-sim = pyrossgeo.simulation()
+sim = pyrossgeo.Simulation()
 print("Initializing simulation...")
 X_state = sim.initialize(model_path, commuter_networks_path,
                             node_parameters_path, cnode_parameters_path,

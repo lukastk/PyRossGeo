@@ -1,26 +1,20 @@
-from pyrossgeo.csimulation cimport DTYPE_t, SIM_EVENT, SIM_EVENT_NULL, csimulation, node, cnode, transporter
-from pyrossgeo.csimulation import DTYPE
-
-import numpy as np
-cimport numpy as np
 import zarr
+import cython
 from libc.math cimport exp
 from cython.parallel import prange
-import cython
+import numpy as np
+cimport numpy as np
 
-def simulate(self, X_state, t_start, t_end, dts, steps_per_save=-1, out_file="", steps_per_print=-1, only_save_nodes=False,
-                    event_times=[], event_function=None):
-    return csimulate(self, X_state, t_start, t_end, dts, steps_per_save, out_file, steps_per_print, only_save_nodes, event_times, event_function)
+from pyrossgeo.__defs__ import DTYPE
 
 @cython.wraparound(False)
 @cython.boundscheck(False)
 @cython.cdivision(True)
 @cython.nonecheck(False)
-cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=-1,
-                            str out_file="", int steps_per_print=-1, bint only_save_nodes=False,
-                            object event_times=[], object event_function=None,
-                            object cevent_times=[], SIM_EVENT cevent_function=SIM_EVENT_NULL):
-
+cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=-1,
+                            str out_file="", bint only_save_nodes=False, int steps_per_print=-1,
+                            object event_times=[], object event_function=None):
+                            #object cevent_times=[], SIM_EVENT cevent_function=SIM_EVENT_NULL):
     #########################################################################
     #### Definitions ########################################################
     #########################################################################
@@ -99,7 +93,9 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
     #### Calcuate steps for the Forward-Euler integration ###############
 
-    if not type(_dts) == np.ndarray:
+    if type(_dts) == list:
+        _dts= np.array(_dts)
+    elif not type(_dts) == np.ndarray:
         _dts = np.array([_dts], dtype=DTYPE)
     dts = _dts
 
@@ -156,8 +152,8 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
     cdef np.ndarray event_steps_arr = np.full(steps, 0, dtype=np.int8)
     cdef char[:] event_steps = event_steps_arr
 
-    cdef np.ndarray cevent_steps_arr = np.full(steps, 0, dtype=np.int8)
-    cdef char[:] cevent_steps = cevent_steps_arr
+    #cdef np.ndarray cevent_steps_arr = np.full(steps, 0, dtype=np.int8)
+    #cdef char[:] cevent_steps = cevent_steps_arr
 
     t = t_start
     for step_i in range(steps):
@@ -168,9 +164,9 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
             if et <= t and t < et+dt:
                 event_steps[step_i] = 1
 
-        for et in cevent_times:
-            if et <= t and t < et+dt:
-                cevent_steps[step_i] = 1
+        #for et in cevent_times:
+        #    if et <= t and t < et+dt:
+        #        cevent_steps[step_i] = 1
 
     #########################################################################
     #### Simulation #########################################################
@@ -200,7 +196,7 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                 _Ns[age_a] = 0
                 for i in range(nodes_at_j_len[age_a][loc_j]):
                     n = nodes[nodes_at_j[age_a][loc_j][i]]
-                    for o in range(model_dim):#prange(model_dim, nogil=True):
+                    for o in range(model_dim):
                         _Ns[age_a] += X_state[n.state_index + o]
 
             # Compute lambdas
@@ -213,7 +209,7 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
                 for age_a in range(age_groups):
                     _Is[age_a] = 0
-                    for i in range(nodes_at_j_len[age_a][loc_j]):#prange(nodes_at_j_len[age_a][loc_j], nogil=True):
+                    for i in range(nodes_at_j_len[age_a][loc_j]):
                         n = nodes[nodes_at_j[age_a][loc_j][i]]
                         _Is[age_a] += X_state[n.state_index + u]
 
@@ -221,11 +217,11 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
                 for age_a in range(age_groups):
                     _lambdas[age_a][ui] = 0
-                    for age_b in range(age_groups):#prange(age_groups, nogil=True):
+                    for age_b in range(age_groups):
                         if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
                             _lambdas[age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
 
-            # Apply to each node
+            # Compute the derivatives at each node
             
             for age_a in range(age_groups):
                 for i in range(nodes_at_j_len[age_a][loc_j]): 
@@ -235,12 +231,12 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
                     for o in range(model_dim):
                         # Apply infection terms
-                        for j in range(class_infections_num[o]):#prange(class_infections_num[o], nogil=True):
+                        for j in range(class_infections_num[o]):
                             ui = class_infections[o][j]
                             dX_state[si+o] += n.infection_coeffs[o][j] * _lambdas[age_a][ui] * S
 
                         # Apply linear terms
-                        for j in range(linear_terms_num[o]):#prange(linear_terms_num[o], nogil=True):
+                        for j in range(linear_terms_num[o]):
                             u = linear_terms[o][j]
                             if X_state[ si + u ] > 0: # Only allow interaction if the class is positive
                                 dX_state[si+o] += n.linear_coeffs[o][j] * X_state[ si + u ]
@@ -255,7 +251,7 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                 _Ns[age_a] = 0
                 for i in range(cnodes_into_k_len[age_a][to_k]):
                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
-                    for o in range(model_dim):#prange(model_dim, nogil=True):
+                    for o in range(model_dim):
                         _Ns[age_a] += X_state[cn.state_index + o]
 
             # Compute lambdas
@@ -268,7 +264,7 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
                 for age_a in range(age_groups):
                     _Is[age_a] = 0
-                    for i in range(cnodes_into_k_len[age_a][to_k]):#prange(cnodes_into_k_len[age_a][to_k], nogil=True):
+                    for i in range(cnodes_into_k_len[age_a][to_k]):
                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
                         _Is[age_a] += X_state[cn.state_index + u]
 
@@ -276,11 +272,11 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
                 for age_a in range(age_groups):
                     _lambdas[age_a][ui] = 0
-                    for age_b in range(age_groups):#prange(age_groups, nogil=True):
+                    for age_b in range(age_groups):
                         if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
                             _lambdas[age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
 
-            # Apply to each node
+            # Compute the derivatives at each commuter node
 
             for age_a in range(age_groups):
                 for i in range(cnodes_into_k_len[age_a][to_k]):
@@ -288,19 +284,19 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                     si = cn.state_index
                     S = X_state[si]
 
-                    for o in range(model_dim):#prange(model_dim):
+                    for o in range(model_dim):
                         # Apply infection terms
-                        for j in range(class_infections_num[o]):#prange(class_infections_num[o], nogil=True):
+                        for j in range(class_infections_num[o]):
                             ui = class_infections[o][j]
                             dX_state[si+o] += cn.infection_coeffs[o][j] * _lambdas[age_a][ui] * S
                         
                         # Apply linear terms
-                        for j in range(linear_terms_num[o]):#prange(linear_terms_num[o], nogil=True):
+                        for j in range(linear_terms_num[o]):
                             u = linear_terms[o][j]
                             if X_state[ si + u ] > 0: # Only allow interaction if the class is positive
                                 dX_state[si+o] += cn.linear_coeffs[o][j] * X_state[ si + u ]
 
-
+        
         #####################################################################
         #### Transport ######################################################
         #####################################################################
@@ -313,13 +309,16 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
             t2 = Ts[Ti].t2
 
             if tday >= t1 and tday <= t2:
-                fro_n = nodes[Ts[Ti].fro_node_index]
-                cn = cnodes[Ts[Ti].cnode_index]
+                fro_n = nodes[Ts[Ti].fro_node_index] # Origin node
+                cn = cnodes[Ts[Ti].cnode_index] # Commuting node
 
+                # Compute current population at origin node
                 fro_N = 0
-                for oi in range(model_dim):#prange(model_dim, nogil=True):
+                for oi in range(model_dim):
                     fro_N += X_state[fro_n.state_index + oi]
 
+                # If this commuting schedule is just starting, then
+                # compute the number of people to move.
                 if not Ts[Ti].is_on:
                     if Ts[Ti].use_percentage:
                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage
@@ -327,6 +326,7 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                         Ts[Ti].N0 = Ts[Ti].move_N
                     Ts[Ti].is_on = True
 
+                # Compute the transport profile
                 transport_profile_exponent = (tday - t1)/(t2-t1) - transport_profile_m
                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
                 
@@ -334,15 +334,21 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                     continue
                 
                 si = fro_n.state_index
-                for oi in range(model_dim):#prange(model_dim, nogil=True):
+                for oi in range(model_dim):
                     if not Ts[Ti].moving_classes[oi]:
                         continue
 
+                    # Compute the amount of people to move
                     mt = Ts[Ti].N0 * transport_profile * (X_state[fro_n.state_index+oi] / fro_N)
+
+                    # If the change will cause X_state[si+oi] to go negative,
+                    # then adjust mt so that X_state[si+oi] will be set 
+                    # to 0.
                     if X_state[si+oi] + dt*(dX_state[si+oi] - mt) < 0:
                         mt = X_state[si+oi]/dt
                         dX_state[cn.state_index+oi] += mt + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
                         dX_state[si+oi] += -(mt + dX_state[si+oi])
+                    # Otherwise apply the transport as usual
                     else:
                         dX_state[si+oi] -= mt
                         dX_state[cn.state_index+oi] += mt
@@ -358,13 +364,16 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
             t2 = cTs[cTi].t2
 
             if tday >= t1 and tday <= t2:
-                cn = cnodes[cTs[cTi].cnode_index]
-                to_node = nodes[cTs[cTi].to_node_index]
+                cn = cnodes[cTs[cTi].cnode_index] # Commuting node
+                to_node = nodes[cTs[cTi].to_node_index] # Destination node
 
+                # Compute current population at the commuter node
                 cn_N = 0
                 for oi in range(model_dim):#prange(model_dim, nogil=True):
                     cn_N += X_state[cn.state_index + oi]
 
+                # If this commuting schedule is just starting, then
+                # compute the number of people to move.
                 if not cTs[cTi].is_on:
                     if cTs[cTi].use_percentage:
                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage
@@ -372,6 +381,7 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                         cTs[cTi].N0 = cTs[cTi].move_N
                     cTs[cTi].is_on = True
 
+                # Compute the transport profile
                 transport_profile_exponent = (tday - t1)/(t2-t1) - transport_profile_m
                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
 
@@ -383,16 +393,23 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
                     if not cTs[cTi].moving_classes[oi]:
                         continue
 
-                    if tday+dt >= t2: # If the commuting window is ending, all must leave the commuterverse
+                    # If the commuting window is ending, force all to leave the commuterverse
+                    if tday+dt >= t2:
                         mt = X_state[si+oi]/dt
                         dX_state[to_node.state_index+oi] += mt + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
                         dX_state[si+oi] += - (mt + dX_state[si+oi])
                     else:
+                        # Compute the amount of people to move
                         mt = cTs[cTi].N0 * transport_profile * (X_state[si+oi] / cn_N)
+
+                        # If the change will cause X_state[si+oi] to go negative,
+                        # then adjust mt so that X_state[si+oi] will be set 
+                        # to 0. 
                         if X_state[si+oi] + dt*(dX_state[si+oi] - mt) < 0:
                             mt = X_state[si+oi]/dt
                             dX_state[to_node.state_index+oi] += mt + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
                             dX_state[si+oi] += - (mt + dX_state[si+oi])
+                        # Otherwise apply the transport as usual
                         else:
                             dX_state[si+oi] -= mt
                             dX_state[to_node.state_index+oi] += mt
@@ -402,15 +419,15 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
         #####################################################################
         #### Forward-Euler ##################################################
         #####################################################################
-
+        
         for j in prange(X_state_size, nogil=True):
             X_state[j] += dX_state[j]*dt
 
         t += dt
-
+        
         if steps_per_print != -1 and step_i % steps_per_print==0:
             print("Step %s out of %s" % (step_i, steps))
-
+        
         #### Store state
 
         if steps_per_save != -1:
@@ -427,8 +444,8 @@ cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_
 
         #### Call Cython event function
 
-        if cevent_steps[step_i]:
-            cevent_function(self, step_i, t, dt, X_state, dX_state)
+        #if cevent_steps[step_i]:
+        #    cevent_function(self, step_i, t, dt, X_state, dX_state)
 
     if steps_per_save != -1:
         sim_data = (self.state_mappings, ts_saved, X_states_saved)

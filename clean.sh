@@ -1,5 +1,5 @@
-rm geodemic/*.c
-rm geodemic/*.html
-rm geodemic/*.so
-rm -rf geodemic/__pychache__/__pychache____pychache__
-rm -rf geodemic/build/
+rm pyrossgeo/*.c
+rm pyrossgeo/*.html
+rm pyrossgeo/*.so
+rm -rf pyrossgeo/__pychache__/
+rm -rf pyrossgeo/build/

@@ -1,13 +1,13 @@
 import numpy as np
 cimport numpy as np
 
-ctypedef np.float_t DTYPE_t
+from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.__defs__ import DTYPE
 
-ctypedef void (*SIM_EVENT)(csimulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
-cdef void SIM_EVENT_NULL(csimulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
+#ctypedef void (*SIM_EVENT)(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
+#cdef void SIM_EVENT_NULL(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
 
-cdef class csimulation:
-
+cdef class Simulation:
     cdef readonly int age_groups
     cdef readonly int model_dim
     cdef readonly int max_node_index
@@ -64,6 +64,11 @@ cdef class csimulation:
     cdef DTYPE_t transport_profile_c
     cdef DTYPE_t transport_profile_c_r
 
+    #cdef csimulate(self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=*,
+    #                            str out_file=*, int steps_per_print=*, bint only_save_nodes=*,
+    #                            int steps_per_event=*,object event_function=*,
+    #                            int steps_per_cevent=*, SIM_EVENT cevent_function=*)
+
     cpdef get_contact_matrix_keys(self)
     cpdef get_contact_matrix(self, str cmat_key)
     cpdef set_contact_matrix(self, str cmat_key, np.ndarray cmat)
@@ -71,46 +76,3 @@ cdef class csimulation:
     cpdef stop_commuting(self, bint s)
     cpdef bint is_commuting_stopped(self)
 
-cdef struct node:
-    int home
-    int loc
-    int age
-    int state_index
-    int* incoming_T_indices
-    int incoming_T_indices_len
-    int* outgoing_T_indices
-    int outgoing_T_indices_len
-    DTYPE_t** linear_coeffs
-    DTYPE_t** infection_coeffs
-
-cdef struct cnode:
-    int home
-    int fro
-    int to
-    int age
-    int state_index
-    int incoming_node
-    int outgoing_node
-    int incoming_T
-    int outgoing_T
-    DTYPE_t** linear_coeffs
-    DTYPE_t** infection_coeffs
-
-cdef struct transporter:
-    int T_index
-    int age
-    int home
-    int fro
-    int to
-    int fro_node_index
-    int to_node_index
-    int cnode_index
-    DTYPE_t t1
-    DTYPE_t t2
-    DTYPE_t r_T_Delta_t
-    DTYPE_t move_N
-    DTYPE_t move_percentage
-    bint use_percentage
-    bint* moving_classes
-    bint is_on # When true, the transport is on
-    DTYPE_t N0

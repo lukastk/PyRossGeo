@@ -1,7 +1,10 @@
-from pyrossgeo.csimulation cimport DTYPE_t, SIM_EVENT, SIM_EVENT_NULL, csimulation, node, cnode, transporter
-from pyrossgeo.csimulation import DTYPE
+import numpy as np
+cimport numpy as np
 
-cdef csimulate(csimulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=*,
-                            str out_file=*, int steps_per_print=*, bint only_save_nodes=*,
-                            object event_times=*, object event_function=*,
-                            object cevent_times=*, SIM_EVENT cevent_function=*)
+from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.Simulation cimport Simulation
+
+cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=*,
+                            str out_file=*, bint only_save_nodes=*, int steps_per_print=*,
+                            object event_times=*, object event_function=*)
+                            #object cevent_times=*, SIM_EVENT cevent_function=*)

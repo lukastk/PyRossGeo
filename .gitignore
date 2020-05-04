@@ -3,4 +3,6 @@ simulation_results
 .nfs*
 pyrossgeo/*.c
 pyrossgeo/*.html
+pyrossgeo/*.so
 .vscode
+__pycache__

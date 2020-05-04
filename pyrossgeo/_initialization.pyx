@@ -1,6 +1,3 @@
-from pyrossgeo.csimulation cimport DTYPE_t, SIM_EVENT, SIM_EVENT_NULL, csimulation, node, cnode, transporter
-from pyrossgeo.csimulation import DTYPE
-
 from libc.stdlib cimport malloc, free
 import numpy as np
 cimport numpy as np
@@ -8,10 +5,15 @@ import scipy.special
 import pandas as pd
 import csv, json
 
+from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.__defs__ import DTYPE
+from pyrossgeo.Simulation cimport Simulation
+
 def initialize(self, model_dat, commuter_networks_dat,
                         node_parameters_dat, cnode_parameters_dat,
-                        contact_matrices_dat, node_cmatrices_dat, cnode_cmatrices_dat,
-                        node_populations_dat, cnode_populations_dat=None):
+                        contact_matrices_dat, node_cmatrices_dat,
+                        cnode_cmatrices_dat, node_populations_dat,
+                        cnode_populations_dat=None):
 
     #### Load data files
 
@@ -59,48 +61,53 @@ def initialize(self, model_dat, commuter_networks_dat,
     if commuter_networks_dat.size == 0:
         commuter_networks_dat = np.zeros( (0,0) )
 
+    days_to_minutes = 1/(24*60.0) # Parameters are given in units of days, and need to be converted to minutes
+
     #### Find model_dim
 
     model_dim = len(model_dat['classes'])
 
     #### Find age_groups
 
-    cmat = contact_matrices_dat[ list(contact_matrices_dat.keys())[0] ]
-    age_groups = cmat.shape[0]
+    _cmat = contact_matrices_dat[ list(contact_matrices_dat.keys())[0] ]
+    age_groups = _cmat.shape[0]
 
     #### Define variables
 
-    max_node_index = -1
-    py_nodes = []
-    py_cnodes = []
+    max_node_index = -1 # The largest index of all nodes
+    py_nodes = [] # List of nodes
+    py_cnodes = [] # List of commuter nodes
 
     # Transport
 
-    py_Ts = []
-    py_cTs = []
+    py_Ts = [] # List of transporters leading from origin to commuter node
+    py_cTs = [] # List of transporters leading from commuter node to destination
 
     # Used for lambda calculation
 
-    py_nodes_at_j = None
+    py_nodes_at_j = None # For each location j, and age bracket a, a list of the indices of nodes located at j.
+    py_cnodes_into_k = None # For each location k, and age bracket a, a list of the indices of commuting nodes leading into k.
 
-    # Used for tau calculation
+    # Arrays used during simulation
 
-    py_cnodes_into_k = None
+    aij_to_node = {} # Maps (age,home,location) to node
+    aijk_to_cnode = {} # Maps (age,home,origin,destination) to cnode
+    aijk_to_T = {} # Maps (age,home,origin,destination) to transporter between origin and commuting node
+    aijk_to_cT = {} # Maps (age,home,origin,destination) to transporter commuting node and destination
 
-    #### Pre-processing
+    py_infection_classes_indices = [] # A list containing the class index of each infecting class.
+    py_class_infections = [] # For each class index oi, a list of infection classes it is infected by
+    py_linear_terms = [] # For each class index oi, a list of classes that oi interacts with linearly.
 
-    aij_to_node = {}
-    aijk_to_cnode = {}
-    aijk_to_T = {}
-    aijk_to_cT = {}
+    py_contact_matrices_key_to_index = {} # Dictionary mapping keys to contact matrices
+    py_contact_matrices = [] # A list of all contact matrices used
 
-    days_to_minutes = 1/(24*60.0) # Parameters are given in units of days, and need to be converted to minutes
-
-    # Go through the commuter networks, and add nodes and cnodes
+    #### Go through the commuter networks, and add nodes and cnodes ####
 
     for i in range(commuter_networks_dat.shape[0]):
         age, home, fro, to = map(int, commuter_networks_dat[i,:4])
 
+        # The home node has not been defined yet, define it
         if not (age, home, home) in aij_to_node:
             home_node = py_node()
             home_node.node_index = len(py_nodes)
@@ -111,6 +118,7 @@ def initialize(self, model_dat, commuter_networks_dat,
             aij_to_node[(home_node.age, home_node.home, home_node.loc)] = home_node
         home_node = aij_to_node[(age, home, home)]
 
+        # Create transporter leading from origin to commuter node
         T = py_transporter()
         T.age = age
         T.home = home
@@ -120,6 +128,7 @@ def initialize(self, model_dat, commuter_networks_dat,
         py_Ts.append(T)
         aijk_to_T[(age, home, fro, to)] = T
 
+        # Create transporter leading from commuter node to destination
         cT = py_transporter()
         cT.age = age
         cT.home = home
@@ -136,23 +145,23 @@ def initialize(self, model_dat, commuter_networks_dat,
         if use_percentage and move_N != -1:
             raise Exception("Both move_N and move_percentage specified.")
 
-        T.t1 = t1*60 #int(np.round(t1*60))
-        T.t2 = t2*60 #int(np.round(t2*60))
+        T.t1 = t1*60 # Convert units of time from hours to minutes
+        T.t2 = t2*60 
         T.r_T_Delta_t = 1.0 / (T.t2 - T.t1)
         T.move_N = move_N
         T.move_percentage = move_percentage
         T.use_percentage = use_percentage
         T.moving_classes = moving_classes
 
-        cT.t1 = ct1*60 #int(np.round(ct1*60))
-        cT.t2 = ct2*60 #int(np.round(ct2*60))
+        cT.t1 = ct1*60 
+        cT.t2 = ct2*60 
         cT.r_T_Delta_t = 1.0 / (cT.t2 - cT.t1)
         cT.move_N = -1
         cT.move_percentage = 1.0 # All must leave the commuterverse
         cT.use_percentage = True
         cT.moving_classes = [True for i in range(model_dim)] # All classes can leave commuterverses
 
-        # Create the from-node
+        # Create the origin-node
 
         if not (age, home, fro) in aij_to_node:
             node = py_node()
@@ -176,7 +185,7 @@ def initialize(self, model_dat, commuter_networks_dat,
             aij_to_node[(node.age, node.home, node.loc)] = node
         aij_to_node[(age, home, to)].incoming_T_indices.append(cT.T_index)
 
-        # Create the commuterverse
+        # Create the commuterverse linking the origin and the desintation node
 
         cnode = py_cnode()
         cnode.cnode_index = len(py_cnodes)
@@ -191,25 +200,25 @@ def initialize(self, model_dat, commuter_networks_dat,
         py_cnodes.append(cnode)
         aijk_to_cnode[(cnode.age, cnode.home, cnode.fro, cnode.to)] = cnode
 
-    # Assign node indices to py_Ts
+    #### Assign node indices to py_Ts ##################################
 
     for T in py_Ts:
-        fro_node= aij_to_node[(T.age, T.home, T.fro)]
-        to_node= aij_to_node[(T.age, T.home, T.to)]
+        fro_node = aij_to_node[(T.age, T.home, T.fro)]
+        to_node = aij_to_node[(T.age, T.home, T.to)]
         Tcnode = aijk_to_cnode[(T.age, T.home, T.fro, T.to)]
         T.fro_node_index = fro_node.node_index
         T.to_node_index = to_node.node_index
         T.cnode_index = Tcnode.cnode_index
 
     for cT in py_cTs:
-        fro_node= aij_to_node[(cT.age, cT.home, cT.fro)]
-        to_node= aij_to_node[(cT.age, cT.home, cT.to)]
+        fro_node = aij_to_node[(cT.age, cT.home, cT.fro)]
+        to_node = aij_to_node[(cT.age, cT.home, cT.to)]
         Tcnode = aijk_to_cnode[(cT.age, cT.home, cT.fro, cT.to)]
         cT.fro_node_index = fro_node.node_index
         cT.to_node_index = to_node.node_index
         cT.cnode_index = Tcnode.cnode_index
 
-    # Populations
+    #### Populations ###################################################
 
     for i in range(node_populations_dat.shape[0]):
         home, loc = map(int, node_populations_dat[i,:2])
@@ -230,7 +239,7 @@ def initialize(self, model_dat, commuter_networks_dat,
             node = aij_to_node[(age, home, loc)]
             node.state_pop = state_pop
 
-    # Commuterverse populations
+    #### Commuterverse populations #####################################
 
     for i in range(cnode_populations_dat.shape[0]):
         age, home, fro, to = map(int, cnode_populations_dat[i,:4])
@@ -239,7 +248,7 @@ def initialize(self, model_dat, commuter_networks_dat,
         cnode = aijk_to_cnode[(age, home, fro, to)]
         cnode.state_pop = cpop
 
-    # Find max_node_index
+    #### Find max_node_index ###########################################
 
     for a,i,j in aij_to_node:
         if i > max_node_index:
@@ -247,14 +256,14 @@ def initialize(self, model_dat, commuter_networks_dat,
         if j > max_node_index:
             max_node_index = j
 
-    # NumPy-ify the node fields, assign each node an index of the state vector, and assign state populations
+    ##### NumPy-ify the node fields and assign each node ###############
+    ##### an index of the state vector                   ###############
 
     current_X_state_index = 0
 
     for node in py_nodes:
         node.incoming_T_indices = np.array(node.incoming_T_indices, dtype=int)
         node.outgoing_T_indices = np.array(node.outgoing_T_indices, dtype=int)
-
         node.state_index = current_X_state_index
         current_X_state_index += model_dim
 
@@ -263,6 +272,8 @@ def initialize(self, model_dat, commuter_networks_dat,
     for cnode in py_cnodes:
         cnode.state_index = current_X_state_index
         current_X_state_index += model_dim
+
+    #### Set the initial conditions ####################################
 
     X_state0 = np.zeros(current_X_state_index)
 
@@ -274,7 +285,7 @@ def initialize(self, model_dat, commuter_networks_dat,
         if not cnode.state_pop is None:
             X_state0[cnode.state_index:cnode.state_index+model_dim] = cnode.state_pop
 
-    # Create py_nodes_at_j
+    #### Create py_nodes_at_j ##########################################
 
     py_nodes_at_j = [ [ [] for j in range(max_node_index+1) ] for a in range(age_groups)]
 
@@ -287,7 +298,7 @@ def initialize(self, model_dat, commuter_networks_dat,
         for j in range(len(py_nodes_at_j[a])):
             py_nodes_at_j[a][j] = np.array(py_nodes_at_j[a][j], dtype=int)
 
-    # Create py_cnodes_into_k
+    #### Create py_cnodes_into_k #######################################
 
     py_cnodes_into_k = [ [ [] for j in range(max_node_index+1) ] for a in range(age_groups)]
 
@@ -300,7 +311,7 @@ def initialize(self, model_dat, commuter_networks_dat,
         for k in range(len(py_cnodes_into_k[a])):
             py_cnodes_into_k[a][k] = np.array(py_cnodes_into_k[a][k], dtype=int)
 
-    # Generate state mapping dictionaries
+    #### Generate state mapping dictionaries ###########################
 
     node_state_index_mappings = {}
     cnode_state_index_mappings = {}
@@ -315,7 +326,9 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     py_state_mappings = (node_state_index_mappings, cnode_state_index_mappings)
 
-    ### Set node and cnode parameters
+    #### Set node and cnode parameters #################################
+
+    # Note: This section is the most complicated part of the initialisation procedure.
 
     model_class_to_class_index_o = {}
     model_class_index_o_to_class = {}
@@ -324,9 +337,8 @@ def initialize(self, model_dat, commuter_networks_dat,
         model_class_to_class_index_o[oclass] = i
         model_class_index_o_to_class[i] = oclass
 
-    # infection_classes
-    
-    py_infection_classes_indices = []
+    # Infection terms
+
     model_class_to_infection_class_index = {}
     model_parameter_to_class_index = {}
     for oclass in model_dat:
@@ -341,8 +353,7 @@ def initialize(self, model_dat, commuter_networks_dat,
                 model_parameter_to_class_index[model_parameter_key] = model_class_to_class_index_o[uclass]
 
     py_infection_classes_indices = np.array(py_infection_classes_indices, dtype=np.dtype("i"))
-
-    py_class_infections = []
+    
     infection_terms_class_index_to_index = []
     for o in range(model_dim):
         py_class_infections.append( [] )
@@ -351,9 +362,8 @@ def initialize(self, model_dat, commuter_networks_dat,
             infection_terms_class_index_to_index[o][ model_class_to_class_index_o[oclass] ] = len(py_class_infections[o])
             py_class_infections[o].append( model_class_to_infection_class_index[oclass] )
 
-    # linear_terms
-
-    py_linear_terms = []
+    # Linear terms
+ 
     for o in range(model_dim):
         py_linear_terms.append([])
         for oclass, model_parameter_key in model_dat[ model_class_index_o_to_class[o] ]['linear']:
@@ -368,7 +378,7 @@ def initialize(self, model_dat, commuter_networks_dat,
         for i in range(len(py_linear_terms[o])):
             linear_terms_class_index_to_index[o][ py_linear_terms[o][i] ] = i
 
-    ## node parameters
+    # Set the model parameters for each node
 
     for n in py_nodes:
         for row_i, row in node_parameters_dat.iterrows():
@@ -408,7 +418,7 @@ def initialize(self, model_dat, commuter_networks_dat,
                         param = DTYPE(row[param_key]) * days_to_minutes
                     n.infection_coeffs[o][infection_terms_class_index_to_index[o][io]] = param
 
-    # cnode parameters
+    # Set the model parameters for each commuter node
 
     for cn in py_cnodes:
         for row_i, row in cnode_parameters_dat.iterrows():
@@ -452,10 +462,7 @@ def initialize(self, model_dat, commuter_networks_dat,
                         param = DTYPE(row[param_key]) * days_to_minutes
                     cn.infection_coeffs[o][infection_terms_class_index_to_index[o][io]] = param
 
-    # contact matrices
-
-    py_contact_matrices_key_to_index = {}
-    py_contact_matrices = []
+    #### Set contact matrices ##########################################
 
     for cmat_key in contact_matrices_dat:
         py_contact_matrices_key_to_index[ cmat_key ] = len(py_contact_matrices)
@@ -463,7 +470,7 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     py_contact_matrices = np.array(py_contact_matrices, dtype=DTYPE)
     
-    # node contact matrices
+    # Set node contact matrices
 
     py_node_infection_cmats = [ [] for i in range(max_node_index+1) ]
 
@@ -489,7 +496,7 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     py_node_infection_cmats = np.array(py_node_infection_cmats, dtype=np.dtype("i"))
 
-    # cnode contact matrices
+    # Set cnode contact matrices
 
     py_cnode_infection_cmats = [ [] for i in range(max_node_index+1) ]
 
@@ -521,7 +528,7 @@ def initialize(self, model_dat, commuter_networks_dat,
                         py_contact_matrices, py_contact_matrices_key_to_index, py_node_infection_cmats, py_cnode_infection_cmats)
 
 
-cdef _initialize(csimulation self, py_max_node_index, model_dim, age_groups, X_state_arr, node_states_len, py_nodes, py_cnodes,
+cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_state_arr, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_class_infections, py_linear_terms,
                         py_contact_matrices, py_contact_matrices_key_to_index, py_node_infection_cmats, py_cnode_infection_cmats):
