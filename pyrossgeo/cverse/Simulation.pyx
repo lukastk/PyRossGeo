@@ -1,9 +1,9 @@
 import numpy as np
 cimport numpy as np
 
-from pyrossgeo._initialization import initialize
-from pyrossgeo._simulation cimport simulate
-from pyrossgeo._helpers import compute, free_sim
+from pyrossgeo.cverse._initialization import initialize
+from pyrossgeo.cverse._simulation cimport simulate
+from pyrossgeo.cverse._helpers import compute, free_sim
 
 #cdef void SIM_EVENT_NULL(Simulation sim, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state):
 #    raise(Exception('SIM_EVENT_NULL triggered'))

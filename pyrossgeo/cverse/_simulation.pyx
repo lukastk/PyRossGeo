@@ -5,7 +5,7 @@ from cython.parallel import prange
 import numpy as np
 cimport numpy as np
 
-from pyrossgeo.__defs__ import DTYPE
+from pyrossgeo.cverse.__defs__ import DTYPE
 
 @cython.wraparound(False)
 @cython.boundscheck(False)

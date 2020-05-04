@@ -1,8 +1,8 @@
 import numpy as np
 cimport numpy as np
 
-from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE
+from pyrossgeo.cverse.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.cverse.__defs__ import DTYPE
 
 #ctypedef void (*SIM_EVENT)(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
 #cdef void SIM_EVENT_NULL(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)

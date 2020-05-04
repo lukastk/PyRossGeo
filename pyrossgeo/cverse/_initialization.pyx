@@ -5,9 +5,9 @@ import scipy.special
 import pandas as pd
 import csv, json
 
-from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE
-from pyrossgeo.Simulation cimport Simulation
+from pyrossgeo.cverse.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.cverse.__defs__ import DTYPE
+from pyrossgeo.cverse.Simulation cimport Simulation
 
 def initialize(self, model_dat, commuter_networks_dat,
                         node_parameters_dat, cnode_parameters_dat,

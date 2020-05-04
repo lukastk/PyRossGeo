@@ -1,8 +1,8 @@
 from libc.stdlib cimport free
 
-from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE
-from pyrossgeo.Simulation cimport Simulation
+from pyrossgeo.cverse.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.cverse.__defs__ import DTYPE
+from pyrossgeo.cverse.Simulation cimport Simulation
 
 import numpy as np
 cimport numpy as np
