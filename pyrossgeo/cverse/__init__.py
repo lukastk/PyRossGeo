@@ -1,2 +1,2 @@
 import pyrossgeo.utils
-from pyrossgeo.Simulation import Simulation
+from pyrossgeo.cverse.Simulation import Simulation
