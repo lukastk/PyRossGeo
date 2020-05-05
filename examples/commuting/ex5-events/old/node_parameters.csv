@@ -1,0 +1,5 @@
+,,,,Linear,,,Non-linear,,
+Home,Loc,Age,Class,S,I,R,S,I,R
+ALL,ALL,ALL,S,,,,,-6.94444E-05,
+ALL,ALL,ALL,I,,-2.08333E-05,,,6.94E-05,
+ALL,ALL,ALL,R,,2.08333E-05,,,,

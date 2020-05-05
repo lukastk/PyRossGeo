@@ -21,6 +21,13 @@ a particular node exceeds 1 (or a smaller number)
 Synthetic data:
 - Do the above, with synthetic data.
 
+## Todo (main):
+
+- Make a tool that makes sure that `model.json` adds to 0.
+
+
+
+
 ## Todo:
 
 - Make it so that SIR dynamics cant overstep

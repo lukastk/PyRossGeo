@@ -1,8 +1,11 @@
 build
 simulation_results
 .nfs*
-pyrossgeo/cverse/*.c
-pyrossgeo/cverse/*.html
-pyrossgeo/cverse/*.so
+pyrossgeo/*.c
+pyrossgeo/*.html
+pyrossgeo/*.so
+pyrossgeo/mft/*.c
+pyrossgeo/mft/*.html
+pyrossgeo/mft/*.so
 .vscode
 __pycache__
