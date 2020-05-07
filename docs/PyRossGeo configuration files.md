@@ -52,6 +52,8 @@ SEAIR models:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{aligned}&space;\dot{S}^\mu&space;%26&space;=&space;-&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;\\&space;\dot{I}^\mu&space;%26&space;=&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;-&space;\gamma&space;I&space;\\&space;\dot{R}^\mu&space;%26&space;=&space;\gamma&space;I&space;\end{aligned}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{aligned}&space;\dot{S}^\mu&space;%26&space;=&space;-&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;\\&space;\dot{I}^\mu&space;%26&space;=&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;-&space;\gamma&space;I&space;\\&space;\dot{R}^\mu&space;%26&space;=&space;\gamma&space;I&space;\end{aligned}" title="\begin{aligned} \dot{S}^\mu %26 = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} \\ \dot{I}^\mu %26 = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I \\ \dot{R}^\mu %26 = \gamma I \end{aligned}" /></a>
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>
+
 **Example:** SEAIR model
 
 ```json
