@@ -31,6 +31,8 @@ Synthetic data:
 
 - Allow one-off transport.
 
+- Allow for constant rates in `model.json`
+
 ## Todo:
 
 - Make it so that SIR dynamics cant overstep

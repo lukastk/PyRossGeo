@@ -130,10 +130,10 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
     #### Go through the commuter networks, and add nodes and cnodes ####
 
     for i, row in commuter_networks_dat.iterrows():
-        age = int(row[0]) # commuter_networks_dat['Age']
-        home = int(row[1]) # commuter_networks_dat['Home']
-        fro = int(row[2]) # commuter_networks_dat['From']
-        to = int(row[3]) # commuter_networks_dat['To']
+        home = int(row[0]) # commuter_networks_dat['Home']
+        fro = int(row[1]) # commuter_networks_dat['From']
+        to = int(row[2]) # commuter_networks_dat['To']
+        age = int(row[3]) # commuter_networks_dat['Age']
 
         # The home node has not been defined yet, define it
         if not (age, home, home) in aij_to_node:
