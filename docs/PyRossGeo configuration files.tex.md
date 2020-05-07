@@ -43,6 +43,16 @@ SEAIR models:
 
 ```
 
+$$
+\begin{aligned}
+\dot{S}^\mu & = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} \\
+\dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I \\
+\dot{R}^\mu & = \gamma I
+\end{aligned}
+$$
+
+
+<!--
 <img style="text-align: center;" src="https://render.githubusercontent.com/render/math?math=
 \begin{aligned}
 \dot{S}^\mu %26 = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} \\
@@ -51,8 +61,7 @@ SEAIR models:
 \end{aligned}">
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\begin{aligned}&space;\dot{S}^\mu&space;&&space;=&space;-&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;\\&space;\dot{I}^\mu&space;&&space;=&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;-&space;\gamma&space;I&space;\\&space;\dot{R}^\mu&space;&&space;=&space;\gamma&space;I&space;\end{aligned}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\begin{aligned}&space;\dot{S}^\mu&space;&&space;=&space;-&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;\\&space;\dot{I}^\mu&space;&&space;=&space;\beta&space;\sum_\nu&space;C_{\mu&space;\nu}&space;\frac{I^\nu}{N^\nu}&space;-&space;\gamma&space;I&space;\\&space;\dot{R}^\mu&space;&&space;=&space;\gamma&space;I&space;\end{aligned}" title="\begin{aligned} \dot{S}^\mu & = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} \\ \dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I \\ \dot{R}^\mu & = \gamma I \end{aligned}" /></a>
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=s" target="_blank"><img src="https://latex.codecogs.com/gif.latex?s" title="s" /></a>
+-->
 
 **Example:** SEAIR model
 
