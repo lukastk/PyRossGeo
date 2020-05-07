@@ -1,2 +1,5 @@
-Loc,S,E,A,I,R
-ALL,,C_standard,C_standard,C_standard,
+Home,Loc,S,E,A,I,R
+ALL,ALL,,,C_away,C_away,
+0,0,,,C_home,C_home,
+1,1,,,C_home,C_home,
+2,2,,,C_home,C_home,

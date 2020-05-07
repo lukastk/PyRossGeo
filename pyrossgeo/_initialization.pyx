@@ -1,4 +1,5 @@
 from libc.stdlib cimport malloc, free
+import os
 import numpy as np
 cimport numpy as np
 import scipy.special
@@ -9,57 +10,81 @@ from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
 from pyrossgeo.__defs__ import DTYPE
 from pyrossgeo.Simulation cimport Simulation
 
-def initialize(self, model_dat, commuter_networks_dat,
-                        node_parameters_dat, cnode_parameters_dat,
-                        contact_matrices_dat, node_cmatrices_dat,
-                        cnode_cmatrices_dat, node_populations_dat,
-                        cnode_populations_dat=None):
+def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
+                        node_parameters_dat='', cnode_parameters_dat='',
+                        contact_matrices_dat='', node_cmatrices_dat='',
+                        cnode_cmatrices_dat='', node_populations_dat='',
+                        cnode_populations_dat=''):
 
     #### Load data files
 
+    default_commuter_networks_path = 'commuter_networks.csv'
+    default_model_path = 'model.json'
+    default_node_parameters_path = 'node_parameters.csv'
+    default_cnode_parameters_path = 'cnode_parameters.csv'
+    default_contact_matrices_path = 'contact_matrices.json'
+    default_node_cmatrices_path = 'node_cmatrices.csv'
+    default_cnode_cmatrices_path = 'cnode_cmatrices.csv'
+    default_node_populations_path = 'node_populations.csv'
+    default_cnode_populations_path = 'cnode_populations.csv'
+
     if type(commuter_networks_dat) == str:
-        commuter_networks_dat = np.loadtxt(commuter_networks_dat, delimiter=',', skiprows=1)
+        if commuter_networks_dat == '':
+            commuter_networks_dat = os.path.join(sim_data_path, default_commuter_networks_path)
+        commuter_networks_dat = pd.read_csv(commuter_networks_dat, delimiter=',', quotechar='"')
 
     if type(model_dat) == str:
+        if model_dat == '':
+            model_dat = os.path.join(sim_data_path, default_model_path)
         with open(model_dat, 'r') as json_file:
             model_dat = json.load(json_file)
 
     if type(node_parameters_dat) == str:
+        if node_parameters_dat == '':
+            node_parameters_dat = os.path.join(sim_data_path, default_node_parameters_path)
         node_parameters_dat = pd.read_csv(node_parameters_dat, delimiter=',', quotechar='"')
-    else:
+    elif type(node_parameters_dat) == dict:
         node_parameters_dat = pd.DataFrame(data=node_parameters_dat)
 
     if type(cnode_parameters_dat) == str:
+        if cnode_parameters_dat == '':
+            cnode_parameters_dat = os.path.join(sim_data_path, default_cnode_parameters_path)
         cnode_parameters_dat = pd.read_csv(cnode_parameters_dat, delimiter=',', quotechar='"')
-    else:
+    elif type(cnode_parameters_dat) == dict:
         cnode_parameters_dat = pd.DataFrame(data=cnode_parameters_dat)
 
     if type(contact_matrices_dat) == str:
+        if contact_matrices_dat == '':
+            contact_matrices_dat = os.path.join(sim_data_path, default_contact_matrices_path)
         with open(contact_matrices_dat, 'r') as json_file:
             contact_matrices_dat = json.load(json_file)
             for k in contact_matrices_dat:
                 contact_matrices_dat[k] = np.array(contact_matrices_dat[k], dtype=DTYPE)
 
     if type(node_cmatrices_dat) == str:
+        if node_cmatrices_dat == '':
+            node_cmatrices_dat = os.path.join(sim_data_path, default_node_cmatrices_path)
         node_cmatrices_dat = pd.read_csv(node_cmatrices_dat, delimiter=',', quotechar='"')
 
     if type(cnode_cmatrices_dat) == str:
+        if cnode_cmatrices_dat == '':
+            cnode_cmatrices_dat = os.path.join(sim_data_path, default_cnode_cmatrices_path)
         cnode_cmatrices_dat = pd.read_csv(cnode_cmatrices_dat, delimiter=',', quotechar='"')
 
     if type(node_populations_dat) == str:
-        node_populations_dat = np.loadtxt(node_populations_dat, delimiter=',', skiprows=1)
+        if node_populations_dat == '':
+            node_populations_dat = os.path.join(sim_data_path, default_node_populations_path)
+        node_populations_dat = pd.read_csv(node_populations_dat, delimiter=',', quotechar='"')
 
-    if cnode_populations_dat is None:
-        cnode_populations_dat = np.zeros( (0,0) )
-    elif type(cnode_populations_dat) == str:
-        cnode_populations_dat = np.loadtxt(cnode_populations_dat, delimiter=',', skiprows=1)
-
-    commuter_networks_dat = np.atleast_2d(commuter_networks_dat)
-    node_populations_dat = np.atleast_2d(node_populations_dat)
-    cnode_populations_dat = np.atleast_2d(cnode_populations_dat)
-
-    if commuter_networks_dat.size == 0:
-        commuter_networks_dat = np.zeros( (0,0) )
+    if type(cnode_populations_dat) == str:
+        if cnode_populations_dat == '':
+            cnode_populations_dat = os.path.join(sim_data_path, default_cnode_populations_path)
+            if os.path.exists(cnode_populations_dat): # Avoid exceptions if user has not defined cnode_populations.csv
+                cnode_populations_dat = pd.read_csv(cnode_populations_dat, delimiter=',', quotechar='"')
+            else:
+                cnode_populations_dat = None
+        else:
+            cnode_populations_dat = pd.read_csv(cnode_populations_dat, delimiter=',', quotechar='"')
 
     days_to_minutes = 1/(24*60.0) # Parameters are given in units of days, and need to be converted to minutes
 
@@ -104,8 +129,11 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     #### Go through the commuter networks, and add nodes and cnodes ####
 
-    for i in range(commuter_networks_dat.shape[0]):
-        age, home, fro, to = map(int, commuter_networks_dat[i,:4])
+    for i, row in commuter_networks_dat.iterrows():
+        age = int(row[0]) # commuter_networks_dat['Age']
+        home = int(row[1]) # commuter_networks_dat['Home']
+        fro = int(row[2]) # commuter_networks_dat['From']
+        to = int(row[3]) # commuter_networks_dat['To']
 
         # The home node has not been defined yet, define it
         if not (age, home, home) in aij_to_node:
@@ -138,8 +166,8 @@ def initialize(self, model_dat, commuter_networks_dat,
         py_cTs.append(cT)
         aijk_to_cT[(age, home, fro, to)] = cT
 
-        move_N, move_percentage, t1, t2, ct1, ct2 = commuter_networks_dat[i,4:10]
-        moving_classes = [k == 1 for k in commuter_networks_dat[i,10:]]
+        move_N, move_percentage, t1, t2, ct1, ct2 = row[4:10]
+        moving_classes = [k == 1 for k in row[10:]]
         use_percentage = move_percentage != -1
 
         if use_percentage and move_N != -1:
@@ -220,12 +248,13 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     #### Populations ###################################################
 
-    for i in range(node_populations_dat.shape[0]):
-        home, loc = map(int, node_populations_dat[i,:2])
-        age_group_pops = node_populations_dat[i,2:].reshape( (age_groups, model_dim) )
+    for i, row in node_populations_dat.iterrows():
+        home = int(row[0]) # row['Home']
+        loc = int(row[1]) # row['Location']
+        age_group_pops = np.array(row[2:]).reshape( (age_groups, model_dim) )
 
         for age in range(age_group_pops.shape[0]):
-            state_pop = age_group_pops[age, :] # Populations of S, I, R respectively
+            state_pop = age_group_pops[age, :] 
 
             if not (age, home, loc) in aij_to_node:
                 node = py_node()
@@ -241,12 +270,17 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     #### Commuterverse populations #####################################
 
-    for i in range(cnode_populations_dat.shape[0]):
-        age, home, fro, to = map(int, cnode_populations_dat[i,:4])
-        cpop = cnode_populations_dat[i,4:]
+    if not cnode_populations_dat is None:
+        for i, row in cnode_populations_dat.iterrows():
+            home = int(row['Home'])
+            fro = int(row['From'])
+            to = int(row['To'])
+            age_group_pops = np.array(row[3:]).reshape( (age_groups, model_dim) )
 
-        cnode = aijk_to_cnode[(age, home, fro, to)]
-        cnode.state_pop = cpop
+            for age in range(age_group_pops.shape[0]):
+                state_pop = age_group_pops[age, :] 
+                cnode = aijk_to_cnode[age, home, fro, to]
+                cnode.state_pop = state_pop
 
     #### Find max_node_index ###########################################
 
@@ -382,7 +416,9 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     for n in py_nodes:
         for row_i, row in node_parameters_dat.iterrows():
-            home, loc, age = row['Home'], row['Loc'], row['Age']
+            home = row[0] # row['Home']
+            loc = row[1] # row['Location']
+            age = row[2] # row['Age']
             home = int(home)  if home != 'ALL' else 'ALL'
             loc = int(loc)  if loc != 'ALL' else 'ALL'
             age = int(age)  if age != 'ALL' else 'ALL'
@@ -422,7 +458,10 @@ def initialize(self, model_dat, commuter_networks_dat,
 
     for cn in py_cnodes:
         for row_i, row in cnode_parameters_dat.iterrows():
-            home, fro, to, age = row['Home'], row['From'], row['To'], row['Age']
+            home = row[0]# row['Home']
+            fro = row[1]# row['From']
+            to = row[2]# row['To']
+            age = row[3]# row['Age']
             home = int(home)  if home != 'ALL' else 'ALL'
             fro = int(fro)  if fro != 'ALL' else 'ALL'
             to = int(to)  if to != 'ALL' else 'ALL'
@@ -472,68 +511,61 @@ def initialize(self, model_dat, commuter_networks_dat,
     
     # Set node contact matrices
 
-    py_node_infection_cmats = [ [] for i in range(max_node_index+1) ]
-
     for row_i, row in node_cmatrices_dat.iterrows():
-        loc = row['Loc']
+        home = row[0] # row['Home']
+        loc = row[1] # row['Location']
+        home = int(home) if home != 'ALL' else 'ALL'
         loc = int(loc) if loc != 'ALL' else 'ALL'
-        cmat_keys = row[1:]
-        cmat_keys_isna = row[1:].isna()
+        cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[2:]])
 
-        if loc == 'ALL':
-            locs = list(range(max_node_index+1))
-        else:
-            locs = [loc]
+        for home_i in range(max_node_index+1):
+            for loc_j in range(max_node_index+1):
+                if (home_i == home or home == 'ALL') and (loc_j == loc or loc == 'ALL'):
+                    for age_a in range(age_groups):
+                        n = aij_to_node.get((age_a, home_i, loc_j))
+                        if not n is None:
+                            n.contact_matrix_indices = cmat_indices[py_infection_classes_indices]
 
-        for l in locs:
-            py_node_infection_cmats[l] = []
-
-            for o in range(model_dim):
-                if not cmat_keys_isna[o]:
-                    py_node_infection_cmats[l].append( py_contact_matrices_key_to_index[cmat_keys[o]] )
-                else:
-                    py_node_infection_cmats[l].append( -1 )
-
-    py_node_infection_cmats = np.array(py_node_infection_cmats, dtype=np.dtype("i"))
+                            if -1 in n.contact_matrix_indices:
+                                raise Exception("Contact matrix missing for node (%i, %i, %i)" % (age_a, home_i, loc_j))
 
     # Set cnode contact matrices
 
-    py_cnode_infection_cmats = [ [] for i in range(max_node_index+1) ]
-
     for row_i, row in cnode_cmatrices_dat.iterrows():
-        to = row['To']
+        home = row[0] #row['Home']
+        fro = row[1] #row['From']
+        to = row[2] #row['To']
+        home = int(home) if home != 'ALL' else 'ALL'
+        fro = int(fro) if fro != 'ALL' else 'ALL'
         to = int(to) if to != 'ALL' else 'ALL'
-        cmat_keys = row[1:]
-        cmat_keys_isna = row[1:].isna()
+        cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[3:]])
 
-        if to == 'ALL':
-            tos = list(range(max_node_index+1))
-        else:
-            tos = [to]
+        for home_i in range(max_node_index+1):
+            for fro_j in range(max_node_index+1):
+                for to_j in range(max_node_index+1):
+                    if (home_i == home or home == 'ALL') and (fro_j == fro or fro == 'ALL') and (to_j == to or to == 'ALL'):
+                        for age_a in range(age_groups):
+                            cn = aijk_to_cnode.get((age_a, home_i, fro_j, to_j))
+                            if not cn is None:
+                                cn.contact_matrix_indices = cmat_indices[py_infection_classes_indices]
 
-        for l in tos:
-            py_cnode_infection_cmats[l] = []
-
-            for o in range(model_dim):
-                if not cmat_keys_isna[o]:
-                    py_cnode_infection_cmats[l].append( py_contact_matrices_key_to_index[cmat_keys[o]] )
-                else:
-                    py_cnode_infection_cmats[l].append( -1 )
-
-    py_cnode_infection_cmats = np.array(py_cnode_infection_cmats, dtype=np.dtype("i"))
+                                if -1 in cn.contact_matrix_indices:
+                                    raise Exception("Contact matrix missing for cnode (%i, %i, %i)" % (age_a, home_i, fro_j, to_j))
 
     return _initialize(self, max_node_index, model_dim, age_groups, X_state0, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_class_infections, py_linear_terms,
-                        py_contact_matrices, py_contact_matrices_key_to_index, py_node_infection_cmats, py_cnode_infection_cmats)
+                        py_contact_matrices, py_contact_matrices_key_to_index)
 
 
 cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_state_arr, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_class_infections, py_linear_terms,
-                        py_contact_matrices, py_contact_matrices_key_to_index, py_node_infection_cmats, py_cnode_infection_cmats):
+                        py_contact_matrices, py_contact_matrices_key_to_index):
     """Initialize the simulation."""
+
     self.state_mappings = py_state_mappings
+    self.storage = {}
 
     # Initialize the transport profile
     self.transport_profile_c = 0.1
@@ -557,6 +589,10 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
         self.nodes[ni].loc = pn.loc
         self.nodes[ni].age = pn.age
         self.nodes[ni].state_index = pn.state_index
+
+        self.nodes[ni].contact_matrix_indices = <int *> malloc(len(pn.contact_matrix_indices) * sizeof(int))
+        for i in range(len(pn.contact_matrix_indices)):
+            self.nodes[ni].contact_matrix_indices[i] = pn.contact_matrix_indices[i]
 
         self.nodes[ni].incoming_T_indices = <int *> malloc(len(pn.incoming_T_indices) * sizeof(int))
         self.nodes[ni].incoming_T_indices_len = len(pn.incoming_T_indices)
@@ -593,6 +629,11 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
         self.cnodes[ni].outgoing_node = pcn.outgoing_node
         self.cnodes[ni].incoming_T = pcn.incoming_T
         self.cnodes[ni].outgoing_T = pcn.outgoing_T
+        self.cnodes[ni].is_on = False
+
+        self.cnodes[ni].contact_matrix_indices = <int *> malloc(len(pcn.contact_matrix_indices) * sizeof(int))
+        for i in range(len(pcn.contact_matrix_indices)):
+            self.cnodes[ni].contact_matrix_indices[i] = pcn.contact_matrix_indices[i]
 
         self.cnodes[ni].linear_coeffs = <DTYPE_t **> malloc(len(pcn.linear_coeffs) * sizeof(DTYPE_t*))
         for o in range(len(pcn.linear_coeffs)):
@@ -706,11 +747,7 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     self.contact_matrices = py_contact_matrices
     self.contact_matrices_key_to_index = py_contact_matrices_key_to_index
 
-    self.node_infection_cmats = py_node_infection_cmats
-    self.cnode_infection_cmats = py_cnode_infection_cmats
-
-    self._lambdas_arr = np.zeros( (self.age_groups, self.infection_classes_num) )
-    self._lambdas = self._lambdas_arr
+    self._lambdas = np.zeros( (self.contact_matrices.shape[0], self.age_groups, self.infection_classes_num) )
 
     self._Is_arr = np.zeros( (self.age_groups) )
     self._Is = self._Is_arr
@@ -732,6 +769,7 @@ class py_node:
         self.state_pop = None
         self.linear_coeffs = None
         self.infection_coeffs = None
+        self.contact_matrix_indices = None
 
     def __str__(self):
         return "ni: %s, Age: %s, Home: %s, Loc: %s" % (self.node_index, self.age, self.home, self.loc)
@@ -751,6 +789,8 @@ class py_cnode:
         self.state_pop = None
         self.linear_coeffs = None
         self.infection_coeffs = None
+        self.is_on = False
+        self.contact_matrix_indices = None
 
     def __str__(self):
         return "cni: %s, Age: %s, Home: %s, Fro: %s, To: %s" % (self.cnode_index, self.age, self.home, self.fro, self.to)

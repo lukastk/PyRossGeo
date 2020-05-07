@@ -1,38 +1,51 @@
 ## PyRossGeo: Spatially resolved infectious disease models in Python 
 
-[About](#about) | [Contact](#contact) | [Publications ](#publications) | [News](#news) | [Installation](#installation) | [Examples](#examples) | [License](#license) | [Wiki](https://github.com/lukastk/PyRossGeo/wiki)
+[About](#about) | [Installation](#installation) | [Examples](#examples) | [Documentation](#documentation)  | [Publications ](#publications) | [License](#license) |  [Wiki](https://github.com/lukastk/PyRossGeo/wiki) |  [Contact](#contact)
 
-![Imagel](dev/banner.jpg)
+![Imagel](docs/banner.jpg)
 
 ## About
 
-PyRossGeo is a numerical library for spatially resolved mathematical modelling of infectious disease in Python 
+[PyRossGeo](https://github.com/lukastk/PyRossGeo) is a numerical library for spatially resolved mathematical modelling of infectious disease in Python.
 
+The authors are part of the [Rapid Assistance in Modelling the Pandemic (RAMP)](https://royalsociety.org/news/2020/03/urgent-call-epidemic-modelling/) taskforce at the **University of Cambridge**. In alphabetical order, we are:
+[Ronojoy Adhikari](https://github.com/ronojoy),
+[Jakub Dolezal](https://github.com/JakubJDolezal),
+[Tim Ekeh](https://github.com/tekeh),
+[Lukas Kikuchi](https://github.com/lukastk),
+[Hideki Kobayashi](https://github.com/hidekb),
+[Paul Rohrbach](https://github.com/prohrbach),
+[Rajesh Singh](https://github.com/rajeshrinet) and
+[Fernando Pedrero](https://github.com/Ferfer93).
 
-### Code architecture
+## Installation
+Clone (or download) the repository and use a terminal to install using
 
-The main principle informing the structure of the code is reducing sparsity in the equations. As the degrees of each node in the commuting network is - in general - several orders of magnitude smaller than the total number of nodes, this should be taken into account in the code.
-
-The code can be broadly separated into two parts: The initialisation stage, and the simulation stage. 
-
-### Notes about simulation
-
-- Infection dynamics for infection classes that have populations smaller than 1 is disabled.
-
-```python
-if _Ns[age_b] > 1: # No infecitons can occur if there are fewer than one person at node
-    _lambdas[age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+```bash
+>> git clone https://github.com/lukastk/PyRossGeo.git
+>> cd pyross
+>> python setup.py install
 ```
 
-This is because the infection dynamics can cause severe numerical instabilities in combination with transport. This is caused by the
-division of `_Ns[age_b]`. When the entire population of a node leaves, `_Ns[age_b]` reaches zero with some numerical errors. These
-numerical errors causes `_lambdas[age_a][ui]` to blow up.
+PyRossGeo requires the following software
 
-- Linear dynamics is disabled when classes have negative populations. As can be easily verified by simply integrating single-node SIR,
-negative values causes severe issues and divergences.
+- Python 3.4+
+- [Cython 0.25.x+](http://docs.cython.org/en/latest/index.html)
+| [NumPy 1.x+](http://www.numpy.org)
+| [Pandas](https://pandas.pydata.org/)
+| [SciPy 1.1.x+](https://www.scipy.org/)
+- Optional dependencies:
+| [Zarr](https://zarr.readthedocs.io/) (Saving simulations results)
+| [Matplotlib 2.0.x+](https://matplotlib.org) (Notebooks)
+| [Jupyter](https://jupyter.org/) (Notebooks)
+| [PyTest](https://docs.pytest.org/) (Testing)
 
-```python
-if X_state[ si + u ] > 0: # Only allow interaction if the class is positive
-    u = linear_terms[o][j]
-    dX_state[si+o] += n.linear_coeffs[o][j] * X_state[ si + u ]
-```
+## Documentation
+
+## Examples
+
+## Publications
+
+## License
+
+We believe that openness and sharing improves the practice of science and increases the reach of its benefits. This code is released under the [MIT license](http://opensource.org/licenses/MIT). Our choice is guided by the excellent article on [Licensing for the scientist-programmer](http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002598).

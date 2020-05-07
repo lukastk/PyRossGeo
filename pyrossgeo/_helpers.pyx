@@ -18,11 +18,10 @@ cpdef compute(Simulation self, DTYPE_t[:] X_state, DTYPE_t[:] dX_state, DTYPE_t 
     self._simulate(self, X_state, dX_state, t_start, steps, dts, steps_per_save, out_file, print_per_n_steps)
 
 cpdef free_sim(Simulation self):
-    pass
-    """
     for ni in range(self.nodes_num):
         free(self.nodes[ni].incoming_T_indices)
         free(self.nodes[ni].outgoing_T_indices)
+        free(self.nodes[ni].contact_matrix_indices)
 
         for o in range(self.model_dim):
             free(self.nodes[ni].linear_coeffs[o])
@@ -34,6 +33,8 @@ cpdef free_sim(Simulation self):
     free(self.nodes)
 
     for ni in range(self.cnodes_num):
+        free(self.cnodes[ni].contact_matrix_indices)
+
         for o in range(self.model_dim):
             free(self.cnodes[ni].linear_coeffs[o])
         free(self.cnodes[ni].linear_coeffs)
@@ -74,4 +75,3 @@ cpdef free_sim(Simulation self):
     for o in range(self.model_dim):
         free(self.linear_terms[o])
     free(self.linear_terms_num)
-    """

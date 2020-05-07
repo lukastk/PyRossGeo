@@ -34,8 +34,6 @@ cdef class Simulation:
     cdef int* linear_terms_num
     cdef np.ndarray contact_matrices
     cdef readonly dict contact_matrices_key_to_index
-    cdef np.ndarray node_infection_cmats
-    cdef np.ndarray cnode_infection_cmats
     cdef object _lambdas_arr
     cdef np.ndarray _lambdas
     cdef object _Is_arr

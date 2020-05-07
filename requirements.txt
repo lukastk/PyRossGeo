@@ -1,0 +1,8 @@
+cython
+numpy
+pandas
+scipy
+zarr
+jupyter
+matplotlib
+pytest

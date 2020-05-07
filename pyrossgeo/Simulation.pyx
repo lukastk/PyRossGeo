@@ -13,11 +13,11 @@ cdef class Simulation:
     def __dealloc__(self):
         free_sim(self)
 
-    def initialize(self, model_dat, commuter_networks_dat,
-                        node_parameters_dat, cnode_parameters_dat,
-                        contact_matrices_dat, node_cmatrices_dat,
-                        cnode_cmatrices_dat, node_populations_dat,
-                        cnode_populations_dat=None):
+    def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
+                        node_parameters_dat='', cnode_parameters_dat='',
+                        contact_matrices_dat='', node_cmatrices_dat='',
+                        cnode_cmatrices_dat='', node_populations_dat='',
+                        cnode_populations_dat=''):
         """Initializes the simulation using the given configuration files.
         
         Each argument will be accepted as either as raw data or a path

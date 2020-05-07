@@ -51,8 +51,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef int** linear_terms = self.linear_terms
     cdef int* linear_terms_num = self.linear_terms_num
     cdef DTYPE_t[:,:,:] contact_matrices = self.contact_matrices
-    cdef int[:, :] node_infection_cmats = self.node_infection_cmats
-    cdef int[:, :] cnode_infection_cmats = self.cnode_infection_cmats
+    cdef int contact_matrices_num = self.contact_matrices.shape[0]
 
     # Transport
     cdef transporter* Ts = self.Ts # Going into commuterverses
@@ -78,11 +77,12 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     #### Simulation variables ###########################################
 
     cdef int cni, ni, si, Ti, cTi, i, j, ui, u, o, cmat_i, oi, X_index, loc_j, to_k, age_a, age_b
+    cdef bint to_k_is_active = False
     cdef DTYPE_t S, t1, t2, transport_profile, fro_N, cn_N, mt, transport_profile_exponent
     cdef node n, fro_n, to_n
     cdef cnode cn
     
-    cdef DTYPE_t[:, :] _lambdas = self._lambdas
+    cdef DTYPE_t[:, :, :] _lambdas = self._lambdas
     cdef DTYPE_t[:] _Is = self._Is
     cdef DTYPE_t[:] _Ns = self._Ns
 
@@ -203,7 +203,6 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
             for ui in range(infection_classes_num):
                 u = infection_classes_indices[ui]
-                cmat_i = node_infection_cmats[loc_j][u]
 
                 # Find the infecteds of each age group
 
@@ -215,11 +214,12 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute lambdas
 
-                for age_a in range(age_groups):
-                    _lambdas[age_a][ui] = 0
-                    for age_b in range(age_groups):
-                        if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
-                            _lambdas[age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+                for cmat_i in range(contact_matrices_num):
+                    for age_a in range(age_groups):
+                        _lambdas[cmat_i][age_a][ui] = 0
+                        for age_b in range(age_groups):
+                            if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
+                                _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
 
             # Compute the derivatives at each node
             
@@ -228,12 +228,13 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     n = nodes[nodes_at_j[age_a][loc_j][i]]
                     si = n.state_index
                     S = X_state[si]
-
+                    
                     for o in range(model_dim):
                         # Apply infection terms
                         for j in range(class_infections_num[o]):
                             ui = class_infections[o][j]
-                            dX_state[si+o] += n.infection_coeffs[o][j] * _lambdas[age_a][ui] * S
+                            cmat_i = n.contact_matrix_indices[ui]
+                            dX_state[si+o] += n.infection_coeffs[o][j] * _lambdas[cmat_i][age_a][ui] * S
 
                         # Apply linear terms
                         for j in range(linear_terms_num[o]):
@@ -244,6 +245,18 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         #### CNode dynamics #################################################
 
         for to_k in range(max_node_index+1):
+
+            # Check whether there are any active cnodes going into k
+
+            to_k_is_active = False
+            for age_a in range(age_groups):
+                for i in range(cnodes_into_k_len[age_a][to_k]):
+                    cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+                    to_k_is_active = cn.is_on or to_k_is_active
+                    if to_k_is_active:
+                        break
+                if to_k_is_active:
+                    break
 
             # Find the populations of each age group
 
@@ -258,7 +271,6 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
             for ui in range(infection_classes_num):
                 u = infection_classes_indices[ui]
-                cmat_i = cnode_infection_cmats[to_k][u]
 
                 # Find the infecteds of each age group
 
@@ -270,17 +282,22 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute lambdas
 
-                for age_a in range(age_groups):
-                    _lambdas[age_a][ui] = 0
-                    for age_b in range(age_groups):
-                        if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
-                            _lambdas[age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+                for cmat_i in range(contact_matrices_num):
+                    for age_a in range(age_groups):
+                        _lambdas[cmat_i][age_a][ui] = 0
+                        for age_b in range(age_groups):
+                            if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
+                                _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
 
             # Compute the derivatives at each commuter node
 
             for age_a in range(age_groups):
                 for i in range(cnodes_into_k_len[age_a][to_k]):
                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+
+                    if not cn.is_on:
+                        continue
+
                     si = cn.state_index
                     S = X_state[si]
 
@@ -288,7 +305,8 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                         # Apply infection terms
                         for j in range(class_infections_num[o]):
                             ui = class_infections[o][j]
-                            dX_state[si+o] += cn.infection_coeffs[o][j] * _lambdas[age_a][ui] * S
+                            cmat_i = cn.contact_matrix_indices[ui]
+                            dX_state[si+o] += cn.infection_coeffs[o][j] * _lambdas[cmat_i][age_a][ui] * S
                         
                         # Apply linear terms
                         for j in range(linear_terms_num[o]):
@@ -325,6 +343,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     else:
                         Ts[Ti].N0 = Ts[Ti].move_N
                     Ts[Ti].is_on = True
+                    cn.is_on = True # Turn on commuter node. It will be turned off in the "CNode to Node" section
 
                 # Compute the transport profile
                 transport_profile_exponent = (tday - t1)/(t2-t1) - transport_profile_m
@@ -375,7 +394,6 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 # If this commuting schedule is just starting, then
                 # compute the number of people to move.
                 if not cTs[cTi].is_on:
-                    print(t2)
                     if cTs[cTi].use_percentage:
                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage
                     else:
@@ -384,7 +402,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute the transport profile
                 transport_profile_exponent = (tday - t1)/(t2-t1) - transport_profile_m
-                transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
+                transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
 
                 if cn_N <= 0:
                     continue
@@ -416,6 +434,9 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             dX_state[to_node.state_index+oi] += mt
             else:
                 cTs[cTi].is_on = False
+                cn = cnodes[cTs[cTi].cnode_index]
+                cn.is_on = False # Turn off commuter node
+                
 
         #####################################################################
         #### Forward-Euler ##################################################

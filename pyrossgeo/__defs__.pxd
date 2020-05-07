@@ -13,6 +13,7 @@ cdef struct node:
     int incoming_T_indices_len
     int* outgoing_T_indices
     int outgoing_T_indices_len
+    int* contact_matrix_indices
     DTYPE_t** linear_coeffs
     DTYPE_t** infection_coeffs
 
@@ -27,6 +28,8 @@ cdef struct cnode:
     int outgoing_node # Index of outgoing node
     int incoming_T
     int outgoing_T
+    int* contact_matrix_indices
+    bint is_on
     DTYPE_t** linear_coeffs
     DTYPE_t** infection_coeffs
 
