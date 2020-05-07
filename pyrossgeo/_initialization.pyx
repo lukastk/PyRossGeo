@@ -378,7 +378,7 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
     for oclass in model_dat:
         if oclass == 'classes':
             continue
-        for uclass, model_parameter_key in model_dat[oclass]['nonlinear']:
+        for uclass, model_parameter_key in model_dat[oclass]['infection']:
             class_index = model_class_to_class_index_o[uclass]
             if not class_index in py_infection_classes_indices:
                 model_class_to_infection_class_index[ uclass ] = len(py_infection_classes_indices)
@@ -392,7 +392,7 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
     for o in range(model_dim):
         py_class_infections.append( [] )
         infection_terms_class_index_to_index.append( {} )
-        for oclass, _ in model_dat[ model_class_index_o_to_class[o] ]['nonlinear']:
+        for oclass, _ in model_dat[ model_class_index_o_to_class[o] ]['infection']:
             infection_terms_class_index_to_index[o][ model_class_to_class_index_o[oclass] ] = len(py_class_infections[o])
             py_class_infections[o].append( model_class_to_infection_class_index[oclass] )
 
@@ -446,7 +446,7 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
                         param = DTYPE(row[param_key]) * days_to_minutes
                     n.linear_coeffs[o][linear_terms_class_index_to_index[o][lo]] = param
 
-                for infected_class, param_key in model_dat[oclass]['nonlinear']:
+                for infected_class, param_key in model_dat[oclass]['infection']:
                     io = model_class_to_class_index_o[infected_class]
                     if param_key[0] == '-':
                         param = -DTYPE(row[param_key[1:]]) * days_to_minutes
@@ -493,7 +493,7 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
                         param = DTYPE(row[param_key]) * days_to_minutes
                     cn.linear_coeffs[o][linear_terms_class_index_to_index[o][lo]] = param
 
-                for infected_class, param_key in model_dat[oclass]['nonlinear']:
+                for infected_class, param_key in model_dat[oclass]['infection']:
                     io = model_class_to_class_index_o[infected_class]
                     if param_key[0] == '-':
                         param = -DTYPE(row[param_key[1:]]) * days_to_minutes
