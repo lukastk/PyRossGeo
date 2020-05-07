@@ -33,6 +33,13 @@ Synthetic data:
 
 - Allow for constant rates in `model.json`
 
+- Time-dependent contact-matrices. You could have a `cmatrix_schedule.json` where each schedule can be multiplied by a constant factor at different times of the day. There'd be a loop at each time-step checking which factor to use for which contact matrix.
+  - We should also be able to schedule what contact matrix to use at what
+    time. So for example when to use C_home_and_school and when to just use
+    C_home.
+
+- Currently every single contact matrix is comptued at every single node. You should have it so that we know exactly which contact matrices are used at which node, and only compute these.
+
 ## Todo:
 
 - Make it so that SIR dynamics cant overstep

@@ -420,8 +420,12 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
             loc = row[1] # row['Location']
             age = row[2] # row['Age']
             home = int(home)  if home != 'ALL' else 'ALL'
-            loc = int(loc)  if loc != 'ALL' else 'ALL'
             age = int(age)  if age != 'ALL' else 'ALL'
+
+            if loc == 'HOME':
+                loc = home
+            elif loc != 'ALL':
+                loc = int(loc)
 
             if not (home == n.home or home == 'ALL'):
                 continue
@@ -463,9 +467,16 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
             to = row[2]# row['To']
             age = row[3]# row['Age']
             home = int(home)  if home != 'ALL' else 'ALL'
-            fro = int(fro)  if fro != 'ALL' else 'ALL'
-            to = int(to)  if to != 'ALL' else 'ALL'
             age = int(age)  if age != 'ALL' else 'ALL'
+
+            if fro == 'HOME':
+                fro = home
+            elif fro != 'ALL':
+                fro = int(fro)
+            if to == 'HOME':
+                to = home
+            elif to != 'ALL':
+                to = int(to)
 
             if not (home == cn.home or home == 'ALL'):
                 continue
@@ -515,7 +526,12 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
         home = row[0] # row['Home']
         loc = row[1] # row['Location']
         home = int(home) if home != 'ALL' else 'ALL'
-        loc = int(loc) if loc != 'ALL' else 'ALL'
+
+        if loc == 'HOME':
+            loc = home
+        elif loc != 'ALL':
+            loc = int(loc)
+            
         cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[2:]])
 
         for home_i in range(max_node_index+1):
@@ -536,8 +552,16 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
         fro = row[1] #row['From']
         to = row[2] #row['To']
         home = int(home) if home != 'ALL' else 'ALL'
-        fro = int(fro) if fro != 'ALL' else 'ALL'
-        to = int(to) if to != 'ALL' else 'ALL'
+
+        if fro == 'HOME':
+            fro = home
+        elif fro != 'ALL':
+            fro = int(fro)
+        if to == 'HOME':
+            to = home
+        elif to != 'ALL':
+            to = int(to)
+
         cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[3:]])
 
         for home_i in range(max_node_index+1):
