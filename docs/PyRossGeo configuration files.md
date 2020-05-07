@@ -111,10 +111,7 @@ Note that we do not need to define the age-structure in `model.json`.
 The contact matrices by which each infection term will interact
 with the susceptible S class is defined in
 
-<img style="text-align: center;" src="https://render.githubusercontent.com/render/math?math=
-\begin{aligned}
-\dot{S}_{ij}^\alpha = 
-\end{aligned}">
+<img style="text-align: center;" src="https://render.githubusercontent.com/render/math?math=x">
 
 ## `node_parameters.csv` (Defining the parameters of the infection model)
 
