@@ -178,8 +178,7 @@ and locations $(i,j)$ have been omitted.
 
 Below is an example of a `node_parameters.csv` file for the SEAIR model.
 
-<div style="background-style: red;">
-<b>Example:</b> Model parameters for the SEAIR model
+**Example:** Model parameters for the SEAIR model
 
 <table>
     <thead>
@@ -228,6 +227,10 @@ Below is an example of a `node_parameters.csv` file for the SEAIR model.
     </tbody>
 </table>
 </div>
+
+
+
+The `Home`, `Location` and `Age` columns corresponds to $(\alpha, i, j)$ respectively. 
 
 ## `cnode_parameters.csv` (Defining the parameters of the infection model in the commuterverse)
 
