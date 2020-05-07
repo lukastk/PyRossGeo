@@ -45,9 +45,9 @@ SEAIR models:
 
 <img style="text-align: center;" src="https://render.githubusercontent.com/render/math?math=
 \begin{aligned}
-\dot{S}^\mu & = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} \\
-\dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I \\
-\dot{R}^\mu & = \gamma I
+\dot{S}^\mu %26 = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} \\
+\dot{I}^\mu %26 = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I \\
+\dot{R}^\mu %26 = \gamma I
 \end{aligned}">
 
 **Example:** SEAIR model
