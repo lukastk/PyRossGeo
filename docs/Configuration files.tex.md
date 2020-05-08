@@ -7,17 +7,17 @@
 **Table of contents:**
 
 - [Configuration files](#configuration-files)
-  - [`model.json` (Local infection dynamics)](#modeljson-local-infection-dynamics)
-  - [`node_parameters.csv` (Defining the parameters of the infection model)](#nodeparameterscsv-defining-the-parameters-of-the-infection-model)
-  - [`cnode_parameters.csv` (Defining the parameters of the infection model in the commuterverse)](#cnodeparameterscsv-defining-the-parameters-of-the-infection-model-in-the-commuterverse)
-  - [`contact_matrices.json` (Defining the contact matrices)](#contactmatricesjson-defining-the-contact-matrices)
-  - [`node_cmatrices.csv` (Assigning contact matrices at each node)](#nodecmatricescsv-assigning-contact-matrices-at-each-node)
-  - [`cnode_cmatrices.csv` (Assigning contact matrices at each commuter node)](#cnodecmatricescsv-assigning-contact-matrices-at-each-commuter-node)
-  - [`node_populations.csv` (Populating the nodes)](#nodepopulationscsv-populating-the-nodes)
-  - [`cnode_populations.csv` (Populating the commuter nodes)](#cnodepopulationscsv-populating-the-commuter-nodes)
-  - [`commuter_networks.csv` (Defining the commuter networks)](#commuternetworkscsv-defining-the-commuter-networks)
+  - [`model.json`](#modeljson)
+  - [`node_parameters.csv`](#nodeparameterscsv)
+  - [`cnode_parameters.csv`](#cnodeparameterscsv)
+  - [`contact_matrices.json`](#contactmatricesjson)
+  - [`node_cmatrices.csv`](#nodecmatricescsv)
+  - [`cnode_cmatrices.csv`](#cnodecmatricescsv)
+  - [`node_populations.csv`](#nodepopulationscsv)
+  - [`cnode_populations.csv`](#cnodepopulationscsv)
+  - [`commuter_networks.csv`](#commuternetworkscsv)
 
-## `model.json` (Local infection dynamics)
+## `model.json`
 
 The infection dynamics at each geographical node is defined using the
 `model.json` configuration file. This Using it, we can define any variant of the
@@ -149,14 +149,14 @@ of whether it is labelled as `S` or not.
 
 Note that we do not need to define the age-structure in `model.json`.
 The contact matrices by which each infection term will interact
-with the susceptible S class is defined in [`node_cmatrices.csv`](#nodecmatricescsv-assigning-contact-matrices-at-each-node) and [`cnode_cmatrices.csv`](#cnodecmatricescsv-assigning-contact-matrices-at-each-commuter-node).
+with the susceptible S class is defined in [`node_cmatrices.csv`](#nodecmatricescsv) and [`cnode_cmatrices.csv`](#cnodecmatricescsv).
 
 
 
-## `node_parameters.csv` (Defining the parameters of the infection model)
+## `node_parameters.csv`
 
 The values of the parameters defined in [`model.json`](#modeljson-local-infection-dynamics) are given in the `node_parameters.csv` configuration file. The corresponding configuration file for
-the commuterverse is given in [`cnode_parameters.csv`](#cnodeparameterscsv-defining-the-parameters-of-the-infection-model-in-the-commuterverse).
+the commuterverse is given in [`cnode_parameters.csv`](#cnodeparameterscsv).
 
 For each node $(\alpha,i,j)$, which represents age, home and location respectively, `node_parameters.csv` sets the model coefficients.
 
@@ -370,11 +370,11 @@ Lastly, the following row sets the model parameters for all nodes:
     </tbody>
 </table>
 
-## `cnode_parameters.csv` (Defining the parameters of the infection model in the commuterverse)
+## `cnode_parameters.csv`
 
-The model parameters for each commuterverse node is given in `cnode_parameters.csv`. For each commuter node $(\alpha,i,j,k)$, which represents age, home and origin, and destination respectively, `cnode_parameters.csv` sets the model coefficients.
+The model parameters for each commuterverse node is given in `cnode_parameters.csv`. For each commuter node $(\alpha,i,j \to k)$, which represents age, home and origin, and destination respectively, `cnode_parameters.csv` sets the model coefficients.
 
-This configuration file works in largely the same way as [`node_parameters.csv`](#nodeparameterscsv-defining-the-parameters-of-the-infection-model), and so ground covered there will not be repeated in this section.
+This configuration file works in largely the same way as [`node_parameters.csv`](#nodeparameterscsv), and so ground covered there will not be repeated in this section.
 
 **Example:** Parameters for the SEAIR model at the commuter nodes
 
@@ -444,7 +444,7 @@ Keywords:
 - The keyword `ALL` matches all values of $\alpha$, $i$ and $j$.
 - The keyword `HOME` copies the value of the Home column.
 
-## `contact_matrices.json` (Defining the contact matrices)
+## `contact_matrices.json`
 
 All contact matrices used in the simulation are defined in `contact_matrices.json`. An example is shown below.
 
@@ -455,35 +455,35 @@ All contact matrices used in the simulation are defined in `contact_matrices.jso
     "C_home" : [
         [1, 1, 0],
         [1, 1, 1],
-	    [0, 1, 1]
+        [0, 1, 1]
     ],
 
     "C_away" : [
         [1,   0.5, 0  ],
         [0.5, 1,   0.5],
-	    [0,   0.5, 1  ]
+        [0,   0.5, 1  ]
     ],
 
     "C_transport" : [
         [3, 4, 2],
         [5, 4, 2],
-	    [2, 3, 2]
+        [2, 3, 2]
     ]
 }
 ```
 
 The row and column indices of the arrays coresponds to $\mu$ and $\nu$ in $C_{\mu\nu}$ respectively.
 
-Contact matrices for every infection class, for every node and commuter node, can be specified using the [`node_populations.csv`](#nodepopulationscsv-populating-the-nodes) and [`cnode_populations.csv`](#cnodepopulationscsv-populating-the-commuter-nodes) configuration files.
+Contact matrices for every infection class, for every node and commuter node, can be specified using the [`node_populations.csv`](#nodepopulationscsv) and [`cnode_populations.csv`](#cnodepopulationscsv) configuration files.
 
 **Note:** Do not add unused contact matrices to the configuration file,
 as this will affect performance negatively.
 
-## `node_cmatrices.csv` (Assigning contact matrices at each node)
+## `node_cmatrices.csv`
 
 The contact matrices to be used at each node is set
 using the `node_cmatrices.csv` configuration file. Each row assigns a
-contact matrix, as defined in [`contact_matrices.json`](#contactmatricesjson-defining-the-contact-matrices), to a specific node.
+contact matrix, as defined in [`contact_matrices.json`](#contactmatricesjson), to a specific node.
 
 **Example:** Contact matrices at each node for the SEAIR model
 
@@ -555,13 +555,13 @@ overwrite these values for specific nodes.
 In the example above we have used the `ALL` keyword to first set default
 contact matrices `C_awayA` and `C_awayI` for all nodes. In the second row we use the `HOME` keyword to set contact matrices `C_homeA` and `C_homeI` for people at home. Finally, in the third row we specifically set the contact matrix of that residents of location 3.
 
-## `cnode_cmatrices.csv` (Assigning contact matrices at each commuter node)
+## `cnode_cmatrices.csv`
 
 The contact matrices to be used at each commuter node is set
 using the `cnode_cmatrices.csv` configuration file. Each row assigns a
-contact matrix, as defined in [`contact_matrices.json`](#contactmatricesjson-defining-the-contact-matrices), to a specific node.
+contact matrix, as defined in [`contact_matrices.json`](#contactmatricesjson), to a specific node.
 
-As `cnode_cmatrices.csv` works in a similar way to [`node_populations.csv`](#nodepopulationscsv-populating-the-nodes), see the latter for a more 
+As `cnode_cmatrices.csv` works in a similar way to [`node_populations.csv`](#nodepopulationscsv), see the latter for a more 
 detailed description.
 
 **Example:** Contact matrices at each commuter node for the SEAIR model
@@ -623,7 +623,7 @@ detailed description.
     </tbody>
 </table>
 
-## `node_populations.csv` (Populating the nodes)
+## `node_populations.csv`
 
 Each node $(\alpha, i, j)$ is populated using the `node_populations.csv`
 configuration file. The structure of this file is straight-forward, and
@@ -726,12 +726,12 @@ example above. The feature of allowing initial populations to be
 displaced from their homes is included for completeness rather than for
 utility.
 
-## `cnode_populations.csv` (Populating the commuter nodes)
+## `cnode_populations.csv`
 
 In most cases we would want the initial populations of each commuter node
 to be 0, but the feature of allowing non-zero initial populations is
 included for completeness. The configuration file `cnode_populations.csv`
-works very similarly to [`node_populations.csv`](#nodepopulationscsv-populating-the-nodes), so see the latter for more
+works very similarly to [`node_populations.csv`](#nodepopulationscsv), so see the latter for more
 detailed instructions on how the file works.
 
 **Example:** SIR populations at commuter nodes
@@ -785,7 +785,7 @@ detailed instructions on how the file works.
     </tbody>
 </table>
 
-## `commuter_networks.csv` (Defining the commuter networks)
+## `commuter_networks.csv`
 
 The commuting network is defined using the `commuter_networks.csv`
 configuration file. Each row in the file defines a commute between
@@ -818,8 +818,8 @@ two nodes, occuring at a given time.
             <td>0</td>
             <td>1</td>
             <td>0</td>
+            <td>100</td>
             <td>-1</td>
-            <td>1.0</td>
             <td>7</td>
             <td>8</td>
             <td>8</td>
@@ -834,8 +834,8 @@ two nodes, occuring at a given time.
             <td>1</td>
             <td>0</td>
             <td>0</td>
-            <td>100</td>
             <td>-1</td>
+            <td>1.0</td>
             <td>17.5</td>
             <td>18.5</td>
             <td>18.5</td>
@@ -881,11 +881,57 @@ two nodes, occuring at a given time.
 </table>
 
 
+The home $i$, origin $j$, destination $k$ and age-group $\alpha$ are given in the `Home`, 
+`From`, `To` and `Age` columns respectively.
 
+The amount of people
+that are to be transported is either given as an absolute number, using
+`# to move`, or as a percentage using `% to move`. When either of the
+two is specified, the other must be set to `-1`.
+
+The departure window is given by `t1` and `t2`. People will be moving
+from the origin node to the commuting node between these two times.
+The transport is modeled using a Gaussian pulse function (see the [model description](model.pdf)
+for more details).
+
+After leaving the origin node $j$, people are then moved to the commuter
+node $(\alpha, i, j \to k)$. The departure window for movement from the 
+commuter node to the destination node $(\alpha, i, k)$ is given by
+`ct1` and `ct2`.
+
+Restriction on what classes can commute can be set using the `Allow O` column,
+where `O` stands for a given epidemiological class. If there are $n$ different
+epidemiological classes, then there should be $n$ columns `Allow O1`, `Allow O2`,
+..., `Allow On` in the configuration file.
+
+In the example above, the first row sets that 100% of the residents of 0,
+who are currently at 0, and are of age-group 0, should leave for location 1, between 7 and 8 o'clock.
+They will then depart from the commuter node to the destination 1 between 8 and 9 o'clock.
+The row also specifies that all classes except the infecteds $I$ are allowed to move.
+
+The second row specifies the return from location 1 back home. Note that
+we allow movement of all classes, including the infected class. This is
+because we would want all classes to return back home, regardless of
+whether they have been infected during during their time at work or not.
+
+Similarly, the third and fourth row describes the commute of the population
+of location 2. In this case, we have specified the forward movement using
+percentages instead of absolute numbers. We have said that 50% of the population
+resident at 2, who are at 2, and are of age-group 1, should move to location 0.
+                
 In general it is advisable to use absolute numbers for departing populations
-and then make 100% of the 
+rather than percentages, as this leads to more predictable results. Returning
+populations should always be set to 100%, in order to avoid a migration
+between nodes over time.
 
-Important notes:
+**Important notes:**
 
-- overlapping times
-- cycles
+- The times $[t_1, t_2]$ and $[ct_1, ct_2]$ must *not* overlap. If they do
+  this will lead to the situation where populations get stuck in the 
+  commuterverse.
+- Currently, there is an issue when defining commuter networks where there
+  are paths with more than 2 steps. Although it is possible
+  to define paths such as $0\to1\to2\to0$, this should be avoided. The
+  reaons for this is that it will lead to migration if there are other
+  commuting patterns that share intermediate nodes such as $0 \to 3 \to 2 \to 0$.
+  This will be rectified in a future iteration of PyRossGeo.

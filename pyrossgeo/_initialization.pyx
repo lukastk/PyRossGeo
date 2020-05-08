@@ -31,6 +31,7 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
     if type(commuter_networks_dat) == str:
         if commuter_networks_dat == '':
             commuter_networks_dat = os.path.join(sim_data_path, default_commuter_networks_path)
+        print(sim_data_path, commuter_networks_dat)
         commuter_networks_dat = pd.read_csv(commuter_networks_dat, delimiter=',', quotechar='"')
 
     if type(model_dat) == str:
@@ -126,6 +127,8 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
 
     py_contact_matrices_key_to_index = {} # Dictionary mapping keys to contact matrices
     py_contact_matrices = [] # A list of all contact matrices used
+
+    py_location_area = None # Array containing the areas of each location
 
     #### Go through the commuter networks, and add nodes and cnodes ####
 
@@ -414,11 +417,15 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
 
     # Set the model parameters for each node
 
+    py_location_area = np.zeros( max_node_index+1 )
+
     for n in py_nodes:
         for row_i, row in node_parameters_dat.iterrows():
             home = row[0] # row['Home']
             loc = row[1] # row['Location']
             age = row[2] # row['Age']
+            area = row[3] # row['Area']
+
             home = int(home)  if home != 'ALL' else 'ALL'
             age = int(age)  if age != 'ALL' else 'ALL'
 
@@ -433,6 +440,9 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
                 continue
             if not (age == n.age or age == 'ALL'):
                 continue
+
+            if n.home == n.loc: # Areas are only defined for locations, not specific nodes
+                py_location_area[n.loc] = area
 
             n.linear_coeffs = [ np.zeros( len(linear_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
             n.infection_coeffs = [ np.zeros( len(infection_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
@@ -466,6 +476,7 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
             fro = row[1]# row['From']
             to = row[2]# row['To']
             age = row[3]# row['Age']
+            area = row[4]# row['Area']
             home = int(home)  if home != 'ALL' else 'ALL'
             age = int(age)  if age != 'ALL' else 'ALL'
 
@@ -486,6 +497,8 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
                 continue
             if not (age == cn.age or age == 'ALL'):
                 continue
+
+            cn.area = area
 
             cn.linear_coeffs = [ np.zeros( len(linear_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
             cn.infection_coeffs = [ np.zeros( len(infection_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
@@ -592,6 +605,7 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     self.storage = {}
 
     # Initialize the transport profile
+    # TODO this should go in a config file
     self.transport_profile_c = 0.1
     self.transport_profile_c_r = 1 / (2 * self.transport_profile_c * self.transport_profile_c)
     self.transport_profile_integrated = self.transport_profile_c * np.sqrt(2 * np.pi) * scipy.special.erf( 1 / (2 * np.sqrt(2) * self.transport_profile_c) )
@@ -654,6 +668,7 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
         self.cnodes[ni].incoming_T = pcn.incoming_T
         self.cnodes[ni].outgoing_T = pcn.outgoing_T
         self.cnodes[ni].is_on = False
+        self.cnodes[ni].area = pcn.area
 
         self.cnodes[ni].contact_matrix_indices = <int *> malloc(len(pcn.contact_matrix_indices) * sizeof(int))
         for i in range(len(pcn.contact_matrix_indices)):
@@ -810,6 +825,7 @@ class py_cnode:
         self.outgoing_node = -1
         self.incoming_T = -1
         self.outgoing_T = -1
+        self.area = -1
         self.state_pop = None
         self.linear_coeffs = None
         self.infection_coeffs = None

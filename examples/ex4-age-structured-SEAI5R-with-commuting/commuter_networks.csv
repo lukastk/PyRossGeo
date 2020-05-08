@@ -1,4 +1,4 @@
-Home,From,To,Age,N_move,%,t1,t2,ct1,ct2,Allow S,Allow E,Allow A,Allow Ia,Allow Is,Allow Ih,Allow Ic,Allow Im,Allow R
+Home,From,To,Age,# to move,% to move,t1,t2,ct1,ct2,Allow S,Allow E,Allow A,Allow Ia,Allow Is,Allow Ih,Allow Ic,Allow Im,Allow R
 0,0,1,0,210,-1,7,8,8,9,1,1,0,0,0,0,0,0,1
 0,1,0,0,-1,1,17,18,18,20,1,1,1,1,1,1,1,1,1
 0,0,2,1,500,-1,9,10,10,11,1,1,0,0,0,0,0,0,1

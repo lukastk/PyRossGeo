@@ -29,6 +29,7 @@ cdef struct cnode:
     int incoming_T
     int outgoing_T
     int* contact_matrix_indices
+    DTYPE_t area
     bint is_on
     DTYPE_t** linear_coeffs
     DTYPE_t** infection_coeffs

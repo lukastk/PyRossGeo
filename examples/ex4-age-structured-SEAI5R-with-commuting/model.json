@@ -3,46 +3,46 @@
 
     "S" : {
         "linear"    : [],
-        "nonlinear" : [ ["A", "-betaA"], ["Ia", "-betaIa"], ["Is", "-betaIs"]]
+        "infection" : [ ["A", "-betaA"], ["Ia", "-betaIa"], ["Is", "-betaIs"]]
     },
 
     "E" : {
         "linear"    : [ ["E", "-gammaE"] ],
-        "nonlinear" : [ ["A", "betaA"], ["Ia", "betaIa"], ["Is", "betaIs"] ]
+        "infection" : [ ["A", "betaA"], ["Ia", "betaIa"], ["Is", "betaIs"] ]
     },
 
     "A" : {
         "linear"    : [ ["E", "gammaE"], ["A", "-gammaA"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "Ia" : {
         "linear"    : [ ["A", "alpha_gammaA"], ["Ia", "-gammaIa"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "Is" : {
         "linear"    : [ ["A", "alpha_bar_gammaA"], ["Is", "-gammaIs"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "Ih" : {
         "linear"    : [ ["Is", "h_gammaIs"], ["Ih", "-gammaIh"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "Ic" : {
         "linear"    : [ ["Ih", "c_gammaIh"], ["Ic", "-gammaIc"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "Im" : {
         "linear"    : [ ["Ic", "m_gammaIc"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "R" : {
         "linear"    : [ ["Ia", "gammaIa"], ["Is", "hbar_gammaIs"], ["Ih", "cbar_gammaIh"],  ["Ic", "mbar_gammaIc"] ],
-        "nonlinear" : []
+        "infection" : []
     }
 }

@@ -40,6 +40,7 @@ cdef class Simulation:
     cdef np.ndarray _Is
     cdef object _Ns_arr
     cdef np.ndarray _Ns
+    cdef readonly np.ndarray location_area
 
     # Transport
     cdef transporter* Ts # Going into commuterverses

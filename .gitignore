@@ -1,5 +1,7 @@
 build
+dist
 simulation_results
+.vscode
 .nfs*
 pyrossgeo/*.c
 pyrossgeo/*.html
@@ -7,5 +9,4 @@ pyrossgeo/*.so
 pyrossgeo/mft/*.c
 pyrossgeo/mft/*.html
 pyrossgeo/mft/*.so
-.vscode
 __pycache__

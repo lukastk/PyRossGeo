@@ -346,7 +346,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     cn.is_on = True # Turn on commuter node. It will be turned off in the "CNode to Node" section
 
                 # Compute the transport profile
-                transport_profile_exponent = (tday - t1)/(t2-t1) - transport_profile_m
+                transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m
                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
                 
                 if fro_N <= 0:
@@ -401,7 +401,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     cTs[cTi].is_on = True
 
                 # Compute the transport profile
-                transport_profile_exponent = (tday - t1)/(t2-t1) - transport_profile_m
+                transport_profile_exponent = (tday - t1)*cTs[cTi].r_T_Delta_t - transport_profile_m
                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
 
                 if cn_N <= 0:

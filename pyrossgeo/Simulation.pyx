@@ -44,7 +44,7 @@ cdef class Simulation:
             cnode_populations_dat : str or np.ndarray
                 Specifies the population at each commuter node (default None)
         """
-        return initialize(self, model_dat, commuter_networks_dat,
+        return initialize(self, sim_data_path, model_dat, commuter_networks_dat,
                         node_parameters_dat, cnode_parameters_dat,
                         contact_matrices_dat, node_cmatrices_dat,
                         cnode_cmatrices_dat, node_populations_dat,

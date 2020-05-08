@@ -3,21 +3,21 @@
 
     "S" : {
         "linear"    : [],
-        "nonlinear" : [ ["I", "-beta"] ]
+        "infection" : [ ["I", "-beta"] ]
     },
 
     "E" : {
         "linear"    : [ ["E", "-gammaE"] ],
-        "nonlinear" : [ ["I", "beta"] ]
+        "infection" : [ ["I", "beta"] ]
     },
 
     "I" : {
         "linear"    : [ ["E", "gammaE"], ["I", "-gammaI"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "R" : {
         "linear"    : [ ["I", "gammaI"] ],
-        "nonlinear" : []
+        "infection" : []
     }
 }
