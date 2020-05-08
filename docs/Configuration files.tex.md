@@ -8,14 +8,14 @@
 
 - [Configuration files](#configuration-files)
   - [`model.json`](#modeljson)
-  - [`node_parameters.csv`](#nodeparameterscsv)
-  - [`cnode_parameters.csv`](#cnodeparameterscsv)
-  - [`contact_matrices.json`](#contactmatricesjson)
-  - [`node_cmatrices.csv`](#nodecmatricescsv)
-  - [`cnode_cmatrices.csv`](#cnodecmatricescsv)
-  - [`node_populations.csv`](#nodepopulationscsv)
-  - [`cnode_populations.csv`](#cnodepopulationscsv)
-  - [`commuter_networks.csv`](#commuternetworkscsv)
+  - [`node_parameters.csv`](#node_parameterscsv)
+  - [`cnode_parameters.csv`](#cnode_parameterscsv)
+  - [`contact_matrices.json`](#contact_matricesjson)
+  - [`node_cmatrices.csv`](#node_cmatricescsv)
+  - [`cnode_cmatrices.csv`](#cnode_cmatricescsv)
+  - [`node_populations.csv`](#node_populationscsv)
+  - [`cnode_populations.csv`](#cnode_populationscsv)
+  - [`commuter_networks.csv`](#commuter_networkscsv)
 
 ## `model.json`
 
