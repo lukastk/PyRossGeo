@@ -2,7 +2,10 @@
 
 **General note of caution:** <i>At the moment PyRossGeo does not have any checks in place to detect formatting errors in the configuration files. Any mistakes in the configuration files may lead to uncaught exceptions or unexpected simulation behaviour. This will be rectified in the future.</i>
 
-**Note:** <i>PyRossGeo allows for a great deal of configuration, but in practice the parameter space is kept small and manageable.</i>
+**Note:** <i>PyRossGeo allows for a great deal of configuration, 
+but in practice the parameter space is kept small and manageable.
+The true volume of the parameter space for the model can be found in
+[model specification](./model.pdf)</i>
 
 **Table of contents:**
 
@@ -55,8 +58,8 @@ This corresponds to
 $$
 \begin{aligned}
 \dot{S}^\mu & = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} S^\mu \\
-\dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I \\
-\dot{R}^\mu & = \gamma I
+\dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I^mu \\
+\dot{R}^\mu & = \gamma I^\mu
 \end{aligned}
 $$
 
@@ -102,10 +105,10 @@ This corresponds to
 $$
 \begin{aligned}
 \dot{S}^\mu & = - \lambda^\mu(t) S^\mu  \\
-\dot{E}^\mu & = \lambda^\mu(t) S^\mu - \gamma_E E \\
-\dot{A}^\mu & = \gamma_E E - \gamma_A A \\
-\dot{I}^\mu & =  \gamma_A A  - \gamma_I I \\
-\dot{R}^\mu & = \gamma_I I
+\dot{E}^\mu & = \lambda^\mu(t) S^\mu - \gamma_E E^\mu \\
+\dot{A}^\mu & = \gamma_E E^\mu - \gamma_A A^\mu \\
+\dot{I}^\mu & =  \gamma_A A^\mu  - \gamma_I I^\mu \\
+\dot{R}^\mu & = \gamma_I I^\mu
 \end{aligned}
 $$
 
