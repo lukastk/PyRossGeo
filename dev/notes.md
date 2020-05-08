@@ -12,6 +12,10 @@ This way, by stopping people from going to work, we have a natural way of reduin
 To prevent this from slowing down the code, you can implement that the lambda calculation of a node will only proceed if the infections of
 a particular node exceeds 1 (or a smaller number)
 
+## readme-tex
+
+python -m readme2tex --output "Configuration files.md" "Configuration files.tex.md" --username lukastk  --project PyRossGeo --nocdn
+
 ## s
 
 - Start simulation with initial conditions from a few weeks ago, with infection rates and contact matrices during normal times (no lockdown.)
