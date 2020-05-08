@@ -23,8 +23,6 @@ cdef class Simulation:
 
     cdef readonly object state_mappings
 
-    cdef readonly dict storage # Persistent storage that will be used for events
-
     # Model
     cdef int** class_infections
     cdef int* class_infections_num
@@ -62,6 +60,10 @@ cdef class Simulation:
     cdef DTYPE_t transport_profile_m
     cdef DTYPE_t transport_profile_c
     cdef DTYPE_t transport_profile_c_r
+
+    # Misc
+
+    cdef readonly dict storage # Persistent storage that will be used for events
 
     #cdef csimulate(self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=*,
     #                            str out_file=*, int steps_per_print=*, bint only_save_nodes=*,

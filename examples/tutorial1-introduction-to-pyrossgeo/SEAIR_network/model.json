@@ -3,26 +3,26 @@
 
     "S" : {
         "linear"    : [],
-        "nonlinear" : [ ["I", "-betaI"], ["A", "-betaA"] ]
+        "infection" : [ ["I", "-betaI"], ["A", "-betaA"] ]
     },
 
     "E" : {
         "linear"    : [ ["E", "-gammaE"] ],
-        "nonlinear" : [ ["I", "betaI"], ["A", "betaA"] ]
+        "infection" : [ ["I", "betaI"], ["A", "betaA"] ]
     },
 
     "A" : {
         "linear"    : [ ["E", "gammaE"], ["A", "-gammaA"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "I" : {
         "linear"    : [ ["A", "gammaA"], ["I", "-gammaI"] ],
-        "nonlinear" : []
+        "infection" : []
     },
 
     "R" : {
         "linear"    : [ ["I", "gammaI"] ],
-        "nonlinear" : []
+        "infection" : []
     }
 }

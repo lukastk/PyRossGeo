@@ -10,10 +10,14 @@ from pyrossgeo._helpers import compute, free_sim
 
 cdef class Simulation:
 
+    def __cinit__(self):
+        self.storage = {}
+        self.storage['has_been_initialized'] = False
+
     def __dealloc__(self):
         free_sim(self)
 
-    def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
+    def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                         node_parameters_dat='', cnode_parameters_dat='',
                         contact_matrices_dat='', node_cmatrices_dat='',
                         cnode_cmatrices_dat='', node_populations_dat='',
@@ -44,7 +48,7 @@ cdef class Simulation:
             cnode_populations_dat : str or np.ndarray
                 Specifies the population at each commuter node (default None)
         """
-        return initialize(self, sim_data_path, model_dat, commuter_networks_dat,
+        return initialize(self, sim_config_path, model_dat, commuter_networks_dat,
                         node_parameters_dat, cnode_parameters_dat,
                         contact_matrices_dat, node_cmatrices_dat,
                         cnode_cmatrices_dat, node_populations_dat,

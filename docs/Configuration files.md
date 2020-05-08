@@ -103,7 +103,7 @@ where
 <p align="center"><img src="svgs/50e99d01b3ca04fdf496d651babfcb3c.svg?invert_in_darkmode" align=middle width=276.75615pt height=42.73994999999999pt/></p>
 
 The superscripts in the contact matrices <img src="svgs/bec9a3cba8019a312901175bcdde150a.svg?invert_in_darkmode" align=middle width=27.099105000000005pt height=27.656969999999987pt/> signify the fact
-that each infection class can have its own contact structure. This accomodates for the fact that, for example, asymptomatic infecteds and
+that each infection class can have its own contact structure. This allows for us to take into the account that, for example, asymptomatic infecteds and
 symptomatic infects have different social behaviour.
 
 We will go through each component of the `model.json` configuration file in order:

@@ -1,6 +1,6 @@
 import numpy as np
 
-def get_node_data(sim_data):
+def extract_node_data(sim_data):
     """Returns the results of the simulation for each node.
 
     Parameters
@@ -42,7 +42,7 @@ def get_node_data(sim_data):
 
     return node_data
 
-def get_cnode_data(sim_data):
+def extract_cnode_data(sim_data):
     """Returns the results of the simulation for each commuter node.
 
     Parameters
@@ -84,7 +84,7 @@ def get_cnode_data(sim_data):
 
     return cnode_data
 
-def get_network_data(sim_data):
+def extract_network_data(sim_data):
     """Returns the results of the simulation for the whole network.
 
     Parameters
@@ -121,7 +121,7 @@ def get_network_data(sim_data):
 
     return network_data
 
-def get_location_data(sim_data):
+def extract_location_data(sim_data):
     """Returns the results of the simulation for a given location.
 
     Parameters
@@ -166,7 +166,7 @@ def get_location_data(sim_data):
 
     return location_data
 
-def get_community_data(sim_data):
+def extract_community_data(sim_data):
     """Returns the results of the simulation for each community.
 
     Parameters
@@ -257,7 +257,7 @@ def get_dt_schedule(times, end_time):
         
     return np.array(ts, dtype=np.double), np.array(dts, dtype=np.double)
 
-def get_simulation_data(sim_data):
+def extract_simulation_data(sim_data):
     """Returns a tuple containing various formatted data for a given simulation result.
 
     It returns `node_data, cnode_data, location_data, community_data, network_data`.
@@ -265,8 +265,8 @@ def get_simulation_data(sim_data):
     state_mappings, ts, _ = sim_data
     node_mappings, cnode_mappings = state_mappings
 
-    node_data = get_node_data(sim_data)
-    cnode_data = get_cnode_data(sim_data)
+    node_data = extract_node_data(sim_data)
+    cnode_data = extract_cnode_data(sim_data)
 
     age_groups = 0
     model_dim = 0

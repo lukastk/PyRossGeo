@@ -3,6 +3,7 @@ dist
 simulation_results
 .vscode
 .nfs*
+*.zarr
 pyrossgeo/*.c
 pyrossgeo/*.html
 pyrossgeo/*.so
@@ -10,3 +11,4 @@ pyrossgeo/mft/*.c
 pyrossgeo/mft/*.html
 pyrossgeo/mft/*.so
 __pycache__
+.ipynb_checkpoints

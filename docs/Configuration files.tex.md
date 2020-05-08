@@ -4,8 +4,8 @@
 
 **Note:** <i>PyRossGeo allows for a great deal of configuration, 
 but in practice the parameter space is kept small and manageable.
-The true volume of the parameter space for the model can be found in
-[model specification](./model.pdf)</i>
+The true volume of the parameter space for the model can be found in the
+[model description](./model.pdf)</i>
 
 **Table of contents:**
 
@@ -58,7 +58,7 @@ This corresponds to
 $$
 \begin{aligned}
 \dot{S}^\mu & = - \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} S^\mu \\
-\dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I^mu \\
+\dot{I}^\mu & = \beta \sum_\nu C_{\mu \nu} \frac{I^\nu}{N^\nu} - \gamma I^\mu \\
 \dot{R}^\mu & = \gamma I^\mu
 \end{aligned}
 $$
@@ -475,7 +475,7 @@ All contact matrices used in the simulation are defined in `contact_matrices.jso
 }
 ```
 
-The row and column indices of the arrays coresponds to $\mu$ and $\nu$ in $C_{\mu\nu}$ respectively.
+The row and column indices of the arrays coresponds to $\mu$ and $\nu$ in $C_{\mu\nu}$ respectively. Each contact matrix must have the same dimensions.
 
 Contact matrices for every infection class, for every node and commuter node, can be specified using the [`node_populations.csv`](#nodepopulationscsv) and [`cnode_populations.csv`](#cnodepopulationscsv) configuration files.
 
@@ -792,7 +792,7 @@ detailed instructions on how the file works.
 
 The commuting network is defined using the `commuter_networks.csv`
 configuration file. Each row in the file defines a commute between
-two nodes, occuring at a given time.
+two nodes, occuring at a given time each day.
 
 **Example:** SEIR commuter network
 
@@ -895,7 +895,8 @@ two is specified, the other must be set to `-1`.
 The departure window is given by `t1` and `t2`. People will be moving
 from the origin node to the commuting node between these two times.
 The transport is modeled using a Gaussian pulse function (see the [model description](model.pdf)
-for more details).
+for more details). Time is given in units of hours, and should be in the range
+of a single day `[0, 24]`.
 
 After leaving the origin node $j$, people are then moved to the commuter
 node $(\alpha, i, j \to k)$. The departure window for movement from the 
@@ -906,6 +907,13 @@ Restriction on what classes can commute can be set using the `Allow O` column,
 where `O` stands for a given epidemiological class. If there are $n$ different
 epidemiological classes, then there should be $n$ columns `Allow O1`, `Allow O2`,
 ..., `Allow On` in the configuration file.
+
+In practice, it is possible that fewer than the specified amount of people will travel.
+This will be the case if we are disallowing certain classes from moving across the network.
+For example, if we are disallowing infected classes from moving, then
+a scenario where all the residents of a certain node is infected would 
+mean that there is no movement from that node. See the [model specification](https://github.com/lukastk/PyRossGeo/blob/master/docs/model.pdf)
+for more details on this.
 
 In the example above, the first row sets that 100% of the residents of 0,
 who are currently at 0, and are of age-group 0, should leave for location 1, between 7 and 8 o'clock.

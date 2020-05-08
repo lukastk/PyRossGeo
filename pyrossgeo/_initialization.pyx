@@ -10,11 +10,15 @@ from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
 from pyrossgeo.__defs__ import DTYPE
 from pyrossgeo.Simulation cimport Simulation
 
-def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
+def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                         node_parameters_dat='', cnode_parameters_dat='',
                         contact_matrices_dat='', node_cmatrices_dat='',
                         cnode_cmatrices_dat='', node_populations_dat='',
                         cnode_populations_dat=''):
+
+    if self.storage['has_been_initialized']:
+        raise Exception("Simulation has already been initialized.")
+    self.storage['has_been_initialized'] = True
 
     #### Load data files
 
@@ -30,33 +34,32 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
 
     if type(commuter_networks_dat) == str:
         if commuter_networks_dat == '':
-            commuter_networks_dat = os.path.join(sim_data_path, default_commuter_networks_path)
-        print(sim_data_path, commuter_networks_dat)
+            commuter_networks_dat = os.path.join(sim_config_path, default_commuter_networks_path)
         commuter_networks_dat = pd.read_csv(commuter_networks_dat, delimiter=',', quotechar='"')
 
     if type(model_dat) == str:
         if model_dat == '':
-            model_dat = os.path.join(sim_data_path, default_model_path)
+            model_dat = os.path.join(sim_config_path, default_model_path)
         with open(model_dat, 'r') as json_file:
             model_dat = json.load(json_file)
 
     if type(node_parameters_dat) == str:
         if node_parameters_dat == '':
-            node_parameters_dat = os.path.join(sim_data_path, default_node_parameters_path)
+            node_parameters_dat = os.path.join(sim_config_path, default_node_parameters_path)
         node_parameters_dat = pd.read_csv(node_parameters_dat, delimiter=',', quotechar='"')
     elif type(node_parameters_dat) == dict:
         node_parameters_dat = pd.DataFrame(data=node_parameters_dat)
 
     if type(cnode_parameters_dat) == str:
         if cnode_parameters_dat == '':
-            cnode_parameters_dat = os.path.join(sim_data_path, default_cnode_parameters_path)
+            cnode_parameters_dat = os.path.join(sim_config_path, default_cnode_parameters_path)
         cnode_parameters_dat = pd.read_csv(cnode_parameters_dat, delimiter=',', quotechar='"')
     elif type(cnode_parameters_dat) == dict:
         cnode_parameters_dat = pd.DataFrame(data=cnode_parameters_dat)
 
     if type(contact_matrices_dat) == str:
         if contact_matrices_dat == '':
-            contact_matrices_dat = os.path.join(sim_data_path, default_contact_matrices_path)
+            contact_matrices_dat = os.path.join(sim_config_path, default_contact_matrices_path)
         with open(contact_matrices_dat, 'r') as json_file:
             contact_matrices_dat = json.load(json_file)
             for k in contact_matrices_dat:
@@ -64,22 +67,22 @@ def initialize(self, sim_data_path='', model_dat='', commuter_networks_dat='',
 
     if type(node_cmatrices_dat) == str:
         if node_cmatrices_dat == '':
-            node_cmatrices_dat = os.path.join(sim_data_path, default_node_cmatrices_path)
+            node_cmatrices_dat = os.path.join(sim_config_path, default_node_cmatrices_path)
         node_cmatrices_dat = pd.read_csv(node_cmatrices_dat, delimiter=',', quotechar='"')
 
     if type(cnode_cmatrices_dat) == str:
         if cnode_cmatrices_dat == '':
-            cnode_cmatrices_dat = os.path.join(sim_data_path, default_cnode_cmatrices_path)
+            cnode_cmatrices_dat = os.path.join(sim_config_path, default_cnode_cmatrices_path)
         cnode_cmatrices_dat = pd.read_csv(cnode_cmatrices_dat, delimiter=',', quotechar='"')
 
     if type(node_populations_dat) == str:
         if node_populations_dat == '':
-            node_populations_dat = os.path.join(sim_data_path, default_node_populations_path)
+            node_populations_dat = os.path.join(sim_config_path, default_node_populations_path)
         node_populations_dat = pd.read_csv(node_populations_dat, delimiter=',', quotechar='"')
 
     if type(cnode_populations_dat) == str:
         if cnode_populations_dat == '':
-            cnode_populations_dat = os.path.join(sim_data_path, default_cnode_populations_path)
+            cnode_populations_dat = os.path.join(sim_config_path, default_cnode_populations_path)
             if os.path.exists(cnode_populations_dat): # Avoid exceptions if user has not defined cnode_populations.csv
                 cnode_populations_dat = pd.read_csv(cnode_populations_dat, delimiter=',', quotechar='"')
             else:
@@ -602,7 +605,6 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     """Initialize the simulation."""
 
     self.state_mappings = py_state_mappings
-    self.storage = {}
 
     # Initialize the transport profile
     # TODO this should go in a config file
