@@ -17,8 +17,7 @@ def extract_node_data(sim_data):
     `node_data[i,j,k]` is an `np.ndarray` of shape
     `(ts.size, # of age groups, # of classes)`.
     """
-    state_mappings, ts, X_states = sim_data
-    node_mappings, cnode_mappings = state_mappings
+    node_mappings, cnode_mappings, ts, X_states = sim_data
     node_data = {}
 
     age_groups = 0
@@ -59,8 +58,7 @@ def extract_cnode_data(sim_data):
     `cnode_data[i,j,k]` is an `np.ndarray` of shape
     `(ts.size, # of age groups, # of classes)`.
     """
-    state_mappings, ts, X_states = sim_data
-    node_mappings, cnode_mappings = state_mappings
+    node_mappings, cnode_mappings, ts, X_states = sim_data
     cnode_data = {}
 
     age_groups = 0
@@ -100,8 +98,7 @@ def extract_network_data(sim_data):
     It contains the result of the simulation of the network as a whole
     for each age group and class.
     """
-    state_mappings, ts, X_states = sim_data
-    node_mappings, cnode_mappings = state_mappings
+    node_mappings, cnode_mappings, ts, X_states = sim_data
 
     age_groups = 0
     model_dim = 0
@@ -142,8 +139,7 @@ def extract_location_data(sim_data):
     people of age-bracket 0, class 1 who are at location 32, at step 5
     of the simulation.
     """
-    state_mappings, ts, X_states = sim_data
-    node_mappings, cnode_mappings = state_mappings
+    node_mappings, cnode_mappings, ts, X_states = sim_data
 
     age_groups = 0
     model_dim = 0
@@ -186,8 +182,7 @@ def extract_community_data(sim_data):
     over each community. So `community_data[:,0,1,32]` contains the
     history of all people of age-bracket 0, class 1 and who live at location 32.
     """
-    state_mappings, ts, X_states = sim_data
-    node_mappings, cnode_mappings = state_mappings
+    node_mappings, cnode_mappings, ts, X_states = sim_data
 
     age_groups = 0
     model_dim = 0
@@ -223,8 +218,7 @@ def extract_simulation_data(sim_data):
 
     It returns `node_data, cnode_data, location_data, community_data, network_data`.
     """
-    state_mappings, ts, _ = sim_data
-    node_mappings, cnode_mappings = state_mappings
+    node_mappings, cnode_mappings, ts, _ = sim_data
 
     node_data = extract_node_data(sim_data)
     cnode_data = extract_cnode_data(sim_data)
@@ -270,6 +264,10 @@ def extract_simulation_data(sim_data):
 
     return ts, node_data, cnode_data, location_data, community_data, network_data
 
+def extract_ts(sim_data):
+    ts_saved = sim_data[2]
+    return ts_saved
+
 def load_sim_data(load_path, use_zarr=False):
     node_mappings_path = 'node_mappings.pkl'
     cnode_mappings_path = 'cnode_mappings.pkl'
@@ -284,7 +282,7 @@ def load_sim_data(load_path, use_zarr=False):
     if not use_zarr:
         X_states = X_states[:]
 
-    sim_data = ( (node_mappings, cnode_mappings), ts, X_states )
+    sim_data = ( node_mappings, cnode_mappings, ts, X_states )
     return sim_data
 
 def get_dt_schedule(times, end_time):

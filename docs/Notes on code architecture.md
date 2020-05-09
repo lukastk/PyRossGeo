@@ -1,8 +1,10 @@
 ### Code architecture
 
-The main principle informing the structure of the code is reducing sparsity in the equations. As the degrees of each node in the commuting network is - in general - several orders of magnitude smaller than the total number of nodes, this should be taken into account in the code.
+The main principle informing the structure of the code is reducing sparsity in the equations. As the degrees of each node in the commuting network are - in general - several orders of magnitude smaller than the total number of nodes, this should be taken into account in the code.
 
-The code can be broadly separated into two parts: The initialisation stage, and the simulation stage. 
+The code can be broadly separated into two parts: The initialisation stage, and the simulation stage.
+
+Talk about splitting up the simulation and initialization parts.
 
 ### Notes about simulation
 

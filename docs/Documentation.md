@@ -10,6 +10,8 @@ List the API, config stuff, and the notebooks
 For a description of the various the epidemiological models used in the
 examples (SIR, SEIR, SEAIR, SEAI5R, etc), see [this](https://github.com/rajeshrinet/pyross/blob/master/docs/models.pdf).
 
+Mention MFT. Documentation under construction.
+
 ## Introduction to PyRossGeo
 
 Links to binder versions of the notebooks.

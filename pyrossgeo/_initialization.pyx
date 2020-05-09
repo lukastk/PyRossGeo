@@ -16,9 +16,8 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                         cnode_cmatrices_dat='', node_populations_dat='',
                         cnode_populations_dat=''):
 
-    if self.storage['has_been_initialized']:
+    if self.has_been_initialized:
         raise Exception("Simulation has already been initialized.")
-    self.storage['has_been_initialized'] = True
 
     #### Load data files
 
@@ -430,16 +429,12 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
             area = row[3] # row['Area']
 
             home = int(home)  if home != 'ALL' else 'ALL'
+            loc = int(loc) if (loc != 'ALL' and loc != 'HOME') else loc
             age = int(age)  if age != 'ALL' else 'ALL'
-
-            if loc == 'HOME':
-                loc = home
-            elif loc != 'ALL':
-                loc = int(loc)
 
             if not (home == n.home or home == 'ALL'):
                 continue
-            if not (loc == n.loc or loc == 'ALL'):
+            if not (loc == n.loc or loc == 'ALL' or (n.loc==n.home and loc=='HOME')):
                 continue
             if not (age == n.age or age == 'ALL'):
                 continue
@@ -481,22 +476,15 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
             age = row[3]# row['Age']
             area = row[4]# row['Area']
             home = int(home)  if home != 'ALL' else 'ALL'
+            fro = int(fro) if (fro != 'ALL' and fro != 'HOME') else fro
+            to = int(to) if (to != 'ALL' and to != 'HOME') else to
             age = int(age)  if age != 'ALL' else 'ALL'
-
-            if fro == 'HOME':
-                fro = home
-            elif fro != 'ALL':
-                fro = int(fro)
-            if to == 'HOME':
-                to = home
-            elif to != 'ALL':
-                to = int(to)
-
+        
             if not (home == cn.home or home == 'ALL'):
                 continue
-            if not (fro == cn.fro or fro == 'ALL'):
+            if not (fro == cn.fro or fro == 'ALL' or (cn.fro==cn.home and fro=='HOME')):
                 continue
-            if not (to == cn.to or to == 'ALL'):
+            if not (to == cn.to or to == 'ALL' or (cn.to==cn.home and to=='HOME')):
                 continue
             if not (age == cn.age or age == 'ALL'):
                 continue
@@ -541,23 +529,20 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     for row_i, row in node_cmatrices_dat.iterrows():
         home = row[0] # row['Home']
         loc = row[1] # row['Location']
-        home = int(home) if home != 'ALL' else 'ALL'
-
-        if loc == 'HOME':
-            loc = home
-        elif loc != 'ALL':
-            loc = int(loc)
+        home = int(home) if home != 'ALL' else home
+        loc = int(loc) if (loc != 'ALL' and loc != 'HOME') else loc
             
         cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[2:]])
-
+        
         for home_i in range(max_node_index+1):
+            _loc = home_i if loc == 'HOME' else loc
+
             for loc_j in range(max_node_index+1):
                 if (home_i == home or home == 'ALL') and (loc_j == loc or loc == 'ALL'):
                     for age_a in range(age_groups):
                         n = aij_to_node.get((age_a, home_i, loc_j))
                         if not n is None:
                             n.contact_matrix_indices = cmat_indices[py_infection_classes_indices]
-
                             if -1 in n.contact_matrix_indices:
                                 raise Exception("Contact matrix missing for node (%i, %i, %i)" % (age_a, home_i, loc_j))
 
@@ -567,23 +552,19 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
         home = row[0] #row['Home']
         fro = row[1] #row['From']
         to = row[2] #row['To']
-        home = int(home) if home != 'ALL' else 'ALL'
-
-        if fro == 'HOME':
-            fro = home
-        elif fro != 'ALL':
-            fro = int(fro)
-        if to == 'HOME':
-            to = home
-        elif to != 'ALL':
-            to = int(to)
+        home = int(home) if home != 'ALL' else home
+        fro = int(loc) if (fro != 'ALL' and fro != 'HOME') else fro
+        to = int(to) if (to != 'ALL' and to != 'HOME') else to
 
         cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[3:]])
 
         for home_i in range(max_node_index+1):
+            _fro = home_i if fro == 'HOME' else fro
+            _to = home_i if to == 'HOME' else to
+
             for fro_j in range(max_node_index+1):
                 for to_j in range(max_node_index+1):
-                    if (home_i == home or home == 'ALL') and (fro_j == fro or fro == 'ALL') and (to_j == to or to == 'ALL'):
+                    if (home_i == home or home == 'ALL') and (fro_j == _fro or _fro == 'ALL') and (to_j == _to or _to == 'ALL'):
                         for age_a in range(age_groups):
                             cn = aijk_to_cnode.get((age_a, home_i, fro_j, to_j))
                             if not cn is None:
@@ -604,7 +585,9 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
                         py_contact_matrices, py_contact_matrices_key_to_index):
     """Initialize the simulation."""
 
-    self.state_mappings = py_state_mappings
+    self.has_been_initialized = True
+
+    self.node_mappings, self.cnode_mappings = py_state_mappings
 
     # Initialize the transport profile
     # TODO this should go in a config file

@@ -887,7 +887,9 @@ two nodes, occuring at a given time each day.
 
 
 The home $i$, origin $j$, destination $k$ and age-group $\alpha$ are given in the `Home`, 
-`From`, `To` and `Age` columns respectively.
+`From`, `To` and `Age` columns respectively. Note that we are free to define commutes
+between nodes that are not defined in `node_populations.csv`, which will
+then be populated automatically with zero people for all classes.
 
 The amount of people
 that are to be transported is either given as an absolute number, using

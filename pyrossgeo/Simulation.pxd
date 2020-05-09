@@ -21,7 +21,8 @@ cdef class Simulation:
     cdef int state_size
     cdef int node_states_len # The slice of X_states which only comprises nodes
 
-    cdef readonly object state_mappings
+    cdef readonly object node_mappings
+    cdef readonly object cnode_mappings
 
     # Model
     cdef int** class_infections
@@ -64,6 +65,7 @@ cdef class Simulation:
     # Misc
 
     cdef readonly dict storage # Persistent storage that will be used for events
+    cdef readonly object has_been_initialized # Python bool. If True, then the simulation has been initialized. 
 
     #cdef csimulate(self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=*,
     #                            str out_file=*, int steps_per_print=*, bint only_save_nodes=*,

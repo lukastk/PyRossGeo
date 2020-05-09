@@ -1,6 +1,6 @@
 ## PyRossGeo: Spatially resolved infectious disease models in Python 
 
-[About](#about) | [Installation](#installation) | [Examples](#examples) | [Documentation](#documentation)  | [Publications ](#publications) | [License](#license) |  [Wiki](https://github.com/lukastk/PyRossGeo/wiki) |  [Contact](#contact)
+[About](#about) | [Installation](#installation) | [Documentation](#documentation)  | [Examples](#examples) | [Publications](#publications) | [License](#license) |  [Wiki](https://github.com/lukastk/PyRossGeo/wiki) |  [Contact](#contact)
 
 ![Imagel](docs/banner.jpg)
 
@@ -8,10 +8,11 @@
 
 [PyRossGeo](https://github.com/lukastk/PyRossGeo) is a numerical library for spatially resolved mathematical modelling of infectious disease in Python.
 
+Note that PyRossGeo has a Python interface, but runs at C-speeds using Cython.
+
 Add a few lines about link to PyRoss
 
 The authors are part of the [Rapid Assistance in Modelling the Pandemic (RAMP)](https://royalsociety.org/news/2020/03/urgent-call-epidemic-modelling/) taskforce at the **University of Cambridge**. In alphabetical order, we are:
-[Ronojoy Adhikari](https://github.com/ronojoy),
 [Jakub Dolezal](https://github.com/JakubJDolezal),
 [Tim Ekeh](https://github.com/tekeh),
 [Lukas Kikuchi](https://github.com/lukastk),
@@ -52,3 +53,7 @@ PyRossGeo requires the following software
 ## License
 
 We believe that openness and sharing improves the practice of science and increases the reach of its benefits. This code is released under the [MIT license](http://opensource.org/licenses/MIT). Our choice is guided by the excellent article on [Licensing for the scientist-programmer](http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002598).
+
+## Contact
+
+For inquiries about the code or the model, please contact [Lukas Kikuchi](ltk26@cam.ac.uk).

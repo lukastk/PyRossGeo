@@ -234,13 +234,14 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 for i in range(nodes_at_j_len[age_a][loc_j]): 
                     n = nodes[nodes_at_j[age_a][loc_j][i]]
                     si = n.state_index
-                    S = X_state[si]
+                    S = X_state[si] # S is always located at the state index
                     
                     for o in range(model_dim):
                         # Apply infection terms
                         for j in range(class_infections_num[o]):
                             ui = class_infections[o][j]
                             cmat_i = n.contact_matrix_indices[ui]
+
                             dX_state[si+o] += n.infection_coeffs[o][j] * _lambdas[cmat_i][age_a][ui] * S
 
                         # Apply linear terms
@@ -462,14 +463,17 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         if steps_per_save != -1:
 
             if (step_i+1) % steps_per_save == 0:
-                X_states_saved[save_i,:] = X_state_arr[:X_states_saved_col_num]
+                X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]
                 ts_saved[save_i] = t
                 save_i += 1
 
         #### Call event function
 
         if event_steps[step_i]:
-            event_function(self, step_i, t, dt, X_state, dX_state)
+            if steps_per_save == -1:
+                event_function(self, step_i, t, dt, X_state, dX_state)
+            else:
+                event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)
 
         #### Call Cython event function
 
@@ -478,10 +482,12 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
     if steps_per_save != -1:
 
-        sim_data = (self.state_mappings, ts_saved, X_states_saved)
+        node_mappings = self.node_mappings.copy()
+        cnode_mappings = self.cnode_mappings.copy()
+
+        sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
 
         if save_path != '':
-            node_mappings, cnode_mappings = self.state_mappings
             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)

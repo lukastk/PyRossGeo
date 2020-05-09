@@ -44,6 +44,8 @@ Synthetic data:
 
 - Currently every single contact matrix is comptued at every single node. You should have it so that we know exactly which contact matrices are used at which node, and only compute these.
 
+- In tutorial 3, I set `C_away[0,0] = 70000`, and the resulting simulation blew up.
+
 ## Todo:
 
 - Make it so that SIR dynamics cant overstep

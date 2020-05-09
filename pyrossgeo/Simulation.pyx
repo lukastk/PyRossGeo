@@ -12,7 +12,7 @@ cdef class Simulation:
 
     def __cinit__(self):
         self.storage = {}
-        self.storage['has_been_initialized'] = False
+        self.has_been_initialized = False
 
     def __dealloc__(self):
         free_sim(self)
@@ -189,14 +189,7 @@ cdef class Simulation:
         else:
             return False
 
-    #cdef csimulate(self, DTYPE_t[:] X_state, DTYPE_t t_start,
-    #                DTYPE_t t_end, object _dts, int steps_per_save=-1,
-    #                str save_path="", int steps_per_print=-1,
-    #                bint only_save_nodes=False, int steps_per_event=-1,
-    #                object event_function=None, int steps_per_cevent=-1,
-    #                SIM_EVENT cevent_function=SIM_EVENT_NULL):
-    #    return csimulate(self, X_state, t_start, t_end, _dts,
-    #                        steps_per_save, save_path, steps_per_print,
-    #                        only_save_nodes, steps_per_event,
-    #                        event_function, steps_per_cevent,
-    #                        cevent_function)
+    #TODO
+    # - function that returns what contact matrix is sued for a specific node
+    # - see what the parameters are at a specific node (in dictionary format), and edit them
+    # - 
