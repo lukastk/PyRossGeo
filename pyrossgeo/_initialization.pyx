@@ -538,7 +538,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
             _loc = home_i if loc == 'HOME' else loc
 
             for loc_j in range(max_node_index+1):
-                if (home_i == home or home == 'ALL') and (loc_j == loc or loc == 'ALL'):
+                if (home_i == home or home == 'ALL') and (loc_j == _loc or _loc == 'ALL'):
                     for age_a in range(age_groups):
                         n = aij_to_node.get((age_a, home_i, loc_j))
                         if not n is None:

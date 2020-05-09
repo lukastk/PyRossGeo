@@ -13,3 +13,4 @@ pyrossgeo/mft/*.so
 __pycache__
 .ipynb_checkpoints
 sim_data
+.~lock*

@@ -192,4 +192,4 @@ cdef class Simulation:
     #TODO
     # - function that returns what contact matrix is sued for a specific node
     # - see what the parameters are at a specific node (in dictionary format), and edit them
-    # - 
+    # - lookup properties of commuter network

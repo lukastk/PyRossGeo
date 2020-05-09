@@ -46,6 +46,17 @@ Synthetic data:
 
 - In tutorial 3, I set `C_away[0,0] = 70000`, and the resulting simulation blew up.
 
+- In reality, a full lockdown scenario would be the following: Each
+family only interacts with itself. Meaning that there is a very small pool
+of people that each person can interact with. The C*beta should be set
+to account for this.
+
+- When it comes to the geographical model, this is one thing that it can
+do that no other can: When we look at very coarse grained network, it's
+not overly hard to get nodes where the population of infecteds is quite small such
+that stochastic dynamic overtake. In which case, it is possible that the infetion
+dies out. This is how the geographic model can model lockdown better than any else.
+
 ## Todo:
 
 - Make it so that SIR dynamics cant overstep
