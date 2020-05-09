@@ -1,4 +1,6 @@
 import numpy as np
+import pickle
+import zarr
 
 def extract_node_data(sim_data):
     """Returns the results of the simulation for each node.
@@ -119,6 +121,9 @@ def extract_network_data(sim_data):
     for a,o,i,j in node_mappings:
         network_data[:,a,o] += X_states[:,node_mappings[a,o,i,j]]
 
+    for a,o,i,j,k in cnode_mappings:
+        network_data[:,a,o] += X_states[:,cnode_mappings[a,o,i,j,k]]
+
     return network_data
 
 def extract_location_data(sim_data):
@@ -206,56 +211,12 @@ def extract_community_data(sim_data):
     community_data = np.zeros( (len(ts), age_groups, model_dim, max_home_index+1) )
 
     for a,o,i,j in node_mappings:
-        community_data[:,a,o,j] += X_states[:,node_mappings[a,o,i,j]]
+        community_data[:,a,o,i] += X_states[:,node_mappings[a,o,i,j]]
 
     for a,o,i,j,k in cnode_mappings:
-        community_data[:,a,o,j] += X_states[:,cnode_mappings[a,o,i,j,k]]
+        community_data[:,a,o,i] += X_states[:,cnode_mappings[a,o,i,j,k]]
 
     return community_data
-
-def get_dt_schedule(times, end_time):
-    """Generates a time-step schedule.
-
-    Example:
-
-    The following generates a time-step schedule where we use a time-step
-    of one minute between 7-10 and 17-19 o'clock, and 2 hours for all
-    other times.
-
-    ```
-    ts, dts = pyrossgeo.utils.get_dt_schedule([
-                (0,  2*60),
-                (7*60,  1),
-                (10*60, 2*60),
-                (17*60, 1),
-                (19*60, 2*60)
-                ], end_time=24*60)
-    ```
-
-    Parameters
-    ----------
-        times : list of tuples
-        end_times : float
-
-    Returns
-    -------
-        A tuple `(ts, dts)`, where `dts` are the time-steps and `ts`
-        the times.
-    """
-    times = list(times)
-    times.append( (end_time, 0) )
-    ts = []
-
-    for i in range(len(times)-1):
-        t, dt = times[i]
-        t_next = times[i+1][0]
-        ts.append(np.arange(t, t_next, dt))
-        
-    ts.append([end_time])
-    ts = np.concatenate(ts)
-    dts = (ts - np.roll(ts, 1))[1:]
-        
-    return np.array(ts, dtype=np.double), np.array(dts, dtype=np.double)
 
 def extract_simulation_data(sim_data):
     """Returns a tuple containing various formatted data for a given simulation result.
@@ -308,3 +269,64 @@ def extract_simulation_data(sim_data):
         network_data[:, :, :] += cnode_data_ijk
 
     return ts, node_data, cnode_data, location_data, community_data, network_data
+
+def load_sim_data(load_path, use_zarr=False):
+    node_mappings_path = 'node_mappings.pkl'
+    cnode_mappings_path = 'cnode_mappings.pkl'
+    ts_path = 'ts.npy'
+    X_states_path = 'X_states.zarr'
+
+    node_mappings = pickle.load( open( "%s/%s" %( load_path, node_mappings_path ), "rb" ) )
+    cnode_mappings = pickle.load( open( "%s/%s" %( load_path, cnode_mappings_path ), "rb" ) )
+    ts = np.load("%s/%s" %( load_path, ts_path ))
+    X_states = zarr.open( "%s/%s" %( load_path, X_states_path ) , chunks=(len(ts), 1))
+
+    if not use_zarr:
+        X_states = X_states[:]
+
+    sim_data = ( (node_mappings, cnode_mappings), ts, X_states )
+    return sim_data
+
+def get_dt_schedule(times, end_time):
+    """Generates a time-step schedule.
+
+    Example:
+
+    The following generates a time-step schedule where we use a time-step
+    of one minute between 7-10 and 17-19 o'clock, and 2 hours for all
+    other times.
+
+    ```
+    ts, dts = pyrossgeo.utils.get_dt_schedule([
+                (0,  2*60),
+                (7*60,  1),
+                (10*60, 2*60),
+                (17*60, 1),
+                (19*60, 2*60)
+                ], end_time=24*60)
+    ```
+
+    Parameters
+    ----------
+        times : list of tuples
+        end_times : float
+
+    Returns
+    -------
+        A tuple `(ts, dts)`, where `dts` are the time-steps and `ts`
+        the times.
+    """
+    times = list(times)
+    times.append( (end_time, 0) )
+    ts = []
+
+    for i in range(len(times)-1):
+        t, dt = times[i]
+        t_next = times[i+1][0]
+        ts.append(np.arange(t, t_next, dt))
+        
+    ts.append([end_time])
+    ts = np.concatenate(ts)
+    dts = (ts - np.roll(ts, 1))[1:]
+        
+    return np.array(ts, dtype=np.double), np.array(dts, dtype=np.double)

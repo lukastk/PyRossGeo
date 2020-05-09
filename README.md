@@ -8,6 +8,8 @@
 
 [PyRossGeo](https://github.com/lukastk/PyRossGeo) is a numerical library for spatially resolved mathematical modelling of infectious disease in Python.
 
+Add a few lines about link to PyRoss
+
 The authors are part of the [Rapid Assistance in Modelling the Pandemic (RAMP)](https://royalsociety.org/news/2020/03/urgent-call-epidemic-modelling/) taskforce at the **University of Cambridge**. In alphabetical order, we are:
 [Ronojoy Adhikari](https://github.com/ronojoy),
 [Jakub Dolezal](https://github.com/JakubJDolezal),
@@ -39,6 +41,7 @@ PyRossGeo requires the following software
 | [Matplotlib 2.0.x+](https://matplotlib.org) (Notebooks)
 | [Jupyter](https://jupyter.org/) (Notebooks)
 | [PyTest](https://docs.pytest.org/) (Testing)
+| [GeoPandas](https://geopandas.org/) (Visualisations)
 
 ## Documentation
 

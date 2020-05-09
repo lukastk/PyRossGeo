@@ -1,5 +1,7 @@
 # Configuration files
 
+[Go to the PyRossGeo documentation](https://github.com/lukastk/PyRossGeo/blob/master/docs/Documentation.md)
+
 **General note of caution:** <i>At the moment PyRossGeo does not have any checks in place to detect formatting errors in the configuration files. Any mistakes in the configuration files may lead to uncaught exceptions or unexpected simulation behaviour. This will be rectified in the future.</i>
 
 **Note:** <i>PyRossGeo allows for a great deal of configuration, 
@@ -938,11 +940,11 @@ between nodes over time.
 **Important notes:**
 
 - The times $[t_1, t_2]$ and $[ct_1, ct_2]$ must *not* overlap. If they do
-  this will lead to the situation where populations get stuck in the 
+  it will lead to the situation where populations get stuck in the 
   commuterverse.
 - Currently, there is an issue when defining commuter networks where there
   are paths with more than 2 steps. Although it is possible
   to define paths such as $0\to1\to2\to0$, this should be avoided. The
-  reaons for this is that it will lead to migration if there are other
+  reasons for this is that it will lead to migration if there are other
   commuting patterns that share intermediate nodes such as $0 \to 3 \to 2 \to 0$.
   This will be rectified in a future iteration of PyRossGeo.

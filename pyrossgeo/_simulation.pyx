@@ -1,4 +1,5 @@
 import zarr
+import pickle
 import cython
 from libc.math cimport exp
 from cython.parallel import prange
@@ -12,7 +13,7 @@ from pyrossgeo.__defs__ import DTYPE
 @cython.cdivision(True)
 @cython.nonecheck(False)
 cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=-1,
-                            str out_file="", bint only_save_nodes=False, int steps_per_print=-1,
+                            str save_path="", bint only_save_nodes=False, int steps_per_print=-1,
                             object event_times=[], object event_function=None):
                             #object cevent_times=[], SIM_EVENT cevent_function=SIM_EVENT_NULL):
     #########################################################################
@@ -74,6 +75,14 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef DTYPE_t transport_profile_c = self.transport_profile_c
     cdef DTYPE_t transport_profile_c_r = self.transport_profile_c_r
 
+    # Consts
+
+    cdef int minutes_in_day = 1440
+    save_node_mappings_path = 'node_mappings.pkl'
+    save_cnode_mappings_path = 'cnode_mappings.pkl'
+    save_ts_path = 'ts.npy'
+    save_X_states_path = 'X_states.zarr'
+
     #### Simulation variables ###########################################
 
     cdef int cni, ni, si, Ti, cTi, i, j, ui, u, o, cmat_i, oi, X_index, loc_j, to_k, age_a, age_b
@@ -85,8 +94,6 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef DTYPE_t[:, :, :] _lambdas = self._lambdas
     cdef DTYPE_t[:] _Is = self._Is
     cdef DTYPE_t[:] _Ns = self._Ns
-
-    cdef int minutes_in_day = 1440
 
     cdef np.ndarray dX_state_arr
     cdef DTYPE_t[:] dX_state
@@ -132,13 +139,13 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         else:
             X_states_saved_col_num = X_state.size
 
-        # If out_file is not specified, then the states will be stored to numpy array
-        if out_file == "":
+        # If save_path is not specified, then the states will be stored to numpy array
+        if save_path == "":
             X_states_saved = np.zeros( ( save_states, X_states_saved_col_num) )
 
-        # If out_file is specified, then the states will be stored on the harddrive directly, using a zarr array
+        # If save_path is specified, then the states will be stored on the harddrive directly, using a zarr array
         else: 
-            X_states_saved = zarr.open('%s.zarr' % out_file, mode='w',
+            X_states_saved = zarr.open('%s/%s' % (save_path, save_X_states_path), mode='w',
                                 shape=( save_states, X_states_saved_col_num ),
                                 chunks=(1 , X_states_saved_col_num), dtype=DTYPE)
             
@@ -470,6 +477,13 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         #    cevent_function(self, step_i, t, dt, X_state, dX_state)
 
     if steps_per_save != -1:
+
         sim_data = (self.state_mappings, ts_saved, X_states_saved)
+
+        if save_path != '':
+            node_mappings, cnode_mappings = self.state_mappings
+            with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
+            with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
+            np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
 
         return sim_data

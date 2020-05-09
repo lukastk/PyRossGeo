@@ -55,7 +55,7 @@ cdef class Simulation:
                         cnode_populations_dat)
 
     def simulate(self, X_state, t_start, t_end, dts, steps_per_save=-1,
-                    out_file="", only_save_nodes=False, steps_per_print=-1,
+                    save_path="", only_save_nodes=False, steps_per_print=-1,
                     event_times=[], event_function=None):
         """Simulates the system.
         
@@ -63,11 +63,9 @@ cdef class Simulation:
         initial condition `X_state`. `dts` an array of time-steps, where
         `dts[i]` is the time-step used during step `i` of the simualtion.
 
-        If `out_file` is specified, then the result of the simulation 
+        If `save_path` is specified, then the result of the simulation 
         will be outputted directly to the hard-drive as a .zarr array
         at the given path.
-
-
 
         Parameters
         ----------
@@ -81,8 +79,8 @@ cdef class Simulation:
                 Time steps
             steps_per_save : int
                 Number of simulation steps per saving the state (default -1)
-            out_file : str
-                The path of the file to save the output to (default "")
+            save_path : str
+                The path of the folder to save the output to (default "")
             only_save_nodes : bool
                 If True, commuter nodes will not be saved (default False)
             event_times : list or array of floats
@@ -105,7 +103,7 @@ cdef class Simulation:
             to age-bracket, class, home, origin, destination respectively.
         """
         return simulate(self, X_state, t_start, t_end, dts, steps_per_save,
-                    out_file, only_save_nodes, steps_per_print,
+                    save_path, only_save_nodes, steps_per_print,
                     event_times, event_function)
 
     def compute(self, X_state, dX_state, t, dt):
@@ -193,12 +191,12 @@ cdef class Simulation:
 
     #cdef csimulate(self, DTYPE_t[:] X_state, DTYPE_t t_start,
     #                DTYPE_t t_end, object _dts, int steps_per_save=-1,
-    #                str out_file="", int steps_per_print=-1,
+    #                str save_path="", int steps_per_print=-1,
     #                bint only_save_nodes=False, int steps_per_event=-1,
     #                object event_function=None, int steps_per_cevent=-1,
     #                SIM_EVENT cevent_function=SIM_EVENT_NULL):
     #    return csimulate(self, X_state, t_start, t_end, _dts,
-    #                        steps_per_save, out_file, steps_per_print,
+    #                        steps_per_save, save_path, steps_per_print,
     #                        only_save_nodes, steps_per_event,
     #                        event_function, steps_per_cevent,
     #                        cevent_function)
