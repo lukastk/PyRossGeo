@@ -38,7 +38,7 @@ The local infective dynamics at a node-level is customizable, and any variant of
 
 The model has been tested with synthetic data on London, at an MSOA (Middle Super Output Area) level. We used ~1000 geographical nodes, with a commuter network of ~300'000 edges, constructed using the [2011 UK Census data](https://www.ons.gov.uk/census/2011census). We are currently developing a test for a UK-wide simulation at an LAD (Local Authority District) level.
 
-For a more detailed description of the model, please read [this](https://github.com/rajeshrinet/pyross/blob/master/docs/models.pdf).
+For a more detailed description of the model, please read [this](https://github.com/lukastk/PyRossGeo/blob/master/docs/model.pdf).
 
 ## Installation
 Clone (or download) the repository and use a terminal to install using
