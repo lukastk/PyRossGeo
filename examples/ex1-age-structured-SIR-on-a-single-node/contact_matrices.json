@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     "C_home" : [
         [1, 1, 0],
         [1, 1, 0],
         [0, 1, 1]
     ]
+=======
+    "C_home" : [[1]],
+
+    "C_all" : [[1]]
+>>>>>>> Implemented stochastic protocol
 }

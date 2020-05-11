@@ -1407,8 +1407,13 @@ struct __pyx_obj_9pyrossgeo_10Simulation_Simulation {
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_m;
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_c;
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_c_r;
+<<<<<<< HEAD
   PyArrayObject *stochastic_threshold_from_below;
   PyArrayObject *stochastic_threshold_from_above;
+=======
+  PyArrayObject *stoch_threshold_from_below;
+  PyArrayObject *stoch_threshold_from_above;
+>>>>>>> Implemented stochastic protocol
   PyObject *storage;
   PyObject *has_been_initialized;
 };
@@ -2497,7 +2502,10 @@ static const char __pyx_k_np[] = "np";
 static const char __pyx_k_wb[] = "wb";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
+<<<<<<< HEAD
 static const char __pyx_k_rvs[] = "rvs";
+=======
+>>>>>>> Implemented stochastic protocol
 static const char __pyx_k_None[] = "None";
 static const char __pyx_k_Step[] = "Step ";
 static const char __pyx_k_base[] = "base";
@@ -2536,7 +2544,10 @@ static const char __pyx_k_round[] = "round";
 static const char __pyx_k_scipy[] = "scipy";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
+<<<<<<< HEAD
 static const char __pyx_k_stats[] = "stats";
+=======
+>>>>>>> Implemented stochastic protocol
 static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_chunks[] = "chunks";
 static const char __pyx_k_encode[] = "encode";
@@ -2553,7 +2564,10 @@ static const char __pyx_k_update[] = "update";
 static const char __pyx_k_asarray[] = "asarray";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
+<<<<<<< HEAD
 static const char __pyx_k_poisson[] = "poisson";
+=======
+>>>>>>> Implemented stochastic protocol
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_itemsize[] = "itemsize";
@@ -2708,7 +2722,10 @@ static PyObject *__pyx_n_s_open;
 static PyObject *__pyx_kp_u_out_of;
 static PyObject *__pyx_n_s_pack;
 static PyObject *__pyx_n_s_pickle;
+<<<<<<< HEAD
 static PyObject *__pyx_n_s_poisson;
+=======
+>>>>>>> Implemented stochastic protocol
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_pyrossgeo___defs;
 static PyObject *__pyx_n_s_pyx_PickleError;
@@ -2724,7 +2741,10 @@ static PyObject *__pyx_n_s_reduce;
 static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_round;
+<<<<<<< HEAD
 static PyObject *__pyx_n_s_rvs;
+=======
+>>>>>>> Implemented stochastic protocol
 static PyObject *__pyx_n_s_save;
 static PyObject *__pyx_n_s_scipy;
 static PyObject *__pyx_n_s_scipy_stats;
@@ -2733,7 +2753,10 @@ static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_shape;
 static PyObject *__pyx_n_s_size;
 static PyObject *__pyx_n_s_start;
+<<<<<<< HEAD
 static PyObject *__pyx_n_s_stats;
+=======
+>>>>>>> Implemented stochastic protocol
 static PyObject *__pyx_n_s_step;
 static PyObject *__pyx_n_s_stop;
 static PyObject *__pyx_kp_s_strided_and_direct;
@@ -2803,9 +2826,14 @@ static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject 
 static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
+<<<<<<< HEAD
 static PyObject *__pyx_int_500;
 static PyObject *__pyx_int_123123;
 static PyObject *__pyx_int_10000000;
+=======
+static PyObject *__pyx_int_50;
+static PyObject *__pyx_int_100;
+>>>>>>> Implemented stochastic protocol
 static PyObject *__pyx_int_184977713;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_k__2;
@@ -2842,8 +2870,12 @@ static PyObject *__pyx_tuple__33;
 static PyObject *__pyx_tuple__34;
 static PyObject *__pyx_tuple__35;
 static PyObject *__pyx_tuple__36;
+<<<<<<< HEAD
 static PyObject *__pyx_tuple__37;
 static PyObject *__pyx_codeobj__38;
+=======
+static PyObject *__pyx_codeobj__37;
+>>>>>>> Implemented stochastic protocol
 /* Late includes */
 
 /* "pyrossgeo/_simulation.pyx":18
@@ -2922,11 +2954,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_memviewslice __pyx_v_total_Os = { 0, 0, { 0 }, { 0 }, { 0 } };
   int *__pyx_v_loc_j_is_stochastic;
   int *__pyx_v_to_k_is_stochastic;
+<<<<<<< HEAD
   PyObject *__pyx_v_stochastic_threshold_from_below_arr = NULL;
   PyObject *__pyx_v_stochastic_threshold_from_above_arr = NULL;
   PyObject *__pyx_v_stochastic_threshold_from_below = NULL;
   PyObject *__pyx_v_stochastic_threshold_from_above = NULL;
   CYTHON_UNUSED std::mt19937 __pyx_v_gen;
+=======
+  PyObject *__pyx_v_stoch_threshold_from_below_arr = NULL;
+  PyObject *__pyx_v_stoch_threshold_from_above_arr = NULL;
+  PyObject *__pyx_v_stoch_threshold_from_below = NULL;
+  PyObject *__pyx_v_stoch_threshold_from_above = NULL;
+  std::mt19937 __pyx_v_gen;
+  std::poisson_distribution<int>  __pyx_v_dist;
+>>>>>>> Implemented stochastic protocol
   int __pyx_v_minutes_in_day;
   PyObject *__pyx_v_save_node_mappings_path = NULL;
   PyObject *__pyx_v_save_cnode_mappings_path = NULL;
@@ -3152,6 +3193,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   Py_ssize_t __pyx_t_171;
   Py_ssize_t __pyx_t_172;
   Py_ssize_t __pyx_t_173;
+<<<<<<< HEAD
   Py_ssize_t __pyx_t_174;
   Py_ssize_t __pyx_t_175;
   Py_ssize_t __pyx_t_176;
@@ -3171,6 +3213,16 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   PyObject *__pyx_t_190 = NULL;
   PyObject *__pyx_t_191 = NULL;
   PyObject *__pyx_t_192 = NULL;
+=======
+  PyObject *__pyx_t_174 = NULL;
+  PyObject *__pyx_t_175 = NULL;
+  PyObject *__pyx_t_176 = NULL;
+  PyObject *__pyx_t_177 = NULL;
+  PyObject *__pyx_t_178 = NULL;
+  PyObject *__pyx_t_179 = NULL;
+  PyObject *__pyx_t_180 = NULL;
+  PyObject *__pyx_t_181 = NULL;
+>>>>>>> Implemented stochastic protocol
   __Pyx_RefNannySetupContext("simulate", 0);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
@@ -3558,7 +3610,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     # Stochasticity
  *     total_Os_arr = np.zeros(model_dim, dtype=DTYPE)             # <<<<<<<<<<<<<<
  *     cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on
+<<<<<<< HEAD
  *     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
+=======
+ *     #cdef DTYPE_t[:] stoch_threshold_from_below = self.stoch_threshold_from_below
+>>>>>>> Implemented stochastic protocol
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -3590,8 +3646,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     # Stochasticity
  *     total_Os_arr = np.zeros(model_dim, dtype=DTYPE)
  *     cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
  *     #cdef DTYPE_t[:] stochastic_threshold_from_above = self.stochastic_threshold_from_abov
+=======
+ *     #cdef DTYPE_t[:] stoch_threshold_from_below = self.stoch_threshold_from_below
+ *     #cdef DTYPE_t[:] stoch_threshold_from_above = self.stoch_threshold_from_abov
+>>>>>>> Implemented stochastic protocol
  */
   __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t(__pyx_v_total_Os_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 85, __pyx_L1_error)
   __pyx_v_total_Os = __pyx_t_16;
@@ -3601,9 +3662,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   /* "pyrossgeo/_simulation.pyx":91
  *     cdef bint* to_k_is_stochastic
  * 
+<<<<<<< HEAD
  *     stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )             # <<<<<<<<<<<<<<
  *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )
  *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr
+=======
+ *     stoch_threshold_from_below_arr = np.array( [100, 100, 100, 100, 100] )             # <<<<<<<<<<<<<<
+ *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )
+ *     stoch_threshold_from_below = stoch_threshold_from_below_arr
+>>>>>>> Implemented stochastic protocol
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -3612,6 +3679,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = PyList_New(5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
+<<<<<<< HEAD
   __Pyx_INCREF(__pyx_int_10000000);
   __Pyx_GIVEREF(__pyx_int_10000000);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_10000000);
@@ -3627,6 +3695,23 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_INCREF(__pyx_int_10000000);
   __Pyx_GIVEREF(__pyx_int_10000000);
   PyList_SET_ITEM(__pyx_t_1, 4, __pyx_int_10000000);
+=======
+  __Pyx_INCREF(__pyx_int_100);
+  __Pyx_GIVEREF(__pyx_int_100);
+  PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_100);
+  __Pyx_INCREF(__pyx_int_100);
+  __Pyx_GIVEREF(__pyx_int_100);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_int_100);
+  __Pyx_INCREF(__pyx_int_100);
+  __Pyx_GIVEREF(__pyx_int_100);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_int_100);
+  __Pyx_INCREF(__pyx_int_100);
+  __Pyx_GIVEREF(__pyx_int_100);
+  PyList_SET_ITEM(__pyx_t_1, 3, __pyx_int_100);
+  __Pyx_INCREF(__pyx_int_100);
+  __Pyx_GIVEREF(__pyx_int_100);
+  PyList_SET_ITEM(__pyx_t_1, 4, __pyx_int_100);
+>>>>>>> Implemented stochastic protocol
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
     __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
@@ -3643,15 +3728,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+<<<<<<< HEAD
   __pyx_v_stochastic_threshold_from_below_arr = __pyx_t_4;
+=======
+  __pyx_v_stoch_threshold_from_below_arr = __pyx_t_4;
+>>>>>>> Implemented stochastic protocol
   __pyx_t_4 = 0;
 
   /* "pyrossgeo/_simulation.pyx":92
  * 
+<<<<<<< HEAD
  *     stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )
  *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )             # <<<<<<<<<<<<<<
  *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr
  *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+=======
+ *     stoch_threshold_from_below_arr = np.array( [100, 100, 100, 100, 100] )
+ *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )             # <<<<<<<<<<<<<<
+ *     stoch_threshold_from_below = stoch_threshold_from_below_arr
+ *     stoch_threshold_from_above = stoch_threshold_from_above_arr
+>>>>>>> Implemented stochastic protocol
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3660,6 +3756,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
+<<<<<<< HEAD
   __Pyx_INCREF(__pyx_int_500);
   __Pyx_GIVEREF(__pyx_int_500);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_int_500);
@@ -3675,6 +3772,23 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_INCREF(__pyx_int_500);
   __Pyx_GIVEREF(__pyx_int_500);
   PyList_SET_ITEM(__pyx_t_2, 4, __pyx_int_500);
+=======
+  __Pyx_INCREF(__pyx_int_50);
+  __Pyx_GIVEREF(__pyx_int_50);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_int_50);
+  __Pyx_INCREF(__pyx_int_50);
+  __Pyx_GIVEREF(__pyx_int_50);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_int_50);
+  __Pyx_INCREF(__pyx_int_50);
+  __Pyx_GIVEREF(__pyx_int_50);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_int_50);
+  __Pyx_INCREF(__pyx_int_50);
+  __Pyx_GIVEREF(__pyx_int_50);
+  PyList_SET_ITEM(__pyx_t_2, 3, __pyx_int_50);
+  __Pyx_INCREF(__pyx_int_50);
+  __Pyx_GIVEREF(__pyx_int_50);
+  PyList_SET_ITEM(__pyx_t_2, 4, __pyx_int_50);
+>>>>>>> Implemented stochastic protocol
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
     __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
@@ -3691,6 +3805,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+<<<<<<< HEAD
   __pyx_v_stochastic_threshold_from_above_arr = __pyx_t_4;
   __pyx_t_4 = 0;
 
@@ -3716,6 +3831,33 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
   /* "pyrossgeo/_simulation.pyx":96
  *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+=======
+  __pyx_v_stoch_threshold_from_above_arr = __pyx_t_4;
+  __pyx_t_4 = 0;
+
+  /* "pyrossgeo/_simulation.pyx":93
+ *     stoch_threshold_from_below_arr = np.array( [100, 100, 100, 100, 100] )
+ *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )
+ *     stoch_threshold_from_below = stoch_threshold_from_below_arr             # <<<<<<<<<<<<<<
+ *     stoch_threshold_from_above = stoch_threshold_from_above_arr
+ * 
+ */
+  __Pyx_INCREF(__pyx_v_stoch_threshold_from_below_arr);
+  __pyx_v_stoch_threshold_from_below = __pyx_v_stoch_threshold_from_below_arr;
+
+  /* "pyrossgeo/_simulation.pyx":94
+ *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )
+ *     stoch_threshold_from_below = stoch_threshold_from_below_arr
+ *     stoch_threshold_from_above = stoch_threshold_from_above_arr             # <<<<<<<<<<<<<<
+ * 
+ *     if random_seed == -1:
+ */
+  __Pyx_INCREF(__pyx_v_stoch_threshold_from_above_arr);
+  __pyx_v_stoch_threshold_from_above = __pyx_v_stoch_threshold_from_above_arr;
+
+  /* "pyrossgeo/_simulation.pyx":96
+ *     stoch_threshold_from_above = stoch_threshold_from_above_arr
+>>>>>>> Implemented stochastic protocol
  * 
  *     if random_seed == -1:             # <<<<<<<<<<<<<<
  *         random_seed = np.int64(np.round(time.time()))
@@ -3798,7 +3940,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     __pyx_v_random_seed = __pyx_t_5;
 
     /* "pyrossgeo/_simulation.pyx":96
+<<<<<<< HEAD
  *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+=======
+ *     stoch_threshold_from_above = stoch_threshold_from_above_arr
+>>>>>>> Implemented stochastic protocol
  * 
  *     if random_seed == -1:             # <<<<<<<<<<<<<<
  *         random_seed = np.int64(np.round(time.time()))
@@ -4043,7 +4189,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *         loc_j_is_stochastic[loc_j] = False
  * 
  *         for o in range(model_dim):             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+=======
+ *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+>>>>>>> Implemented stochastic protocol
  * 
  */
     __pyx_t_23 = __pyx_v_model_dim;
@@ -4054,7 +4204,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       /* "pyrossgeo/_simulation.pyx":144
  * 
  *         for o in range(model_dim):
+<<<<<<< HEAD
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+=======
+ *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Implemented stochastic protocol
  * 
  *     for to_k in range(max_node_index+1):
  */
@@ -4067,7 +4221,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_36 = __pyx_v_o;
       __pyx_t_4 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_36 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
+<<<<<<< HEAD
       __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+=======
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4081,7 +4239,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   }
 
   /* "pyrossgeo/_simulation.pyx":146
+<<<<<<< HEAD
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+=======
+ *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+>>>>>>> Implemented stochastic protocol
  * 
  *     for to_k in range(max_node_index+1):             # <<<<<<<<<<<<<<
  *         n = nodes[i]
@@ -4196,7 +4358,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *         to_k_is_stochastic[to_k] = False
  * 
  *         for o in range(model_dim):             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
+=======
+ *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stoch_threshold_from_below[o])
+>>>>>>> Implemented stochastic protocol
  * 
  */
     __pyx_t_23 = __pyx_v_model_dim;
@@ -4207,7 +4373,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       /* "pyrossgeo/_simulation.pyx":161
  * 
  *         for o in range(model_dim):
+<<<<<<< HEAD
  *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+=======
+ *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Implemented stochastic protocol
  * 
  *     # Loop through nodes and cnodes to see if they should start out as stochastic or not
  */
@@ -4220,7 +4390,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_40 = __pyx_v_o;
       __pyx_t_1 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_40 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
+<<<<<<< HEAD
       __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+=======
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5502,7 +5676,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *             if loc_j_is_stochastic[loc_j]:
  *                 loc_j_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
  *                 for o in range(model_dim):
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+>>>>>>> Implemented stochastic protocol
  */
         (__pyx_v_loc_j_is_stochastic[__pyx_v_loc_j]) = 0;
 
@@ -5510,7 +5688,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *             if loc_j_is_stochastic[loc_j]:
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+>>>>>>> Implemented stochastic protocol
  *             else:
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -5521,7 +5703,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           /* "pyrossgeo/_simulation.pyx":305
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Implemented stochastic protocol
  *             else:
  *                 loc_j_is_stochastic[loc_j] = False
  */
@@ -5534,7 +5720,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_79 = __pyx_v_o;
           __pyx_t_3 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_79 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
+<<<<<<< HEAD
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 305, __pyx_L1_error)
+=======
+          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 305, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
           __Pyx_GOTREF(__pyx_t_18);
           __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_18, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5557,11 +5747,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       }
 
       /* "pyrossgeo/_simulation.pyx":307
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
  *             else:
  *                 loc_j_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
  *                 for o in range(model_dim):
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+ *             else:
+ *                 loc_j_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
+ *                 for o in range(model_dim):
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])
+>>>>>>> Implemented stochastic protocol
  */
       /*else*/ {
         (__pyx_v_loc_j_is_stochastic[__pyx_v_loc_j]) = 0;
@@ -5570,7 +5768,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *             else:
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])
+>>>>>>> Implemented stochastic protocol
  * 
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -5581,7 +5783,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           /* "pyrossgeo/_simulation.pyx":309
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])             # <<<<<<<<<<<<<<
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])             # <<<<<<<<<<<<<<
+>>>>>>> Implemented stochastic protocol
  * 
  *             #### Compute the derivatives at each node
  */
@@ -5594,7 +5800,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_80 = __pyx_v_o;
           __pyx_t_2 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_80 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
+<<<<<<< HEAD
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 309, __pyx_L1_error)
+=======
+          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 309, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
           __Pyx_GOTREF(__pyx_t_18);
           __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_18, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5688,7 +5898,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         for j in range(model_linear_terms_len):
  *                             mt = model_linear_terms[j]             # <<<<<<<<<<<<<<
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+=======
+ *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+>>>>>>> Implemented stochastic protocol
  */
               __pyx_v_mt = (__pyx_v_model_linear_terms[__pyx_v_j]);
 
@@ -5696,13 +5910,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         for j in range(model_linear_terms_len):
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 #term = dist(gen) * r_dt
+=======
+ *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 term = dist(gen) * r_dt
+>>>>>>> Implemented stochastic protocol
  */
               __pyx_t_82 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
               __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_82 * __pyx_v_X_state.strides[0]) ))) > 0.0) != 0);
               if (__pyx_t_17) {
 
+<<<<<<< HEAD
                 /* "pyrossgeo/_simulation.pyx":326
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 #term = dist(gen) * r_dt
@@ -5753,6 +5973,30 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 /* "pyrossgeo/_simulation.pyx":327
  *                                 #term = dist(gen) * r_dt
  *                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+=======
+                /* "pyrossgeo/_simulation.pyx":324
+ *                             mt = model_linear_terms[j]
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+ *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])             # <<<<<<<<<<<<<<
+ *                                 term = dist(gen) * r_dt
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+ */
+                __pyx_t_83 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+                __pyx_v_dist = std::poisson_distribution<int> (((__pyx_v_dt * (__pyx_v_n.linear_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_83 * __pyx_v_X_state.strides[0]) )))));
+
+                /* "pyrossgeo/_simulation.pyx":325
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+ *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 term = dist(gen) * r_dt             # <<<<<<<<<<<<<<
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+ *                                 dX_state[si+mt.oi_pos] += term
+ */
+                __pyx_v_term = (__pyx_v_dist(__pyx_v_gen) * __pyx_v_r_dt);
+
+                /* "pyrossgeo/_simulation.pyx":327
+ *                                 term = dist(gen) * r_dt
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+>>>>>>> Implemented stochastic protocol
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
@@ -5761,7 +6005,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_84 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":328
+<<<<<<< HEAD
  *                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+=======
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+>>>>>>> Implemented stochastic protocol
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  * 
@@ -5774,8 +6022,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         for j in range(model_linear_terms_len):
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 #term = dist(gen) * r_dt
+=======
+ *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 term = dist(gen) * r_dt
+>>>>>>> Implemented stochastic protocol
  */
               }
             }
@@ -5806,7 +6059,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+=======
+ *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+>>>>>>> Implemented stochastic protocol
  */
               __pyx_t_86 = __pyx_v_cmat_i;
               __pyx_t_87 = __pyx_v_age_a;
@@ -5818,6 +6075,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
  *                                 #term = dist(gen) * r_dt
  */
@@ -5875,6 +6133,37 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 /* "pyrossgeo/_simulation.pyx":337
  *                                 #term = dist(gen) * r_dt
  *                                 term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+=======
+ *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ *                                 term = dist(gen) * r_dt
+ */
+                __pyx_v_cmat_i = (__pyx_v_n.contact_matrix_indices[__pyx_v_mt.infection_index]);
+
+                /* "pyrossgeo/_simulation.pyx":334
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+ *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)             # <<<<<<<<<<<<<<
+ *                                 term = dist(gen) * r_dt
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+ */
+                __pyx_t_89 = __pyx_v_cmat_i;
+                __pyx_t_90 = __pyx_v_age_a;
+                __pyx_t_91 = __pyx_v_mt.infection_index;
+                __pyx_v_dist = std::poisson_distribution<int> ((((__pyx_v_dt * (__pyx_v_n.infection_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_89 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_90 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_91 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S));
+
+                /* "pyrossgeo/_simulation.pyx":335
+ *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+ *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ *                                 term = dist(gen) * r_dt             # <<<<<<<<<<<<<<
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+ *                                 dX_state[si+mt.oi_pos] += term
+ */
+                __pyx_v_term = (__pyx_v_dist(__pyx_v_gen) * __pyx_v_r_dt);
+
+                /* "pyrossgeo/_simulation.pyx":337
+ *                                 term = dist(gen) * r_dt
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+>>>>>>> Implemented stochastic protocol
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  *             # Deterministic
@@ -5883,7 +6172,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_92 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":338
+<<<<<<< HEAD
  *                                 term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+=======
+ *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+>>>>>>> Implemented stochastic protocol
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  *             # Deterministic
@@ -5897,7 +6190,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+=======
+ *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+>>>>>>> Implemented stochastic protocol
  */
               }
             }
@@ -6045,7 +6342,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  *                         for j in range(model_infection_terms_len):             # <<<<<<<<<<<<<<
  *                             mt = model_infection_terms[j]
+<<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:
+=======
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Implemented stochastic protocol
  */
             __pyx_t_53 = __pyx_v_model_infection_terms_len;
             __pyx_t_54 = __pyx_t_53;
@@ -6056,14 +6357,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+=======
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+>>>>>>> Implemented stochastic protocol
  */
               __pyx_v_mt = (__pyx_v_model_infection_terms[__pyx_v_j]);
 
               /* "pyrossgeo/_simulation.pyx":356
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
+<<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:             # <<<<<<<<<<<<<<
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
@@ -6075,50 +6382,97 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 /* "pyrossgeo/_simulation.pyx":358
  *                             if dX_state[si+mt.oi_neg] > 0:
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+=======
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+ *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+ *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
+ */
+              __pyx_t_99 = __pyx_v_cmat_i;
+              __pyx_t_100 = __pyx_v_age_a;
+              __pyx_t_101 = __pyx_v_mt.infection_index;
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_99 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_100 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_101 * __pyx_v__lambdas.strides[2]) ))) > 0.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":357
+ *                             mt = model_infection_terms[j]
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Implemented stochastic protocol
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]             # <<<<<<<<<<<<<<
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  *                                 dX_state[si+mt.oi_pos] += term
  */
                 __pyx_v_cmat_i = (__pyx_v_n.contact_matrix_indices[__pyx_v_mt.infection_index]);
 
+<<<<<<< HEAD
                 /* "pyrossgeo/_simulation.pyx":359
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+=======
+                /* "pyrossgeo/_simulation.pyx":358
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Implemented stochastic protocol
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term
  */
+<<<<<<< HEAD
                 __pyx_t_100 = __pyx_v_cmat_i;
                 __pyx_t_101 = __pyx_v_age_a;
                 __pyx_t_102 = __pyx_v_mt.infection_index;
                 __pyx_v_term = (((__pyx_v_n.infection_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_100 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_101 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_102 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S);
 
                 /* "pyrossgeo/_simulation.pyx":360
+=======
+                __pyx_t_102 = __pyx_v_cmat_i;
+                __pyx_t_103 = __pyx_v_age_a;
+                __pyx_t_104 = __pyx_v_mt.infection_index;
+                __pyx_v_term = (((__pyx_v_n.infection_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_102 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_103 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_104 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S);
+
+                /* "pyrossgeo/_simulation.pyx":359
+>>>>>>> Implemented stochastic protocol
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
  */
+<<<<<<< HEAD
                 __pyx_t_103 = (__pyx_v_si + __pyx_v_mt.oi_pos);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_103 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":361
+=======
+                __pyx_t_105 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_105 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":360
+>>>>>>> Implemented stochastic protocol
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  * 
  *         #### CNode dynamics ############################################
  */
+<<<<<<< HEAD
                 __pyx_t_104 = (__pyx_v_si + __pyx_v_mt.oi_neg);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_104 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+=======
+                __pyx_t_106 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_106 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+>>>>>>> Implemented stochastic protocol
 
                 /* "pyrossgeo/_simulation.pyx":356
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
+<<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:             # <<<<<<<<<<<<<<
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+=======
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+ *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+ *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
+>>>>>>> Implemented stochastic protocol
  */
               }
             }
@@ -6128,7 +6482,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_L93:;
     }
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":365
+=======
+    /* "pyrossgeo/_simulation.pyx":364
+>>>>>>> Implemented stochastic protocol
  *         #### CNode dynamics ############################################
  * 
  *         for to_k in range(max_node_index+1):             # <<<<<<<<<<<<<<
@@ -6140,7 +6498,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     for (__pyx_t_28 = 0; __pyx_t_28 < __pyx_t_22; __pyx_t_28+=1) {
       __pyx_v_to_k = __pyx_t_28;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":369
+=======
+      /* "pyrossgeo/_simulation.pyx":368
+>>>>>>> Implemented stochastic protocol
  *             # Check whether there are any active cnodes going into k
  * 
  *             to_k_is_active = False             # <<<<<<<<<<<<<<
@@ -6149,7 +6511,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
       __pyx_v_to_k_is_active = 0;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":370
+=======
+      /* "pyrossgeo/_simulation.pyx":369
+>>>>>>> Implemented stochastic protocol
  * 
  *             to_k_is_active = False
  *             for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6161,7 +6527,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
         __pyx_v_age_a = __pyx_t_29;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":371
+=======
+        /* "pyrossgeo/_simulation.pyx":370
+>>>>>>> Implemented stochastic protocol
  *             to_k_is_active = False
  *             for age_a in range(age_groups):
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
@@ -6173,7 +6543,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
           __pyx_v_i = __pyx_t_32;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":372
+=======
+          /* "pyrossgeo/_simulation.pyx":371
+>>>>>>> Implemented stochastic protocol
  *             for age_a in range(age_groups):
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
@@ -6182,7 +6556,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":373
+=======
+          /* "pyrossgeo/_simulation.pyx":372
+>>>>>>> Implemented stochastic protocol
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     to_k_is_active = cn.is_on or to_k_is_active             # <<<<<<<<<<<<<<
@@ -6200,7 +6578,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_L120_bool_binop_done:;
           __pyx_v_to_k_is_active = __pyx_t_17;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":374
+=======
+          /* "pyrossgeo/_simulation.pyx":373
+>>>>>>> Implemented stochastic protocol
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     to_k_is_active = cn.is_on or to_k_is_active
  *                     if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6210,7 +6592,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_17 = (__pyx_v_to_k_is_active != 0);
           if (__pyx_t_17) {
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":375
+=======
+            /* "pyrossgeo/_simulation.pyx":374
+>>>>>>> Implemented stochastic protocol
  *                     to_k_is_active = cn.is_on or to_k_is_active
  *                     if to_k_is_active:
  *                         break             # <<<<<<<<<<<<<<
@@ -6219,7 +6605,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
             goto __pyx_L119_break;
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":374
+=======
+            /* "pyrossgeo/_simulation.pyx":373
+>>>>>>> Implemented stochastic protocol
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     to_k_is_active = cn.is_on or to_k_is_active
  *                     if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6230,7 +6620,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
         __pyx_L119_break:;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":376
+=======
+        /* "pyrossgeo/_simulation.pyx":375
+>>>>>>> Implemented stochastic protocol
  *                     if to_k_is_active:
  *                         break
  *                 if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6240,7 +6634,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_17 = (__pyx_v_to_k_is_active != 0);
         if (__pyx_t_17) {
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":377
+=======
+          /* "pyrossgeo/_simulation.pyx":376
+>>>>>>> Implemented stochastic protocol
  *                         break
  *                 if to_k_is_active:
  *                     break             # <<<<<<<<<<<<<<
@@ -6249,7 +6647,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           goto __pyx_L117_break;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":376
+=======
+          /* "pyrossgeo/_simulation.pyx":375
+>>>>>>> Implemented stochastic protocol
  *                     if to_k_is_active:
  *                         break
  *                 if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6260,7 +6662,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       }
       __pyx_L117_break:;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":379
+=======
+      /* "pyrossgeo/_simulation.pyx":378
+>>>>>>> Implemented stochastic protocol
  *                     break
  * 
  *             if not to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6270,7 +6676,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_17 = ((!(__pyx_v_to_k_is_active != 0)) != 0);
       if (__pyx_t_17) {
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":380
+=======
+        /* "pyrossgeo/_simulation.pyx":379
+>>>>>>> Implemented stochastic protocol
  * 
  *             if not to_k_is_active:
  *                 continue             # <<<<<<<<<<<<<<
@@ -6279,7 +6689,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         goto __pyx_L114_continue;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":379
+=======
+        /* "pyrossgeo/_simulation.pyx":378
+>>>>>>> Implemented stochastic protocol
  *                     break
  * 
  *             if not to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6288,7 +6702,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":384
+=======
+      /* "pyrossgeo/_simulation.pyx":383
+>>>>>>> Implemented stochastic protocol
  *             # Compute the total populations of each class at loc_j, as well as the populaitons of each age group
  * 
  *             for o in range(model_dim):             # <<<<<<<<<<<<<<
@@ -6300,18 +6718,30 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
         __pyx_v_o = __pyx_t_29;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":385
+=======
+        /* "pyrossgeo/_simulation.pyx":384
+>>>>>>> Implemented stochastic protocol
  * 
  *             for o in range(model_dim):
  *                 total_Os[o] = 0             # <<<<<<<<<<<<<<
  * 
  *             for age_a in range(age_groups):
  */
+<<<<<<< HEAD
         __pyx_t_105 = __pyx_v_o;
         *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_105 * __pyx_v_total_Os.strides[0]) )) = 0.0;
       }
 
       /* "pyrossgeo/_simulation.pyx":387
+=======
+        __pyx_t_107 = __pyx_v_o;
+        *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_107 * __pyx_v_total_Os.strides[0]) )) = 0.0;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":386
+>>>>>>> Implemented stochastic protocol
  *                 total_Os[o] = 0
  * 
  *             for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6323,17 +6753,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
         __pyx_v_age_a = __pyx_t_29;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":388
+=======
+        /* "pyrossgeo/_simulation.pyx":387
+>>>>>>> Implemented stochastic protocol
  * 
  *             for age_a in range(age_groups):
  *                 _Ns[age_a] = 0             # <<<<<<<<<<<<<<
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  */
+<<<<<<< HEAD
         __pyx_t_106 = __pyx_v_age_a;
         *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_106 * __pyx_v__Ns.strides[0]) )) = 0.0;
 
         /* "pyrossgeo/_simulation.pyx":389
+=======
+        __pyx_t_108 = __pyx_v_age_a;
+        *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_108 * __pyx_v__Ns.strides[0]) )) = 0.0;
+
+        /* "pyrossgeo/_simulation.pyx":388
+>>>>>>> Implemented stochastic protocol
  *             for age_a in range(age_groups):
  *                 _Ns[age_a] = 0
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
@@ -6345,7 +6786,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
           __pyx_v_i = __pyx_t_32;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":390
+=======
+          /* "pyrossgeo/_simulation.pyx":389
+>>>>>>> Implemented stochastic protocol
  *                 _Ns[age_a] = 0
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
@@ -6354,7 +6799,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":391
+=======
+          /* "pyrossgeo/_simulation.pyx":390
+>>>>>>> Implemented stochastic protocol
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     for o in range(model_dim):             # <<<<<<<<<<<<<<
@@ -6366,32 +6815,54 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
             __pyx_v_o = __pyx_t_55;
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":392
+=======
+            /* "pyrossgeo/_simulation.pyx":391
+>>>>>>> Implemented stochastic protocol
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     for o in range(model_dim):
  *                         total_Os[o] += X_state[cn.state_index + o]             # <<<<<<<<<<<<<<
  *                         _Ns[age_a] += X_state[cn.state_index + o]
  * 
  */
+<<<<<<< HEAD
             __pyx_t_107 = (__pyx_v_cn.state_index + __pyx_v_o);
             __pyx_t_108 = __pyx_v_o;
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_108 * __pyx_v_total_Os.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_107 * __pyx_v_X_state.strides[0]) )));
 
             /* "pyrossgeo/_simulation.pyx":393
+=======
+            __pyx_t_109 = (__pyx_v_cn.state_index + __pyx_v_o);
+            __pyx_t_110 = __pyx_v_o;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_110 * __pyx_v_total_Os.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_109 * __pyx_v_X_state.strides[0]) )));
+
+            /* "pyrossgeo/_simulation.pyx":392
+>>>>>>> Implemented stochastic protocol
  *                     for o in range(model_dim):
  *                         total_Os[o] += X_state[cn.state_index + o]
  *                         _Ns[age_a] += X_state[cn.state_index + o]             # <<<<<<<<<<<<<<
  * 
  *             #### Compute lambdas
  */
+<<<<<<< HEAD
             __pyx_t_109 = (__pyx_v_cn.state_index + __pyx_v_o);
             __pyx_t_110 = __pyx_v_age_a;
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_110 * __pyx_v__Ns.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_109 * __pyx_v_X_state.strides[0]) )));
+=======
+            __pyx_t_111 = (__pyx_v_cn.state_index + __pyx_v_o);
+            __pyx_t_112 = __pyx_v_age_a;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_112 * __pyx_v__Ns.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_111 * __pyx_v_X_state.strides[0]) )));
+>>>>>>> Implemented stochastic protocol
           }
         }
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":397
+=======
+      /* "pyrossgeo/_simulation.pyx":396
+>>>>>>> Implemented stochastic protocol
  *             #### Compute lambdas
  * 
  *             for ui in range(infection_classes_num):             # <<<<<<<<<<<<<<
@@ -6403,17 +6874,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
         __pyx_v_ui = __pyx_t_29;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":398
+=======
+        /* "pyrossgeo/_simulation.pyx":397
+>>>>>>> Implemented stochastic protocol
  * 
  *             for ui in range(infection_classes_num):
  *                 u = infection_classes_indices[ui]             # <<<<<<<<<<<<<<
  * 
  *                 # Find the infecteds of each age group
  */
+<<<<<<< HEAD
         __pyx_t_111 = __pyx_v_ui;
         __pyx_v_u = (*((int *) ( /* dim=0 */ (__pyx_v_infection_classes_indices.data + __pyx_t_111 * __pyx_v_infection_classes_indices.strides[0]) )));
 
         /* "pyrossgeo/_simulation.pyx":402
+=======
+        __pyx_t_113 = __pyx_v_ui;
+        __pyx_v_u = (*((int *) ( /* dim=0 */ (__pyx_v_infection_classes_indices.data + __pyx_t_113 * __pyx_v_infection_classes_indices.strides[0]) )));
+
+        /* "pyrossgeo/_simulation.pyx":401
+>>>>>>> Implemented stochastic protocol
  *                 # Find the infecteds of each age group
  * 
  *                 for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6425,17 +6907,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
           __pyx_v_age_a = __pyx_t_32;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":403
+=======
+          /* "pyrossgeo/_simulation.pyx":402
+>>>>>>> Implemented stochastic protocol
  * 
  *                 for age_a in range(age_groups):
  *                     _Is[age_a] = 0             # <<<<<<<<<<<<<<
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  */
+<<<<<<< HEAD
           __pyx_t_112 = __pyx_v_age_a;
           *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_112 * __pyx_v__Is.strides[0]) )) = 0.0;
 
           /* "pyrossgeo/_simulation.pyx":404
+=======
+          __pyx_t_114 = __pyx_v_age_a;
+          *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_114 * __pyx_v__Is.strides[0]) )) = 0.0;
+
+          /* "pyrossgeo/_simulation.pyx":403
+>>>>>>> Implemented stochastic protocol
  *                 for age_a in range(age_groups):
  *                     _Is[age_a] = 0
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
@@ -6447,7 +6940,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
             __pyx_v_i = __pyx_t_55;
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":405
+=======
+            /* "pyrossgeo/_simulation.pyx":404
+>>>>>>> Implemented stochastic protocol
  *                     _Is[age_a] = 0
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
@@ -6456,13 +6953,18 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
             __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":406
+=======
+            /* "pyrossgeo/_simulation.pyx":405
+>>>>>>> Implemented stochastic protocol
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                         _Is[age_a] += X_state[cn.state_index + u]             # <<<<<<<<<<<<<<
  * 
  *                 # Compute lambdas
  */
+<<<<<<< HEAD
             __pyx_t_113 = (__pyx_v_cn.state_index + __pyx_v_u);
             __pyx_t_114 = __pyx_v_age_a;
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_114 * __pyx_v__Is.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_113 * __pyx_v_X_state.strides[0]) )));
@@ -6470,6 +6972,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
         /* "pyrossgeo/_simulation.pyx":410
+=======
+            __pyx_t_115 = (__pyx_v_cn.state_index + __pyx_v_u);
+            __pyx_t_116 = __pyx_v_age_a;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_116 * __pyx_v__Is.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_115 * __pyx_v_X_state.strides[0]) )));
+          }
+        }
+
+        /* "pyrossgeo/_simulation.pyx":409
+>>>>>>> Implemented stochastic protocol
  *                 # Compute lambdas
  * 
  *                 for cmat_i in range(contact_matrices_num):             # <<<<<<<<<<<<<<
@@ -6481,7 +6992,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
           __pyx_v_cmat_i = __pyx_t_32;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":411
+=======
+          /* "pyrossgeo/_simulation.pyx":410
+>>>>>>> Implemented stochastic protocol
  * 
  *                 for cmat_i in range(contact_matrices_num):
  *                     for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6493,19 +7008,32 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
             __pyx_v_age_a = __pyx_t_55;
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":412
+=======
+            /* "pyrossgeo/_simulation.pyx":411
+>>>>>>> Implemented stochastic protocol
  *                 for cmat_i in range(contact_matrices_num):
  *                     for age_a in range(age_groups):
  *                         _lambdas[cmat_i][age_a][ui] = 0             # <<<<<<<<<<<<<<
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
  */
+<<<<<<< HEAD
             __pyx_t_115 = __pyx_v_cmat_i;
             __pyx_t_116 = __pyx_v_age_a;
             __pyx_t_117 = __pyx_v_ui;
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_115 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_116 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_117 * __pyx_v__lambdas.strides[2]) )) = 0.0;
 
             /* "pyrossgeo/_simulation.pyx":413
+=======
+            __pyx_t_117 = __pyx_v_cmat_i;
+            __pyx_t_118 = __pyx_v_age_a;
+            __pyx_t_119 = __pyx_v_ui;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_117 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_118 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_119 * __pyx_v__lambdas.strides[2]) )) = 0.0;
+
+            /* "pyrossgeo/_simulation.pyx":412
+>>>>>>> Implemented stochastic protocol
  *                     for age_a in range(age_groups):
  *                         _lambdas[cmat_i][age_a][ui] = 0
  *                         for age_b in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6517,24 +7045,37 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             for (__pyx_t_69 = 0; __pyx_t_69 < __pyx_t_68; __pyx_t_69+=1) {
               __pyx_v_age_b = __pyx_t_69;
 
+<<<<<<< HEAD
               /* "pyrossgeo/_simulation.pyx":414
+=======
+              /* "pyrossgeo/_simulation.pyx":413
+>>>>>>> Implemented stochastic protocol
  *                         _lambdas[cmat_i][age_a][ui] = 0
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node             # <<<<<<<<<<<<<<
  *                                 _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
  * 
  */
+<<<<<<< HEAD
               __pyx_t_118 = __pyx_v_age_b;
               __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_118 * __pyx_v__Ns.strides[0]) ))) > 1.0) != 0);
               if (__pyx_t_17) {
 
                 /* "pyrossgeo/_simulation.pyx":415
+=======
+              __pyx_t_120 = __pyx_v_age_b;
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_120 * __pyx_v__Ns.strides[0]) ))) > 1.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":414
+>>>>>>> Implemented stochastic protocol
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
  *                                 _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]             # <<<<<<<<<<<<<<
  * 
  *             #### Decide whether deterministic or stochastic
  */
+<<<<<<< HEAD
                 __pyx_t_119 = __pyx_v_cmat_i;
                 __pyx_t_120 = __pyx_v_age_a;
                 __pyx_t_121 = __pyx_v_age_b;
@@ -6546,6 +7087,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_124 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_125 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_126 * __pyx_v__lambdas.strides[2]) )) += (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_contact_matrices.data + __pyx_t_119 * __pyx_v_contact_matrices.strides[0]) ) + __pyx_t_120 * __pyx_v_contact_matrices.strides[1]) ) + __pyx_t_121 * __pyx_v_contact_matrices.strides[2]) ))) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_122 * __pyx_v__Is.strides[0]) )))) / (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_123 * __pyx_v__Ns.strides[0]) ))));
 
                 /* "pyrossgeo/_simulation.pyx":414
+=======
+                __pyx_t_121 = __pyx_v_cmat_i;
+                __pyx_t_122 = __pyx_v_age_a;
+                __pyx_t_123 = __pyx_v_age_b;
+                __pyx_t_124 = __pyx_v_age_b;
+                __pyx_t_125 = __pyx_v_age_b;
+                __pyx_t_126 = __pyx_v_cmat_i;
+                __pyx_t_127 = __pyx_v_age_a;
+                __pyx_t_128 = __pyx_v_ui;
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_126 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_127 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_128 * __pyx_v__lambdas.strides[2]) )) += (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_contact_matrices.data + __pyx_t_121 * __pyx_v_contact_matrices.strides[0]) ) + __pyx_t_122 * __pyx_v_contact_matrices.strides[1]) ) + __pyx_t_123 * __pyx_v_contact_matrices.strides[2]) ))) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_124 * __pyx_v__Is.strides[0]) )))) / (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_125 * __pyx_v__Ns.strides[0]) ))));
+
+                /* "pyrossgeo/_simulation.pyx":413
+>>>>>>> Implemented stochastic protocol
  *                         _lambdas[cmat_i][age_a][ui] = 0
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node             # <<<<<<<<<<<<<<
@@ -6558,7 +7112,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":419
+=======
+      /* "pyrossgeo/_simulation.pyx":418
+>>>>>>> Implemented stochastic protocol
  *             #### Decide whether deterministic or stochastic
  * 
  *             if to_k_is_stochastic[loc_j]:             # <<<<<<<<<<<<<<
@@ -6568,11 +7126,16 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_17 = ((__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) != 0);
       if (__pyx_t_17) {
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":420
+=======
+        /* "pyrossgeo/_simulation.pyx":419
+>>>>>>> Implemented stochastic protocol
  * 
  *             if to_k_is_stochastic[loc_j]:
  *                 to_k_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
  *                 for o in range(model_dim):
+<<<<<<< HEAD
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
  */
         (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = 0;
@@ -6582,6 +7145,17 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 to_k_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+=======
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+ */
+        (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = 0;
+
+        /* "pyrossgeo/_simulation.pyx":420
+ *             if to_k_is_stochastic[loc_j]:
+ *                 to_k_is_stochastic[loc_j] = False
+ *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+>>>>>>> Implemented stochastic protocol
  *             else:
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -6589,10 +7163,17 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
           __pyx_v_o = __pyx_t_29;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":422
  *                 to_k_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+=======
+          /* "pyrossgeo/_simulation.pyx":421
+ *                 to_k_is_stochastic[loc_j] = False
+ *                 for o in range(model_dim):
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Implemented stochastic protocol
  *             else:
  *                 to_k_is_stochastic[loc_j] = True
  */
@@ -6602,6 +7183,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_t_17 = __pyx_t_35;
             goto __pyx_L149_bool_binop_done;
           }
+<<<<<<< HEAD
           __pyx_t_127 = __pyx_v_o;
           __pyx_t_2 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_127 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 422, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
@@ -6612,12 +7194,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 422, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+=======
+          __pyx_t_129 = __pyx_v_o;
+          __pyx_t_3 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_129 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 421, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_18);
+          __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_18, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+          __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+>>>>>>> Implemented stochastic protocol
           __pyx_t_17 = __pyx_t_35;
           __pyx_L149_bool_binop_done:;
           (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = __pyx_t_17;
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":419
+=======
+        /* "pyrossgeo/_simulation.pyx":418
+>>>>>>> Implemented stochastic protocol
  *             #### Decide whether deterministic or stochastic
  * 
  *             if to_k_is_stochastic[loc_j]:             # <<<<<<<<<<<<<<
@@ -6627,21 +7225,38 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         goto __pyx_L146;
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":424
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
  *             else:
  *                 to_k_is_stochastic[loc_j] = True             # <<<<<<<<<<<<<<
  *                 for o in range(model_dim):
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
+=======
+      /* "pyrossgeo/_simulation.pyx":423
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+ *             else:
+ *                 to_k_is_stochastic[loc_j] = True             # <<<<<<<<<<<<<<
+ *                 for o in range(model_dim):
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])
+>>>>>>> Implemented stochastic protocol
  */
       /*else*/ {
         (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = 1;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":425
  *             else:
  *                 to_k_is_stochastic[loc_j] = True
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
+=======
+        /* "pyrossgeo/_simulation.pyx":424
+ *             else:
+ *                 to_k_is_stochastic[loc_j] = True
+ *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])
+>>>>>>> Implemented stochastic protocol
  * 
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -6649,10 +7264,17 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
           __pyx_v_o = __pyx_t_29;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":426
  *                 to_k_is_stochastic[loc_j] = True
  *                 for o in range(model_dim):
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])             # <<<<<<<<<<<<<<
+=======
+          /* "pyrossgeo/_simulation.pyx":425
+ *                 to_k_is_stochastic[loc_j] = True
+ *                 for o in range(model_dim):
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])             # <<<<<<<<<<<<<<
+>>>>>>> Implemented stochastic protocol
  * 
  *             # Stochastic
  */
@@ -6662,6 +7284,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_t_17 = __pyx_t_35;
             goto __pyx_L153_bool_binop_done;
           }
+<<<<<<< HEAD
           __pyx_t_128 = __pyx_v_o;
           __pyx_t_18 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_128 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 426, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_18);
@@ -6672,6 +7295,18 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 426, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+=======
+          __pyx_t_130 = __pyx_v_o;
+          __pyx_t_2 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_130 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_2);
+          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_18);
+          __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_18, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+          __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 425, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+>>>>>>> Implemented stochastic protocol
           __pyx_t_17 = __pyx_t_35;
           __pyx_L153_bool_binop_done:;
           (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = __pyx_t_17;
@@ -6679,6 +7314,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       }
       __pyx_L146:;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":429
  * 
  *             # Stochastic
@@ -7011,145 +7647,257 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":458
  *                 print(123123)
+=======
+      /* "pyrossgeo/_simulation.pyx":455
+ *             # Deterministic
+ *             else:
+ *                 for age_a in range(age_groups):             # <<<<<<<<<<<<<<
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):
+ *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+ */
+      __pyx_t_27 = __pyx_v_age_groups;
+      __pyx_t_25 = __pyx_t_27;
+      for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
+        __pyx_v_age_a = __pyx_t_29;
+
+        /* "pyrossgeo/_simulation.pyx":456
+ *             else:
+>>>>>>> Implemented stochastic protocol
  *                 for age_a in range(age_groups):
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                         si = cn.state_index
  */
+<<<<<<< HEAD
           __pyx_t_30 = ((__pyx_v_cnodes_into_k_len[__pyx_v_age_a])[__pyx_v_to_k]);
           __pyx_t_31 = __pyx_t_30;
           for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
             __pyx_v_i = __pyx_t_32;
 
             /* "pyrossgeo/_simulation.pyx":459
+=======
+        __pyx_t_30 = ((__pyx_v_cnodes_into_k_len[__pyx_v_age_a])[__pyx_v_to_k]);
+        __pyx_t_31 = __pyx_t_30;
+        for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
+          __pyx_v_i = __pyx_t_32;
+
+          /* "pyrossgeo/_simulation.pyx":457
+>>>>>>> Implemented stochastic protocol
  *                 for age_a in range(age_groups):
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
  *                         si = cn.state_index
  *                         S = X_state[si] # S is always located at the state index
  */
+<<<<<<< HEAD
             __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
             /* "pyrossgeo/_simulation.pyx":460
+=======
+          __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
+
+          /* "pyrossgeo/_simulation.pyx":458
+>>>>>>> Implemented stochastic protocol
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                         si = cn.state_index             # <<<<<<<<<<<<<<
  *                         S = X_state[si] # S is always located at the state index
  * 
  */
+<<<<<<< HEAD
             __pyx_t_53 = __pyx_v_cn.state_index;
             __pyx_v_si = __pyx_t_53;
 
             /* "pyrossgeo/_simulation.pyx":461
+=======
+          __pyx_t_53 = __pyx_v_cn.state_index;
+          __pyx_v_si = __pyx_t_53;
+
+          /* "pyrossgeo/_simulation.pyx":459
+>>>>>>> Implemented stochastic protocol
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                         si = cn.state_index
  *                         S = X_state[si] # S is always located at the state index             # <<<<<<<<<<<<<<
  * 
  *                         for j in range(model_linear_terms_len):
  */
+<<<<<<< HEAD
             __pyx_t_142 = __pyx_v_si;
             __pyx_v_S = (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_142 * __pyx_v_X_state.strides[0]) )));
 
             /* "pyrossgeo/_simulation.pyx":463
+=======
+          __pyx_t_131 = __pyx_v_si;
+          __pyx_v_S = (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_131 * __pyx_v_X_state.strides[0]) )));
+
+          /* "pyrossgeo/_simulation.pyx":461
+>>>>>>> Implemented stochastic protocol
  *                         S = X_state[si] # S is always located at the state index
  * 
  *                         for j in range(model_linear_terms_len):             # <<<<<<<<<<<<<<
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
  */
+<<<<<<< HEAD
             __pyx_t_53 = __pyx_v_model_linear_terms_len;
             __pyx_t_54 = __pyx_t_53;
             for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
               __pyx_v_j = __pyx_t_55;
 
               /* "pyrossgeo/_simulation.pyx":464
+=======
+          __pyx_t_53 = __pyx_v_model_linear_terms_len;
+          __pyx_t_54 = __pyx_t_53;
+          for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
+            __pyx_v_j = __pyx_t_55;
+
+            /* "pyrossgeo/_simulation.pyx":462
+>>>>>>> Implemented stochastic protocol
  * 
  *                         for j in range(model_linear_terms_len):
  *                             mt = model_linear_terms[j]             # <<<<<<<<<<<<<<
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
  *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
  */
+<<<<<<< HEAD
               __pyx_v_mt = (__pyx_v_model_linear_terms[__pyx_v_j]);
 
               /* "pyrossgeo/_simulation.pyx":465
+=======
+            __pyx_v_mt = (__pyx_v_model_linear_terms[__pyx_v_j]);
+
+            /* "pyrossgeo/_simulation.pyx":463
+>>>>>>> Implemented stochastic protocol
  *                         for j in range(model_linear_terms_len):
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
  *                                 dX_state[si+mt.oi_pos] += term
  */
+<<<<<<< HEAD
               __pyx_t_143 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
               __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_143 * __pyx_v_X_state.strides[0]) ))) > 0.0) != 0);
               if (__pyx_t_17) {
 
                 /* "pyrossgeo/_simulation.pyx":466
+=======
+            __pyx_t_132 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+            __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_132 * __pyx_v_X_state.strides[0]) ))) > 0.0) != 0);
+            if (__pyx_t_17) {
+
+              /* "pyrossgeo/_simulation.pyx":464
+>>>>>>> Implemented stochastic protocol
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
  *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term
  */
+<<<<<<< HEAD
                 __pyx_t_144 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
                 __pyx_v_term = ((__pyx_v_cn.linear_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_144 * __pyx_v_X_state.strides[0]) ))));
 
                 /* "pyrossgeo/_simulation.pyx":467
+=======
+              __pyx_t_133 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+              __pyx_v_term = ((__pyx_v_cn.linear_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_133 * __pyx_v_X_state.strides[0]) ))));
+
+              /* "pyrossgeo/_simulation.pyx":465
+>>>>>>> Implemented stochastic protocol
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
  *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
  */
+<<<<<<< HEAD
                 __pyx_t_145 = (__pyx_v_si + __pyx_v_mt.oi_pos);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_145 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":468
+=======
+              __pyx_t_134 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_134 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+              /* "pyrossgeo/_simulation.pyx":466
+>>>>>>> Implemented stochastic protocol
  *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  * 
  *                         for j in range(model_infection_terms_len):
  */
+<<<<<<< HEAD
                 __pyx_t_146 = (__pyx_v_si + __pyx_v_mt.oi_neg);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_146 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":465
+=======
+              __pyx_t_135 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_135 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+              /* "pyrossgeo/_simulation.pyx":463
+>>>>>>> Implemented stochastic protocol
  *                         for j in range(model_linear_terms_len):
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
  *                                 dX_state[si+mt.oi_pos] += term
  */
+<<<<<<< HEAD
               }
             }
 
             /* "pyrossgeo/_simulation.pyx":470
+=======
+            }
+          }
+
+          /* "pyrossgeo/_simulation.pyx":468
+>>>>>>> Implemented stochastic protocol
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
  *                         for j in range(model_infection_terms_len):             # <<<<<<<<<<<<<<
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  */
+<<<<<<< HEAD
             __pyx_t_53 = __pyx_v_model_infection_terms_len;
             __pyx_t_54 = __pyx_t_53;
             for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
               __pyx_v_j = __pyx_t_55;
 
               /* "pyrossgeo/_simulation.pyx":471
+=======
+          __pyx_t_53 = __pyx_v_model_infection_terms_len;
+          __pyx_t_54 = __pyx_t_53;
+          for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
+            __pyx_v_j = __pyx_t_55;
+
+            /* "pyrossgeo/_simulation.pyx":469
+>>>>>>> Implemented stochastic protocol
  * 
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]             # <<<<<<<<<<<<<<
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
  */
+<<<<<<< HEAD
               __pyx_v_mt = (__pyx_v_model_infection_terms[__pyx_v_j]);
 
               /* "pyrossgeo/_simulation.pyx":472
+=======
+            __pyx_v_mt = (__pyx_v_model_infection_terms[__pyx_v_j]);
+
+            /* "pyrossgeo/_simulation.pyx":470
+>>>>>>> Implemented stochastic protocol
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  */
+<<<<<<< HEAD
               __pyx_t_147 = __pyx_v_cmat_i;
               __pyx_t_148 = __pyx_v_age_a;
               __pyx_t_149 = __pyx_v_mt.infection_index;
@@ -7157,63 +7905,111 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
               if (__pyx_t_17) {
 
                 /* "pyrossgeo/_simulation.pyx":473
+=======
+            __pyx_t_136 = __pyx_v_cmat_i;
+            __pyx_t_137 = __pyx_v_age_a;
+            __pyx_t_138 = __pyx_v_mt.infection_index;
+            __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_136 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_137 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_138 * __pyx_v__lambdas.strides[2]) ))) > 0.0) != 0);
+            if (__pyx_t_17) {
+
+              /* "pyrossgeo/_simulation.pyx":471
+>>>>>>> Implemented stochastic protocol
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]             # <<<<<<<<<<<<<<
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  *                                 dX_state[si+mt.oi_pos] += term
  */
+<<<<<<< HEAD
                 __pyx_v_cmat_i = (__pyx_v_cn.contact_matrix_indices[__pyx_v_mt.infection_index]);
 
                 /* "pyrossgeo/_simulation.pyx":474
+=======
+              __pyx_v_cmat_i = (__pyx_v_cn.contact_matrix_indices[__pyx_v_mt.infection_index]);
+
+              /* "pyrossgeo/_simulation.pyx":472
+>>>>>>> Implemented stochastic protocol
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term
  */
+<<<<<<< HEAD
                 __pyx_t_150 = __pyx_v_cmat_i;
                 __pyx_t_151 = __pyx_v_age_a;
                 __pyx_t_152 = __pyx_v_mt.infection_index;
                 __pyx_v_term = (((__pyx_v_cn.infection_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_150 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_151 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_152 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S);
 
                 /* "pyrossgeo/_simulation.pyx":475
+=======
+              __pyx_t_139 = __pyx_v_cmat_i;
+              __pyx_t_140 = __pyx_v_age_a;
+              __pyx_t_141 = __pyx_v_mt.infection_index;
+              __pyx_v_term = (((__pyx_v_cn.infection_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_139 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_140 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_141 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S);
+
+              /* "pyrossgeo/_simulation.pyx":473
+>>>>>>> Implemented stochastic protocol
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
  */
+<<<<<<< HEAD
                 __pyx_t_153 = (__pyx_v_si + __pyx_v_mt.oi_pos);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_153 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":476
+=======
+              __pyx_t_142 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_142 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+              /* "pyrossgeo/_simulation.pyx":474
+>>>>>>> Implemented stochastic protocol
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  * 
  *         ################################################################
  */
+<<<<<<< HEAD
                 __pyx_t_154 = (__pyx_v_si + __pyx_v_mt.oi_neg);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_154 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
 
                 /* "pyrossgeo/_simulation.pyx":472
+=======
+              __pyx_t_143 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_143 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+              /* "pyrossgeo/_simulation.pyx":470
+>>>>>>> Implemented stochastic protocol
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  */
+<<<<<<< HEAD
               }
+=======
+>>>>>>> Implemented stochastic protocol
             }
           }
         }
       }
+<<<<<<< HEAD
       __pyx_L155:;
       __pyx_L114_continue:;
     }
 
     /* "pyrossgeo/_simulation.pyx":484
+=======
+      __pyx_L114_continue:;
+    }
+
+    /* "pyrossgeo/_simulation.pyx":482
+>>>>>>> Implemented stochastic protocol
  *         #### Node to CNode #############################################
  * 
  *         for Ti in range(Ts_num):             # <<<<<<<<<<<<<<
@@ -7225,7 +8021,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     for (__pyx_t_25 = 0; __pyx_t_25 < __pyx_t_27; __pyx_t_25+=1) {
       __pyx_v_Ti = __pyx_t_25;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":486
+=======
+      /* "pyrossgeo/_simulation.pyx":484
+>>>>>>> Implemented stochastic protocol
  *         for Ti in range(Ts_num):
  * 
  *             t1 = Ts[Ti].t1             # <<<<<<<<<<<<<<
@@ -7235,7 +8035,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_15 = (__pyx_v_Ts[__pyx_v_Ti]).t1;
       __pyx_v_t1 = __pyx_t_15;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":487
+=======
+      /* "pyrossgeo/_simulation.pyx":485
+>>>>>>> Implemented stochastic protocol
  * 
  *             t1 = Ts[Ti].t1
  *             t2 = Ts[Ti].t2             # <<<<<<<<<<<<<<
@@ -7245,7 +8049,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_15 = (__pyx_v_Ts[__pyx_v_Ti]).t2;
       __pyx_v_t2 = __pyx_t_15;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":489
+=======
+      /* "pyrossgeo/_simulation.pyx":487
+>>>>>>> Implemented stochastic protocol
  *             t2 = Ts[Ti].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
@@ -7256,6 +8064,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_35) {
       } else {
         __pyx_t_17 = __pyx_t_35;
+<<<<<<< HEAD
         goto __pyx_L179_bool_binop_done;
       }
       __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
@@ -7264,6 +8073,16 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_17) {
 
         /* "pyrossgeo/_simulation.pyx":490
+=======
+        goto __pyx_L168_bool_binop_done;
+      }
+      __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
+      __pyx_t_17 = __pyx_t_35;
+      __pyx_L168_bool_binop_done:;
+      if (__pyx_t_17) {
+
+        /* "pyrossgeo/_simulation.pyx":488
+>>>>>>> Implemented stochastic protocol
  * 
  *             if tday >= t1 and tday <= t2:
  *                 fro_n = nodes[Ts[Ti].fro_node_index] # Origin node             # <<<<<<<<<<<<<<
@@ -7272,7 +8091,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_fro_n = (__pyx_v_nodes[(__pyx_v_Ts[__pyx_v_Ti]).fro_node_index]);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":491
+=======
+        /* "pyrossgeo/_simulation.pyx":489
+>>>>>>> Implemented stochastic protocol
  *             if tday >= t1 and tday <= t2:
  *                 fro_n = nodes[Ts[Ti].fro_node_index] # Origin node
  *                 cn = cnodes[Ts[Ti].cnode_index] # Commuting node             # <<<<<<<<<<<<<<
@@ -7281,7 +8104,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_cn = (__pyx_v_cnodes[(__pyx_v_Ts[__pyx_v_Ti]).cnode_index]);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":494
+=======
+        /* "pyrossgeo/_simulation.pyx":492
+>>>>>>> Implemented stochastic protocol
  * 
  *                 # Compute current population at origin node
  *                 fro_N = 0             # <<<<<<<<<<<<<<
@@ -7290,7 +8117,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_fro_N = 0.0;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":495
+=======
+        /* "pyrossgeo/_simulation.pyx":493
+>>>>>>> Implemented stochastic protocol
  *                 # Compute current population at origin node
  *                 fro_N = 0
  *                 for oi in range(model_dim):             # <<<<<<<<<<<<<<
@@ -7302,18 +8133,30 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_30; __pyx_t_31+=1) {
           __pyx_v_oi = __pyx_t_31;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":496
+=======
+          /* "pyrossgeo/_simulation.pyx":494
+>>>>>>> Implemented stochastic protocol
  *                 fro_N = 0
  *                 for oi in range(model_dim):
  *                     fro_N += X_state[fro_n.state_index + oi]             # <<<<<<<<<<<<<<
  * 
  *                 # If this commuting schedule is just starting, then
  */
+<<<<<<< HEAD
           __pyx_t_155 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
           __pyx_v_fro_N = (__pyx_v_fro_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_155 * __pyx_v_X_state.strides[0]) ))));
         }
 
         /* "pyrossgeo/_simulation.pyx":500
+=======
+          __pyx_t_144 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
+          __pyx_v_fro_N = (__pyx_v_fro_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_144 * __pyx_v_X_state.strides[0]) ))));
+        }
+
+        /* "pyrossgeo/_simulation.pyx":498
+>>>>>>> Implemented stochastic protocol
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:             # <<<<<<<<<<<<<<
@@ -7323,7 +8166,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_17 = ((!((__pyx_v_Ts[__pyx_v_Ti]).is_on != 0)) != 0);
         if (__pyx_t_17) {
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":501
+=======
+          /* "pyrossgeo/_simulation.pyx":499
+>>>>>>> Implemented stochastic protocol
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:
  *                     if Ts[Ti].use_percentage:             # <<<<<<<<<<<<<<
@@ -7333,7 +8180,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_17 = ((__pyx_v_Ts[__pyx_v_Ti]).use_percentage != 0);
           if (__pyx_t_17) {
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":502
+=======
+            /* "pyrossgeo/_simulation.pyx":500
+>>>>>>> Implemented stochastic protocol
  *                 if not Ts[Ti].is_on:
  *                     if Ts[Ti].use_percentage:
  *                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage             # <<<<<<<<<<<<<<
@@ -7342,17 +8193,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
             (__pyx_v_Ts[__pyx_v_Ti]).N0 = (__pyx_v_fro_N * (__pyx_v_Ts[__pyx_v_Ti]).move_percentage);
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":501
+=======
+            /* "pyrossgeo/_simulation.pyx":499
+>>>>>>> Implemented stochastic protocol
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:
  *                     if Ts[Ti].use_percentage:             # <<<<<<<<<<<<<<
  *                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage
  *                     else:
  */
+<<<<<<< HEAD
             goto __pyx_L184;
           }
 
           /* "pyrossgeo/_simulation.pyx":504
+=======
+            goto __pyx_L173;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":502
+>>>>>>> Implemented stochastic protocol
  *                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage
  *                     else:
  *                         Ts[Ti].N0 = Ts[Ti].move_N             # <<<<<<<<<<<<<<
@@ -7363,9 +8225,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_t_15 = (__pyx_v_Ts[__pyx_v_Ti]).move_N;
             (__pyx_v_Ts[__pyx_v_Ti]).N0 = __pyx_t_15;
           }
+<<<<<<< HEAD
           __pyx_L184:;
 
           /* "pyrossgeo/_simulation.pyx":505
+=======
+          __pyx_L173:;
+
+          /* "pyrossgeo/_simulation.pyx":503
+>>>>>>> Implemented stochastic protocol
  *                     else:
  *                         Ts[Ti].N0 = Ts[Ti].move_N
  *                     Ts[Ti].is_on = True             # <<<<<<<<<<<<<<
@@ -7374,7 +8242,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           (__pyx_v_Ts[__pyx_v_Ti]).is_on = 1;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":506
+=======
+          /* "pyrossgeo/_simulation.pyx":504
+>>>>>>> Implemented stochastic protocol
  *                         Ts[Ti].N0 = Ts[Ti].move_N
  *                     Ts[Ti].is_on = True
  *                     cn.is_on = True # Turn on commuter node. It will be turned off in the "CNode to Node" section             # <<<<<<<<<<<<<<
@@ -7383,7 +8255,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           __pyx_v_cn.is_on = 1;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":500
+=======
+          /* "pyrossgeo/_simulation.pyx":498
+>>>>>>> Implemented stochastic protocol
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:             # <<<<<<<<<<<<<<
@@ -7392,7 +8268,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":509
+=======
+        /* "pyrossgeo/_simulation.pyx":507
+>>>>>>> Implemented stochastic protocol
  * 
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m             # <<<<<<<<<<<<<<
@@ -7401,7 +8281,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_transport_profile_exponent = (((__pyx_v_tday - __pyx_v_t1) * (__pyx_v_Ts[__pyx_v_Ti]).r_T_Delta_t) - __pyx_v_transport_profile_m);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":510
+=======
+        /* "pyrossgeo/_simulation.pyx":508
+>>>>>>> Implemented stochastic protocol
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t             # <<<<<<<<<<<<<<
@@ -7410,7 +8294,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_transport_profile = ((exp((((-__pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_c_r)) * __pyx_v_transport_profile_integrated_r) * (__pyx_v_Ts[__pyx_v_Ti]).r_T_Delta_t);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":512
+=======
+        /* "pyrossgeo/_simulation.pyx":510
+>>>>>>> Implemented stochastic protocol
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
  * 
  *                 if fro_N <= 0:             # <<<<<<<<<<<<<<
@@ -7420,16 +8308,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_17 = ((__pyx_v_fro_N <= 0.0) != 0);
         if (__pyx_t_17) {
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":513
+=======
+          /* "pyrossgeo/_simulation.pyx":511
+>>>>>>> Implemented stochastic protocol
  * 
  *                 if fro_N <= 0:
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *                 si = fro_n.state_index
  */
+<<<<<<< HEAD
           goto __pyx_L176_continue;
 
           /* "pyrossgeo/_simulation.pyx":512
+=======
+          goto __pyx_L165_continue;
+
+          /* "pyrossgeo/_simulation.pyx":510
+>>>>>>> Implemented stochastic protocol
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
  * 
  *                 if fro_N <= 0:             # <<<<<<<<<<<<<<
@@ -7438,7 +8336,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":515
+=======
+        /* "pyrossgeo/_simulation.pyx":513
+>>>>>>> Implemented stochastic protocol
  *                     continue
  * 
  *                 si = fro_n.state_index             # <<<<<<<<<<<<<<
@@ -7448,7 +8350,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_29 = __pyx_v_fro_n.state_index;
         __pyx_v_si = __pyx_t_29;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":516
+=======
+        /* "pyrossgeo/_simulation.pyx":514
+>>>>>>> Implemented stochastic protocol
  * 
  *                 si = fro_n.state_index
  *                 for oi in range(model_dim):             # <<<<<<<<<<<<<<
@@ -7460,7 +8366,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_30; __pyx_t_31+=1) {
           __pyx_v_oi = __pyx_t_31;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":517
+=======
+          /* "pyrossgeo/_simulation.pyx":515
+>>>>>>> Implemented stochastic protocol
  *                 si = fro_n.state_index
  *                 for oi in range(model_dim):
  *                     if not Ts[Ti].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -7470,16 +8380,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_17 = ((!(((__pyx_v_Ts[__pyx_v_Ti]).moving_classes[__pyx_v_oi]) != 0)) != 0);
           if (__pyx_t_17) {
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":518
+=======
+            /* "pyrossgeo/_simulation.pyx":516
+>>>>>>> Implemented stochastic protocol
  *                 for oi in range(model_dim):
  *                     if not Ts[Ti].moving_classes[oi]:
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     # Compute the amount of people to move
  */
+<<<<<<< HEAD
             goto __pyx_L186_continue;
 
             /* "pyrossgeo/_simulation.pyx":517
+=======
+            goto __pyx_L175_continue;
+
+            /* "pyrossgeo/_simulation.pyx":515
+>>>>>>> Implemented stochastic protocol
  *                 si = fro_n.state_index
  *                 for oi in range(model_dim):
  *                     if not Ts[Ti].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -7488,71 +8408,121 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           }
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":521
+=======
+          /* "pyrossgeo/_simulation.pyx":519
+>>>>>>> Implemented stochastic protocol
  * 
  *                     # Compute the amount of people to move
  *                     term = Ts[Ti].N0 * transport_profile * (X_state[fro_n.state_index+oi] / fro_N)             # <<<<<<<<<<<<<<
  * 
  *                     # If the change will cause X_state[si+oi] to go negative,
  */
+<<<<<<< HEAD
           __pyx_t_156 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
           __pyx_v_term = (((__pyx_v_Ts[__pyx_v_Ti]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_156 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_fro_N));
 
           /* "pyrossgeo/_simulation.pyx":526
+=======
+          __pyx_t_145 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
+          __pyx_v_term = (((__pyx_v_Ts[__pyx_v_Ti]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_145 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_fro_N));
+
+          /* "pyrossgeo/_simulation.pyx":524
+>>>>>>> Implemented stochastic protocol
  *                     # then adjust term so that X_state[si+oi] will be set
  *                     # to 0.
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  */
+<<<<<<< HEAD
           __pyx_t_157 = (__pyx_v_si + __pyx_v_oi);
           __pyx_t_158 = (__pyx_v_si + __pyx_v_oi);
           __pyx_t_17 = ((((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_157 * __pyx_v_X_state.strides[0]) ))) + (__pyx_v_dt * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_158 * __pyx_v_dX_state.strides[0]) ))) - __pyx_v_term))) < 0.0) != 0);
           if (__pyx_t_17) {
 
             /* "pyrossgeo/_simulation.pyx":527
+=======
+          __pyx_t_146 = (__pyx_v_si + __pyx_v_oi);
+          __pyx_t_147 = (__pyx_v_si + __pyx_v_oi);
+          __pyx_t_17 = ((((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_146 * __pyx_v_X_state.strides[0]) ))) + (__pyx_v_dt * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_147 * __pyx_v_dX_state.strides[0]) ))) - __pyx_v_term))) < 0.0) != 0);
+          if (__pyx_t_17) {
+
+            /* "pyrossgeo/_simulation.pyx":525
+>>>>>>> Implemented stochastic protocol
  *                     # to 0.
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                         term = X_state[si+oi]*r_dt             # <<<<<<<<<<<<<<
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  *                         dX_state[si+oi] += -(term + dX_state[si+oi])
  */
+<<<<<<< HEAD
             __pyx_t_159 = (__pyx_v_si + __pyx_v_oi);
             __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_159 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
 
             /* "pyrossgeo/_simulation.pyx":528
+=======
+            __pyx_t_148 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_148 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
+
+            /* "pyrossgeo/_simulation.pyx":526
+>>>>>>> Implemented stochastic protocol
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode             # <<<<<<<<<<<<<<
  *                         dX_state[si+oi] += -(term + dX_state[si+oi])
  *                     # Otherwise apply the transport as usual
  */
+<<<<<<< HEAD
             __pyx_t_160 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_161 = (__pyx_v_cn.state_index + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_161 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_160 * __pyx_v_dX_state.strides[0]) ))));
 
             /* "pyrossgeo/_simulation.pyx":529
+=======
+            __pyx_t_149 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_150 = (__pyx_v_cn.state_index + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_150 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_149 * __pyx_v_dX_state.strides[0]) ))));
+
+            /* "pyrossgeo/_simulation.pyx":527
+>>>>>>> Implemented stochastic protocol
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  *                         dX_state[si+oi] += -(term + dX_state[si+oi])             # <<<<<<<<<<<<<<
  *                     # Otherwise apply the transport as usual
  *                     else:
  */
+<<<<<<< HEAD
             __pyx_t_162 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_163 = (__pyx_v_si + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_163 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_162 * __pyx_v_dX_state.strides[0]) )))));
 
             /* "pyrossgeo/_simulation.pyx":526
+=======
+            __pyx_t_151 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_152 = (__pyx_v_si + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_152 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_151 * __pyx_v_dX_state.strides[0]) )))));
+
+            /* "pyrossgeo/_simulation.pyx":524
+>>>>>>> Implemented stochastic protocol
  *                     # then adjust term so that X_state[si+oi] will be set
  *                     # to 0.
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  */
+<<<<<<< HEAD
             goto __pyx_L189;
           }
 
           /* "pyrossgeo/_simulation.pyx":532
+=======
+            goto __pyx_L178;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":530
+>>>>>>> Implemented stochastic protocol
  *                     # Otherwise apply the transport as usual
  *                     else:
  *                         dX_state[si+oi] -= term             # <<<<<<<<<<<<<<
@@ -7560,16 +8530,24 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  */
           /*else*/ {
+<<<<<<< HEAD
             __pyx_t_164 = (__pyx_v_si + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_164 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
 
             /* "pyrossgeo/_simulation.pyx":533
+=======
+            __pyx_t_153 = (__pyx_v_si + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_153 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+            /* "pyrossgeo/_simulation.pyx":531
+>>>>>>> Implemented stochastic protocol
  *                     else:
  *                         dX_state[si+oi] -= term
  *                         dX_state[cn.state_index+oi] += term             # <<<<<<<<<<<<<<
  * 
  *             else:
  */
+<<<<<<< HEAD
             __pyx_t_165 = (__pyx_v_cn.state_index + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_165 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
           }
@@ -7578,16 +8556,33 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
         /* "pyrossgeo/_simulation.pyx":489
+=======
+            __pyx_t_154 = (__pyx_v_cn.state_index + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_154 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+          }
+          __pyx_L178:;
+          __pyx_L175_continue:;
+        }
+
+        /* "pyrossgeo/_simulation.pyx":487
+>>>>>>> Implemented stochastic protocol
  *             t2 = Ts[Ti].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
  *                 fro_n = nodes[Ts[Ti].fro_node_index] # Origin node
  *                 cn = cnodes[Ts[Ti].cnode_index] # Commuting node
  */
+<<<<<<< HEAD
         goto __pyx_L178;
       }
 
       /* "pyrossgeo/_simulation.pyx":536
+=======
+        goto __pyx_L167;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":534
+>>>>>>> Implemented stochastic protocol
  * 
  *             else:
  *                 Ts[Ti].is_on = False             # <<<<<<<<<<<<<<
@@ -7597,11 +8592,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       /*else*/ {
         (__pyx_v_Ts[__pyx_v_Ti]).is_on = 0;
       }
+<<<<<<< HEAD
       __pyx_L178:;
       __pyx_L176_continue:;
     }
 
     /* "pyrossgeo/_simulation.pyx":540
+=======
+      __pyx_L167:;
+      __pyx_L165_continue:;
+    }
+
+    /* "pyrossgeo/_simulation.pyx":538
+>>>>>>> Implemented stochastic protocol
  *         #### CNode to Node #############################################
  * 
  *         for cTi in range(cTs_num):             # <<<<<<<<<<<<<<
@@ -7613,7 +8616,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     for (__pyx_t_25 = 0; __pyx_t_25 < __pyx_t_27; __pyx_t_25+=1) {
       __pyx_v_cTi = __pyx_t_25;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":542
+=======
+      /* "pyrossgeo/_simulation.pyx":540
+>>>>>>> Implemented stochastic protocol
  *         for cTi in range(cTs_num):
  * 
  *             t1 = cTs[cTi].t1             # <<<<<<<<<<<<<<
@@ -7623,7 +8630,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_15 = (__pyx_v_cTs[__pyx_v_cTi]).t1;
       __pyx_v_t1 = __pyx_t_15;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":543
+=======
+      /* "pyrossgeo/_simulation.pyx":541
+>>>>>>> Implemented stochastic protocol
  * 
  *             t1 = cTs[cTi].t1
  *             t2 = cTs[cTi].t2             # <<<<<<<<<<<<<<
@@ -7633,7 +8644,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_15 = (__pyx_v_cTs[__pyx_v_cTi]).t2;
       __pyx_v_t2 = __pyx_t_15;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":545
+=======
+      /* "pyrossgeo/_simulation.pyx":543
+>>>>>>> Implemented stochastic protocol
  *             t2 = cTs[cTi].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
@@ -7644,6 +8659,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_35) {
       } else {
         __pyx_t_17 = __pyx_t_35;
+<<<<<<< HEAD
         goto __pyx_L193_bool_binop_done;
       }
       __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
@@ -7652,6 +8668,16 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_17) {
 
         /* "pyrossgeo/_simulation.pyx":546
+=======
+        goto __pyx_L182_bool_binop_done;
+      }
+      __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
+      __pyx_t_17 = __pyx_t_35;
+      __pyx_L182_bool_binop_done:;
+      if (__pyx_t_17) {
+
+        /* "pyrossgeo/_simulation.pyx":544
+>>>>>>> Implemented stochastic protocol
  * 
  *             if tday >= t1 and tday <= t2:
  *                 cn = cnodes[cTs[cTi].cnode_index] # Commuting node             # <<<<<<<<<<<<<<
@@ -7660,7 +8686,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_cn = (__pyx_v_cnodes[(__pyx_v_cTs[__pyx_v_cTi]).cnode_index]);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":547
+=======
+        /* "pyrossgeo/_simulation.pyx":545
+>>>>>>> Implemented stochastic protocol
  *             if tday >= t1 and tday <= t2:
  *                 cn = cnodes[cTs[cTi].cnode_index] # Commuting node
  *                 to_node = nodes[cTs[cTi].to_node_index] # Destination node             # <<<<<<<<<<<<<<
@@ -7669,7 +8699,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_to_node = (__pyx_v_nodes[(__pyx_v_cTs[__pyx_v_cTi]).to_node_index]);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":550
+=======
+        /* "pyrossgeo/_simulation.pyx":548
+>>>>>>> Implemented stochastic protocol
  * 
  *                 # Compute current population at the commuter node
  *                 cn_N = 0             # <<<<<<<<<<<<<<
@@ -7678,7 +8712,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_cn_N = 0.0;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":551
+=======
+        /* "pyrossgeo/_simulation.pyx":549
+>>>>>>> Implemented stochastic protocol
  *                 # Compute current population at the commuter node
  *                 cn_N = 0
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):             # <<<<<<<<<<<<<<
@@ -7690,18 +8728,30 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_30; __pyx_t_31+=1) {
           __pyx_v_oi = __pyx_t_31;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":552
+=======
+          /* "pyrossgeo/_simulation.pyx":550
+>>>>>>> Implemented stochastic protocol
  *                 cn_N = 0
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     cn_N += X_state[cn.state_index + oi]             # <<<<<<<<<<<<<<
  * 
  *                 # If this commuting schedule is just starting, then
  */
+<<<<<<< HEAD
           __pyx_t_166 = (__pyx_v_cn.state_index + __pyx_v_oi);
           __pyx_v_cn_N = (__pyx_v_cn_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_166 * __pyx_v_X_state.strides[0]) ))));
         }
 
         /* "pyrossgeo/_simulation.pyx":556
+=======
+          __pyx_t_155 = (__pyx_v_cn.state_index + __pyx_v_oi);
+          __pyx_v_cn_N = (__pyx_v_cn_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_155 * __pyx_v_X_state.strides[0]) ))));
+        }
+
+        /* "pyrossgeo/_simulation.pyx":554
+>>>>>>> Implemented stochastic protocol
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:             # <<<<<<<<<<<<<<
@@ -7711,7 +8761,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_17 = ((!((__pyx_v_cTs[__pyx_v_cTi]).is_on != 0)) != 0);
         if (__pyx_t_17) {
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":557
+=======
+          /* "pyrossgeo/_simulation.pyx":555
+>>>>>>> Implemented stochastic protocol
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:
  *                     if cTs[cTi].use_percentage:             # <<<<<<<<<<<<<<
@@ -7721,7 +8775,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_17 = ((__pyx_v_cTs[__pyx_v_cTi]).use_percentage != 0);
           if (__pyx_t_17) {
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":558
+=======
+            /* "pyrossgeo/_simulation.pyx":556
+>>>>>>> Implemented stochastic protocol
  *                 if not cTs[cTi].is_on:
  *                     if cTs[cTi].use_percentage:
  *                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage             # <<<<<<<<<<<<<<
@@ -7730,17 +8788,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
             (__pyx_v_cTs[__pyx_v_cTi]).N0 = (__pyx_v_cn_N * (__pyx_v_cTs[__pyx_v_cTi]).move_percentage);
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":557
+=======
+            /* "pyrossgeo/_simulation.pyx":555
+>>>>>>> Implemented stochastic protocol
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:
  *                     if cTs[cTi].use_percentage:             # <<<<<<<<<<<<<<
  *                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage
  *                     else:
  */
+<<<<<<< HEAD
             goto __pyx_L198;
           }
 
           /* "pyrossgeo/_simulation.pyx":560
+=======
+            goto __pyx_L187;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":558
+>>>>>>> Implemented stochastic protocol
  *                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage
  *                     else:
  *                         cTs[cTi].N0 = cTs[cTi].move_N             # <<<<<<<<<<<<<<
@@ -7751,9 +8820,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_t_15 = (__pyx_v_cTs[__pyx_v_cTi]).move_N;
             (__pyx_v_cTs[__pyx_v_cTi]).N0 = __pyx_t_15;
           }
+<<<<<<< HEAD
           __pyx_L198:;
 
           /* "pyrossgeo/_simulation.pyx":561
+=======
+          __pyx_L187:;
+
+          /* "pyrossgeo/_simulation.pyx":559
+>>>>>>> Implemented stochastic protocol
  *                     else:
  *                         cTs[cTi].N0 = cTs[cTi].move_N
  *                     cTs[cTi].is_on = True             # <<<<<<<<<<<<<<
@@ -7762,7 +8837,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           (__pyx_v_cTs[__pyx_v_cTi]).is_on = 1;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":556
+=======
+          /* "pyrossgeo/_simulation.pyx":554
+>>>>>>> Implemented stochastic protocol
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:             # <<<<<<<<<<<<<<
@@ -7771,7 +8850,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":564
+=======
+        /* "pyrossgeo/_simulation.pyx":562
+>>>>>>> Implemented stochastic protocol
  * 
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*cTs[cTi].r_T_Delta_t - transport_profile_m             # <<<<<<<<<<<<<<
@@ -7780,7 +8863,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_transport_profile_exponent = (((__pyx_v_tday - __pyx_v_t1) * (__pyx_v_cTs[__pyx_v_cTi]).r_T_Delta_t) - __pyx_v_transport_profile_m);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":565
+=======
+        /* "pyrossgeo/_simulation.pyx":563
+>>>>>>> Implemented stochastic protocol
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*cTs[cTi].r_T_Delta_t - transport_profile_m
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t             # <<<<<<<<<<<<<<
@@ -7789,7 +8876,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_transport_profile = ((exp((((-__pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_c_r)) * __pyx_v_transport_profile_integrated_r) * (__pyx_v_cTs[__pyx_v_cTi]).r_T_Delta_t);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":567
+=======
+        /* "pyrossgeo/_simulation.pyx":565
+>>>>>>> Implemented stochastic protocol
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
  * 
  *                 if cn_N <= 0:             # <<<<<<<<<<<<<<
@@ -7799,16 +8890,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_17 = ((__pyx_v_cn_N <= 0.0) != 0);
         if (__pyx_t_17) {
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":568
+=======
+          /* "pyrossgeo/_simulation.pyx":566
+>>>>>>> Implemented stochastic protocol
  * 
  *                 if cn_N <= 0:
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *                 si = cn.state_index
  */
+<<<<<<< HEAD
           goto __pyx_L190_continue;
 
           /* "pyrossgeo/_simulation.pyx":567
+=======
+          goto __pyx_L179_continue;
+
+          /* "pyrossgeo/_simulation.pyx":565
+>>>>>>> Implemented stochastic protocol
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
  * 
  *                 if cn_N <= 0:             # <<<<<<<<<<<<<<
@@ -7817,7 +8918,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":570
+=======
+        /* "pyrossgeo/_simulation.pyx":568
+>>>>>>> Implemented stochastic protocol
  *                     continue
  * 
  *                 si = cn.state_index             # <<<<<<<<<<<<<<
@@ -7827,7 +8932,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_29 = __pyx_v_cn.state_index;
         __pyx_v_si = __pyx_t_29;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":571
+=======
+        /* "pyrossgeo/_simulation.pyx":569
+>>>>>>> Implemented stochastic protocol
  * 
  *                 si = cn.state_index
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):             # <<<<<<<<<<<<<<
@@ -7839,7 +8948,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_31 = 0; __pyx_t_31 < __pyx_t_30; __pyx_t_31+=1) {
           __pyx_v_oi = __pyx_t_31;
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":572
+=======
+          /* "pyrossgeo/_simulation.pyx":570
+>>>>>>> Implemented stochastic protocol
  *                 si = cn.state_index
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     if not cTs[cTi].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -7849,16 +8962,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_17 = ((!(((__pyx_v_cTs[__pyx_v_cTi]).moving_classes[__pyx_v_oi]) != 0)) != 0);
           if (__pyx_t_17) {
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":573
+=======
+            /* "pyrossgeo/_simulation.pyx":571
+>>>>>>> Implemented stochastic protocol
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     if not cTs[cTi].moving_classes[oi]:
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     # If the commuting window is ending, force all to leave the commuterverse
  */
+<<<<<<< HEAD
             goto __pyx_L200_continue;
 
             /* "pyrossgeo/_simulation.pyx":572
+=======
+            goto __pyx_L189_continue;
+
+            /* "pyrossgeo/_simulation.pyx":570
+>>>>>>> Implemented stochastic protocol
  *                 si = cn.state_index
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     if not cTs[cTi].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -7867,7 +8990,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
           }
 
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":576
+=======
+          /* "pyrossgeo/_simulation.pyx":574
+>>>>>>> Implemented stochastic protocol
  * 
  *                     # If the commuting window is ending, force all to leave the commuterverse
  *                     if tday+dt >= t2:             # <<<<<<<<<<<<<<
@@ -7877,49 +9004,83 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_17 = (((__pyx_v_tday + __pyx_v_dt) >= __pyx_v_t2) != 0);
           if (__pyx_t_17) {
 
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":577
+=======
+            /* "pyrossgeo/_simulation.pyx":575
+>>>>>>> Implemented stochastic protocol
  *                     # If the commuting window is ending, force all to leave the commuterverse
  *                     if tday+dt >= t2:
  *                         term = X_state[si+oi]*r_dt             # <<<<<<<<<<<<<<
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                         dX_state[si+oi] += - (term + dX_state[si+oi])
  */
+<<<<<<< HEAD
             __pyx_t_167 = (__pyx_v_si + __pyx_v_oi);
             __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_167 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
 
             /* "pyrossgeo/_simulation.pyx":578
+=======
+            __pyx_t_156 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_156 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
+
+            /* "pyrossgeo/_simulation.pyx":576
+>>>>>>> Implemented stochastic protocol
  *                     if tday+dt >= t2:
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node             # <<<<<<<<<<<<<<
  *                         dX_state[si+oi] += - (term + dX_state[si+oi])
  *                     else:
  */
+<<<<<<< HEAD
             __pyx_t_168 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_169 = (__pyx_v_to_node.state_index + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_169 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_168 * __pyx_v_dX_state.strides[0]) ))));
 
             /* "pyrossgeo/_simulation.pyx":579
+=======
+            __pyx_t_157 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_158 = (__pyx_v_to_node.state_index + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_158 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_157 * __pyx_v_dX_state.strides[0]) ))));
+
+            /* "pyrossgeo/_simulation.pyx":577
+>>>>>>> Implemented stochastic protocol
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                         dX_state[si+oi] += - (term + dX_state[si+oi])             # <<<<<<<<<<<<<<
  *                     else:
  *                         # Compute the amount of people to move
  */
+<<<<<<< HEAD
             __pyx_t_170 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_171 = (__pyx_v_si + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_171 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_170 * __pyx_v_dX_state.strides[0]) )))));
 
             /* "pyrossgeo/_simulation.pyx":576
+=======
+            __pyx_t_159 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_160 = (__pyx_v_si + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_160 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_159 * __pyx_v_dX_state.strides[0]) )))));
+
+            /* "pyrossgeo/_simulation.pyx":574
+>>>>>>> Implemented stochastic protocol
  * 
  *                     # If the commuting window is ending, force all to leave the commuterverse
  *                     if tday+dt >= t2:             # <<<<<<<<<<<<<<
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  */
+<<<<<<< HEAD
             goto __pyx_L203;
           }
 
           /* "pyrossgeo/_simulation.pyx":582
+=======
+            goto __pyx_L192;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":580
+>>>>>>> Implemented stochastic protocol
  *                     else:
  *                         # Compute the amount of people to move
  *                         term = cTs[cTi].N0 * transport_profile * (X_state[si+oi] / cn_N)             # <<<<<<<<<<<<<<
@@ -7927,64 +9088,110 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         # If the change will cause X_state[si+oi] to go negative,
  */
           /*else*/ {
+<<<<<<< HEAD
             __pyx_t_172 = (__pyx_v_si + __pyx_v_oi);
             __pyx_v_term = (((__pyx_v_cTs[__pyx_v_cTi]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_172 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_cn_N));
 
             /* "pyrossgeo/_simulation.pyx":587
+=======
+            __pyx_t_161 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_v_term = (((__pyx_v_cTs[__pyx_v_cTi]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_161 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_cn_N));
+
+            /* "pyrossgeo/_simulation.pyx":585
+>>>>>>> Implemented stochastic protocol
  *                         # then adjust term so that X_state[si+oi] will be set
  *                         # to 0.
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  */
+<<<<<<< HEAD
             __pyx_t_173 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_174 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_17 = ((((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_173 * __pyx_v_X_state.strides[0]) ))) + (__pyx_v_dt * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_174 * __pyx_v_dX_state.strides[0]) ))) - __pyx_v_term))) < 0.0) != 0);
             if (__pyx_t_17) {
 
               /* "pyrossgeo/_simulation.pyx":588
+=======
+            __pyx_t_162 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_163 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_17 = ((((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_162 * __pyx_v_X_state.strides[0]) ))) + (__pyx_v_dt * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_163 * __pyx_v_dX_state.strides[0]) ))) - __pyx_v_term))) < 0.0) != 0);
+            if (__pyx_t_17) {
+
+              /* "pyrossgeo/_simulation.pyx":586
+>>>>>>> Implemented stochastic protocol
  *                         # to 0.
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                             term = X_state[si+oi]*r_dt             # <<<<<<<<<<<<<<
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                             dX_state[si+oi] += - (term + dX_state[si+oi])
  */
+<<<<<<< HEAD
               __pyx_t_175 = (__pyx_v_si + __pyx_v_oi);
               __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_175 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
 
               /* "pyrossgeo/_simulation.pyx":589
+=======
+              __pyx_t_164 = (__pyx_v_si + __pyx_v_oi);
+              __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_164 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
+
+              /* "pyrossgeo/_simulation.pyx":587
+>>>>>>> Implemented stochastic protocol
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node             # <<<<<<<<<<<<<<
  *                             dX_state[si+oi] += - (term + dX_state[si+oi])
  *                         # Otherwise apply the transport as usual
  */
+<<<<<<< HEAD
               __pyx_t_176 = (__pyx_v_si + __pyx_v_oi);
               __pyx_t_177 = (__pyx_v_to_node.state_index + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_177 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_176 * __pyx_v_dX_state.strides[0]) ))));
 
               /* "pyrossgeo/_simulation.pyx":590
+=======
+              __pyx_t_165 = (__pyx_v_si + __pyx_v_oi);
+              __pyx_t_166 = (__pyx_v_to_node.state_index + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_166 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_165 * __pyx_v_dX_state.strides[0]) ))));
+
+              /* "pyrossgeo/_simulation.pyx":588
+>>>>>>> Implemented stochastic protocol
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                             dX_state[si+oi] += - (term + dX_state[si+oi])             # <<<<<<<<<<<<<<
  *                         # Otherwise apply the transport as usual
  *                         else:
  */
+<<<<<<< HEAD
               __pyx_t_178 = (__pyx_v_si + __pyx_v_oi);
               __pyx_t_179 = (__pyx_v_si + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_179 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_178 * __pyx_v_dX_state.strides[0]) )))));
 
               /* "pyrossgeo/_simulation.pyx":587
+=======
+              __pyx_t_167 = (__pyx_v_si + __pyx_v_oi);
+              __pyx_t_168 = (__pyx_v_si + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_168 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_167 * __pyx_v_dX_state.strides[0]) )))));
+
+              /* "pyrossgeo/_simulation.pyx":585
+>>>>>>> Implemented stochastic protocol
  *                         # then adjust term so that X_state[si+oi] will be set
  *                         # to 0.
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  */
+<<<<<<< HEAD
               goto __pyx_L204;
             }
 
             /* "pyrossgeo/_simulation.pyx":593
+=======
+              goto __pyx_L193;
+            }
+
+            /* "pyrossgeo/_simulation.pyx":591
+>>>>>>> Implemented stochastic protocol
  *                         # Otherwise apply the transport as usual
  *                         else:
  *                             dX_state[si+oi] -= term             # <<<<<<<<<<<<<<
@@ -7992,16 +9199,24 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *             else:
  */
             /*else*/ {
+<<<<<<< HEAD
               __pyx_t_180 = (__pyx_v_si + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_180 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
 
               /* "pyrossgeo/_simulation.pyx":594
+=======
+              __pyx_t_169 = (__pyx_v_si + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_169 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+              /* "pyrossgeo/_simulation.pyx":592
+>>>>>>> Implemented stochastic protocol
  *                         else:
  *                             dX_state[si+oi] -= term
  *                             dX_state[to_node.state_index+oi] += term             # <<<<<<<<<<<<<<
  *             else:
  *                 cTs[cTi].is_on = False
  */
+<<<<<<< HEAD
               __pyx_t_181 = (__pyx_v_to_node.state_index + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_181 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
             }
@@ -8012,16 +9227,35 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
         /* "pyrossgeo/_simulation.pyx":545
+=======
+              __pyx_t_170 = (__pyx_v_to_node.state_index + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_170 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+            }
+            __pyx_L193:;
+          }
+          __pyx_L192:;
+          __pyx_L189_continue:;
+        }
+
+        /* "pyrossgeo/_simulation.pyx":543
+>>>>>>> Implemented stochastic protocol
  *             t2 = cTs[cTi].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
  *                 cn = cnodes[cTs[cTi].cnode_index] # Commuting node
  *                 to_node = nodes[cTs[cTi].to_node_index] # Destination node
  */
+<<<<<<< HEAD
         goto __pyx_L192;
       }
 
       /* "pyrossgeo/_simulation.pyx":596
+=======
+        goto __pyx_L181;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":594
+>>>>>>> Implemented stochastic protocol
  *                             dX_state[to_node.state_index+oi] += term
  *             else:
  *                 cTs[cTi].is_on = False             # <<<<<<<<<<<<<<
@@ -8031,7 +9265,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       /*else*/ {
         (__pyx_v_cTs[__pyx_v_cTi]).is_on = 0;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":597
+=======
+        /* "pyrossgeo/_simulation.pyx":595
+>>>>>>> Implemented stochastic protocol
  *             else:
  *                 cTs[cTi].is_on = False
  *                 cn = cnodes[cTs[cTi].cnode_index]             # <<<<<<<<<<<<<<
@@ -8040,7 +9278,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_cn = (__pyx_v_cnodes[(__pyx_v_cTs[__pyx_v_cTi]).cnode_index]);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":598
+=======
+        /* "pyrossgeo/_simulation.pyx":596
+>>>>>>> Implemented stochastic protocol
  *                 cTs[cTi].is_on = False
  *                 cn = cnodes[cTs[cTi].cnode_index]
  *                 cn.is_on = False # Turn off commuter node             # <<<<<<<<<<<<<<
@@ -8049,11 +9291,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_cn.is_on = 0;
       }
+<<<<<<< HEAD
       __pyx_L192:;
       __pyx_L190_continue:;
     }
 
     /* "pyrossgeo/_simulation.pyx":605
+=======
+      __pyx_L181:;
+      __pyx_L179_continue:;
+    }
+
+    /* "pyrossgeo/_simulation.pyx":603
+>>>>>>> Implemented stochastic protocol
  *         ################################################################
  * 
  *         for j in prange(X_state_size, nogil=True):             # <<<<<<<<<<<<<<
@@ -8080,7 +9330,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
               if (__pyx_t_25 > 0)
               {
                   #ifdef _OPENMP
+<<<<<<< HEAD
                   #pragma omp parallel private(__pyx_t_182, __pyx_t_183)
+=======
+                  #pragma omp parallel private(__pyx_t_171, __pyx_t_172)
+>>>>>>> Implemented stochastic protocol
                   #endif /* _OPENMP */
                   {
                       #ifdef _OPENMP
@@ -8090,16 +9344,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                           {
                               __pyx_v_j = (int)(0 + 1 * __pyx_t_27);
 
+<<<<<<< HEAD
                               /* "pyrossgeo/_simulation.pyx":606
+=======
+                              /* "pyrossgeo/_simulation.pyx":604
+>>>>>>> Implemented stochastic protocol
  * 
  *         for j in prange(X_state_size, nogil=True):
  *             X_state[j] += dX_state[j]*dt             # <<<<<<<<<<<<<<
  * 
  *         t += dt
  */
+<<<<<<< HEAD
                               __pyx_t_182 = __pyx_v_j;
                               __pyx_t_183 = __pyx_v_j;
                               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_183 * __pyx_v_X_state.strides[0]) )) += ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_182 * __pyx_v_dX_state.strides[0]) ))) * __pyx_v_dt);
+=======
+                              __pyx_t_171 = __pyx_v_j;
+                              __pyx_t_172 = __pyx_v_j;
+                              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_172 * __pyx_v_X_state.strides[0]) )) += ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_171 * __pyx_v_dX_state.strides[0]) ))) * __pyx_v_dt);
+>>>>>>> Implemented stochastic protocol
                           }
                       }
                   }
@@ -8113,7 +9377,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           #endif
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":605
+=======
+        /* "pyrossgeo/_simulation.pyx":603
+>>>>>>> Implemented stochastic protocol
  *         ################################################################
  * 
  *         for j in prange(X_state_size, nogil=True):             # <<<<<<<<<<<<<<
@@ -8126,6 +9394,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __Pyx_FastGIL_Forget();
             Py_BLOCK_THREADS
             #endif
+<<<<<<< HEAD
             goto __pyx_L209;
           }
           __pyx_L209:;
@@ -8133,6 +9402,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     }
 
     /* "pyrossgeo/_simulation.pyx":608
+=======
+            goto __pyx_L198;
+          }
+          __pyx_L198:;
+        }
+    }
+
+    /* "pyrossgeo/_simulation.pyx":606
+>>>>>>> Implemented stochastic protocol
  *             X_state[j] += dX_state[j]*dt
  * 
  *         t += dt             # <<<<<<<<<<<<<<
@@ -8141,7 +9419,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
     __pyx_v_t = (__pyx_v_t + __pyx_v_dt);
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":610
+=======
+    /* "pyrossgeo/_simulation.pyx":608
+>>>>>>> Implemented stochastic protocol
  *         t += dt
  * 
  *         if steps_per_print != -1 and step_i % steps_per_print==0:             # <<<<<<<<<<<<<<
@@ -8152,6 +9434,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     if (__pyx_t_35) {
     } else {
       __pyx_t_17 = __pyx_t_35;
+<<<<<<< HEAD
       goto __pyx_L217_bool_binop_done;
     }
     __pyx_t_35 = (((__pyx_v_step_i % __pyx_v_steps_per_print) == 0) != 0);
@@ -8160,19 +9443,35 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     if (__pyx_t_17) {
 
       /* "pyrossgeo/_simulation.pyx":611
+=======
+      goto __pyx_L206_bool_binop_done;
+    }
+    __pyx_t_35 = (((__pyx_v_step_i % __pyx_v_steps_per_print) == 0) != 0);
+    __pyx_t_17 = __pyx_t_35;
+    __pyx_L206_bool_binop_done:;
+    if (__pyx_t_17) {
+
+      /* "pyrossgeo/_simulation.pyx":609
+>>>>>>> Implemented stochastic protocol
  * 
  *         if steps_per_print != -1 and step_i % steps_per_print==0:
  *             print("Step %s out of %s" % (step_i, steps))             # <<<<<<<<<<<<<<
  * 
  *         #### Store state
  */
+<<<<<<< HEAD
       __pyx_t_18 = PyTuple_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 611, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
+=======
+      __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+>>>>>>> Implemented stochastic protocol
       __pyx_t_43 = 0;
       __pyx_t_44 = 127;
       __Pyx_INCREF(__pyx_kp_u_Step);
       __pyx_t_43 += 5;
       __Pyx_GIVEREF(__pyx_kp_u_Step);
+<<<<<<< HEAD
       PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_kp_u_Step);
       __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_step_i, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
@@ -8199,6 +9498,34 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
       /* "pyrossgeo/_simulation.pyx":610
+=======
+      PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_kp_u_Step);
+      __pyx_t_18 = __Pyx_PyUnicode_From_int(__pyx_v_step_i, 0, ' ', 'd'); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_18);
+      __Pyx_GIVEREF(__pyx_t_18);
+      PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_18);
+      __pyx_t_18 = 0;
+      __Pyx_INCREF(__pyx_kp_u_out_of);
+      __pyx_t_43 += 8;
+      __Pyx_GIVEREF(__pyx_kp_u_out_of);
+      PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_kp_u_out_of);
+      __pyx_t_18 = __Pyx_PyUnicode_From_int(__pyx_v_steps, 0, ' ', 'd'); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_18);
+      __Pyx_GIVEREF(__pyx_t_18);
+      PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_t_18);
+      __pyx_t_18 = 0;
+      __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_3, 4, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+      /* "pyrossgeo/_simulation.pyx":608
+>>>>>>> Implemented stochastic protocol
  *         t += dt
  * 
  *         if steps_per_print != -1 and step_i % steps_per_print==0:             # <<<<<<<<<<<<<<
@@ -8207,7 +9534,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
     }
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":615
+=======
+    /* "pyrossgeo/_simulation.pyx":613
+>>>>>>> Implemented stochastic protocol
  *         #### Store state
  * 
  *         if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -8217,7 +9548,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     __pyx_t_17 = ((__pyx_v_steps_per_save != -1L) != 0);
     if (__pyx_t_17) {
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":617
+=======
+      /* "pyrossgeo/_simulation.pyx":615
+>>>>>>> Implemented stochastic protocol
  *         if steps_per_save != -1:
  * 
  *             if (step_i+1) % steps_per_save == 0:             # <<<<<<<<<<<<<<
@@ -8227,7 +9562,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_17 = ((((__pyx_v_step_i + 1) % __pyx_v_steps_per_save) == 0) != 0);
       if (__pyx_t_17) {
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":618
+=======
+        /* "pyrossgeo/_simulation.pyx":616
+>>>>>>> Implemented stochastic protocol
  * 
  *             if (step_i+1) % steps_per_save == 0:
  *                 X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]             # <<<<<<<<<<<<<<
@@ -8252,6 +9591,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     0,
     1) < 0))
 {
+<<<<<<< HEAD
     __PYX_ERR(0, 618, __pyx_L1_error)
 }
 
@@ -8275,18 +9615,52 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
         /* "pyrossgeo/_simulation.pyx":619
+=======
+    __PYX_ERR(0, 616, __pyx_L1_error)
+}
+
+__pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __PYX_XDEC_MEMVIEW(&__pyx_t_16, 1);
+        __pyx_t_16.memview = NULL;
+        __pyx_t_16.data = NULL;
+        __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_save_i); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GIVEREF(__pyx_t_18);
+        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_18);
+        __Pyx_INCREF(__pyx_slice__4);
+        __Pyx_GIVEREF(__pyx_slice__4);
+        PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_slice__4);
+        __pyx_t_18 = 0;
+        if (unlikely(PyObject_SetItem(__pyx_v_X_states_saved, __pyx_t_2, __pyx_t_3) < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+        /* "pyrossgeo/_simulation.pyx":617
+>>>>>>> Implemented stochastic protocol
  *             if (step_i+1) % steps_per_save == 0:
  *                 X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]
  *                 ts_saved[save_i] = t             # <<<<<<<<<<<<<<
  *                 save_i += 1
  * 
  */
+<<<<<<< HEAD
         __pyx_t_18 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 619, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         if (unlikely(__Pyx_SetItemInt(__pyx_v_ts_saved, __pyx_v_save_i, __pyx_t_18, int, 1, __Pyx_PyInt_From_int, 0, 0, 0) < 0)) __PYX_ERR(0, 619, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
         /* "pyrossgeo/_simulation.pyx":620
+=======
+        __pyx_t_3 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 617, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        if (unlikely(__Pyx_SetItemInt(__pyx_v_ts_saved, __pyx_v_save_i, __pyx_t_3, int, 1, __Pyx_PyInt_From_int, 0, 0, 0) < 0)) __PYX_ERR(0, 617, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+        /* "pyrossgeo/_simulation.pyx":618
+>>>>>>> Implemented stochastic protocol
  *                 X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]
  *                 ts_saved[save_i] = t
  *                 save_i += 1             # <<<<<<<<<<<<<<
@@ -8295,7 +9669,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  */
         __pyx_v_save_i = (__pyx_v_save_i + 1);
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":617
+=======
+        /* "pyrossgeo/_simulation.pyx":615
+>>>>>>> Implemented stochastic protocol
  *         if steps_per_save != -1:
  * 
  *             if (step_i+1) % steps_per_save == 0:             # <<<<<<<<<<<<<<
@@ -8304,7 +9682,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  */
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":615
+=======
+      /* "pyrossgeo/_simulation.pyx":613
+>>>>>>> Implemented stochastic protocol
  *         #### Store state
  * 
  *         if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -8313,18 +9695,30 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  */
     }
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":624
+=======
+    /* "pyrossgeo/_simulation.pyx":622
+>>>>>>> Implemented stochastic protocol
  *         #### Call event function
  * 
  *         if event_steps[step_i]:             # <<<<<<<<<<<<<<
  *             if steps_per_save == -1:
  *                 event_function(self, step_i, t, dt, X_state, dX_state)
  */
+<<<<<<< HEAD
     __pyx_t_184 = __pyx_v_step_i;
     __pyx_t_17 = ((*((char *) ( /* dim=0 */ (__pyx_v_event_steps.data + __pyx_t_184 * __pyx_v_event_steps.strides[0]) ))) != 0);
     if (__pyx_t_17) {
 
       /* "pyrossgeo/_simulation.pyx":625
+=======
+    __pyx_t_173 = __pyx_v_step_i;
+    __pyx_t_17 = ((*((char *) ( /* dim=0 */ (__pyx_v_event_steps.data + __pyx_t_173 * __pyx_v_event_steps.strides[0]) ))) != 0);
+    if (__pyx_t_17) {
+
+      /* "pyrossgeo/_simulation.pyx":623
+>>>>>>> Implemented stochastic protocol
  * 
  *         if event_steps[step_i]:
  *             if steps_per_save == -1:             # <<<<<<<<<<<<<<
@@ -8334,13 +9728,18 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
       __pyx_t_17 = ((__pyx_v_steps_per_save == -1L) != 0);
       if (__pyx_t_17) {
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":626
+=======
+        /* "pyrossgeo/_simulation.pyx":624
+>>>>>>> Implemented stochastic protocol
  *         if event_steps[step_i]:
  *             if steps_per_save == -1:
  *                 event_function(self, step_i, t, dt, X_state, dX_state)             # <<<<<<<<<<<<<<
  *             else:
  *                 event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)
  */
+<<<<<<< HEAD
         __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __pyx_t_2 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
@@ -8359,6 +9758,26 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
           if (likely(__pyx_t_185)) {
             PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_19);
             __Pyx_INCREF(__pyx_t_185);
+=======
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_18 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_X_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_20 = __pyx_memoryview_fromslice(__pyx_v_dX_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_20);
+        __Pyx_INCREF(__pyx_v_event_function);
+        __pyx_t_19 = __pyx_v_event_function; __pyx_t_174 = NULL;
+        __pyx_t_25 = 0;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_19))) {
+          __pyx_t_174 = PyMethod_GET_SELF(__pyx_t_19);
+          if (likely(__pyx_t_174)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_19);
+            __Pyx_INCREF(__pyx_t_174);
+>>>>>>> Implemented stochastic protocol
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_19, function);
             __pyx_t_25 = 1;
@@ -8366,12 +9785,21 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         }
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_19)) {
+<<<<<<< HEAD
           PyObject *__pyx_temp[7] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_3, __pyx_t_2, __pyx_t_1, __pyx_t_4, __pyx_t_20};
           __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_25, 6+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
           __Pyx_GOTREF(__pyx_t_18);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+=======
+          PyObject *__pyx_temp[7] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_2, __pyx_t_18, __pyx_t_1, __pyx_t_4, __pyx_t_20};
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_25, 6+__pyx_t_25); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 624, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+>>>>>>> Implemented stochastic protocol
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -8379,18 +9807,28 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_19)) {
+<<<<<<< HEAD
           PyObject *__pyx_temp[7] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_3, __pyx_t_2, __pyx_t_1, __pyx_t_4, __pyx_t_20};
           __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_25, 6+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
           __Pyx_GOTREF(__pyx_t_18);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+=======
+          PyObject *__pyx_temp[7] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_2, __pyx_t_18, __pyx_t_1, __pyx_t_4, __pyx_t_20};
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_25, 6+__pyx_t_25); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 624, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+>>>>>>> Implemented stochastic protocol
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
         } else
         #endif
         {
+<<<<<<< HEAD
           __pyx_t_186 = PyTuple_New(6+__pyx_t_25); if (unlikely(!__pyx_t_186)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_186);
           if (__pyx_t_185) {
@@ -8422,16 +9860,56 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
         /* "pyrossgeo/_simulation.pyx":625
+=======
+          __pyx_t_175 = PyTuple_New(6+__pyx_t_25); if (unlikely(!__pyx_t_175)) __PYX_ERR(0, 624, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_175);
+          if (__pyx_t_174) {
+            __Pyx_GIVEREF(__pyx_t_174); PyTuple_SET_ITEM(__pyx_t_175, 0, __pyx_t_174); __pyx_t_174 = NULL;
+          }
+          __Pyx_INCREF(((PyObject *)__pyx_v_self));
+          __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
+          PyTuple_SET_ITEM(__pyx_t_175, 0+__pyx_t_25, ((PyObject *)__pyx_v_self));
+          __Pyx_GIVEREF(__pyx_t_2);
+          PyTuple_SET_ITEM(__pyx_t_175, 1+__pyx_t_25, __pyx_t_2);
+          __Pyx_GIVEREF(__pyx_t_18);
+          PyTuple_SET_ITEM(__pyx_t_175, 2+__pyx_t_25, __pyx_t_18);
+          __Pyx_GIVEREF(__pyx_t_1);
+          PyTuple_SET_ITEM(__pyx_t_175, 3+__pyx_t_25, __pyx_t_1);
+          __Pyx_GIVEREF(__pyx_t_4);
+          PyTuple_SET_ITEM(__pyx_t_175, 4+__pyx_t_25, __pyx_t_4);
+          __Pyx_GIVEREF(__pyx_t_20);
+          PyTuple_SET_ITEM(__pyx_t_175, 5+__pyx_t_25, __pyx_t_20);
+          __pyx_t_2 = 0;
+          __pyx_t_18 = 0;
+          __pyx_t_1 = 0;
+          __pyx_t_4 = 0;
+          __pyx_t_20 = 0;
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_175, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 624, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_175); __pyx_t_175 = 0;
+        }
+        __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+        /* "pyrossgeo/_simulation.pyx":623
+>>>>>>> Implemented stochastic protocol
  * 
  *         if event_steps[step_i]:
  *             if steps_per_save == -1:             # <<<<<<<<<<<<<<
  *                 event_function(self, step_i, t, dt, X_state, dX_state)
  *             else:
  */
+<<<<<<< HEAD
         goto __pyx_L222;
       }
 
       /* "pyrossgeo/_simulation.pyx":628
+=======
+        goto __pyx_L211;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":626
+>>>>>>> Implemented stochastic protocol
  *                 event_function(self, step_i, t, dt, X_state, dX_state)
  *             else:
  *                 event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)             # <<<<<<<<<<<<<<
@@ -8439,6 +9917,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  *         #### Call Cython event function
  */
       /*else*/ {
+<<<<<<< HEAD
         __pyx_t_19 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_19);
         __pyx_t_186 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_186)) __PYX_ERR(0, 628, __pyx_L1_error)
@@ -8461,10 +9940,35 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __Pyx_INCREF(__pyx_t_185);
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_3, function);
+=======
+        __pyx_t_19 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_19);
+        __pyx_t_175 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_175)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_175);
+        __pyx_t_20 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_20);
+        __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_X_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_dX_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_save_i); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_INCREF(__pyx_v_event_function);
+        __pyx_t_2 = __pyx_v_event_function; __pyx_t_174 = NULL;
+        __pyx_t_25 = 0;
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+          __pyx_t_174 = PyMethod_GET_SELF(__pyx_t_2);
+          if (likely(__pyx_t_174)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+            __Pyx_INCREF(__pyx_t_174);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_2, function);
+>>>>>>> Implemented stochastic protocol
             __pyx_t_25 = 1;
           }
         }
         #if CYTHON_FAST_PYCALL
+<<<<<<< HEAD
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[10] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_19, __pyx_t_186, __pyx_t_20, __pyx_t_4, __pyx_t_1, __pyx_v_X_states_saved, __pyx_v_ts_saved, __pyx_t_2};
           __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 628, __pyx_L1_error)
@@ -8535,6 +10039,78 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
       __pyx_L222:;
 
       /* "pyrossgeo/_simulation.pyx":624
+=======
+        if (PyFunction_Check(__pyx_t_2)) {
+          PyObject *__pyx_temp[10] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_19, __pyx_t_175, __pyx_t_20, __pyx_t_4, __pyx_t_1, __pyx_v_X_states_saved, __pyx_v_ts_saved, __pyx_t_18};
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
+          __Pyx_DECREF(__pyx_t_175); __pyx_t_175 = 0;
+          __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+          PyObject *__pyx_temp[10] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_19, __pyx_t_175, __pyx_t_20, __pyx_t_4, __pyx_t_1, __pyx_v_X_states_saved, __pyx_v_ts_saved, __pyx_t_18};
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
+          __Pyx_DECREF(__pyx_t_175); __pyx_t_175 = 0;
+          __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        } else
+        #endif
+        {
+          __pyx_t_176 = PyTuple_New(9+__pyx_t_25); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 626, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_176);
+          if (__pyx_t_174) {
+            __Pyx_GIVEREF(__pyx_t_174); PyTuple_SET_ITEM(__pyx_t_176, 0, __pyx_t_174); __pyx_t_174 = NULL;
+          }
+          __Pyx_INCREF(((PyObject *)__pyx_v_self));
+          __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
+          PyTuple_SET_ITEM(__pyx_t_176, 0+__pyx_t_25, ((PyObject *)__pyx_v_self));
+          __Pyx_GIVEREF(__pyx_t_19);
+          PyTuple_SET_ITEM(__pyx_t_176, 1+__pyx_t_25, __pyx_t_19);
+          __Pyx_GIVEREF(__pyx_t_175);
+          PyTuple_SET_ITEM(__pyx_t_176, 2+__pyx_t_25, __pyx_t_175);
+          __Pyx_GIVEREF(__pyx_t_20);
+          PyTuple_SET_ITEM(__pyx_t_176, 3+__pyx_t_25, __pyx_t_20);
+          __Pyx_GIVEREF(__pyx_t_4);
+          PyTuple_SET_ITEM(__pyx_t_176, 4+__pyx_t_25, __pyx_t_4);
+          __Pyx_GIVEREF(__pyx_t_1);
+          PyTuple_SET_ITEM(__pyx_t_176, 5+__pyx_t_25, __pyx_t_1);
+          __Pyx_INCREF(__pyx_v_X_states_saved);
+          __Pyx_GIVEREF(__pyx_v_X_states_saved);
+          PyTuple_SET_ITEM(__pyx_t_176, 6+__pyx_t_25, __pyx_v_X_states_saved);
+          __Pyx_INCREF(__pyx_v_ts_saved);
+          __Pyx_GIVEREF(__pyx_v_ts_saved);
+          PyTuple_SET_ITEM(__pyx_t_176, 7+__pyx_t_25, __pyx_v_ts_saved);
+          __Pyx_GIVEREF(__pyx_t_18);
+          PyTuple_SET_ITEM(__pyx_t_176, 8+__pyx_t_25, __pyx_t_18);
+          __pyx_t_19 = 0;
+          __pyx_t_175 = 0;
+          __pyx_t_20 = 0;
+          __pyx_t_4 = 0;
+          __pyx_t_1 = 0;
+          __pyx_t_18 = 0;
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_176, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+        }
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      }
+      __pyx_L211:;
+
+      /* "pyrossgeo/_simulation.pyx":622
+>>>>>>> Implemented stochastic protocol
  *         #### Call event function
  * 
  *         if event_steps[step_i]:             # <<<<<<<<<<<<<<
@@ -8544,7 +10120,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
     }
   }
 
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":635
+=======
+  /* "pyrossgeo/_simulation.pyx":633
+>>>>>>> Implemented stochastic protocol
  *         #    cevent_function(self, step_i, t, dt, X_state, dX_state)
  * 
  *     free(loc_j_is_stochastic)             # <<<<<<<<<<<<<<
@@ -8553,7 +10133,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  */
   free(__pyx_v_loc_j_is_stochastic);
 
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":636
+=======
+  /* "pyrossgeo/_simulation.pyx":634
+>>>>>>> Implemented stochastic protocol
  * 
  *     free(loc_j_is_stochastic)
  *     free(to_k_is_stochastic)             # <<<<<<<<<<<<<<
@@ -8562,7 +10146,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  */
   free(__pyx_v_to_k_is_stochastic);
 
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":638
+=======
+  /* "pyrossgeo/_simulation.pyx":636
+>>>>>>> Implemented stochastic protocol
  *     free(to_k_is_stochastic)
  * 
  *     if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -8572,13 +10160,18 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
   __pyx_t_17 = ((__pyx_v_steps_per_save != -1L) != 0);
   if (__pyx_t_17) {
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":640
+=======
+    /* "pyrossgeo/_simulation.pyx":638
+>>>>>>> Implemented stochastic protocol
  *     if steps_per_save != -1:
  * 
  *         node_mappings = self.node_mappings.copy()             # <<<<<<<<<<<<<<
  *         cnode_mappings = self.cnode_mappings.copy()
  * 
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->node_mappings, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 640, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_187 = NULL;
@@ -8600,12 +10193,36 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
     __pyx_t_18 = 0;
 
     /* "pyrossgeo/_simulation.pyx":641
+=======
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->node_mappings, __pyx_n_s_copy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 638, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_176 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_176 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_176)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_176);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    __pyx_t_3 = (__pyx_t_176) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_176) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+    __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_v_node_mappings = __pyx_t_3;
+    __pyx_t_3 = 0;
+
+    /* "pyrossgeo/_simulation.pyx":639
+>>>>>>> Implemented stochastic protocol
  * 
  *         node_mappings = self.node_mappings.copy()
  *         cnode_mappings = self.cnode_mappings.copy()             # <<<<<<<<<<<<<<
  * 
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->cnode_mappings, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_187 = NULL;
@@ -8627,12 +10244,36 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
     __pyx_t_18 = 0;
 
     /* "pyrossgeo/_simulation.pyx":643
+=======
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->cnode_mappings, __pyx_n_s_copy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_176 = NULL;
+    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+      __pyx_t_176 = PyMethod_GET_SELF(__pyx_t_2);
+      if (likely(__pyx_t_176)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+        __Pyx_INCREF(__pyx_t_176);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_2, function);
+      }
+    }
+    __pyx_t_3 = (__pyx_t_176) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_176) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
+    __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 639, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __pyx_v_cnode_mappings = __pyx_t_3;
+    __pyx_t_3 = 0;
+
+    /* "pyrossgeo/_simulation.pyx":641
+>>>>>>> Implemented stochastic protocol
  *         cnode_mappings = self.cnode_mappings.copy()
  * 
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)             # <<<<<<<<<<<<<<
  * 
  *         if save_path != '':
  */
+<<<<<<< HEAD
     __pyx_t_18 = PyTuple_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
     __Pyx_INCREF(__pyx_v_node_mappings);
@@ -8651,17 +10292,45 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
     __pyx_t_18 = 0;
 
     /* "pyrossgeo/_simulation.pyx":645
+=======
+    __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_v_node_mappings);
+    __Pyx_GIVEREF(__pyx_v_node_mappings);
+    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_node_mappings);
+    __Pyx_INCREF(__pyx_v_cnode_mappings);
+    __Pyx_GIVEREF(__pyx_v_cnode_mappings);
+    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_cnode_mappings);
+    __Pyx_INCREF(__pyx_v_ts_saved);
+    __Pyx_GIVEREF(__pyx_v_ts_saved);
+    PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_ts_saved);
+    __Pyx_INCREF(__pyx_v_X_states_saved);
+    __Pyx_GIVEREF(__pyx_v_X_states_saved);
+    PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_v_X_states_saved);
+    __pyx_v_sim_data = ((PyObject*)__pyx_t_3);
+    __pyx_t_3 = 0;
+
+    /* "pyrossgeo/_simulation.pyx":643
+>>>>>>> Implemented stochastic protocol
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
  * 
  *         if save_path != '':             # <<<<<<<<<<<<<<
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
  */
+<<<<<<< HEAD
     __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_v_save_path, __pyx_kp_u_, Py_NE)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 645, __pyx_L1_error)
     __pyx_t_35 = (__pyx_t_17 != 0);
     if (__pyx_t_35) {
 
       /* "pyrossgeo/_simulation.pyx":646
+=======
+    __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_v_save_path, __pyx_kp_u_, Py_NE)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 643, __pyx_L1_error)
+    __pyx_t_35 = (__pyx_t_17 != 0);
+    if (__pyx_t_35) {
+
+      /* "pyrossgeo/_simulation.pyx":644
+>>>>>>> Implemented stochastic protocol
  * 
  *         if save_path != '':
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)             # <<<<<<<<<<<<<<
@@ -8669,6 +10338,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
  */
       /*with:*/ {
+<<<<<<< HEAD
         __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         __pyx_t_43 = 0;
@@ -8684,10 +10354,28 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         __pyx_t_43 += 1;
         __Pyx_GIVEREF(__pyx_kp_u__3);
         PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_kp_u__3);
+=======
+        __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_43 = 0;
+        __pyx_t_44 = 127;
+        __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_44;
+        __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2);
+        __Pyx_GIVEREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
+        __pyx_t_2 = 0;
+        __Pyx_INCREF(__pyx_kp_u__3);
+        __pyx_t_43 += 1;
+        __Pyx_GIVEREF(__pyx_kp_u__3);
+        PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_kp_u__3);
+>>>>>>> Implemented stochastic protocol
         __Pyx_INCREF(__pyx_v_save_node_mappings_path);
         __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_node_mappings_path) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_node_mappings_path) : __pyx_t_44;
         __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_v_save_node_mappings_path);
         __Pyx_GIVEREF(__pyx_v_save_node_mappings_path);
+<<<<<<< HEAD
         PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_v_save_node_mappings_path);
         __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_18, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -8725,10 +10413,50 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         __pyx_t_187 = __pyx_t_18;
         __pyx_t_18 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+=======
+        PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_save_node_mappings_path);
+        __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_3, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
+        __Pyx_INCREF(__pyx_n_u_wb);
+        __Pyx_GIVEREF(__pyx_n_u_wb);
+        PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_wb);
+        __pyx_t_2 = 0;
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __pyx_t_177 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_177)) __PYX_ERR(0, 644, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_177);
+        __pyx_t_176 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L214_error)
+        __Pyx_GOTREF(__pyx_t_176);
+        __pyx_t_18 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_176))) {
+          __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_176);
+          if (likely(__pyx_t_18)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_176);
+            __Pyx_INCREF(__pyx_t_18);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_176, function);
+          }
+        }
+        __pyx_t_3 = (__pyx_t_18) ? __Pyx_PyObject_CallOneArg(__pyx_t_176, __pyx_t_18) : __Pyx_PyObject_CallNoArg(__pyx_t_176);
+        __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+        if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L214_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+        __pyx_t_176 = __pyx_t_3;
+        __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+>>>>>>> Implemented stochastic protocol
         /*try:*/ {
           {
             __Pyx_PyThreadState_declare
             __Pyx_PyThreadState_assign
+<<<<<<< HEAD
             __Pyx_ExceptionSave(&__pyx_t_189, &__pyx_t_190, &__pyx_t_191);
             __Pyx_XGOTREF(__pyx_t_189);
             __Pyx_XGOTREF(__pyx_t_190);
@@ -8750,10 +10478,34 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
                   __Pyx_INCREF(__pyx_t_3);
                   __Pyx_INCREF(function);
                   __Pyx_DECREF_SET(__pyx_t_18, function);
+=======
+            __Pyx_ExceptionSave(&__pyx_t_178, &__pyx_t_179, &__pyx_t_180);
+            __Pyx_XGOTREF(__pyx_t_178);
+            __Pyx_XGOTREF(__pyx_t_179);
+            __Pyx_XGOTREF(__pyx_t_180);
+            /*try:*/ {
+              __pyx_v_f = __pyx_t_176;
+              __pyx_t_176 = 0;
+              __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pickle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L218_error)
+              __Pyx_GOTREF(__pyx_t_2);
+              __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dump); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L218_error)
+              __Pyx_GOTREF(__pyx_t_3);
+              __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+              __pyx_t_2 = NULL;
+              __pyx_t_5 = 0;
+              if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+                __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+                if (likely(__pyx_t_2)) {
+                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+                  __Pyx_INCREF(__pyx_t_2);
+                  __Pyx_INCREF(function);
+                  __Pyx_DECREF_SET(__pyx_t_3, function);
+>>>>>>> Implemented stochastic protocol
                   __pyx_t_5 = 1;
                 }
               }
               #if CYTHON_FAST_PYCALL
+<<<<<<< HEAD
               if (PyFunction_Check(__pyx_t_18)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_node_mappings, __pyx_v_f};
                 __pyx_t_187 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 646, __pyx_L229_error)
@@ -8793,14 +10545,62 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __Pyx_XDECREF(__pyx_t_191); __pyx_t_191 = 0;
             goto __pyx_L234_try_end;
             __pyx_L229_error:;
+=======
+              if (PyFunction_Check(__pyx_t_3)) {
+                PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_node_mappings, __pyx_v_f};
+                __pyx_t_176 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L218_error)
+                __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __Pyx_GOTREF(__pyx_t_176);
+              } else
+              #endif
+              #if CYTHON_FAST_PYCCALL
+              if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+                PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_node_mappings, __pyx_v_f};
+                __pyx_t_176 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L218_error)
+                __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __Pyx_GOTREF(__pyx_t_176);
+              } else
+              #endif
+              {
+                __pyx_t_18 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 644, __pyx_L218_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                if (__pyx_t_2) {
+                  __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_2); __pyx_t_2 = NULL;
+                }
+                __Pyx_INCREF(__pyx_v_node_mappings);
+                __Pyx_GIVEREF(__pyx_v_node_mappings);
+                PyTuple_SET_ITEM(__pyx_t_18, 0+__pyx_t_5, __pyx_v_node_mappings);
+                __Pyx_INCREF(__pyx_v_f);
+                __Pyx_GIVEREF(__pyx_v_f);
+                PyTuple_SET_ITEM(__pyx_t_18, 1+__pyx_t_5, __pyx_v_f);
+                __pyx_t_176 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_18, NULL); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L218_error)
+                __Pyx_GOTREF(__pyx_t_176);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+              }
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+              __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+            }
+            __Pyx_XDECREF(__pyx_t_178); __pyx_t_178 = 0;
+            __Pyx_XDECREF(__pyx_t_179); __pyx_t_179 = 0;
+            __Pyx_XDECREF(__pyx_t_180); __pyx_t_180 = 0;
+            goto __pyx_L223_try_end;
+            __pyx_L218_error:;
+>>>>>>> Implemented stochastic protocol
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_16, 1);
+<<<<<<< HEAD
             __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
             __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
             __Pyx_XDECREF(__pyx_t_186); __pyx_t_186 = 0;
             __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
+=======
+            __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
+            __Pyx_XDECREF(__pyx_t_175); __pyx_t_175 = 0;
+            __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
+            __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+>>>>>>> Implemented stochastic protocol
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -8809,6 +10609,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __PYX_XDEC_MEMVIEW(&__pyx_t_45, 1);
             /*except:*/ {
               __Pyx_AddTraceback("pyrossgeo._simulation.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+<<<<<<< HEAD
               if (__Pyx_GetException(&__pyx_t_187, &__pyx_t_18, &__pyx_t_2) < 0) __PYX_ERR(0, 646, __pyx_L231_except_error)
               __Pyx_GOTREF(__pyx_t_187);
               __Pyx_GOTREF(__pyx_t_18);
@@ -8849,10 +10650,53 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __Pyx_XGIVEREF(__pyx_t_191);
             __Pyx_ExceptionReset(__pyx_t_189, __pyx_t_190, __pyx_t_191);
             __pyx_L234_try_end:;
+=======
+              if (__Pyx_GetException(&__pyx_t_176, &__pyx_t_3, &__pyx_t_18) < 0) __PYX_ERR(0, 644, __pyx_L220_except_error)
+              __Pyx_GOTREF(__pyx_t_176);
+              __Pyx_GOTREF(__pyx_t_3);
+              __Pyx_GOTREF(__pyx_t_18);
+              __pyx_t_2 = PyTuple_Pack(3, __pyx_t_176, __pyx_t_3, __pyx_t_18); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L220_except_error)
+              __Pyx_GOTREF(__pyx_t_2);
+              __pyx_t_181 = __Pyx_PyObject_Call(__pyx_t_177, __pyx_t_2, NULL);
+              __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+              __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+              if (unlikely(!__pyx_t_181)) __PYX_ERR(0, 644, __pyx_L220_except_error)
+              __Pyx_GOTREF(__pyx_t_181);
+              __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_181);
+              __Pyx_DECREF(__pyx_t_181); __pyx_t_181 = 0;
+              if (__pyx_t_35 < 0) __PYX_ERR(0, 644, __pyx_L220_except_error)
+              __pyx_t_17 = ((!(__pyx_t_35 != 0)) != 0);
+              if (__pyx_t_17) {
+                __Pyx_GIVEREF(__pyx_t_176);
+                __Pyx_GIVEREF(__pyx_t_3);
+                __Pyx_XGIVEREF(__pyx_t_18);
+                __Pyx_ErrRestoreWithState(__pyx_t_176, __pyx_t_3, __pyx_t_18);
+                __pyx_t_176 = 0; __pyx_t_3 = 0; __pyx_t_18 = 0; 
+                __PYX_ERR(0, 644, __pyx_L220_except_error)
+              }
+              __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
+              __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+              __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+              goto __pyx_L219_exception_handled;
+            }
+            __pyx_L220_except_error:;
+            __Pyx_XGIVEREF(__pyx_t_178);
+            __Pyx_XGIVEREF(__pyx_t_179);
+            __Pyx_XGIVEREF(__pyx_t_180);
+            __Pyx_ExceptionReset(__pyx_t_178, __pyx_t_179, __pyx_t_180);
+            goto __pyx_L1_error;
+            __pyx_L219_exception_handled:;
+            __Pyx_XGIVEREF(__pyx_t_178);
+            __Pyx_XGIVEREF(__pyx_t_179);
+            __Pyx_XGIVEREF(__pyx_t_180);
+            __Pyx_ExceptionReset(__pyx_t_178, __pyx_t_179, __pyx_t_180);
+            __pyx_L223_try_end:;
+>>>>>>> Implemented stochastic protocol
           }
         }
         /*finally:*/ {
           /*normal exit:*/{
+<<<<<<< HEAD
             if (__pyx_t_188) {
               __pyx_t_191 = __Pyx_PyObject_Call(__pyx_t_188, __pyx_tuple__7, NULL);
               __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
@@ -8872,6 +10716,27 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
       }
 
       /* "pyrossgeo/_simulation.pyx":647
+=======
+            if (__pyx_t_177) {
+              __pyx_t_180 = __Pyx_PyObject_Call(__pyx_t_177, __pyx_tuple__6, NULL);
+              __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+              if (unlikely(!__pyx_t_180)) __PYX_ERR(0, 644, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_180);
+              __Pyx_DECREF(__pyx_t_180); __pyx_t_180 = 0;
+            }
+            goto __pyx_L217;
+          }
+          __pyx_L217:;
+        }
+        goto __pyx_L227;
+        __pyx_L214_error:;
+        __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+        goto __pyx_L1_error;
+        __pyx_L227:;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":645
+>>>>>>> Implemented stochastic protocol
  *         if save_path != '':
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)             # <<<<<<<<<<<<<<
@@ -8879,6 +10744,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  * 
  */
       /*with:*/ {
+<<<<<<< HEAD
         __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __pyx_t_43 = 0;
@@ -8894,10 +10760,28 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         __pyx_t_43 += 1;
         __Pyx_GIVEREF(__pyx_kp_u__3);
         PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_kp_u__3);
+=======
+        __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __pyx_t_43 = 0;
+        __pyx_t_44 = 127;
+        __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_44;
+        __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
+        __pyx_t_3 = 0;
+        __Pyx_INCREF(__pyx_kp_u__3);
+        __pyx_t_43 += 1;
+        __Pyx_GIVEREF(__pyx_kp_u__3);
+        PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_kp_u__3);
+>>>>>>> Implemented stochastic protocol
         __Pyx_INCREF(__pyx_v_save_cnode_mappings_path);
         __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_cnode_mappings_path) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_cnode_mappings_path) : __pyx_t_44;
         __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_v_save_cnode_mappings_path);
         __Pyx_GIVEREF(__pyx_v_save_cnode_mappings_path);
+<<<<<<< HEAD
         PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_save_cnode_mappings_path);
         __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_2, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
@@ -8935,10 +10819,50 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         __pyx_t_187 = __pyx_t_2;
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+=======
+        PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_v_save_cnode_mappings_path);
+        __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_18, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
+        __Pyx_INCREF(__pyx_n_u_wb);
+        __Pyx_GIVEREF(__pyx_n_u_wb);
+        PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_n_u_wb);
+        __pyx_t_3 = 0;
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __pyx_t_177 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_177)) __PYX_ERR(0, 645, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_177);
+        __pyx_t_176 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L228_error)
+        __Pyx_GOTREF(__pyx_t_176);
+        __pyx_t_2 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_176))) {
+          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_176);
+          if (likely(__pyx_t_2)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_176);
+            __Pyx_INCREF(__pyx_t_2);
+            __Pyx_INCREF(function);
+            __Pyx_DECREF_SET(__pyx_t_176, function);
+          }
+        }
+        __pyx_t_18 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_176, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_176);
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L228_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+        __pyx_t_176 = __pyx_t_18;
+        __pyx_t_18 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+>>>>>>> Implemented stochastic protocol
         /*try:*/ {
           {
             __Pyx_PyThreadState_declare
             __Pyx_PyThreadState_assign
+<<<<<<< HEAD
             __Pyx_ExceptionSave(&__pyx_t_191, &__pyx_t_190, &__pyx_t_189);
             __Pyx_XGOTREF(__pyx_t_191);
             __Pyx_XGOTREF(__pyx_t_190);
@@ -8960,10 +10884,34 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
                   __Pyx_INCREF(__pyx_t_18);
                   __Pyx_INCREF(function);
                   __Pyx_DECREF_SET(__pyx_t_2, function);
+=======
+            __Pyx_ExceptionSave(&__pyx_t_180, &__pyx_t_179, &__pyx_t_178);
+            __Pyx_XGOTREF(__pyx_t_180);
+            __Pyx_XGOTREF(__pyx_t_179);
+            __Pyx_XGOTREF(__pyx_t_178);
+            /*try:*/ {
+              __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_176);
+              __pyx_t_176 = 0;
+              __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pickle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L232_error)
+              __Pyx_GOTREF(__pyx_t_3);
+              __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_dump); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L232_error)
+              __Pyx_GOTREF(__pyx_t_18);
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+              __pyx_t_3 = NULL;
+              __pyx_t_5 = 0;
+              if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_18))) {
+                __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_18);
+                if (likely(__pyx_t_3)) {
+                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_18);
+                  __Pyx_INCREF(__pyx_t_3);
+                  __Pyx_INCREF(function);
+                  __Pyx_DECREF_SET(__pyx_t_18, function);
+>>>>>>> Implemented stochastic protocol
                   __pyx_t_5 = 1;
                 }
               }
               #if CYTHON_FAST_PYCALL
+<<<<<<< HEAD
               if (PyFunction_Check(__pyx_t_2)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_18, __pyx_v_cnode_mappings, __pyx_v_f};
                 __pyx_t_187 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 647, __pyx_L243_error)
@@ -9003,14 +10951,62 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __Pyx_XDECREF(__pyx_t_189); __pyx_t_189 = 0;
             goto __pyx_L248_try_end;
             __pyx_L243_error:;
+=======
+              if (PyFunction_Check(__pyx_t_18)) {
+                PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_cnode_mappings, __pyx_v_f};
+                __pyx_t_176 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L232_error)
+                __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_GOTREF(__pyx_t_176);
+              } else
+              #endif
+              #if CYTHON_FAST_PYCCALL
+              if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
+                PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_cnode_mappings, __pyx_v_f};
+                __pyx_t_176 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L232_error)
+                __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_GOTREF(__pyx_t_176);
+              } else
+              #endif
+              {
+                __pyx_t_2 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 645, __pyx_L232_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                if (__pyx_t_3) {
+                  __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
+                }
+                __Pyx_INCREF(__pyx_v_cnode_mappings);
+                __Pyx_GIVEREF(__pyx_v_cnode_mappings);
+                PyTuple_SET_ITEM(__pyx_t_2, 0+__pyx_t_5, __pyx_v_cnode_mappings);
+                __Pyx_INCREF(__pyx_v_f);
+                __Pyx_GIVEREF(__pyx_v_f);
+                PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_5, __pyx_v_f);
+                __pyx_t_176 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_2, NULL); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L232_error)
+                __Pyx_GOTREF(__pyx_t_176);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+              }
+              __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+              __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+            }
+            __Pyx_XDECREF(__pyx_t_180); __pyx_t_180 = 0;
+            __Pyx_XDECREF(__pyx_t_179); __pyx_t_179 = 0;
+            __Pyx_XDECREF(__pyx_t_178); __pyx_t_178 = 0;
+            goto __pyx_L237_try_end;
+            __pyx_L232_error:;
+>>>>>>> Implemented stochastic protocol
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_16, 1);
+<<<<<<< HEAD
             __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
             __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
             __Pyx_XDECREF(__pyx_t_186); __pyx_t_186 = 0;
             __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
+=======
+            __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
+            __Pyx_XDECREF(__pyx_t_175); __pyx_t_175 = 0;
+            __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
+            __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+>>>>>>> Implemented stochastic protocol
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -9019,6 +11015,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __PYX_XDEC_MEMVIEW(&__pyx_t_45, 1);
             /*except:*/ {
               __Pyx_AddTraceback("pyrossgeo._simulation.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+<<<<<<< HEAD
               if (__Pyx_GetException(&__pyx_t_187, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 647, __pyx_L245_except_error)
               __Pyx_GOTREF(__pyx_t_187);
               __Pyx_GOTREF(__pyx_t_2);
@@ -9059,10 +11056,53 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
             __Pyx_XGIVEREF(__pyx_t_189);
             __Pyx_ExceptionReset(__pyx_t_191, __pyx_t_190, __pyx_t_189);
             __pyx_L248_try_end:;
+=======
+              if (__Pyx_GetException(&__pyx_t_176, &__pyx_t_18, &__pyx_t_2) < 0) __PYX_ERR(0, 645, __pyx_L234_except_error)
+              __Pyx_GOTREF(__pyx_t_176);
+              __Pyx_GOTREF(__pyx_t_18);
+              __Pyx_GOTREF(__pyx_t_2);
+              __pyx_t_3 = PyTuple_Pack(3, __pyx_t_176, __pyx_t_18, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L234_except_error)
+              __Pyx_GOTREF(__pyx_t_3);
+              __pyx_t_181 = __Pyx_PyObject_Call(__pyx_t_177, __pyx_t_3, NULL);
+              __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+              if (unlikely(!__pyx_t_181)) __PYX_ERR(0, 645, __pyx_L234_except_error)
+              __Pyx_GOTREF(__pyx_t_181);
+              __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_181);
+              __Pyx_DECREF(__pyx_t_181); __pyx_t_181 = 0;
+              if (__pyx_t_17 < 0) __PYX_ERR(0, 645, __pyx_L234_except_error)
+              __pyx_t_35 = ((!(__pyx_t_17 != 0)) != 0);
+              if (__pyx_t_35) {
+                __Pyx_GIVEREF(__pyx_t_176);
+                __Pyx_GIVEREF(__pyx_t_18);
+                __Pyx_XGIVEREF(__pyx_t_2);
+                __Pyx_ErrRestoreWithState(__pyx_t_176, __pyx_t_18, __pyx_t_2);
+                __pyx_t_176 = 0; __pyx_t_18 = 0; __pyx_t_2 = 0; 
+                __PYX_ERR(0, 645, __pyx_L234_except_error)
+              }
+              __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
+              __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+              goto __pyx_L233_exception_handled;
+            }
+            __pyx_L234_except_error:;
+            __Pyx_XGIVEREF(__pyx_t_180);
+            __Pyx_XGIVEREF(__pyx_t_179);
+            __Pyx_XGIVEREF(__pyx_t_178);
+            __Pyx_ExceptionReset(__pyx_t_180, __pyx_t_179, __pyx_t_178);
+            goto __pyx_L1_error;
+            __pyx_L233_exception_handled:;
+            __Pyx_XGIVEREF(__pyx_t_180);
+            __Pyx_XGIVEREF(__pyx_t_179);
+            __Pyx_XGIVEREF(__pyx_t_178);
+            __Pyx_ExceptionReset(__pyx_t_180, __pyx_t_179, __pyx_t_178);
+            __pyx_L237_try_end:;
+>>>>>>> Implemented stochastic protocol
           }
         }
         /*finally:*/ {
           /*normal exit:*/{
+<<<<<<< HEAD
             if (__pyx_t_188) {
               __pyx_t_189 = __Pyx_PyObject_Call(__pyx_t_188, __pyx_tuple__7, NULL);
               __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
@@ -9082,12 +11122,34 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
       }
 
       /* "pyrossgeo/_simulation.pyx":648
+=======
+            if (__pyx_t_177) {
+              __pyx_t_178 = __Pyx_PyObject_Call(__pyx_t_177, __pyx_tuple__6, NULL);
+              __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+              if (unlikely(!__pyx_t_178)) __PYX_ERR(0, 645, __pyx_L1_error)
+              __Pyx_GOTREF(__pyx_t_178);
+              __Pyx_DECREF(__pyx_t_178); __pyx_t_178 = 0;
+            }
+            goto __pyx_L231;
+          }
+          __pyx_L231:;
+        }
+        goto __pyx_L241;
+        __pyx_L228_error:;
+        __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+        goto __pyx_L1_error;
+        __pyx_L241:;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":646
+>>>>>>> Implemented stochastic protocol
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)             # <<<<<<<<<<<<<<
  * 
  *         return sim_data
  */
+<<<<<<< HEAD
       __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_187 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_save); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 648, __pyx_L1_error)
@@ -9108,10 +11170,33 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
       __pyx_t_43 += 1;
       __Pyx_GIVEREF(__pyx_kp_u__3);
       PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_kp_u__3);
+=======
+      __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_n_s_np); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __pyx_t_176 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_save); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 646, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_176);
+      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __pyx_t_43 = 0;
+      __pyx_t_44 = 127;
+      __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_44;
+      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
+      __Pyx_GIVEREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
+      __pyx_t_3 = 0;
+      __Pyx_INCREF(__pyx_kp_u__3);
+      __pyx_t_43 += 1;
+      __Pyx_GIVEREF(__pyx_kp_u__3);
+      PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_kp_u__3);
+>>>>>>> Implemented stochastic protocol
       __Pyx_INCREF(__pyx_v_save_ts_path);
       __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_ts_path) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_ts_path) : __pyx_t_44;
       __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_v_save_ts_path);
       __Pyx_GIVEREF(__pyx_v_save_ts_path);
+<<<<<<< HEAD
       PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_save_ts_path);
       __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_2, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 648, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
@@ -9125,10 +11210,26 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
           __Pyx_INCREF(__pyx_t_2);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_187, function);
+=======
+      PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_v_save_ts_path);
+      __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_18, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __pyx_t_18 = NULL;
+      __pyx_t_5 = 0;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_176))) {
+        __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_176);
+        if (likely(__pyx_t_18)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_176);
+          __Pyx_INCREF(__pyx_t_18);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_176, function);
+>>>>>>> Implemented stochastic protocol
           __pyx_t_5 = 1;
         }
       }
       #if CYTHON_FAST_PYCALL
+<<<<<<< HEAD
       if (PyFunction_Check(__pyx_t_187)) {
         PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_18, __pyx_v_ts_saved};
         __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_187, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
@@ -9166,6 +11267,45 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
       /* "pyrossgeo/_simulation.pyx":645
+=======
+      if (PyFunction_Check(__pyx_t_176)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_18, __pyx_t_3, __pyx_v_ts_saved};
+        __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_176, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_176)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_18, __pyx_t_3, __pyx_v_ts_saved};
+        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_176, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      } else
+      #endif
+      {
+        __pyx_t_1 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_1);
+        if (__pyx_t_18) {
+          __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_18); __pyx_t_18 = NULL;
+        }
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_1, 0+__pyx_t_5, __pyx_t_3);
+        __Pyx_INCREF(__pyx_v_ts_saved);
+        __Pyx_GIVEREF(__pyx_v_ts_saved);
+        PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_5, __pyx_v_ts_saved);
+        __pyx_t_3 = 0;
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_176, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      }
+      __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+      /* "pyrossgeo/_simulation.pyx":643
+>>>>>>> Implemented stochastic protocol
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
  * 
  *         if save_path != '':             # <<<<<<<<<<<<<<
@@ -9174,7 +11314,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
  */
     }
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":650
+=======
+    /* "pyrossgeo/_simulation.pyx":648
+>>>>>>> Implemented stochastic protocol
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
  * 
  *         return sim_data             # <<<<<<<<<<<<<<
@@ -9184,7 +11328,11 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
     __pyx_r = __pyx_v_sim_data;
     goto __pyx_L0;
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":638
+=======
+    /* "pyrossgeo/_simulation.pyx":636
+>>>>>>> Implemented stochastic protocol
  *     free(to_k_is_stochastic)
  * 
  *     if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -9216,9 +11364,15 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
   __Pyx_XDECREF(__pyx_t_19);
   __Pyx_XDECREF(__pyx_t_20);
   __PYX_XDEC_MEMVIEW(&__pyx_t_45, 1);
+<<<<<<< HEAD
   __Pyx_XDECREF(__pyx_t_185);
   __Pyx_XDECREF(__pyx_t_186);
   __Pyx_XDECREF(__pyx_t_187);
+=======
+  __Pyx_XDECREF(__pyx_t_174);
+  __Pyx_XDECREF(__pyx_t_175);
+  __Pyx_XDECREF(__pyx_t_176);
+>>>>>>> Implemented stochastic protocol
   __Pyx_AddTraceback("pyrossgeo._simulation.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -9228,10 +11382,17 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
   __PYX_XDEC_MEMVIEW(&__pyx_v_contact_matrices, 1);
   __Pyx_XDECREF(__pyx_v_total_Os_arr);
   __PYX_XDEC_MEMVIEW(&__pyx_v_total_Os, 1);
+<<<<<<< HEAD
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_below_arr);
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_above_arr);
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_below);
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_above);
+=======
+  __Pyx_XDECREF(__pyx_v_stoch_threshold_from_below_arr);
+  __Pyx_XDECREF(__pyx_v_stoch_threshold_from_above_arr);
+  __Pyx_XDECREF(__pyx_v_stoch_threshold_from_below);
+  __Pyx_XDECREF(__pyx_v_stoch_threshold_from_above);
+>>>>>>> Implemented stochastic protocol
   __Pyx_XDECREF(__pyx_v_save_node_mappings_path);
   __Pyx_XDECREF(__pyx_v_save_cnode_mappings_path);
   __Pyx_XDECREF(__pyx_v_save_ts_path);
@@ -9374,7 +11535,11 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 272, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 272, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9430,7 +11595,11 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  * 
  *             info.buf = PyArray_DATA(self)
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -9688,7 +11857,11 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
+<<<<<<< HEAD
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 306, __pyx_L1_error)
+=======
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 306, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10568,7 +12741,11 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
+<<<<<<< HEAD
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 856, __pyx_L1_error)
+=======
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 856, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10636,7 +12813,11 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             # One could encode it in the format string and have Cython
  *             # complain instead, BUT: < and > in format strings also imply
  */
+<<<<<<< HEAD
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 860, __pyx_L1_error)
+=======
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 860, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10745,7 +12926,11 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
+<<<<<<< HEAD
         __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 880, __pyx_L1_error)
+=======
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 880, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -11373,7 +13558,11 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
+<<<<<<< HEAD
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1038, __pyx_L5_except_error)
+=======
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1038, __pyx_L5_except_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11502,7 +13691,11 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
+<<<<<<< HEAD
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1044, __pyx_L5_except_error)
+=======
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1044, __pyx_L5_except_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11628,7 +13821,11 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1050, __pyx_L5_except_error)
+=======
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1050, __pyx_L5_except_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -11872,7 +14069,11 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if itemsize <= 0:
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 133, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 133, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11904,7 +14105,11 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *         if not isinstance(format, bytes):
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 136, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 136, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12031,7 +14236,11 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  * 
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 148, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 148, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12305,7 +14514,11 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  *             if self.dtype_is_object:
  */
+<<<<<<< HEAD
       __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(2, 176, __pyx_L1_error)
+=======
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(2, 176, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_Raise(__pyx_t_10, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -12546,7 +14759,11 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(stru
  *         info.buf = self.data
  *         info.len = self.len
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 192, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 192, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -13262,7 +15479,11 @@ static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __p
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -13315,7 +15536,11 @@ static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -14998,7 +17223,11 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setit
  * 
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
+<<<<<<< HEAD
     __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 418, __pyx_L1_error)
+=======
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 418, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -16025,7 +18254,11 @@ static PyObject *__pyx_memoryview_convert_item_to_object(struct __pyx_memoryview
  *         else:
  *             if len(self.view.format) == 1:
  */
+<<<<<<< HEAD
       __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 495, __pyx_L5_except_error)
+=======
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 495, __pyx_L5_except_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_Raise(__pyx_t_6, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -16381,7 +18614,11 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_8__getbu
  * 
  *         if flags & PyBUF_ND:
  */
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 520, __pyx_L1_error)
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 520, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -16921,7 +19158,11 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_7strides___get__(st
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
+<<<<<<< HEAD
     __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 570, __pyx_L1_error)
+=======
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 570, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -17035,7 +19276,11 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_10suboffsets___get_
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->view.ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 577, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
+<<<<<<< HEAD
     __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__26, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 577, __pyx_L1_error)
+=======
+    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__25, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 577, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_3;
@@ -18036,7 +20281,11 @@ static PyObject *__pyx_pf___pyx_memoryview___reduce_cython__(CYTHON_UNUSED struc
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -18089,7 +20338,11 @@ static PyObject *__pyx_pf___pyx_memoryview_2__setstate_cython__(CYTHON_UNUSED st
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -18741,7 +20994,11 @@ static PyObject *assert_direct_dimensions(Py_ssize_t *__pyx_v_suboffsets, int __
  * 
  * 
  */
+<<<<<<< HEAD
       __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 703, __pyx_L1_error)
+=======
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 703, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -20904,7 +23161,11 @@ static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED 
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20957,7 +23218,11 @@ static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUS
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -25306,7 +27571,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_out_of, __pyx_k_out_of, sizeof(__pyx_k_out_of), 0, 1, 0, 0},
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
+<<<<<<< HEAD
   {&__pyx_n_s_poisson, __pyx_k_poisson, sizeof(__pyx_k_poisson), 0, 0, 1, 1},
+=======
+>>>>>>> Implemented stochastic protocol
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_pyrossgeo___defs, __pyx_k_pyrossgeo___defs, sizeof(__pyx_k_pyrossgeo___defs), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
@@ -25322,7 +27590,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_round, __pyx_k_round, sizeof(__pyx_k_round), 0, 0, 1, 1},
+<<<<<<< HEAD
   {&__pyx_n_s_rvs, __pyx_k_rvs, sizeof(__pyx_k_rvs), 0, 0, 1, 1},
+=======
+>>>>>>> Implemented stochastic protocol
   {&__pyx_n_s_save, __pyx_k_save, sizeof(__pyx_k_save), 0, 0, 1, 1},
   {&__pyx_n_s_scipy, __pyx_k_scipy, sizeof(__pyx_k_scipy), 0, 0, 1, 1},
   {&__pyx_n_s_scipy_stats, __pyx_k_scipy_stats, sizeof(__pyx_k_scipy_stats), 0, 0, 1, 1},
@@ -25331,7 +27602,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_shape, __pyx_k_shape, sizeof(__pyx_k_shape), 0, 0, 1, 1},
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
   {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
+<<<<<<< HEAD
   {&__pyx_n_s_stats, __pyx_k_stats, sizeof(__pyx_k_stats), 0, 0, 1, 1},
+=======
+>>>>>>> Implemented stochastic protocol
   {&__pyx_n_s_step, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
   {&__pyx_n_s_stop, __pyx_k_stop, sizeof(__pyx_k_stop), 0, 0, 1, 1},
   {&__pyx_kp_s_strided_and_direct, __pyx_k_strided_and_direct, sizeof(__pyx_k_strided_and_direct), 0, 0, 1, 0},
@@ -25355,8 +27629,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 129, __pyx_L1_error)
+<<<<<<< HEAD
   __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 456, __pyx_L1_error)
   __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 646, __pyx_L1_error)
+=======
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 644, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 272, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 856, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1038, __pyx_L1_error)
@@ -25389,6 +27668,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":456
  *             # Deterministic
  *             else:
@@ -25401,15 +27681,24 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__6);
 
   /* "pyrossgeo/_simulation.pyx":646
+=======
+  /* "pyrossgeo/_simulation.pyx":644
+>>>>>>> Implemented stochastic protocol
  * 
  *         if save_path != '':
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)             # <<<<<<<<<<<<<<
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
  */
+<<<<<<< HEAD
   __pyx_tuple__7 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
+=======
+  __pyx_tuple__6 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 644, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__6);
+  __Pyx_GIVEREF(__pyx_tuple__6);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":272
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
@@ -25418,9 +27707,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
+<<<<<<< HEAD
   __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
+=======
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(1, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":276
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
@@ -25429,9 +27724,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *             info.buf = PyArray_DATA(self)
  */
+<<<<<<< HEAD
   __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
+=======
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 276, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":306
  *                 if ((descr.byteorder == c'>' and little_endian) or
@@ -25440,9 +27741,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *                 if   t == NPY_BYTE:        f = "b"
  *                 elif t == NPY_UBYTE:       f = "B"
  */
+<<<<<<< HEAD
   __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
+=======
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 306, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":856
  * 
@@ -25451,9 +27758,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if ((child.byteorder == c'>' and little_endian) or
  */
+<<<<<<< HEAD
   __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 856, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
+=======
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 856, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":880
  *             t = child.type_num
@@ -25462,9 +27775,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
+<<<<<<< HEAD
   __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 880, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
+=======
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 880, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1038
  *         _import_array()
@@ -25473,9 +27792,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_umath() except -1:
  */
+<<<<<<< HEAD
   __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 1038, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
+=======
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 1038, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+>>>>>>> Implemented stochastic protocol
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1044
  *         _import_umath()
@@ -25484,9 +27809,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * cdef inline int import_ufunc() except -1:
  */
+<<<<<<< HEAD
   __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 1044, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
+=======
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 1044, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":133
  * 
@@ -25495,9 +27826,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if itemsize <= 0:
  */
+<<<<<<< HEAD
   __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(2, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
+=======
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(2, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":136
  * 
@@ -25506,9 +27843,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if not isinstance(format, bytes):
  */
+<<<<<<< HEAD
   __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(2, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
+=======
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(2, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":148
  * 
@@ -25517,9 +27860,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
+<<<<<<< HEAD
   __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(2, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
+=======
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(2, 148, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":176
  *             self.data = <char *>malloc(self.len)
@@ -25528,9 +27877,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *             if self.dtype_is_object:
  */
+<<<<<<< HEAD
   __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(2, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
+=======
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(2, 176, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":192
  *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
@@ -25539,9 +27894,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         info.buf = self.data
  *         info.len = self.len
  */
+<<<<<<< HEAD
   __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(2, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
+=======
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(2, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -25549,18 +27910,30 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
   __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
+=======
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
   __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
+=======
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":418
  *     def __setitem__(memoryview self, object index, object value):
@@ -25569,9 +27942,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
+<<<<<<< HEAD
   __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(2, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
+=======
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(2, 418, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":495
  *             result = struct.unpack(self.view.format, bytesitem)
@@ -25580,9 +27959,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         else:
  *             if len(self.view.format) == 1:
  */
+<<<<<<< HEAD
   __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(2, 495, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
+=======
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(2, 495, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":520
  *     def __getbuffer__(self, Py_buffer *info, int flags):
@@ -25591,9 +27976,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         if flags & PyBUF_ND:
  */
+<<<<<<< HEAD
   __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(2, 520, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
+=======
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(2, 520, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":570
  *         if self.view.strides == NULL:
@@ -25602,9 +27993,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
+<<<<<<< HEAD
   __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(2, 570, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
+=======
+  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(2, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":577
  *     def suboffsets(self):
@@ -25613,12 +28010,21 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([suboffset for suboffset in self.view.suboffsets[:self.view.ndim]])
  */
+<<<<<<< HEAD
   __pyx_tuple__26 = PyTuple_New(1); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(2, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_INCREF(__pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_int_neg_1);
   PyTuple_SET_ITEM(__pyx_tuple__26, 0, __pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_tuple__26);
+=======
+  __pyx_tuple__25 = PyTuple_New(1); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(2, 577, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_INCREF(__pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_int_neg_1);
+  PyTuple_SET_ITEM(__pyx_tuple__25, 0, __pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_tuple__25);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -25626,18 +28032,30 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
   __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
+=======
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_GIVEREF(__pyx_tuple__26);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
   __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
+=======
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":703
  *     for suboffset in suboffsets[:ndim]:
@@ -25646,9 +28064,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
+<<<<<<< HEAD
   __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(2, 703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
+=======
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(2, 703, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -25656,18 +28080,30 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
   __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
+=======
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
   __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
+=======
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":286
  *         return self.name
@@ -25676,9 +28112,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
+<<<<<<< HEAD
   __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(2, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
+=======
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(2, 286, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":287
  * 
@@ -25687,9 +28129,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
+<<<<<<< HEAD
   __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(2, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
+=======
+  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(2, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":288
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -25698,9 +28146,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
+<<<<<<< HEAD
   __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(2, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
+=======
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(2, 288, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":291
  * 
@@ -25709,9 +28163,15 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
+<<<<<<< HEAD
   __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(2, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
+=======
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(2, 291, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+>>>>>>> Implemented stochastic protocol
 
   /* "View.MemoryView":292
  * 
@@ -25720,19 +28180,32 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  * 
  */
+<<<<<<< HEAD
   __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
+=======
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(2, 292, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+>>>>>>> Implemented stochastic protocol
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Enum(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
  *     cdef object __pyx_PickleError
  *     cdef object __pyx_result
  */
+<<<<<<< HEAD
   __pyx_tuple__37 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__37);
   __Pyx_GIVEREF(__pyx_tuple__37);
   __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(2, 1, __pyx_L1_error)
+=======
+  __pyx_tuple__36 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
+  __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(2, 1, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -25751,9 +28224,14 @@ if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+<<<<<<< HEAD
   __pyx_int_500 = PyInt_FromLong(500); if (unlikely(!__pyx_int_500)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_123123 = PyInt_FromLong(123123L); if (unlikely(!__pyx_int_123123)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_10000000 = PyInt_FromLong(10000000L); if (unlikely(!__pyx_int_10000000)) __PYX_ERR(0, 1, __pyx_L1_error)
+=======
+  __pyx_int_50 = PyInt_FromLong(50); if (unlikely(!__pyx_int_50)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_100 = PyInt_FromLong(100); if (unlikely(!__pyx_int_100)) __PYX_ERR(0, 1, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __pyx_int_184977713 = PyInt_FromLong(184977713L); if (unlikely(!__pyx_int_184977713)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
@@ -26243,7 +28721,11 @@ if (!__Pyx_RefNanny) {
  * cdef strided = Enum("<strided and direct>") # default
  * cdef indirect = Enum("<strided and indirect>")
  */
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 286, __pyx_L1_error)
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 286, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_2);
@@ -26257,7 +28739,11 @@ if (!__Pyx_RefNanny) {
  * cdef indirect = Enum("<strided and indirect>")
  * 
  */
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 287, __pyx_L1_error)
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 287, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_2);
@@ -26271,7 +28757,11 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 288, __pyx_L1_error)
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 288, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_2);
@@ -26285,7 +28775,11 @@ if (!__Pyx_RefNanny) {
  * cdef indirect_contiguous = Enum("<contiguous and indirect>")
  * 
  */
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 291, __pyx_L1_error)
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 291, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_2);
@@ -26299,7 +28793,11 @@ if (!__Pyx_RefNanny) {
  * 
  * 
  */
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 292, __pyx_L1_error)
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 292, __pyx_L1_error)
+>>>>>>> Implemented stochastic protocol
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_2);

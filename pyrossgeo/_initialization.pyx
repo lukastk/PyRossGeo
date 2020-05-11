@@ -374,6 +374,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
         model_class_name_to_class_index[oclass] = i
         model_class_index_to_class_name[i] = oclass
 
+<<<<<<< HEAD
     py_model_linear_terms = []
     py_model_infection_terms = []
 
@@ -384,6 +385,25 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     for class_name in model_dat:
         if class_name == 'settings':
+=======
+    model_class_name_to_class_index = {}
+    model_class_index_to_class_name = {}
+    for i in range(len(model_dat['classes'])):
+        oclass = model_dat['classes'][i]
+        model_class_name_to_class_index[oclass] = i
+        model_class_index_to_class_name[i] = oclass
+
+    py_model_linear_terms = []
+    py_model_infection_terms = []
+
+    infection_model_param_to_model_term = {}
+    linear_model_param_to_model_term = {}
+
+    ## Construct internal representation of model
+
+    for class_name in model_dat:
+        if class_name == 'classes':
+>>>>>>> Implemented stochastic protocol
             continue
 
         for coupling_class, model_param in model_dat[class_name]['linear']:
