@@ -34,7 +34,7 @@ Locally at each geographical node, we simulate compartmental epidemiological dyn
   <img src="docs/figs/network.svg" width="450px">
 </p>
 
-The local infective dynamics at a node-level is customizable, and any variant of the compartmental epidemilogical models (e.g. SIR, SEIR, SEAIR, etc.) can be coded using a configuration file.
+The local infective dynamics at a node-level is customizable, and any variant of the compartmental epidemiological models (e.g. SIR, SEIR, SEAIR, etc.) can be coded using a configuration file.
 
 The model has been tested with synthetic data on London, at an MSOA (Middle Super Output Area) level. We used ~1000 geographical nodes, with a commuter network of ~300'000 edges, constructed using the [2011 UK Census data](https://www.ons.gov.uk/census/2011census). We are currently developing a test for a UK-wide simulation at an LAD (Local Authority District) level.
 

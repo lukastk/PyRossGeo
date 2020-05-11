@@ -1,7 +1,7 @@
 # PyRossGeo documentation
 
 **Note:** <i>PyRossGeo is
-still in active development, and future version might change substantially. See the <a href="https://github.com/rajeshrinet/pyross/blob/master/docs/changelogs.md" target="_blank">changelog</a> </i>
+still in active development, and future version might change substantially. See the <a href="https://github.com/lukastk/PyRossGeo/blob/master/docs/changelogs.md" target="_blank">changelog</a> </i>
 for all changes between updates.
 
 #### Tutorials
