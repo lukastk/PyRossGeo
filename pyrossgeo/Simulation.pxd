@@ -63,8 +63,8 @@ cdef class Simulation:
     cdef DTYPE_t transport_profile_c_r
 
     # Stochasticity
-    cdef np.ndarray stoch_threshold_from_below # If all classes go above their threshold, start deterministic
-    cdef np.ndarray stoch_threshold_from_above # If any class go below their threshold, start stochastic
+    cdef np.ndarray stochastic_threshold_from_below # If all classes go above their threshold, start deterministic
+    cdef np.ndarray stochastic_threshold_from_above # If any class go below their threshold, start stochastic
 
     # Misc
     cdef readonly dict storage # Persistent storage that will be used for events
