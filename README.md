@@ -30,9 +30,9 @@ The PyRossGeo uses a spatially resolved infectious disease model, where geograph
 
 Locally at each geographical node, we simulate compartmental epidemiological dynamics with an age-contact structure. The resident population at each node can move between nodes via the *commuter network*. The epidemics of the commute itself is modelled using the *"commuterverse"*: People moving between geographical nodes must spend the requisite amount of time (corresponding to the distance travelled) with their fellow commuters in a *commuter node*. See the figure below for an example of a commuter network:
 
-<div style="text-align: center; margin-bottom: 30px;">
-  <img src="docs/figs/network.svg" width="350px">
-</div>
+<p align="center">
+  <img src="docs/figs/network.svg" width="450px">
+</p>
 
 The local infective dynamics at a node-level is customizable, and any variant of the compartmental epidemilogical models (e.g. SIR, SEIR, SEAIR, etc.) can be coded using a configuration file.
 
@@ -65,7 +65,7 @@ PyRossGeo requires the following software
 
 ## Documentation
 
-See the [here](https://github.com/lukastk/PyRossGeo/blob/master/docs/Documentation.md) for documentation, tutorials and example notebooks.
+See <a href="https://github.com/lukastk/PyRossGeo/blob/master/docs/Documentation.md" target="_black">here</a> for documentation, tutorials and example notebooks.
 
 <!--## Publications-->
 
