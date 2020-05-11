@@ -22,11 +22,11 @@ The authors are part of the [Rapid Assistance in Modelling the Pandemic (RAMP)](
 [Hideki Kobayashi](https://github.com/hidekb),
 [Paul Rohrbach](https://github.com/prohrbach),
 [Rajesh Singh](https://github.com/rajeshrinet) and
-[Fernando Pedrero](https://github.com/Ferfer93).
+[Fernando Caballero](https://github.com/Ferfer93).
 
 ## Model
 
-The PyRossGeo uses a spatially resolved infectious disease model, where geographical spread is simulated by explicitly modelling the commuting patterns of the population.
+The PyRossGeo uses a spatially resolved infectious disease model. The model is distinct from other network-SIR models in that it explicitly considers movement between geographical nodes, by modelling the commuting patterns of the population.
 
 Locally at each geographical node, we simulate compartmental epidemiological dynamics with an age-contact structure. The resident population at each node can move between nodes via the *commuter network*. The epidemics of the commute itself is modelled using the *"commuterverse"*: People moving between geographical nodes must spend the requisite amount of time (corresponding to the distance travelled) with their fellow commuters in a *commuter node*. See the figure below for an example of a commuter network:
 
@@ -36,7 +36,7 @@ Locally at each geographical node, we simulate compartmental epidemiological dyn
 
 The local infective dynamics at a node-level is customizable, and any variant of the compartmental epidemilogical models (e.g. SIR, SEIR, SEAIR, etc.) can be coded using a configuration file.
 
-The model has been tested with synthetic data on London, at an MSOA (Middle Super Output Area) level. We used ~1000 geographical nodes, with a commuter network of ~300'000 edges, constructed using the [2011 UK Census data](https://www.ons.gov.uk/census/2011census). We are currently developing the test for a UK-wide simulation at an LAD (Local Authority District) level.
+The model has been tested with synthetic data on London, at an MSOA (Middle Super Output Area) level. We used ~1000 geographical nodes, with a commuter network of ~300'000 edges, constructed using the [2011 UK Census data](https://www.ons.gov.uk/census/2011census). We are currently developing a test for a UK-wide simulation at an LAD (Local Authority District) level.
 
 For a more detailed description of the model, please read [this](https://github.com/rajeshrinet/pyross/blob/master/docs/models.pdf).
 
