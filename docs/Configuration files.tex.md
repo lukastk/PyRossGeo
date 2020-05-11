@@ -950,3 +950,4 @@ between nodes over time.
   reasons for this is that it will lead to migration if there are other
   commuting patterns that share intermediate nodes such as $0 \to 3 \to 2 \to 0$.
   This will be rectified in a future iteration of PyRossGeo.
+  
