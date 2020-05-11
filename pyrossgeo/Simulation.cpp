@@ -1407,12 +1407,17 @@ struct __pyx_obj_9pyrossgeo_10Simulation_Simulation {
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_c;
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_c_r;
 <<<<<<< HEAD
+<<<<<<< HEAD
   PyArrayObject *stochastic_threshold_from_below;
   PyArrayObject *stochastic_threshold_from_above;
 =======
   PyArrayObject *stoch_threshold_from_below;
   PyArrayObject *stoch_threshold_from_above;
 >>>>>>> Implemented stochastic protocol
+=======
+  PyArrayObject *stochastic_threshold_from_below;
+  PyArrayObject *stochastic_threshold_from_above;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   PyObject *storage;
   PyObject *has_been_initialized;
 };
@@ -21022,12 +21027,17 @@ static PyObject *__pyx_tp_new_9pyrossgeo_10Simulation_Simulation(PyTypeObject *t
   p->_Ns = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
   p->location_area = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
 <<<<<<< HEAD
+<<<<<<< HEAD
   p->stochastic_threshold_from_below = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
   p->stochastic_threshold_from_above = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
 =======
   p->stoch_threshold_from_below = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
   p->stoch_threshold_from_above = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
 >>>>>>> Implemented stochastic protocol
+=======
+  p->stochastic_threshold_from_below = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
+  p->stochastic_threshold_from_above = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   p->storage = ((PyObject*)Py_None); Py_INCREF(Py_None);
   p->has_been_initialized = Py_None; Py_INCREF(Py_None);
   if (unlikely(__pyx_pw_9pyrossgeo_10Simulation_10Simulation_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
@@ -21066,12 +21076,17 @@ static void __pyx_tp_dealloc_9pyrossgeo_10Simulation_Simulation(PyObject *o) {
   Py_CLEAR(p->_Ns);
   Py_CLEAR(p->location_area);
 <<<<<<< HEAD
+<<<<<<< HEAD
   Py_CLEAR(p->stochastic_threshold_from_below);
   Py_CLEAR(p->stochastic_threshold_from_above);
 =======
   Py_CLEAR(p->stoch_threshold_from_below);
   Py_CLEAR(p->stoch_threshold_from_above);
 >>>>>>> Implemented stochastic protocol
+=======
+  Py_CLEAR(p->stochastic_threshold_from_below);
+  Py_CLEAR(p->stochastic_threshold_from_above);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   Py_CLEAR(p->storage);
   Py_CLEAR(p->has_been_initialized);
   (*Py_TYPE(o)->tp_free)(o);
@@ -21117,6 +21132,7 @@ static int __pyx_tp_traverse_9pyrossgeo_10Simulation_Simulation(PyObject *o, vis
     e = (*v)(((PyObject *)p->location_area), a); if (e) return e;
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
   if (p->stochastic_threshold_from_below) {
     e = (*v)(((PyObject *)p->stochastic_threshold_from_below), a); if (e) return e;
   }
@@ -21129,6 +21145,13 @@ static int __pyx_tp_traverse_9pyrossgeo_10Simulation_Simulation(PyObject *o, vis
   if (p->stoch_threshold_from_above) {
     e = (*v)(((PyObject *)p->stoch_threshold_from_above), a); if (e) return e;
 >>>>>>> Implemented stochastic protocol
+=======
+  if (p->stochastic_threshold_from_below) {
+    e = (*v)(((PyObject *)p->stochastic_threshold_from_below), a); if (e) return e;
+  }
+  if (p->stochastic_threshold_from_above) {
+    e = (*v)(((PyObject *)p->stochastic_threshold_from_above), a); if (e) return e;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   }
   if (p->storage) {
     e = (*v)(p->storage, a); if (e) return e;
@@ -21179,6 +21202,7 @@ static int __pyx_tp_clear_9pyrossgeo_10Simulation_Simulation(PyObject *o) {
   p->location_area = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
 <<<<<<< HEAD
+<<<<<<< HEAD
   tmp = ((PyObject*)p->stochastic_threshold_from_below);
   p->stochastic_threshold_from_below = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
   Py_XDECREF(tmp);
@@ -21191,6 +21215,13 @@ static int __pyx_tp_clear_9pyrossgeo_10Simulation_Simulation(PyObject *o) {
   tmp = ((PyObject*)p->stoch_threshold_from_above);
   p->stoch_threshold_from_above = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
 >>>>>>> Implemented stochastic protocol
+=======
+  tmp = ((PyObject*)p->stochastic_threshold_from_below);
+  p->stochastic_threshold_from_below = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  tmp = ((PyObject*)p->stochastic_threshold_from_above);
+  p->stochastic_threshold_from_above = ((PyArrayObject *)Py_None); Py_INCREF(Py_None);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   Py_XDECREF(tmp);
   tmp = ((PyObject*)p->storage);
   p->storage = ((PyObject*)Py_None); Py_INCREF(Py_None);

@@ -84,6 +84,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     total_Os_arr = np.zeros(model_dim, dtype=DTYPE)
     cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on
 <<<<<<< HEAD
+<<<<<<< HEAD
     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
     #cdef DTYPE_t[:] stochastic_threshold_from_above = self.stochastic_threshold_from_abov
     cdef bint* loc_j_is_stochastic
@@ -104,6 +105,17 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     stoch_threshold_from_below = stoch_threshold_from_below_arr
     stoch_threshold_from_above = stoch_threshold_from_above_arr
 >>>>>>> Implemented stochastic protocol
+=======
+    #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
+    #cdef DTYPE_t[:] stochastic_threshold_from_above = self.stochastic_threshold_from_abov
+    cdef bint* loc_j_is_stochastic
+    cdef bint* to_k_is_stochastic
+
+    stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )
+    stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )
+    stochastic_threshold_from_below = stochastic_threshold_from_below_arr
+    stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     
     if random_seed == -1:
         random_seed = np.int64(np.round(time.time()))
@@ -154,10 +166,14 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
         for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+            loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
     for to_k in range(max_node_index+1):
         n = nodes[i]
@@ -175,10 +191,14 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
         for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+            to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
     # Loop through nodes and cnodes to see if they should start out as stochastic or not
 
@@ -323,6 +343,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 loc_j_is_stochastic[loc_j] = False
                 for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
             else:
                 loc_j_is_stochastic[loc_j] = False
@@ -335,6 +356,13 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 for o in range(model_dim):
                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])
 >>>>>>> Implemented stochastic protocol
+=======
+                    loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+            else:
+                loc_j_is_stochastic[loc_j] = False
+                for o in range(model_dim):
+                    loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
             #### Compute the derivatives at each node
 
@@ -350,6 +378,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             mt = model_linear_terms[j]   
                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
                                 #term = dist(gen) * r_dt
                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
@@ -358,6 +387,11 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 term = dist(gen) * r_dt
                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+                                #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+                                #term = dist(gen) * r_dt
+                                term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
 
@@ -365,6 +399,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             mt = model_infection_terms[j]
                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+<<<<<<< HEAD
 <<<<<<< HEAD
                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
                                 #term = dist(gen) * r_dt
@@ -374,6 +409,11 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 term = dist(gen) * r_dt
                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+                                #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+                                #term = dist(gen) * r_dt
+                                term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term            
             # Deterministic
@@ -394,11 +434,16 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                         for j in range(model_infection_terms_len):
                             mt = model_infection_terms[j]
 <<<<<<< HEAD
+<<<<<<< HEAD
                             if dX_state[si+mt.oi_neg] > 0:
                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 =======
                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 >>>>>>> Implemented stochastic protocol
+=======
+                            if dX_state[si+mt.oi_neg] > 0:
+                            #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
                                 dX_state[si+mt.oi_pos] += term
@@ -464,6 +509,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 to_k_is_stochastic[loc_j] = False
                 for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
             else:
                 to_k_is_stochastic[loc_j] = True
@@ -474,14 +520,21 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
             if True and loc_j_is_stochastic[to_k]:
 =======
                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+=======
+                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             else:
                 to_k_is_stochastic[loc_j] = True
                 for o in range(model_dim):
-                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])
+                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
 
             # Stochastic
+<<<<<<< HEAD
             if False and loc_j_is_stochastic[to_k]:
 >>>>>>> Implemented stochastic protocol
+=======
+            if True and loc_j_is_stochastic[to_k]:
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                 for age_a in range(age_groups):
                     for i in range(cnodes_into_k_len[age_a][to_k]): 
                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
@@ -492,6 +545,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             mt = model_linear_terms[j]
                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
                                 #term = dist(gen) * r_dt
                                 term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
@@ -500,6 +554,11 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 term = dist(gen) * r_dt
                                 #term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+                                #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+                                #term = dist(gen) * r_dt
+                                term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
 
@@ -507,6 +566,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             mt = model_infection_terms[j]
                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
+<<<<<<< HEAD
 <<<<<<< HEAD
                                 #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
                                 #term = dist(gen) * r_dt
@@ -516,14 +576,23 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 term = dist(gen) * r_dt
                                 #term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+                                #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+                                #term = dist(gen) * r_dt
+                                term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
             # Deterministic
             else:
 <<<<<<< HEAD
+<<<<<<< HEAD
                 print(123123)
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+                print(123123)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                 for age_a in range(age_groups):
                     for i in range(cnodes_into_k_len[age_a][to_k]): 
                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]

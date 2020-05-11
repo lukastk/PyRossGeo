@@ -1408,12 +1408,17 @@ struct __pyx_obj_9pyrossgeo_10Simulation_Simulation {
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_c;
   __pyx_t_9pyrossgeo_8__defs___DTYPE_t transport_profile_c_r;
 <<<<<<< HEAD
+<<<<<<< HEAD
   PyArrayObject *stochastic_threshold_from_below;
   PyArrayObject *stochastic_threshold_from_above;
 =======
   PyArrayObject *stoch_threshold_from_below;
   PyArrayObject *stoch_threshold_from_above;
 >>>>>>> Implemented stochastic protocol
+=======
+  PyArrayObject *stochastic_threshold_from_below;
+  PyArrayObject *stochastic_threshold_from_above;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   PyObject *storage;
   PyObject *has_been_initialized;
 };
@@ -2503,9 +2508,13 @@ static const char __pyx_k_wb[] = "wb";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const char __pyx_k_rvs[] = "rvs";
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+static const char __pyx_k_rvs[] = "rvs";
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static const char __pyx_k_None[] = "None";
 static const char __pyx_k_Step[] = "Step ";
 static const char __pyx_k_base[] = "base";
@@ -2545,9 +2554,13 @@ static const char __pyx_k_scipy[] = "scipy";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const char __pyx_k_stats[] = "stats";
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+static const char __pyx_k_stats[] = "stats";
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_chunks[] = "chunks";
 static const char __pyx_k_encode[] = "encode";
@@ -2565,9 +2578,13 @@ static const char __pyx_k_asarray[] = "asarray";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
 <<<<<<< HEAD
+<<<<<<< HEAD
 static const char __pyx_k_poisson[] = "poisson";
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+static const char __pyx_k_poisson[] = "poisson";
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
 static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_itemsize[] = "itemsize";
@@ -2723,9 +2740,13 @@ static PyObject *__pyx_kp_u_out_of;
 static PyObject *__pyx_n_s_pack;
 static PyObject *__pyx_n_s_pickle;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static PyObject *__pyx_n_s_poisson;
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+static PyObject *__pyx_n_s_poisson;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_pyrossgeo___defs;
 static PyObject *__pyx_n_s_pyx_PickleError;
@@ -2742,9 +2763,13 @@ static PyObject *__pyx_n_s_reduce_cython;
 static PyObject *__pyx_n_s_reduce_ex;
 static PyObject *__pyx_n_s_round;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static PyObject *__pyx_n_s_rvs;
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+static PyObject *__pyx_n_s_rvs;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static PyObject *__pyx_n_s_save;
 static PyObject *__pyx_n_s_scipy;
 static PyObject *__pyx_n_s_scipy_stats;
@@ -2754,9 +2779,13 @@ static PyObject *__pyx_n_s_shape;
 static PyObject *__pyx_n_s_size;
 static PyObject *__pyx_n_s_start;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static PyObject *__pyx_n_s_stats;
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+static PyObject *__pyx_n_s_stats;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static PyObject *__pyx_n_s_step;
 static PyObject *__pyx_n_s_stop;
 static PyObject *__pyx_kp_s_strided_and_direct;
@@ -2827,6 +2856,7 @@ static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyO
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static PyObject *__pyx_int_500;
 static PyObject *__pyx_int_123123;
 static PyObject *__pyx_int_10000000;
@@ -2834,6 +2864,11 @@ static PyObject *__pyx_int_10000000;
 static PyObject *__pyx_int_50;
 static PyObject *__pyx_int_100;
 >>>>>>> Implemented stochastic protocol
+=======
+static PyObject *__pyx_int_500;
+static PyObject *__pyx_int_123123;
+static PyObject *__pyx_int_10000000;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 static PyObject *__pyx_int_184977713;
 static PyObject *__pyx_int_neg_1;
 static PyObject *__pyx_k__2;
@@ -2871,11 +2906,16 @@ static PyObject *__pyx_tuple__34;
 static PyObject *__pyx_tuple__35;
 static PyObject *__pyx_tuple__36;
 <<<<<<< HEAD
+<<<<<<< HEAD
 static PyObject *__pyx_tuple__37;
 static PyObject *__pyx_codeobj__38;
 =======
 static PyObject *__pyx_codeobj__37;
 >>>>>>> Implemented stochastic protocol
+=======
+static PyObject *__pyx_tuple__37;
+static PyObject *__pyx_codeobj__38;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 /* Late includes */
 
 /* "pyrossgeo/_simulation.pyx":18
@@ -2955,11 +2995,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   int *__pyx_v_loc_j_is_stochastic;
   int *__pyx_v_to_k_is_stochastic;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   PyObject *__pyx_v_stochastic_threshold_from_below_arr = NULL;
   PyObject *__pyx_v_stochastic_threshold_from_above_arr = NULL;
   PyObject *__pyx_v_stochastic_threshold_from_below = NULL;
   PyObject *__pyx_v_stochastic_threshold_from_above = NULL;
   CYTHON_UNUSED std::mt19937 __pyx_v_gen;
+<<<<<<< HEAD
 =======
   PyObject *__pyx_v_stoch_threshold_from_below_arr = NULL;
   PyObject *__pyx_v_stoch_threshold_from_above_arr = NULL;
@@ -2968,6 +3012,8 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   std::mt19937 __pyx_v_gen;
   std::poisson_distribution<int>  __pyx_v_dist;
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   int __pyx_v_minutes_in_day;
   PyObject *__pyx_v_save_node_mappings_path = NULL;
   PyObject *__pyx_v_save_cnode_mappings_path = NULL;
@@ -3194,6 +3240,9 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   Py_ssize_t __pyx_t_172;
   Py_ssize_t __pyx_t_173;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   Py_ssize_t __pyx_t_174;
   Py_ssize_t __pyx_t_175;
   Py_ssize_t __pyx_t_176;
@@ -3213,6 +3262,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   PyObject *__pyx_t_190 = NULL;
   PyObject *__pyx_t_191 = NULL;
   PyObject *__pyx_t_192 = NULL;
+<<<<<<< HEAD
 =======
   PyObject *__pyx_t_174 = NULL;
   PyObject *__pyx_t_175 = NULL;
@@ -3223,6 +3273,8 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   PyObject *__pyx_t_180 = NULL;
   PyObject *__pyx_t_181 = NULL;
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_RefNannySetupContext("simulate", 0);
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
@@ -3611,10 +3663,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     total_Os_arr = np.zeros(model_dim, dtype=DTYPE)             # <<<<<<<<<<<<<<
  *     cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on
 <<<<<<< HEAD
+<<<<<<< HEAD
  *     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
 =======
  *     #cdef DTYPE_t[:] stoch_threshold_from_below = self.stoch_threshold_from_below
 >>>>>>> Implemented stochastic protocol
+=======
+ *     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -3647,12 +3703,17 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     total_Os_arr = np.zeros(model_dim, dtype=DTYPE)
  *     cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
  *     #cdef DTYPE_t[:] stochastic_threshold_from_above = self.stochastic_threshold_from_abov
 =======
  *     #cdef DTYPE_t[:] stoch_threshold_from_below = self.stoch_threshold_from_below
  *     #cdef DTYPE_t[:] stoch_threshold_from_above = self.stoch_threshold_from_abov
 >>>>>>> Implemented stochastic protocol
+=======
+ *     #cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
+ *     #cdef DTYPE_t[:] stochastic_threshold_from_above = self.stochastic_threshold_from_abov
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
   __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t(__pyx_v_total_Os_arr, PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(0, 85, __pyx_L1_error)
   __pyx_v_total_Os = __pyx_t_16;
@@ -3663,6 +3724,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     cdef bint* to_k_is_stochastic
  * 
 <<<<<<< HEAD
+<<<<<<< HEAD
  *     stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )             # <<<<<<<<<<<<<<
  *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )
  *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr
@@ -3671,6 +3733,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )
  *     stoch_threshold_from_below = stoch_threshold_from_below_arr
 >>>>>>> Implemented stochastic protocol
+=======
+ *     stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )             # <<<<<<<<<<<<<<
+ *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )
+ *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
   __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -3680,6 +3747,9 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __pyx_t_1 = PyList_New(5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_INCREF(__pyx_int_10000000);
   __Pyx_GIVEREF(__pyx_int_10000000);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_int_10000000);
@@ -3695,6 +3765,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_INCREF(__pyx_int_10000000);
   __Pyx_GIVEREF(__pyx_int_10000000);
   PyList_SET_ITEM(__pyx_t_1, 4, __pyx_int_10000000);
+<<<<<<< HEAD
 =======
   __Pyx_INCREF(__pyx_int_100);
   __Pyx_GIVEREF(__pyx_int_100);
@@ -3712,6 +3783,8 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_GIVEREF(__pyx_int_100);
   PyList_SET_ITEM(__pyx_t_1, 4, __pyx_int_100);
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
     __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_2);
@@ -3729,25 +3802,35 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_v_stochastic_threshold_from_below_arr = __pyx_t_4;
 =======
   __pyx_v_stoch_threshold_from_below_arr = __pyx_t_4;
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_v_stochastic_threshold_from_below_arr = __pyx_t_4;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_t_4 = 0;
 
   /* "pyrossgeo/_simulation.pyx":92
  * 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *     stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )
  *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )             # <<<<<<<<<<<<<<
  *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr
  *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+<<<<<<< HEAD
 =======
  *     stoch_threshold_from_below_arr = np.array( [100, 100, 100, 100, 100] )
  *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )             # <<<<<<<<<<<<<<
  *     stoch_threshold_from_below = stoch_threshold_from_below_arr
  *     stoch_threshold_from_above = stoch_threshold_from_above_arr
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
   __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3757,6 +3840,9 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __pyx_t_2 = PyList_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_INCREF(__pyx_int_500);
   __Pyx_GIVEREF(__pyx_int_500);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_int_500);
@@ -3772,6 +3858,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_INCREF(__pyx_int_500);
   __Pyx_GIVEREF(__pyx_int_500);
   PyList_SET_ITEM(__pyx_t_2, 4, __pyx_int_500);
+<<<<<<< HEAD
 =======
   __Pyx_INCREF(__pyx_int_50);
   __Pyx_GIVEREF(__pyx_int_50);
@@ -3789,6 +3876,8 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   __Pyx_GIVEREF(__pyx_int_50);
   PyList_SET_ITEM(__pyx_t_2, 4, __pyx_int_50);
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
     __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_1);
@@ -3805,6 +3894,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
   if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_v_stochastic_threshold_from_above_arr = __pyx_t_4;
   __pyx_t_4 = 0;
@@ -3833,31 +3923,38 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
 =======
   __pyx_v_stoch_threshold_from_above_arr = __pyx_t_4;
+=======
+  __pyx_v_stochastic_threshold_from_above_arr = __pyx_t_4;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_t_4 = 0;
 
   /* "pyrossgeo/_simulation.pyx":93
- *     stoch_threshold_from_below_arr = np.array( [100, 100, 100, 100, 100] )
- *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )
- *     stoch_threshold_from_below = stoch_threshold_from_below_arr             # <<<<<<<<<<<<<<
- *     stoch_threshold_from_above = stoch_threshold_from_above_arr
+ *     stochastic_threshold_from_below_arr = np.array( [10000000, 10000000, 10000000, 10000000, 10000000] )
+ *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )
+ *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr             # <<<<<<<<<<<<<<
+ *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
  * 
  */
-  __Pyx_INCREF(__pyx_v_stoch_threshold_from_below_arr);
-  __pyx_v_stoch_threshold_from_below = __pyx_v_stoch_threshold_from_below_arr;
+  __Pyx_INCREF(__pyx_v_stochastic_threshold_from_below_arr);
+  __pyx_v_stochastic_threshold_from_below = __pyx_v_stochastic_threshold_from_below_arr;
 
   /* "pyrossgeo/_simulation.pyx":94
- *     stoch_threshold_from_above_arr = np.array( [50, 50, 50, 50, 50] )
- *     stoch_threshold_from_below = stoch_threshold_from_below_arr
- *     stoch_threshold_from_above = stoch_threshold_from_above_arr             # <<<<<<<<<<<<<<
+ *     stochastic_threshold_from_above_arr = np.array( [500, 500, 500, 500, 500] )
+ *     stochastic_threshold_from_below = stochastic_threshold_from_below_arr
+ *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr             # <<<<<<<<<<<<<<
  * 
  *     if random_seed == -1:
  */
-  __Pyx_INCREF(__pyx_v_stoch_threshold_from_above_arr);
-  __pyx_v_stoch_threshold_from_above = __pyx_v_stoch_threshold_from_above_arr;
+  __Pyx_INCREF(__pyx_v_stochastic_threshold_from_above_arr);
+  __pyx_v_stochastic_threshold_from_above = __pyx_v_stochastic_threshold_from_above_arr;
 
   /* "pyrossgeo/_simulation.pyx":96
+<<<<<<< HEAD
  *     stoch_threshold_from_above = stoch_threshold_from_above_arr
 >>>>>>> Implemented stochastic protocol
+=======
+ *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *     if random_seed == -1:             # <<<<<<<<<<<<<<
  *         random_seed = np.int64(np.round(time.time()))
@@ -3941,10 +4038,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
     /* "pyrossgeo/_simulation.pyx":96
 <<<<<<< HEAD
+<<<<<<< HEAD
  *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
 =======
  *     stoch_threshold_from_above = stoch_threshold_from_above_arr
 >>>>>>> Implemented stochastic protocol
+=======
+ *     stochastic_threshold_from_above = stochastic_threshold_from_above_arr
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *     if random_seed == -1:             # <<<<<<<<<<<<<<
  *         random_seed = np.int64(np.round(time.time()))
@@ -4190,10 +4291,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  *         for o in range(model_dim):             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  */
     __pyx_t_23 = __pyx_v_model_dim;
@@ -4205,10 +4310,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  *         for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
 =======
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
 >>>>>>> Implemented stochastic protocol
+=======
+ *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *     for to_k in range(max_node_index+1):
  */
@@ -4222,10 +4331,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_4 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_36 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
 =======
       __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 144, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_1 = PyObject_RichCompare(__pyx_t_4, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -4240,10 +4353,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
   /* "pyrossgeo/_simulation.pyx":146
 <<<<<<< HEAD
+<<<<<<< HEAD
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
  *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *             loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *     for to_k in range(max_node_index+1):             # <<<<<<<<<<<<<<
  *         n = nodes[i]
@@ -4359,10 +4476,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  *         for o in range(model_dim):             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
  *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  */
     __pyx_t_23 = __pyx_v_model_dim;
@@ -4374,10 +4495,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  *         for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
  *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
 =======
  *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
 >>>>>>> Implemented stochastic protocol
+=======
+ *             to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *     # Loop through nodes and cnodes to see if they should start out as stochastic or not
  */
@@ -4391,10 +4516,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_t_1 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_40 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
 =======
       __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_4 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_LT); __Pyx_XGOTREF(__pyx_t_4); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -5677,10 +5806,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 loc_j_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
  *                 for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
         (__pyx_v_loc_j_is_stochastic[__pyx_v_loc_j]) = 0;
 
@@ -5689,10 +5822,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             else:
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -5704,10 +5841,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
 =======
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             else:
  *                 loc_j_is_stochastic[loc_j] = False
  */
@@ -5721,10 +5862,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_3 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_79 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 305, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
 <<<<<<< HEAD
+<<<<<<< HEAD
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 305, __pyx_L1_error)
 =======
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 305, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 305, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_GOTREF(__pyx_t_18);
           __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_18, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 305, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5748,6 +5893,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
       /* "pyrossgeo/_simulation.pyx":307
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
  *             else:
  *                 loc_j_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
@@ -5760,6 +5906,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 for o in range(model_dim):
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+ *             else:
+ *                 loc_j_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
+ *                 for o in range(model_dim):
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
       /*else*/ {
         (__pyx_v_loc_j_is_stochastic[__pyx_v_loc_j]) = 0;
@@ -5769,10 +5922,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
 =======
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -5784,10 +5941,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 loc_j_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])             # <<<<<<<<<<<<<<
 =======
  *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_above[o])             # <<<<<<<<<<<<<<
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])             # <<<<<<<<<<<<<<
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             #### Compute the derivatives at each node
  */
@@ -5801,10 +5962,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_2 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_80 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
 <<<<<<< HEAD
+<<<<<<< HEAD
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 309, __pyx_L1_error)
 =======
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 309, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 309, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_GOTREF(__pyx_t_18);
           __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_18, Py_LT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 309, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5899,10 +6064,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_linear_terms[j]             # <<<<<<<<<<<<<<
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
 =======
  *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               __pyx_v_mt = (__pyx_v_model_linear_terms[__pyx_v_j]);
 
@@ -5911,22 +6080,31 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 #term = dist(gen) * r_dt
 =======
  *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 term = dist(gen) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 #term = dist(gen) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               __pyx_t_82 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
               __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_82 * __pyx_v_X_state.strides[0]) ))) > 0.0) != 0);
               if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                 /* "pyrossgeo/_simulation.pyx":326
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 #term = dist(gen) * r_dt
  *                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term
  */
@@ -5989,14 +6167,60 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 term = dist(gen) * r_dt             # <<<<<<<<<<<<<<
  *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term
  */
-                __pyx_v_term = (__pyx_v_dist(__pyx_v_gen) * __pyx_v_r_dt);
+                __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_n_s_scipy); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_stats); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_poisson); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_rvs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_83 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+                __pyx_t_18 = PyFloat_FromDouble(((__pyx_v_dt * (__pyx_v_n.linear_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_83 * __pyx_v_X_state.strides[0]) ))))); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __pyx_t_1 = NULL;
+                if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+                  __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+                  if (likely(__pyx_t_1)) {
+                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+                    __Pyx_INCREF(__pyx_t_1);
+                    __Pyx_INCREF(function);
+                    __Pyx_DECREF_SET(__pyx_t_2, function);
+                  }
+                }
+                __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_t_18) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_18);
+                __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_2 = PyFloat_FromDouble(__pyx_v_r_dt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __pyx_t_18 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_15 = __pyx_PyFloat_AsDouble(__pyx_t_18); if (unlikely((__pyx_t_15 == ((npy_double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 326, __pyx_L1_error)
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_v_term = __pyx_t_15;
 
                 /* "pyrossgeo/_simulation.pyx":327
+<<<<<<< HEAD
  *                                 term = dist(gen) * r_dt
  *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
@@ -6006,10 +6230,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
                 /* "pyrossgeo/_simulation.pyx":328
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
 =======
  *                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  * 
@@ -6023,12 +6251,17 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_linear_terms[j]
  *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 #term = dist(gen) * r_dt
 =======
  *                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
  *                                 term = dist(gen) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 #term = dist(gen) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               }
             }
@@ -6060,10 +6293,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
 =======
  *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               __pyx_t_86 = __pyx_v_cmat_i;
               __pyx_t_87 = __pyx_v_age_a;
@@ -6075,6 +6312,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
 <<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
  *                                 #term = dist(gen) * r_dt
@@ -6136,34 +6374,71 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 =======
  *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
  *                                 term = dist(gen) * r_dt
+=======
+ *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ *                                 #term = dist(gen) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
                 __pyx_v_cmat_i = (__pyx_v_n.contact_matrix_indices[__pyx_v_mt.infection_index]);
 
-                /* "pyrossgeo/_simulation.pyx":334
- *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
- *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
- *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)             # <<<<<<<<<<<<<<
- *                                 term = dist(gen) * r_dt
- *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+                /* "pyrossgeo/_simulation.pyx":336
+ *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term
  */
+                __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_scipy); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_stats); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_poisson); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_rvs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
                 __pyx_t_89 = __pyx_v_cmat_i;
                 __pyx_t_90 = __pyx_v_age_a;
                 __pyx_t_91 = __pyx_v_mt.infection_index;
-                __pyx_v_dist = std::poisson_distribution<int> ((((__pyx_v_dt * (__pyx_v_n.infection_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_89 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_90 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_91 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S));
-
-                /* "pyrossgeo/_simulation.pyx":335
- *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
- *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
- *                                 term = dist(gen) * r_dt             # <<<<<<<<<<<<<<
- *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
- *                                 dX_state[si+mt.oi_pos] += term
- */
-                __pyx_v_term = (__pyx_v_dist(__pyx_v_gen) * __pyx_v_r_dt);
+                __pyx_t_2 = PyFloat_FromDouble((((__pyx_v_dt * (__pyx_v_n.infection_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_89 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_90 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_91 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __pyx_t_1 = NULL;
+                if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+                  __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_3);
+                  if (likely(__pyx_t_1)) {
+                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+                    __Pyx_INCREF(__pyx_t_1);
+                    __Pyx_INCREF(function);
+                    __Pyx_DECREF_SET(__pyx_t_3, function);
+                  }
+                }
+                __pyx_t_18 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_1, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
+                __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __pyx_t_3 = PyFloat_FromDouble(__pyx_v_r_dt); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __pyx_t_2 = PyNumber_Multiply(__pyx_t_18, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __pyx_t_15 = __pyx_PyFloat_AsDouble(__pyx_t_2); if (unlikely((__pyx_t_15 == ((npy_double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 336, __pyx_L1_error)
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_v_term = __pyx_t_15;
 
                 /* "pyrossgeo/_simulation.pyx":337
+<<<<<<< HEAD
  *                                 term = dist(gen) * r_dt
  *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  *             # Deterministic
@@ -6173,10 +6448,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
                 /* "pyrossgeo/_simulation.pyx":338
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
 =======
  *                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  *             # Deterministic
@@ -6191,10 +6470,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
 =======
  *                                 dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
 >>>>>>> Implemented stochastic protocol
+=======
+ *                                 #dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               }
             }
@@ -6343,10 +6626,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         for j in range(model_infection_terms_len):             # <<<<<<<<<<<<<<
  *                             mt = model_infection_terms[j]
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:
 =======
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 >>>>>>> Implemented stochastic protocol
+=======
+ *                             if dX_state[si+mt.oi_neg] > 0:
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
             __pyx_t_53 = __pyx_v_model_infection_terms_len;
             __pyx_t_54 = __pyx_t_53;
@@ -6358,18 +6645,24 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]             # <<<<<<<<<<<<<<
 <<<<<<< HEAD
+<<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 =======
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
 >>>>>>> Implemented stochastic protocol
+=======
+ *                             if dX_state[si+mt.oi_neg] > 0:
+ *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               __pyx_v_mt = (__pyx_v_model_infection_terms[__pyx_v_j]);
 
               /* "pyrossgeo/_simulation.pyx":356
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
+<<<<<<< HEAD
 <<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:             # <<<<<<<<<<<<<<
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
@@ -6384,19 +6677,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 =======
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+=======
+ *                             if dX_state[si+mt.oi_neg] > 0:             # <<<<<<<<<<<<<<
+ *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
- *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  */
-              __pyx_t_99 = __pyx_v_cmat_i;
-              __pyx_t_100 = __pyx_v_age_a;
-              __pyx_t_101 = __pyx_v_mt.infection_index;
-              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_99 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_100 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_101 * __pyx_v__lambdas.strides[2]) ))) > 0.0) != 0);
+              __pyx_t_99 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_99 * __pyx_v_dX_state.strides[0]) ))) > 0.0) != 0);
               if (__pyx_t_17) {
 
+<<<<<<< HEAD
                 /* "pyrossgeo/_simulation.pyx":357
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 >>>>>>> Implemented stochastic protocol
+=======
+                /* "pyrossgeo/_simulation.pyx":358
+ *                             if dX_state[si+mt.oi_neg] > 0:
+ *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]             # <<<<<<<<<<<<<<
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  *                                 dX_state[si+mt.oi_pos] += term
@@ -6404,22 +6704,31 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                 __pyx_v_cmat_i = (__pyx_v_n.contact_matrix_indices[__pyx_v_mt.infection_index]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 /* "pyrossgeo/_simulation.pyx":359
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 =======
                 /* "pyrossgeo/_simulation.pyx":358
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
 >>>>>>> Implemented stochastic protocol
+=======
+                /* "pyrossgeo/_simulation.pyx":359
+ *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                 __pyx_t_100 = __pyx_v_cmat_i;
                 __pyx_t_101 = __pyx_v_age_a;
                 __pyx_t_102 = __pyx_v_mt.infection_index;
                 __pyx_v_term = (((__pyx_v_n.infection_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_100 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_101 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_102 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S);
+<<<<<<< HEAD
 
                 /* "pyrossgeo/_simulation.pyx":360
 =======
@@ -6430,12 +6739,17 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
                 /* "pyrossgeo/_simulation.pyx":359
 >>>>>>> Implemented stochastic protocol
+=======
+
+                /* "pyrossgeo/_simulation.pyx":360
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
                 __pyx_t_103 = (__pyx_v_si + __pyx_v_mt.oi_pos);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_103 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
@@ -6447,6 +6761,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
                 /* "pyrossgeo/_simulation.pyx":360
 >>>>>>> Implemented stochastic protocol
+=======
+                __pyx_t_103 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_103 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":361
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
@@ -6454,16 +6774,22 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *         #### CNode dynamics ############################################
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
                 __pyx_t_104 = (__pyx_v_si + __pyx_v_mt.oi_neg);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_104 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
 =======
                 __pyx_t_106 = (__pyx_v_si + __pyx_v_mt.oi_neg);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_106 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
 >>>>>>> Implemented stochastic protocol
+=======
+                __pyx_t_104 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_104 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
                 /* "pyrossgeo/_simulation.pyx":356
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
+<<<<<<< HEAD
 <<<<<<< HEAD
  *                             if dX_state[si+mt.oi_neg] > 0:             # <<<<<<<<<<<<<<
  *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
@@ -6473,6 +6799,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
  *                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
 >>>>>>> Implemented stochastic protocol
+=======
+ *                             if dX_state[si+mt.oi_neg] > 0:             # <<<<<<<<<<<<<<
+ *                             #if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ *                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
               }
             }
@@ -6483,10 +6814,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":365
 =======
     /* "pyrossgeo/_simulation.pyx":364
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":365
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### CNode dynamics ############################################
  * 
  *         for to_k in range(max_node_index+1):             # <<<<<<<<<<<<<<
@@ -6499,10 +6834,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_to_k = __pyx_t_28;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":369
 =======
       /* "pyrossgeo/_simulation.pyx":368
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":369
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             # Check whether there are any active cnodes going into k
  * 
  *             to_k_is_active = False             # <<<<<<<<<<<<<<
@@ -6512,10 +6851,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_to_k_is_active = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":370
 =======
       /* "pyrossgeo/_simulation.pyx":369
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":370
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             to_k_is_active = False
  *             for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6528,10 +6871,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_age_a = __pyx_t_29;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":371
 =======
         /* "pyrossgeo/_simulation.pyx":370
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":371
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             to_k_is_active = False
  *             for age_a in range(age_groups):
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
@@ -6544,10 +6891,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_i = __pyx_t_32;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":372
 =======
           /* "pyrossgeo/_simulation.pyx":371
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":372
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             for age_a in range(age_groups):
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
@@ -6557,10 +6908,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":373
 =======
           /* "pyrossgeo/_simulation.pyx":372
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":373
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     to_k_is_active = cn.is_on or to_k_is_active             # <<<<<<<<<<<<<<
@@ -6579,10 +6934,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_to_k_is_active = __pyx_t_17;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":374
 =======
           /* "pyrossgeo/_simulation.pyx":373
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":374
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     to_k_is_active = cn.is_on or to_k_is_active
  *                     if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6593,10 +6952,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":375
 =======
             /* "pyrossgeo/_simulation.pyx":374
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":375
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     to_k_is_active = cn.is_on or to_k_is_active
  *                     if to_k_is_active:
  *                         break             # <<<<<<<<<<<<<<
@@ -6606,10 +6969,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             goto __pyx_L119_break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":374
 =======
             /* "pyrossgeo/_simulation.pyx":373
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":374
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     to_k_is_active = cn.is_on or to_k_is_active
  *                     if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6621,10 +6988,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_L119_break:;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":376
 =======
         /* "pyrossgeo/_simulation.pyx":375
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":376
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     if to_k_is_active:
  *                         break
  *                 if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6635,10 +7006,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":377
 =======
           /* "pyrossgeo/_simulation.pyx":376
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":377
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         break
  *                 if to_k_is_active:
  *                     break             # <<<<<<<<<<<<<<
@@ -6648,10 +7023,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           goto __pyx_L117_break;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":376
 =======
           /* "pyrossgeo/_simulation.pyx":375
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":376
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     if to_k_is_active:
  *                         break
  *                 if to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6663,10 +7042,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_L117_break:;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":379
 =======
       /* "pyrossgeo/_simulation.pyx":378
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":379
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     break
  * 
  *             if not to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6677,10 +7060,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":380
 =======
         /* "pyrossgeo/_simulation.pyx":379
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":380
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             if not to_k_is_active:
  *                 continue             # <<<<<<<<<<<<<<
@@ -6690,10 +7077,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         goto __pyx_L114_continue;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":379
 =======
         /* "pyrossgeo/_simulation.pyx":378
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":379
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     break
  * 
  *             if not to_k_is_active:             # <<<<<<<<<<<<<<
@@ -6703,10 +7094,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":384
 =======
       /* "pyrossgeo/_simulation.pyx":383
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":384
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             # Compute the total populations of each class at loc_j, as well as the populaitons of each age group
  * 
  *             for o in range(model_dim):             # <<<<<<<<<<<<<<
@@ -6719,16 +7114,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_o = __pyx_t_29;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":385
 =======
         /* "pyrossgeo/_simulation.pyx":384
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":385
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             for o in range(model_dim):
  *                 total_Os[o] = 0             # <<<<<<<<<<<<<<
  * 
  *             for age_a in range(age_groups):
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_105 = __pyx_v_o;
         *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_105 * __pyx_v_total_Os.strides[0]) )) = 0.0;
@@ -6742,6 +7142,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
       /* "pyrossgeo/_simulation.pyx":386
 >>>>>>> Implemented stochastic protocol
+=======
+        __pyx_t_105 = __pyx_v_o;
+        *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_105 * __pyx_v_total_Os.strides[0]) )) = 0.0;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":387
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 total_Os[o] = 0
  * 
  *             for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6754,16 +7161,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_age_a = __pyx_t_29;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":388
 =======
         /* "pyrossgeo/_simulation.pyx":387
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":388
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             for age_a in range(age_groups):
  *                 _Ns[age_a] = 0             # <<<<<<<<<<<<<<
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_106 = __pyx_v_age_a;
         *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_106 * __pyx_v__Ns.strides[0]) )) = 0.0;
@@ -6775,6 +7187,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
         /* "pyrossgeo/_simulation.pyx":388
 >>>>>>> Implemented stochastic protocol
+=======
+        __pyx_t_106 = __pyx_v_age_a;
+        *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_106 * __pyx_v__Ns.strides[0]) )) = 0.0;
+
+        /* "pyrossgeo/_simulation.pyx":389
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             for age_a in range(age_groups):
  *                 _Ns[age_a] = 0
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
@@ -6787,10 +7205,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_i = __pyx_t_32;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":390
 =======
           /* "pyrossgeo/_simulation.pyx":389
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":390
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 _Ns[age_a] = 0
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
@@ -6800,10 +7222,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":391
 =======
           /* "pyrossgeo/_simulation.pyx":390
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":391
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 for i in range(cnodes_into_k_len[age_a][to_k]):
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     for o in range(model_dim):             # <<<<<<<<<<<<<<
@@ -6816,16 +7242,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_v_o = __pyx_t_55;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":392
 =======
             /* "pyrossgeo/_simulation.pyx":391
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":392
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                     for o in range(model_dim):
  *                         total_Os[o] += X_state[cn.state_index + o]             # <<<<<<<<<<<<<<
  *                         _Ns[age_a] += X_state[cn.state_index + o]
  * 
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_107 = (__pyx_v_cn.state_index + __pyx_v_o);
             __pyx_t_108 = __pyx_v_o;
@@ -6839,12 +7270,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":392
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_107 = (__pyx_v_cn.state_index + __pyx_v_o);
+            __pyx_t_108 = __pyx_v_o;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_108 * __pyx_v_total_Os.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_107 * __pyx_v_X_state.strides[0]) )));
+
+            /* "pyrossgeo/_simulation.pyx":393
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     for o in range(model_dim):
  *                         total_Os[o] += X_state[cn.state_index + o]
  *                         _Ns[age_a] += X_state[cn.state_index + o]             # <<<<<<<<<<<<<<
  * 
  *             #### Compute lambdas
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_109 = (__pyx_v_cn.state_index + __pyx_v_o);
             __pyx_t_110 = __pyx_v_age_a;
@@ -6854,15 +7293,24 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_t_112 = __pyx_v_age_a;
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_112 * __pyx_v__Ns.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_111 * __pyx_v_X_state.strides[0]) )));
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_109 = (__pyx_v_cn.state_index + __pyx_v_o);
+            __pyx_t_110 = __pyx_v_age_a;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_110 * __pyx_v__Ns.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_109 * __pyx_v_X_state.strides[0]) )));
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           }
         }
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":397
 =======
       /* "pyrossgeo/_simulation.pyx":396
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":397
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             #### Compute lambdas
  * 
  *             for ui in range(infection_classes_num):             # <<<<<<<<<<<<<<
@@ -6875,16 +7323,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_ui = __pyx_t_29;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":398
 =======
         /* "pyrossgeo/_simulation.pyx":397
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":398
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             for ui in range(infection_classes_num):
  *                 u = infection_classes_indices[ui]             # <<<<<<<<<<<<<<
  * 
  *                 # Find the infecteds of each age group
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_111 = __pyx_v_ui;
         __pyx_v_u = (*((int *) ( /* dim=0 */ (__pyx_v_infection_classes_indices.data + __pyx_t_111 * __pyx_v_infection_classes_indices.strides[0]) )));
@@ -6896,6 +7349,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
         /* "pyrossgeo/_simulation.pyx":401
 >>>>>>> Implemented stochastic protocol
+=======
+        __pyx_t_111 = __pyx_v_ui;
+        __pyx_v_u = (*((int *) ( /* dim=0 */ (__pyx_v_infection_classes_indices.data + __pyx_t_111 * __pyx_v_infection_classes_indices.strides[0]) )));
+
+        /* "pyrossgeo/_simulation.pyx":402
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # Find the infecteds of each age group
  * 
  *                 for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -6908,16 +7367,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_age_a = __pyx_t_32;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":403
 =======
           /* "pyrossgeo/_simulation.pyx":402
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":403
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 for age_a in range(age_groups):
  *                     _Is[age_a] = 0             # <<<<<<<<<<<<<<
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           __pyx_t_112 = __pyx_v_age_a;
           *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_112 * __pyx_v__Is.strides[0]) )) = 0.0;
@@ -6929,6 +7393,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":403
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_112 = __pyx_v_age_a;
+          *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_112 * __pyx_v__Is.strides[0]) )) = 0.0;
+
+          /* "pyrossgeo/_simulation.pyx":404
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 for age_a in range(age_groups):
  *                     _Is[age_a] = 0
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
@@ -6941,10 +7411,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_v_i = __pyx_t_55;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":405
 =======
             /* "pyrossgeo/_simulation.pyx":404
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":405
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     _Is[age_a] = 0
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
@@ -6954,16 +7428,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":406
 =======
             /* "pyrossgeo/_simulation.pyx":405
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":406
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     for i in range(cnodes_into_k_len[age_a][to_k]):
  *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
  *                         _Is[age_a] += X_state[cn.state_index + u]             # <<<<<<<<<<<<<<
  * 
  *                 # Compute lambdas
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_113 = (__pyx_v_cn.state_index + __pyx_v_u);
             __pyx_t_114 = __pyx_v_age_a;
@@ -6981,6 +7460,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
         /* "pyrossgeo/_simulation.pyx":409
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_113 = (__pyx_v_cn.state_index + __pyx_v_u);
+            __pyx_t_114 = __pyx_v_age_a;
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_114 * __pyx_v__Is.strides[0]) )) += (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_113 * __pyx_v_X_state.strides[0]) )));
+          }
+        }
+
+        /* "pyrossgeo/_simulation.pyx":410
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # Compute lambdas
  * 
  *                 for cmat_i in range(contact_matrices_num):             # <<<<<<<<<<<<<<
@@ -6993,10 +7481,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_cmat_i = __pyx_t_32;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":411
 =======
           /* "pyrossgeo/_simulation.pyx":410
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":411
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 for cmat_i in range(contact_matrices_num):
  *                     for age_a in range(age_groups):             # <<<<<<<<<<<<<<
@@ -7009,10 +7501,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_v_age_a = __pyx_t_55;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":412
 =======
             /* "pyrossgeo/_simulation.pyx":411
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":412
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 for cmat_i in range(contact_matrices_num):
  *                     for age_a in range(age_groups):
  *                         _lambdas[cmat_i][age_a][ui] = 0             # <<<<<<<<<<<<<<
@@ -7020,10 +7516,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __pyx_t_115 = __pyx_v_cmat_i;
             __pyx_t_116 = __pyx_v_age_a;
             __pyx_t_117 = __pyx_v_ui;
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_115 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_116 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_117 * __pyx_v__lambdas.strides[2]) )) = 0.0;
+<<<<<<< HEAD
 
             /* "pyrossgeo/_simulation.pyx":413
 =======
@@ -7034,6 +7534,10 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":412
 >>>>>>> Implemented stochastic protocol
+=======
+
+            /* "pyrossgeo/_simulation.pyx":413
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     for age_a in range(age_groups):
  *                         _lambdas[cmat_i][age_a][ui] = 0
  *                         for age_b in range(age_groups):             # <<<<<<<<<<<<<<
@@ -7046,16 +7550,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
               __pyx_v_age_b = __pyx_t_69;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
               /* "pyrossgeo/_simulation.pyx":414
 =======
               /* "pyrossgeo/_simulation.pyx":413
 >>>>>>> Implemented stochastic protocol
+=======
+              /* "pyrossgeo/_simulation.pyx":414
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         _lambdas[cmat_i][age_a][ui] = 0
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node             # <<<<<<<<<<<<<<
  *                                 _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
  * 
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
               __pyx_t_118 = __pyx_v_age_b;
               __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_118 * __pyx_v__Ns.strides[0]) ))) > 1.0) != 0);
@@ -7069,6 +7578,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
                 /* "pyrossgeo/_simulation.pyx":414
 >>>>>>> Implemented stochastic protocol
+=======
+              __pyx_t_118 = __pyx_v_age_b;
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_118 * __pyx_v__Ns.strides[0]) ))) > 1.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":415
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
  *                                 _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]             # <<<<<<<<<<<<<<
@@ -7076,10 +7592,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *             #### Decide whether deterministic or stochastic
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                 __pyx_t_119 = __pyx_v_cmat_i;
                 __pyx_t_120 = __pyx_v_age_a;
                 __pyx_t_121 = __pyx_v_age_b;
                 __pyx_t_122 = __pyx_v_age_b;
+<<<<<<< HEAD
                 __pyx_t_123 = __pyx_v_age_b;
                 __pyx_t_124 = __pyx_v_cmat_i;
                 __pyx_t_125 = __pyx_v_age_a;
@@ -7100,6 +7620,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
                 /* "pyrossgeo/_simulation.pyx":413
 >>>>>>> Implemented stochastic protocol
+=======
+                __pyx_t_123 = __pyx_v_age_b;
+                __pyx_t_124 = __pyx_v_cmat_i;
+                __pyx_t_125 = __pyx_v_age_a;
+                __pyx_t_126 = __pyx_v_ui;
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_124 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_125 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_126 * __pyx_v__lambdas.strides[2]) )) += (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v_contact_matrices.data + __pyx_t_119 * __pyx_v_contact_matrices.strides[0]) ) + __pyx_t_120 * __pyx_v_contact_matrices.strides[1]) ) + __pyx_t_121 * __pyx_v_contact_matrices.strides[2]) ))) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Is.data + __pyx_t_122 * __pyx_v__Is.strides[0]) )))) / (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v__Ns.data + __pyx_t_123 * __pyx_v__Ns.strides[0]) ))));
+
+                /* "pyrossgeo/_simulation.pyx":414
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         _lambdas[cmat_i][age_a][ui] = 0
  *                         for age_b in range(age_groups):
  *                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node             # <<<<<<<<<<<<<<
@@ -7113,10 +7642,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":419
 =======
       /* "pyrossgeo/_simulation.pyx":418
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":419
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             #### Decide whether deterministic or stochastic
  * 
  *             if to_k_is_stochastic[loc_j]:             # <<<<<<<<<<<<<<
@@ -7127,14 +7660,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":420
 =======
         /* "pyrossgeo/_simulation.pyx":419
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":420
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             if to_k_is_stochastic[loc_j]:
  *                 to_k_is_stochastic[loc_j] = False             # <<<<<<<<<<<<<<
  *                 for o in range(model_dim):
+<<<<<<< HEAD
 <<<<<<< HEAD
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
  */
@@ -7147,15 +7685,22 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 =======
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
+=======
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
         (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = 0;
 
-        /* "pyrossgeo/_simulation.pyx":420
+        /* "pyrossgeo/_simulation.pyx":421
  *             if to_k_is_stochastic[loc_j]:
  *                 to_k_is_stochastic[loc_j] = False
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
+<<<<<<< HEAD
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])
 >>>>>>> Implemented stochastic protocol
+=======
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             else:
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -7163,6 +7708,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
           __pyx_v_o = __pyx_t_29;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":422
  *                 to_k_is_stochastic[loc_j] = False
@@ -7174,6 +7720,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 for o in range(model_dim):
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stoch_threshold_from_below[o])             # <<<<<<<<<<<<<<
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":422
+ *                 to_k_is_stochastic[loc_j] = False
+ *                 for o in range(model_dim):
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])             # <<<<<<<<<<<<<<
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             else:
  *                 to_k_is_stochastic[loc_j] = True
  */
@@ -7184,10 +7736,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             goto __pyx_L149_bool_binop_done;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __pyx_t_127 = __pyx_v_o;
           __pyx_t_2 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_127 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 422, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 422, __pyx_L1_error)
+<<<<<<< HEAD
           __Pyx_GOTREF(__pyx_t_3);
           __pyx_t_18 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_18); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 422, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7197,25 +7753,34 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 =======
           __pyx_t_129 = __pyx_v_o;
           __pyx_t_3 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_129 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 421, __pyx_L1_error)
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_below, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 421, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_18);
-          __pyx_t_2 = PyObject_RichCompare(__pyx_t_3, __pyx_t_18, Py_LT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+          __pyx_t_18 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_LT); __Pyx_XGOTREF(__pyx_t_18); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 422, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+          __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 422, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+<<<<<<< HEAD
           __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 421, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __pyx_t_17 = __pyx_t_35;
           __pyx_L149_bool_binop_done:;
           (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = __pyx_t_17;
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":419
 =======
         /* "pyrossgeo/_simulation.pyx":418
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":419
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             #### Decide whether deterministic or stochastic
  * 
  *             if to_k_is_stochastic[loc_j]:             # <<<<<<<<<<<<<<
@@ -7225,6 +7790,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         goto __pyx_L146;
       }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":424
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
@@ -7240,10 +7806,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 for o in range(model_dim):
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":424
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+ *             else:
+ *                 to_k_is_stochastic[loc_j] = True             # <<<<<<<<<<<<<<
+ *                 for o in range(model_dim):
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  */
       /*else*/ {
         (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = 1;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":425
  *             else:
@@ -7257,6 +7832,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":425
+ *             else:
+ *                 to_k_is_stochastic[loc_j] = True
+ *                 for o in range(model_dim):             # <<<<<<<<<<<<<<
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  */
         __pyx_t_27 = __pyx_v_model_dim;
@@ -7264,6 +7846,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
           __pyx_v_o = __pyx_t_29;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":426
  *                 to_k_is_stochastic[loc_j] = True
@@ -7275,6 +7858,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                 for o in range(model_dim):
  *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stoch_threshold_from_above[o])             # <<<<<<<<<<<<<<
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":426
+ *                 to_k_is_stochastic[loc_j] = True
+ *                 for o in range(model_dim):
+ *                     to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])             # <<<<<<<<<<<<<<
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             # Stochastic
  */
@@ -7284,6 +7873,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             __pyx_t_17 = __pyx_t_35;
             goto __pyx_L153_bool_binop_done;
           }
+<<<<<<< HEAD
 <<<<<<< HEAD
           __pyx_t_128 = __pyx_v_o;
           __pyx_t_18 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_128 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 426, __pyx_L1_error)
@@ -7300,13 +7890,22 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_t_2 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_130 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 425, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_18 = __Pyx_GetItemInt(__pyx_v_stoch_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 425, __pyx_L1_error)
+=======
+          __pyx_t_128 = __pyx_v_o;
+          __pyx_t_18 = PyFloat_FromDouble((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_total_Os.data + __pyx_t_128 * __pyx_v_total_Os.strides[0]) )))); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 426, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_GOTREF(__pyx_t_18);
-          __pyx_t_3 = PyObject_RichCompare(__pyx_t_2, __pyx_t_18, Py_GT); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 425, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+          __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_stochastic_threshold_from_above, __pyx_v_o, int, 1, __Pyx_PyInt_From_int, 0, 0, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 426, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          __pyx_t_2 = PyObject_RichCompare(__pyx_t_18, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 426, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-          __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 425, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+<<<<<<< HEAD
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_35 < 0)) __PYX_ERR(0, 426, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __pyx_t_17 = __pyx_t_35;
           __pyx_L153_bool_binop_done:;
           (__pyx_v_to_k_is_stochastic[__pyx_v_loc_j]) = __pyx_t_17;
@@ -7315,6 +7914,9 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_L146:;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       /* "pyrossgeo/_simulation.pyx":429
  * 
  *             # Stochastic
@@ -7336,6 +7938,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_t_25 = __pyx_t_27;
         for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
           __pyx_v_age_a = __pyx_t_29;
+<<<<<<< HEAD
+
+          /* "pyrossgeo/_simulation.pyx":431
+ *             if True and loc_j_is_stochastic[to_k]:
+=======
 
           /* "pyrossgeo/_simulation.pyx":431
  *             if True and loc_j_is_stochastic[to_k]:
@@ -7530,6 +8137,400 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
                 __pyx_v_cmat_i = (__pyx_v_cn.contact_matrix_indices[__pyx_v_mt.infection_index]);
 
+                /* "pyrossgeo/_simulation.pyx":451
+ *                                 #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term
+ */
+                __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_n_s_scipy); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_stats); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_poisson); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_rvs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_137 = __pyx_v_cmat_i;
+                __pyx_t_138 = __pyx_v_age_a;
+                __pyx_t_139 = __pyx_v_mt.infection_index;
+                __pyx_t_18 = PyFloat_FromDouble((((__pyx_v_dt * (__pyx_v_cn.infection_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_137 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_138 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_139 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S)); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __pyx_t_1 = NULL;
+                if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
+                  __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_2);
+                  if (likely(__pyx_t_1)) {
+                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+                    __Pyx_INCREF(__pyx_t_1);
+                    __Pyx_INCREF(function);
+                    __Pyx_DECREF_SET(__pyx_t_2, function);
+                  }
+                }
+                __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_1, __pyx_t_18) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_18);
+                __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_2 = PyFloat_FromDouble(__pyx_v_r_dt); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __pyx_t_18 = PyNumber_Multiply(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __pyx_t_15 = __pyx_PyFloat_AsDouble(__pyx_t_18); if (unlikely((__pyx_t_15 == ((npy_double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 451, __pyx_L1_error)
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_v_term = __pyx_t_15;
+
+                /* "pyrossgeo/_simulation.pyx":452
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+ *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_neg] -= term
+ *             # Deterministic
+ */
+                __pyx_t_140 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_140 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":453
+ *                                 term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
+ *             # Deterministic
+ *             else:
+ */
+                __pyx_t_141 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_141 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":447
+ *                         for j in range(model_infection_terms_len):
+ *                             mt = model_infection_terms[j]
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+ *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
+ *                                 #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ */
+              }
+            }
+          }
+        }
+
+        /* "pyrossgeo/_simulation.pyx":429
+ * 
+ *             # Stochastic
+ *             if True and loc_j_is_stochastic[to_k]:             # <<<<<<<<<<<<<<
+ *                 for age_a in range(age_groups):
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):
+ */
+        goto __pyx_L155;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":456
+ *             # Deterministic
+ *             else:
+ *                 print(123123)             # <<<<<<<<<<<<<<
+ *                 for age_a in range(age_groups):
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):
+ */
+      /*else*/ {
+        __pyx_t_18 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 456, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+
+        /* "pyrossgeo/_simulation.pyx":457
+ *             else:
+ *                 print(123123)
+ *                 for age_a in range(age_groups):             # <<<<<<<<<<<<<<
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):
+ *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+ */
+        __pyx_t_27 = __pyx_v_age_groups;
+        __pyx_t_25 = __pyx_t_27;
+        for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_25; __pyx_t_29+=1) {
+          __pyx_v_age_a = __pyx_t_29;
+
+          /* "pyrossgeo/_simulation.pyx":458
+ *                 print(123123)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                 for age_a in range(age_groups):
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):             # <<<<<<<<<<<<<<
+ *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+ *                         si = cn.state_index
+ */
+          __pyx_t_30 = ((__pyx_v_cnodes_into_k_len[__pyx_v_age_a])[__pyx_v_to_k]);
+          __pyx_t_31 = __pyx_t_30;
+          for (__pyx_t_32 = 0; __pyx_t_32 < __pyx_t_31; __pyx_t_32+=1) {
+            __pyx_v_i = __pyx_t_32;
+
+<<<<<<< HEAD
+            /* "pyrossgeo/_simulation.pyx":432
+=======
+            /* "pyrossgeo/_simulation.pyx":459
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                 for age_a in range(age_groups):
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):
+ *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]             # <<<<<<<<<<<<<<
+ *                         si = cn.state_index
+ *                         S = X_state[si] # S is always located at the state index
+ */
+            __pyx_v_cn = (__pyx_v_cnodes[(((__pyx_v_cnodes_into_k[__pyx_v_age_a])[__pyx_v_to_k])[__pyx_v_i])]);
+
+<<<<<<< HEAD
+            /* "pyrossgeo/_simulation.pyx":433
+=======
+            /* "pyrossgeo/_simulation.pyx":460
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                     for i in range(cnodes_into_k_len[age_a][to_k]):
+ *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+ *                         si = cn.state_index             # <<<<<<<<<<<<<<
+ *                         S = X_state[si] # S is always located at the state index
+ * 
+ */
+            __pyx_t_53 = __pyx_v_cn.state_index;
+            __pyx_v_si = __pyx_t_53;
+
+<<<<<<< HEAD
+            /* "pyrossgeo/_simulation.pyx":434
+=======
+            /* "pyrossgeo/_simulation.pyx":461
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+ *                         si = cn.state_index
+ *                         S = X_state[si] # S is always located at the state index             # <<<<<<<<<<<<<<
+ * 
+ *                         for j in range(model_linear_terms_len):
+ */
+<<<<<<< HEAD
+            __pyx_t_129 = __pyx_v_si;
+            __pyx_v_S = (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_129 * __pyx_v_X_state.strides[0]) )));
+
+            /* "pyrossgeo/_simulation.pyx":436
+=======
+            __pyx_t_142 = __pyx_v_si;
+            __pyx_v_S = (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_142 * __pyx_v_X_state.strides[0]) )));
+
+            /* "pyrossgeo/_simulation.pyx":463
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                         S = X_state[si] # S is always located at the state index
+ * 
+ *                         for j in range(model_linear_terms_len):             # <<<<<<<<<<<<<<
+ *                             mt = model_linear_terms[j]
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+ */
+            __pyx_t_53 = __pyx_v_model_linear_terms_len;
+            __pyx_t_54 = __pyx_t_53;
+            for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
+              __pyx_v_j = __pyx_t_55;
+
+<<<<<<< HEAD
+              /* "pyrossgeo/_simulation.pyx":437
+=======
+              /* "pyrossgeo/_simulation.pyx":464
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ * 
+ *                         for j in range(model_linear_terms_len):
+ *                             mt = model_linear_terms[j]             # <<<<<<<<<<<<<<
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+ *                                 #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ */
+              __pyx_v_mt = (__pyx_v_model_linear_terms[__pyx_v_j]);
+
+<<<<<<< HEAD
+              /* "pyrossgeo/_simulation.pyx":438
+=======
+              /* "pyrossgeo/_simulation.pyx":465
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                         for j in range(model_linear_terms_len):
+ *                             mt = model_linear_terms[j]
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+ *                                 #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 #term = dist(gen) * r_dt
+ */
+<<<<<<< HEAD
+              __pyx_t_130 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_130 * __pyx_v_X_state.strides[0]) ))) > 0.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":441
+ *                                 #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term
+ */
+                __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_scipy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_stats); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_poisson); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_rvs); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __pyx_t_131 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+                __pyx_t_3 = PyFloat_FromDouble(((__pyx_v_dt * (__pyx_v_cn.linear_coeffs[__pyx_v_j])) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_131 * __pyx_v_X_state.strides[0]) ))))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __pyx_t_1 = NULL;
+                if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_18))) {
+                  __pyx_t_1 = PyMethod_GET_SELF(__pyx_t_18);
+                  if (likely(__pyx_t_1)) {
+                    PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_18);
+                    __Pyx_INCREF(__pyx_t_1);
+                    __Pyx_INCREF(function);
+                    __Pyx_DECREF_SET(__pyx_t_18, function);
+                  }
+                }
+                __pyx_t_2 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_18, __pyx_t_1, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_18, __pyx_t_3);
+                __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_18 = PyFloat_FromDouble(__pyx_v_r_dt); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_18);
+                __pyx_t_3 = PyNumber_Multiply(__pyx_t_2, __pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __pyx_t_15 = __pyx_PyFloat_AsDouble(__pyx_t_3); if (unlikely((__pyx_t_15 == ((npy_double)-1)) && PyErr_Occurred())) __PYX_ERR(0, 441, __pyx_L1_error)
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __pyx_v_term = __pyx_t_15;
+
+                /* "pyrossgeo/_simulation.pyx":442
+ *                                 #term = dist(gen) * r_dt
+ *                                 term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+=======
+              __pyx_t_143 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_143 * __pyx_v_X_state.strides[0]) ))) > 0.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":466
+ *                             mt = model_linear_terms[j]
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+ *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term
+ */
+                __pyx_t_144 = (__pyx_v_si + __pyx_v_mt.oi_coupling);
+                __pyx_v_term = ((__pyx_v_cn.linear_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_144 * __pyx_v_X_state.strides[0]) ))));
+
+                /* "pyrossgeo/_simulation.pyx":467
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+ *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_neg] -= term
+ * 
+ */
+<<<<<<< HEAD
+                __pyx_t_132 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_132 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":443
+ *                                 term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+=======
+                __pyx_t_145 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_145 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":468
+ *                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
+ * 
+ *                         for j in range(model_infection_terms_len):
+ */
+<<<<<<< HEAD
+                __pyx_t_133 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_133 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":438
+=======
+                __pyx_t_146 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_146 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":465
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                         for j in range(model_linear_terms_len):
+ *                             mt = model_linear_terms[j]
+ *                             if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+ *                                 #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+ *                                 #term = dist(gen) * r_dt
+ */
+              }
+            }
+
+<<<<<<< HEAD
+            /* "pyrossgeo/_simulation.pyx":445
+=======
+            /* "pyrossgeo/_simulation.pyx":470
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                                 dX_state[si+mt.oi_neg] -= term
+ * 
+ *                         for j in range(model_infection_terms_len):             # <<<<<<<<<<<<<<
+ *                             mt = model_infection_terms[j]
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ */
+            __pyx_t_53 = __pyx_v_model_infection_terms_len;
+            __pyx_t_54 = __pyx_t_53;
+            for (__pyx_t_55 = 0; __pyx_t_55 < __pyx_t_54; __pyx_t_55+=1) {
+              __pyx_v_j = __pyx_t_55;
+
+<<<<<<< HEAD
+              /* "pyrossgeo/_simulation.pyx":446
+=======
+              /* "pyrossgeo/_simulation.pyx":471
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ * 
+ *                         for j in range(model_infection_terms_len):
+ *                             mt = model_infection_terms[j]             # <<<<<<<<<<<<<<
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
+ */
+              __pyx_v_mt = (__pyx_v_model_infection_terms[__pyx_v_j]);
+
+<<<<<<< HEAD
+              /* "pyrossgeo/_simulation.pyx":447
+=======
+              /* "pyrossgeo/_simulation.pyx":472
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                         for j in range(model_infection_terms_len):
+ *                             mt = model_infection_terms[j]
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
+ *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
+ *                                 #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ */
+<<<<<<< HEAD
+              __pyx_t_134 = __pyx_v_cmat_i;
+              __pyx_t_135 = __pyx_v_age_a;
+              __pyx_t_136 = __pyx_v_mt.infection_index;
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_134 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_135 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_136 * __pyx_v__lambdas.strides[2]) ))) > 0.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":448
+=======
+              __pyx_t_147 = __pyx_v_cmat_i;
+              __pyx_t_148 = __pyx_v_age_a;
+              __pyx_t_149 = __pyx_v_mt.infection_index;
+              __pyx_t_17 = (((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_147 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_148 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_149 * __pyx_v__lambdas.strides[2]) ))) > 0.0) != 0);
+              if (__pyx_t_17) {
+
+                /* "pyrossgeo/_simulation.pyx":473
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+ *                             mt = model_infection_terms[j]
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]             # <<<<<<<<<<<<<<
+ *                                 #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+ *                                 #term = dist(gen) * r_dt
+ */
+                __pyx_v_cmat_i = (__pyx_v_cn.contact_matrix_indices[__pyx_v_mt.infection_index]);
+
+<<<<<<< HEAD
                 /* "pyrossgeo/_simulation.pyx":451
  *                                 #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
  *                                 #term = dist(gen) * r_dt
@@ -7936,12 +8937,22 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                                 dX_state[si+mt.oi_neg] -= term
  */
 <<<<<<< HEAD
+=======
+                /* "pyrossgeo/_simulation.pyx":474
+ *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive
+ *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
+ *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S             # <<<<<<<<<<<<<<
+ *                                 dX_state[si+mt.oi_pos] += term
+ *                                 dX_state[si+mt.oi_neg] -= term
+ */
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                 __pyx_t_150 = __pyx_v_cmat_i;
                 __pyx_t_151 = __pyx_v_age_a;
                 __pyx_t_152 = __pyx_v_mt.infection_index;
                 __pyx_v_term = (((__pyx_v_cn.infection_coeffs[__pyx_v_j]) * (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=2 */ (( /* dim=1 */ (( /* dim=0 */ (__pyx_v__lambdas.data + __pyx_t_150 * __pyx_v__lambdas.strides[0]) ) + __pyx_t_151 * __pyx_v__lambdas.strides[1]) ) + __pyx_t_152 * __pyx_v__lambdas.strides[2]) )))) * __pyx_v_S);
 
                 /* "pyrossgeo/_simulation.pyx":475
+<<<<<<< HEAD
 =======
               __pyx_t_139 = __pyx_v_cmat_i;
               __pyx_t_140 = __pyx_v_age_a;
@@ -7950,12 +8961,15 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":473
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  *                                 dX_state[si+mt.oi_pos] += term             # <<<<<<<<<<<<<<
  *                                 dX_state[si+mt.oi_neg] -= term
  * 
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
                 __pyx_t_153 = (__pyx_v_si + __pyx_v_mt.oi_pos);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_153 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
@@ -7967,12 +8981,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":474
 >>>>>>> Implemented stochastic protocol
+=======
+                __pyx_t_153 = (__pyx_v_si + __pyx_v_mt.oi_pos);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_153 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":476
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  *                                 dX_state[si+mt.oi_pos] += term
  *                                 dX_state[si+mt.oi_neg] -= term             # <<<<<<<<<<<<<<
  * 
  *         ################################################################
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
                 __pyx_t_154 = (__pyx_v_si + __pyx_v_mt.oi_neg);
                 *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_154 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
@@ -7984,6 +9005,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":470
 >>>>>>> Implemented stochastic protocol
+=======
+                __pyx_t_154 = (__pyx_v_si + __pyx_v_mt.oi_neg);
+                *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_154 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+                /* "pyrossgeo/_simulation.pyx":472
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         for j in range(model_infection_terms_len):
  *                             mt = model_infection_terms[j]
  *                             if _lambdas[cmat_i][age_a][mt.infection_index] > 0: # Only allow interaction if the class is positive             # <<<<<<<<<<<<<<
@@ -7991,13 +9018,18 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                                 term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
               }
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+              }
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             }
           }
         }
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
       __pyx_L155:;
       __pyx_L114_continue:;
@@ -8010,6 +9042,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
     /* "pyrossgeo/_simulation.pyx":482
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_L155:;
+      __pyx_L114_continue:;
+    }
+
+    /* "pyrossgeo/_simulation.pyx":484
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### Node to CNode #############################################
  * 
  *         for Ti in range(Ts_num):             # <<<<<<<<<<<<<<
@@ -8022,10 +9061,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_Ti = __pyx_t_25;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":486
 =======
       /* "pyrossgeo/_simulation.pyx":484
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":486
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         for Ti in range(Ts_num):
  * 
  *             t1 = Ts[Ti].t1             # <<<<<<<<<<<<<<
@@ -8036,10 +9079,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_t1 = __pyx_t_15;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":487
 =======
       /* "pyrossgeo/_simulation.pyx":485
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":487
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             t1 = Ts[Ti].t1
  *             t2 = Ts[Ti].t2             # <<<<<<<<<<<<<<
@@ -8050,10 +9097,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_t2 = __pyx_t_15;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":489
 =======
       /* "pyrossgeo/_simulation.pyx":487
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":489
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             t2 = Ts[Ti].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
@@ -8065,6 +9116,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       } else {
         __pyx_t_17 = __pyx_t_35;
 <<<<<<< HEAD
+<<<<<<< HEAD
         goto __pyx_L179_bool_binop_done;
       }
       __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
@@ -8075,14 +9127,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         /* "pyrossgeo/_simulation.pyx":490
 =======
         goto __pyx_L168_bool_binop_done;
+=======
+        goto __pyx_L179_bool_binop_done;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       }
       __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
       __pyx_t_17 = __pyx_t_35;
-      __pyx_L168_bool_binop_done:;
+      __pyx_L179_bool_binop_done:;
       if (__pyx_t_17) {
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":488
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":490
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             if tday >= t1 and tday <= t2:
  *                 fro_n = nodes[Ts[Ti].fro_node_index] # Origin node             # <<<<<<<<<<<<<<
@@ -8092,10 +9151,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_fro_n = (__pyx_v_nodes[(__pyx_v_Ts[__pyx_v_Ti]).fro_node_index]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":491
 =======
         /* "pyrossgeo/_simulation.pyx":489
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":491
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             if tday >= t1 and tday <= t2:
  *                 fro_n = nodes[Ts[Ti].fro_node_index] # Origin node
  *                 cn = cnodes[Ts[Ti].cnode_index] # Commuting node             # <<<<<<<<<<<<<<
@@ -8105,10 +9168,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_cn = (__pyx_v_cnodes[(__pyx_v_Ts[__pyx_v_Ti]).cnode_index]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":494
 =======
         /* "pyrossgeo/_simulation.pyx":492
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":494
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 # Compute current population at origin node
  *                 fro_N = 0             # <<<<<<<<<<<<<<
@@ -8118,10 +9185,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_fro_N = 0.0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":495
 =======
         /* "pyrossgeo/_simulation.pyx":493
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":495
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # Compute current population at origin node
  *                 fro_N = 0
  *                 for oi in range(model_dim):             # <<<<<<<<<<<<<<
@@ -8134,16 +9205,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_oi = __pyx_t_31;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":496
 =======
           /* "pyrossgeo/_simulation.pyx":494
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":496
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 fro_N = 0
  *                 for oi in range(model_dim):
  *                     fro_N += X_state[fro_n.state_index + oi]             # <<<<<<<<<<<<<<
  * 
  *                 # If this commuting schedule is just starting, then
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           __pyx_t_155 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
           __pyx_v_fro_N = (__pyx_v_fro_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_155 * __pyx_v_X_state.strides[0]) ))));
@@ -8157,6 +9233,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
         /* "pyrossgeo/_simulation.pyx":498
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_155 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
+          __pyx_v_fro_N = (__pyx_v_fro_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_155 * __pyx_v_X_state.strides[0]) ))));
+        }
+
+        /* "pyrossgeo/_simulation.pyx":500
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:             # <<<<<<<<<<<<<<
@@ -8167,10 +9250,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":501
 =======
           /* "pyrossgeo/_simulation.pyx":499
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":501
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:
  *                     if Ts[Ti].use_percentage:             # <<<<<<<<<<<<<<
@@ -8181,10 +9268,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":502
 =======
             /* "pyrossgeo/_simulation.pyx":500
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":502
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 if not Ts[Ti].is_on:
  *                     if Ts[Ti].use_percentage:
  *                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage             # <<<<<<<<<<<<<<
@@ -8194,16 +9285,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             (__pyx_v_Ts[__pyx_v_Ti]).N0 = (__pyx_v_fro_N * (__pyx_v_Ts[__pyx_v_Ti]).move_percentage);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":501
 =======
             /* "pyrossgeo/_simulation.pyx":499
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":501
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:
  *                     if Ts[Ti].use_percentage:             # <<<<<<<<<<<<<<
  *                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage
  *                     else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             goto __pyx_L184;
           }
@@ -8215,6 +9311,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":502
 >>>>>>> Implemented stochastic protocol
+=======
+            goto __pyx_L184;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":504
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         Ts[Ti].N0 = fro_N*Ts[Ti].move_percentage
  *                     else:
  *                         Ts[Ti].N0 = Ts[Ti].move_N             # <<<<<<<<<<<<<<
@@ -8226,6 +9328,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             (__pyx_v_Ts[__pyx_v_Ti]).N0 = __pyx_t_15;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
           __pyx_L184:;
 
           /* "pyrossgeo/_simulation.pyx":505
@@ -8234,6 +9337,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":503
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_L184:;
+
+          /* "pyrossgeo/_simulation.pyx":505
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     else:
  *                         Ts[Ti].N0 = Ts[Ti].move_N
  *                     Ts[Ti].is_on = True             # <<<<<<<<<<<<<<
@@ -8243,10 +9351,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           (__pyx_v_Ts[__pyx_v_Ti]).is_on = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":506
 =======
           /* "pyrossgeo/_simulation.pyx":504
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":506
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         Ts[Ti].N0 = Ts[Ti].move_N
  *                     Ts[Ti].is_on = True
  *                     cn.is_on = True # Turn on commuter node. It will be turned off in the "CNode to Node" section             # <<<<<<<<<<<<<<
@@ -8256,10 +9368,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_cn.is_on = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":500
 =======
           /* "pyrossgeo/_simulation.pyx":498
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":500
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not Ts[Ti].is_on:             # <<<<<<<<<<<<<<
@@ -8269,10 +9385,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":509
 =======
         /* "pyrossgeo/_simulation.pyx":507
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":509
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m             # <<<<<<<<<<<<<<
@@ -8282,10 +9402,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_transport_profile_exponent = (((__pyx_v_tday - __pyx_v_t1) * (__pyx_v_Ts[__pyx_v_Ti]).r_T_Delta_t) - __pyx_v_transport_profile_m);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":510
 =======
         /* "pyrossgeo/_simulation.pyx":508
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":510
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t             # <<<<<<<<<<<<<<
@@ -8295,10 +9419,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_transport_profile = ((exp((((-__pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_c_r)) * __pyx_v_transport_profile_integrated_r) * (__pyx_v_Ts[__pyx_v_Ti]).r_T_Delta_t);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":512
 =======
         /* "pyrossgeo/_simulation.pyx":510
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":512
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
  * 
  *                 if fro_N <= 0:             # <<<<<<<<<<<<<<
@@ -8309,16 +9437,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":513
 =======
           /* "pyrossgeo/_simulation.pyx":511
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":513
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 if fro_N <= 0:
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *                 si = fro_n.state_index
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           goto __pyx_L176_continue;
 
@@ -8328,6 +9461,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":510
 >>>>>>> Implemented stochastic protocol
+=======
+          goto __pyx_L176_continue;
+
+          /* "pyrossgeo/_simulation.pyx":512
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
  * 
  *                 if fro_N <= 0:             # <<<<<<<<<<<<<<
@@ -8337,10 +9475,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":515
 =======
         /* "pyrossgeo/_simulation.pyx":513
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":515
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     continue
  * 
  *                 si = fro_n.state_index             # <<<<<<<<<<<<<<
@@ -8351,10 +9493,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_si = __pyx_t_29;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":516
 =======
         /* "pyrossgeo/_simulation.pyx":514
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":516
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 si = fro_n.state_index
  *                 for oi in range(model_dim):             # <<<<<<<<<<<<<<
@@ -8367,10 +9513,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_oi = __pyx_t_31;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":517
 =======
           /* "pyrossgeo/_simulation.pyx":515
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":517
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 si = fro_n.state_index
  *                 for oi in range(model_dim):
  *                     if not Ts[Ti].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -8381,16 +9531,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":518
 =======
             /* "pyrossgeo/_simulation.pyx":516
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":518
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 for oi in range(model_dim):
  *                     if not Ts[Ti].moving_classes[oi]:
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     # Compute the amount of people to move
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             goto __pyx_L186_continue;
 
@@ -8400,6 +9555,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":515
 >>>>>>> Implemented stochastic protocol
+=======
+            goto __pyx_L186_continue;
+
+            /* "pyrossgeo/_simulation.pyx":517
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 si = fro_n.state_index
  *                 for oi in range(model_dim):
  *                     if not Ts[Ti].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -8409,16 +9569,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":521
 =======
           /* "pyrossgeo/_simulation.pyx":519
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":521
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                     # Compute the amount of people to move
  *                     term = Ts[Ti].N0 * transport_profile * (X_state[fro_n.state_index+oi] / fro_N)             # <<<<<<<<<<<<<<
  * 
  *                     # If the change will cause X_state[si+oi] to go negative,
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           __pyx_t_156 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
           __pyx_v_term = (((__pyx_v_Ts[__pyx_v_Ti]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_156 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_fro_N));
@@ -8430,12 +9595,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":524
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_156 = (__pyx_v_fro_n.state_index + __pyx_v_oi);
+          __pyx_v_term = (((__pyx_v_Ts[__pyx_v_Ti]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_156 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_fro_N));
+
+          /* "pyrossgeo/_simulation.pyx":526
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     # then adjust term so that X_state[si+oi] will be set
  *                     # to 0.
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           __pyx_t_157 = (__pyx_v_si + __pyx_v_oi);
           __pyx_t_158 = (__pyx_v_si + __pyx_v_oi);
@@ -8451,12 +9623,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":525
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_157 = (__pyx_v_si + __pyx_v_oi);
+          __pyx_t_158 = (__pyx_v_si + __pyx_v_oi);
+          __pyx_t_17 = ((((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_157 * __pyx_v_X_state.strides[0]) ))) + (__pyx_v_dt * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_158 * __pyx_v_dX_state.strides[0]) ))) - __pyx_v_term))) < 0.0) != 0);
+          if (__pyx_t_17) {
+
+            /* "pyrossgeo/_simulation.pyx":527
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     # to 0.
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                         term = X_state[si+oi]*r_dt             # <<<<<<<<<<<<<<
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  *                         dX_state[si+oi] += -(term + dX_state[si+oi])
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_159 = (__pyx_v_si + __pyx_v_oi);
             __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_159 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
@@ -8468,12 +9649,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":526
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_159 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_159 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
+
+            /* "pyrossgeo/_simulation.pyx":528
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode             # <<<<<<<<<<<<<<
  *                         dX_state[si+oi] += -(term + dX_state[si+oi])
  *                     # Otherwise apply the transport as usual
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_160 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_161 = (__pyx_v_cn.state_index + __pyx_v_oi);
@@ -8487,12 +9675,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":527
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_160 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_161 = (__pyx_v_cn.state_index + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_161 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_160 * __pyx_v_dX_state.strides[0]) ))));
+
+            /* "pyrossgeo/_simulation.pyx":529
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  *                         dX_state[si+oi] += -(term + dX_state[si+oi])             # <<<<<<<<<<<<<<
  *                     # Otherwise apply the transport as usual
  *                     else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_162 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_163 = (__pyx_v_si + __pyx_v_oi);
@@ -8506,12 +9702,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":524
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_162 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_163 = (__pyx_v_si + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_163 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_162 * __pyx_v_dX_state.strides[0]) )))));
+
+            /* "pyrossgeo/_simulation.pyx":526
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     # then adjust term so that X_state[si+oi] will be set
  *                     # to 0.
  *                     if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             goto __pyx_L189;
           }
@@ -8523,6 +9727,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":530
 >>>>>>> Implemented stochastic protocol
+=======
+            goto __pyx_L189;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":532
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     # Otherwise apply the transport as usual
  *                     else:
  *                         dX_state[si+oi] -= term             # <<<<<<<<<<<<<<
@@ -8530,6 +9740,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  * 
  */
           /*else*/ {
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_164 = (__pyx_v_si + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_164 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
@@ -8541,12 +9752,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":531
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_164 = (__pyx_v_si + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_164 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+            /* "pyrossgeo/_simulation.pyx":533
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     else:
  *                         dX_state[si+oi] -= term
  *                         dX_state[cn.state_index+oi] += term             # <<<<<<<<<<<<<<
  * 
  *             else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_165 = (__pyx_v_cn.state_index + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_165 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
@@ -8559,19 +9777,28 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 =======
             __pyx_t_154 = (__pyx_v_cn.state_index + __pyx_v_oi);
             *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_154 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+=======
+            __pyx_t_165 = (__pyx_v_cn.state_index + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_165 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           }
-          __pyx_L178:;
-          __pyx_L175_continue:;
+          __pyx_L189:;
+          __pyx_L186_continue:;
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":487
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":489
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             t2 = Ts[Ti].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
  *                 fro_n = nodes[Ts[Ti].fro_node_index] # Origin node
  *                 cn = cnodes[Ts[Ti].cnode_index] # Commuting node
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         goto __pyx_L178;
       }
@@ -8583,6 +9810,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
       /* "pyrossgeo/_simulation.pyx":534
 >>>>>>> Implemented stochastic protocol
+=======
+        goto __pyx_L178;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":536
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             else:
  *                 Ts[Ti].is_on = False             # <<<<<<<<<<<<<<
@@ -8592,6 +9825,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       /*else*/ {
         (__pyx_v_Ts[__pyx_v_Ti]).is_on = 0;
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
       __pyx_L178:;
       __pyx_L176_continue:;
@@ -8605,6 +9839,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
     /* "pyrossgeo/_simulation.pyx":538
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_L178:;
+      __pyx_L176_continue:;
+    }
+
+    /* "pyrossgeo/_simulation.pyx":540
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### CNode to Node #############################################
  * 
  *         for cTi in range(cTs_num):             # <<<<<<<<<<<<<<
@@ -8617,10 +9858,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_cTi = __pyx_t_25;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":542
 =======
       /* "pyrossgeo/_simulation.pyx":540
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":542
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         for cTi in range(cTs_num):
  * 
  *             t1 = cTs[cTi].t1             # <<<<<<<<<<<<<<
@@ -8631,10 +9876,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_t1 = __pyx_t_15;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":543
 =======
       /* "pyrossgeo/_simulation.pyx":541
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":543
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             t1 = cTs[cTi].t1
  *             t2 = cTs[cTi].t2             # <<<<<<<<<<<<<<
@@ -8645,10 +9894,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __pyx_v_t2 = __pyx_t_15;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":545
 =======
       /* "pyrossgeo/_simulation.pyx":543
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":545
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             t2 = cTs[cTi].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
@@ -8660,6 +9913,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       } else {
         __pyx_t_17 = __pyx_t_35;
 <<<<<<< HEAD
+<<<<<<< HEAD
         goto __pyx_L193_bool_binop_done;
       }
       __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
@@ -8670,14 +9924,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         /* "pyrossgeo/_simulation.pyx":546
 =======
         goto __pyx_L182_bool_binop_done;
+=======
+        goto __pyx_L193_bool_binop_done;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       }
       __pyx_t_35 = ((__pyx_v_tday <= __pyx_v_t2) != 0);
       __pyx_t_17 = __pyx_t_35;
-      __pyx_L182_bool_binop_done:;
+      __pyx_L193_bool_binop_done:;
       if (__pyx_t_17) {
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":544
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":546
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             if tday >= t1 and tday <= t2:
  *                 cn = cnodes[cTs[cTi].cnode_index] # Commuting node             # <<<<<<<<<<<<<<
@@ -8687,10 +9948,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_cn = (__pyx_v_cnodes[(__pyx_v_cTs[__pyx_v_cTi]).cnode_index]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":547
 =======
         /* "pyrossgeo/_simulation.pyx":545
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":547
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             if tday >= t1 and tday <= t2:
  *                 cn = cnodes[cTs[cTi].cnode_index] # Commuting node
  *                 to_node = nodes[cTs[cTi].to_node_index] # Destination node             # <<<<<<<<<<<<<<
@@ -8700,10 +9965,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_to_node = (__pyx_v_nodes[(__pyx_v_cTs[__pyx_v_cTi]).to_node_index]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":550
 =======
         /* "pyrossgeo/_simulation.pyx":548
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":550
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 # Compute current population at the commuter node
  *                 cn_N = 0             # <<<<<<<<<<<<<<
@@ -8713,10 +9982,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_cn_N = 0.0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":551
 =======
         /* "pyrossgeo/_simulation.pyx":549
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":551
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # Compute current population at the commuter node
  *                 cn_N = 0
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):             # <<<<<<<<<<<<<<
@@ -8729,16 +10002,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_oi = __pyx_t_31;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":552
 =======
           /* "pyrossgeo/_simulation.pyx":550
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":552
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 cn_N = 0
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     cn_N += X_state[cn.state_index + oi]             # <<<<<<<<<<<<<<
  * 
  *                 # If this commuting schedule is just starting, then
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           __pyx_t_166 = (__pyx_v_cn.state_index + __pyx_v_oi);
           __pyx_v_cn_N = (__pyx_v_cn_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_166 * __pyx_v_X_state.strides[0]) ))));
@@ -8752,6 +10030,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
         /* "pyrossgeo/_simulation.pyx":554
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_t_166 = (__pyx_v_cn.state_index + __pyx_v_oi);
+          __pyx_v_cn_N = (__pyx_v_cn_N + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_166 * __pyx_v_X_state.strides[0]) ))));
+        }
+
+        /* "pyrossgeo/_simulation.pyx":556
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:             # <<<<<<<<<<<<<<
@@ -8762,10 +10047,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":557
 =======
           /* "pyrossgeo/_simulation.pyx":555
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":557
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:
  *                     if cTs[cTi].use_percentage:             # <<<<<<<<<<<<<<
@@ -8776,10 +10065,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":558
 =======
             /* "pyrossgeo/_simulation.pyx":556
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":558
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 if not cTs[cTi].is_on:
  *                     if cTs[cTi].use_percentage:
  *                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage             # <<<<<<<<<<<<<<
@@ -8789,16 +10082,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             (__pyx_v_cTs[__pyx_v_cTi]).N0 = (__pyx_v_cn_N * (__pyx_v_cTs[__pyx_v_cTi]).move_percentage);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":557
 =======
             /* "pyrossgeo/_simulation.pyx":555
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":557
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:
  *                     if cTs[cTi].use_percentage:             # <<<<<<<<<<<<<<
  *                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage
  *                     else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             goto __pyx_L198;
           }
@@ -8810,6 +10108,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":558
 >>>>>>> Implemented stochastic protocol
+=======
+            goto __pyx_L198;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":560
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         cTs[cTi].N0 = cn_N*cTs[cTi].move_percentage
  *                     else:
  *                         cTs[cTi].N0 = cTs[cTi].move_N             # <<<<<<<<<<<<<<
@@ -8821,6 +10125,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             (__pyx_v_cTs[__pyx_v_cTi]).N0 = __pyx_t_15;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
           __pyx_L198:;
 
           /* "pyrossgeo/_simulation.pyx":561
@@ -8829,6 +10134,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":559
 >>>>>>> Implemented stochastic protocol
+=======
+          __pyx_L198:;
+
+          /* "pyrossgeo/_simulation.pyx":561
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     else:
  *                         cTs[cTi].N0 = cTs[cTi].move_N
  *                     cTs[cTi].is_on = True             # <<<<<<<<<<<<<<
@@ -8838,10 +10148,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           (__pyx_v_cTs[__pyx_v_cTi]).is_on = 1;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":556
 =======
           /* "pyrossgeo/_simulation.pyx":554
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":556
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # If this commuting schedule is just starting, then
  *                 # compute the number of people to move.
  *                 if not cTs[cTi].is_on:             # <<<<<<<<<<<<<<
@@ -8851,10 +10165,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":564
 =======
         /* "pyrossgeo/_simulation.pyx":562
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":564
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*cTs[cTi].r_T_Delta_t - transport_profile_m             # <<<<<<<<<<<<<<
@@ -8864,10 +10182,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_transport_profile_exponent = (((__pyx_v_tday - __pyx_v_t1) * (__pyx_v_cTs[__pyx_v_cTi]).r_T_Delta_t) - __pyx_v_transport_profile_m);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":565
 =======
         /* "pyrossgeo/_simulation.pyx":563
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":565
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 # Compute the transport profile
  *                 transport_profile_exponent = (tday - t1)*cTs[cTi].r_T_Delta_t - transport_profile_m
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t             # <<<<<<<<<<<<<<
@@ -8877,10 +10199,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_transport_profile = ((exp((((-__pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_exponent) * __pyx_v_transport_profile_c_r)) * __pyx_v_transport_profile_integrated_r) * (__pyx_v_cTs[__pyx_v_cTi]).r_T_Delta_t);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":567
 =======
         /* "pyrossgeo/_simulation.pyx":565
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":567
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
  * 
  *                 if cn_N <= 0:             # <<<<<<<<<<<<<<
@@ -8891,16 +10217,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":568
 =======
           /* "pyrossgeo/_simulation.pyx":566
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":568
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 if cn_N <= 0:
  *                     continue             # <<<<<<<<<<<<<<
  * 
  *                 si = cn.state_index
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
           goto __pyx_L190_continue;
 
@@ -8910,6 +10241,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":565
 >>>>>>> Implemented stochastic protocol
+=======
+          goto __pyx_L190_continue;
+
+          /* "pyrossgeo/_simulation.pyx":567
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
  * 
  *                 if cn_N <= 0:             # <<<<<<<<<<<<<<
@@ -8919,10 +10255,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":570
 =======
         /* "pyrossgeo/_simulation.pyx":568
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":570
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     continue
  * 
  *                 si = cn.state_index             # <<<<<<<<<<<<<<
@@ -8933,10 +10273,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_si = __pyx_t_29;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":571
 =======
         /* "pyrossgeo/_simulation.pyx":569
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":571
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                 si = cn.state_index
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):             # <<<<<<<<<<<<<<
@@ -8949,10 +10293,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           __pyx_v_oi = __pyx_t_31;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":572
 =======
           /* "pyrossgeo/_simulation.pyx":570
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":572
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 si = cn.state_index
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     if not cTs[cTi].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -8963,16 +10311,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":573
 =======
             /* "pyrossgeo/_simulation.pyx":571
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":573
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     if not cTs[cTi].moving_classes[oi]:
  *                         continue             # <<<<<<<<<<<<<<
  * 
  *                     # If the commuting window is ending, force all to leave the commuterverse
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             goto __pyx_L200_continue;
 
@@ -8982,6 +10335,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":570
 >>>>>>> Implemented stochastic protocol
+=======
+            goto __pyx_L200_continue;
+
+            /* "pyrossgeo/_simulation.pyx":572
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 si = cn.state_index
  *                 for oi in range(model_dim):#prange(model_dim, nogil=True):
  *                     if not cTs[cTi].moving_classes[oi]:             # <<<<<<<<<<<<<<
@@ -8991,10 +10349,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
           /* "pyrossgeo/_simulation.pyx":576
 =======
           /* "pyrossgeo/_simulation.pyx":574
 >>>>>>> Implemented stochastic protocol
+=======
+          /* "pyrossgeo/_simulation.pyx":576
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                     # If the commuting window is ending, force all to leave the commuterverse
  *                     if tday+dt >= t2:             # <<<<<<<<<<<<<<
@@ -9005,16 +10367,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
           if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             /* "pyrossgeo/_simulation.pyx":577
 =======
             /* "pyrossgeo/_simulation.pyx":575
 >>>>>>> Implemented stochastic protocol
+=======
+            /* "pyrossgeo/_simulation.pyx":577
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     # If the commuting window is ending, force all to leave the commuterverse
  *                     if tday+dt >= t2:
  *                         term = X_state[si+oi]*r_dt             # <<<<<<<<<<<<<<
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                         dX_state[si+oi] += - (term + dX_state[si+oi])
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_167 = (__pyx_v_si + __pyx_v_oi);
             __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_167 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
@@ -9026,12 +10393,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":576
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_167 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_167 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
+
+            /* "pyrossgeo/_simulation.pyx":578
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     if tday+dt >= t2:
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node             # <<<<<<<<<<<<<<
  *                         dX_state[si+oi] += - (term + dX_state[si+oi])
  *                     else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_168 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_169 = (__pyx_v_to_node.state_index + __pyx_v_oi);
@@ -9045,12 +10419,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":577
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_168 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_169 = (__pyx_v_to_node.state_index + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_169 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_168 * __pyx_v_dX_state.strides[0]) ))));
+
+            /* "pyrossgeo/_simulation.pyx":579
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                         dX_state[si+oi] += - (term + dX_state[si+oi])             # <<<<<<<<<<<<<<
  *                     else:
  *                         # Compute the amount of people to move
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_170 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_171 = (__pyx_v_si + __pyx_v_oi);
@@ -9064,12 +10446,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":574
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_170 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_171 = (__pyx_v_si + __pyx_v_oi);
+            *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_171 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_170 * __pyx_v_dX_state.strides[0]) )))));
+
+            /* "pyrossgeo/_simulation.pyx":576
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *                     # If the commuting window is ending, force all to leave the commuterverse
  *                     if tday+dt >= t2:             # <<<<<<<<<<<<<<
  *                         term = X_state[si+oi]*r_dt
  *                         dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             goto __pyx_L203;
           }
@@ -9081,6 +10471,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
           /* "pyrossgeo/_simulation.pyx":580
 >>>>>>> Implemented stochastic protocol
+=======
+            goto __pyx_L203;
+          }
+
+          /* "pyrossgeo/_simulation.pyx":582
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                     else:
  *                         # Compute the amount of people to move
  *                         term = cTs[cTi].N0 * transport_profile * (X_state[si+oi] / cn_N)             # <<<<<<<<<<<<<<
@@ -9088,6 +10484,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *                         # If the change will cause X_state[si+oi] to go negative,
  */
           /*else*/ {
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_172 = (__pyx_v_si + __pyx_v_oi);
             __pyx_v_term = (((__pyx_v_cTs[__pyx_v_cTi]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_172 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_cn_N));
@@ -9099,12 +10496,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":585
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_172 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_v_term = (((__pyx_v_cTs[__pyx_v_cTi]).N0 * __pyx_v_transport_profile) * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_172 * __pyx_v_X_state.strides[0]) ))) / __pyx_v_cn_N));
+
+            /* "pyrossgeo/_simulation.pyx":587
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         # then adjust term so that X_state[si+oi] will be set
  *                         # to 0.
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
             __pyx_t_173 = (__pyx_v_si + __pyx_v_oi);
             __pyx_t_174 = (__pyx_v_si + __pyx_v_oi);
@@ -9120,12 +10524,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":586
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_t_173 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_174 = (__pyx_v_si + __pyx_v_oi);
+            __pyx_t_17 = ((((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_173 * __pyx_v_X_state.strides[0]) ))) + (__pyx_v_dt * ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_174 * __pyx_v_dX_state.strides[0]) ))) - __pyx_v_term))) < 0.0) != 0);
+            if (__pyx_t_17) {
+
+              /* "pyrossgeo/_simulation.pyx":588
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         # to 0.
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                             term = X_state[si+oi]*r_dt             # <<<<<<<<<<<<<<
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                             dX_state[si+oi] += - (term + dX_state[si+oi])
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
               __pyx_t_175 = (__pyx_v_si + __pyx_v_oi);
               __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_175 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
@@ -9137,12 +10550,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":587
 >>>>>>> Implemented stochastic protocol
+=======
+              __pyx_t_175 = (__pyx_v_si + __pyx_v_oi);
+              __pyx_v_term = ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_175 * __pyx_v_X_state.strides[0]) ))) * __pyx_v_r_dt);
+
+              /* "pyrossgeo/_simulation.pyx":589
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node             # <<<<<<<<<<<<<<
  *                             dX_state[si+oi] += - (term + dX_state[si+oi])
  *                         # Otherwise apply the transport as usual
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
               __pyx_t_176 = (__pyx_v_si + __pyx_v_oi);
               __pyx_t_177 = (__pyx_v_to_node.state_index + __pyx_v_oi);
@@ -9156,12 +10576,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":588
 >>>>>>> Implemented stochastic protocol
+=======
+              __pyx_t_176 = (__pyx_v_si + __pyx_v_oi);
+              __pyx_t_177 = (__pyx_v_to_node.state_index + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_177 * __pyx_v_dX_state.strides[0]) )) += (__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_176 * __pyx_v_dX_state.strides[0]) ))));
+
+              /* "pyrossgeo/_simulation.pyx":590
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  *                             dX_state[si+oi] += - (term + dX_state[si+oi])             # <<<<<<<<<<<<<<
  *                         # Otherwise apply the transport as usual
  *                         else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
               __pyx_t_178 = (__pyx_v_si + __pyx_v_oi);
               __pyx_t_179 = (__pyx_v_si + __pyx_v_oi);
@@ -9175,12 +10603,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":585
 >>>>>>> Implemented stochastic protocol
+=======
+              __pyx_t_178 = (__pyx_v_si + __pyx_v_oi);
+              __pyx_t_179 = (__pyx_v_si + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_179 * __pyx_v_dX_state.strides[0]) )) += (-(__pyx_v_term + (*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_178 * __pyx_v_dX_state.strides[0]) )))));
+
+              /* "pyrossgeo/_simulation.pyx":587
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         # then adjust term so that X_state[si+oi] will be set
  *                         # to 0.
  *                         if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:             # <<<<<<<<<<<<<<
  *                             term = X_state[si+oi]*r_dt
  *                             dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
               goto __pyx_L204;
             }
@@ -9192,6 +10628,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
             /* "pyrossgeo/_simulation.pyx":591
 >>>>>>> Implemented stochastic protocol
+=======
+              goto __pyx_L204;
+            }
+
+            /* "pyrossgeo/_simulation.pyx":593
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         # Otherwise apply the transport as usual
  *                         else:
  *                             dX_state[si+oi] -= term             # <<<<<<<<<<<<<<
@@ -9199,6 +10641,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *             else:
  */
             /*else*/ {
+<<<<<<< HEAD
 <<<<<<< HEAD
               __pyx_t_180 = (__pyx_v_si + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_180 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
@@ -9210,12 +10653,19 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
               /* "pyrossgeo/_simulation.pyx":592
 >>>>>>> Implemented stochastic protocol
+=======
+              __pyx_t_180 = (__pyx_v_si + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_180 * __pyx_v_dX_state.strides[0]) )) -= __pyx_v_term;
+
+              /* "pyrossgeo/_simulation.pyx":594
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                         else:
  *                             dX_state[si+oi] -= term
  *                             dX_state[to_node.state_index+oi] += term             # <<<<<<<<<<<<<<
  *             else:
  *                 cTs[cTi].is_on = False
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
               __pyx_t_181 = (__pyx_v_to_node.state_index + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_181 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
@@ -9230,21 +10680,30 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 =======
               __pyx_t_170 = (__pyx_v_to_node.state_index + __pyx_v_oi);
               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_170 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+=======
+              __pyx_t_181 = (__pyx_v_to_node.state_index + __pyx_v_oi);
+              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_181 * __pyx_v_dX_state.strides[0]) )) += __pyx_v_term;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             }
-            __pyx_L193:;
+            __pyx_L204:;
           }
-          __pyx_L192:;
-          __pyx_L189_continue:;
+          __pyx_L203:;
+          __pyx_L200_continue:;
         }
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":543
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":545
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             t2 = cTs[cTi].t2
  * 
  *             if tday >= t1 and tday <= t2:             # <<<<<<<<<<<<<<
  *                 cn = cnodes[cTs[cTi].cnode_index] # Commuting node
  *                 to_node = nodes[cTs[cTi].to_node_index] # Destination node
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         goto __pyx_L192;
       }
@@ -9256,6 +10715,12 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
       /* "pyrossgeo/_simulation.pyx":594
 >>>>>>> Implemented stochastic protocol
+=======
+        goto __pyx_L192;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":596
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                             dX_state[to_node.state_index+oi] += term
  *             else:
  *                 cTs[cTi].is_on = False             # <<<<<<<<<<<<<<
@@ -9266,10 +10731,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         (__pyx_v_cTs[__pyx_v_cTi]).is_on = 0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":597
 =======
         /* "pyrossgeo/_simulation.pyx":595
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":597
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             else:
  *                 cTs[cTi].is_on = False
  *                 cn = cnodes[cTs[cTi].cnode_index]             # <<<<<<<<<<<<<<
@@ -9279,10 +10748,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         __pyx_v_cn = (__pyx_v_cnodes[(__pyx_v_cTs[__pyx_v_cTi]).cnode_index]);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":598
 =======
         /* "pyrossgeo/_simulation.pyx":596
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":598
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 cTs[cTi].is_on = False
  *                 cn = cnodes[cTs[cTi].cnode_index]
  *                 cn.is_on = False # Turn off commuter node             # <<<<<<<<<<<<<<
@@ -9291,6 +10764,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  */
         __pyx_v_cn.is_on = 0;
       }
+<<<<<<< HEAD
 <<<<<<< HEAD
       __pyx_L192:;
       __pyx_L190_continue:;
@@ -9304,6 +10778,13 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
 
     /* "pyrossgeo/_simulation.pyx":603
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_L192:;
+      __pyx_L190_continue:;
+    }
+
+    /* "pyrossgeo/_simulation.pyx":605
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         ################################################################
  * 
  *         for j in prange(X_state_size, nogil=True):             # <<<<<<<<<<<<<<
@@ -9331,10 +10812,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
               {
                   #ifdef _OPENMP
 <<<<<<< HEAD
+<<<<<<< HEAD
                   #pragma omp parallel private(__pyx_t_182, __pyx_t_183)
 =======
                   #pragma omp parallel private(__pyx_t_171, __pyx_t_172)
 >>>>>>> Implemented stochastic protocol
+=======
+                  #pragma omp parallel private(__pyx_t_182, __pyx_t_183)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                   #endif /* _OPENMP */
                   {
                       #ifdef _OPENMP
@@ -9345,16 +10830,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                               __pyx_v_j = (int)(0 + 1 * __pyx_t_27);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                               /* "pyrossgeo/_simulation.pyx":606
 =======
                               /* "pyrossgeo/_simulation.pyx":604
 >>>>>>> Implemented stochastic protocol
+=======
+                              /* "pyrossgeo/_simulation.pyx":606
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         for j in prange(X_state_size, nogil=True):
  *             X_state[j] += dX_state[j]*dt             # <<<<<<<<<<<<<<
  * 
  *         t += dt
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
                               __pyx_t_182 = __pyx_v_j;
                               __pyx_t_183 = __pyx_v_j;
@@ -9364,6 +10854,11 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
                               __pyx_t_172 = __pyx_v_j;
                               *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_172 * __pyx_v_X_state.strides[0]) )) += ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_171 * __pyx_v_dX_state.strides[0]) ))) * __pyx_v_dt);
 >>>>>>> Implemented stochastic protocol
+=======
+                              __pyx_t_182 = __pyx_v_j;
+                              __pyx_t_183 = __pyx_v_j;
+                              *((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_X_state.data + __pyx_t_183 * __pyx_v_X_state.strides[0]) )) += ((*((__pyx_t_9pyrossgeo_8__defs___DTYPE_t *) ( /* dim=0 */ (__pyx_v_dX_state.data + __pyx_t_182 * __pyx_v_dX_state.strides[0]) ))) * __pyx_v_dt);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                           }
                       }
                   }
@@ -9378,10 +10873,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":605
 =======
         /* "pyrossgeo/_simulation.pyx":603
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":605
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         ################################################################
  * 
  *         for j in prange(X_state_size, nogil=True):             # <<<<<<<<<<<<<<
@@ -9395,6 +10894,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
             Py_BLOCK_THREADS
             #endif
 <<<<<<< HEAD
+<<<<<<< HEAD
             goto __pyx_L209;
           }
           __pyx_L209:;
@@ -9404,13 +10904,20 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     /* "pyrossgeo/_simulation.pyx":608
 =======
             goto __pyx_L198;
+=======
+            goto __pyx_L209;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           }
-          __pyx_L198:;
+          __pyx_L209:;
         }
     }
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":606
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":608
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             X_state[j] += dX_state[j]*dt
  * 
  *         t += dt             # <<<<<<<<<<<<<<
@@ -9420,10 +10927,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     __pyx_v_t = (__pyx_v_t + __pyx_v_dt);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":610
 =======
     /* "pyrossgeo/_simulation.pyx":608
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":610
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         t += dt
  * 
  *         if steps_per_print != -1 and step_i % steps_per_print==0:             # <<<<<<<<<<<<<<
@@ -9435,6 +10946,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     } else {
       __pyx_t_17 = __pyx_t_35;
 <<<<<<< HEAD
+<<<<<<< HEAD
       goto __pyx_L217_bool_binop_done;
     }
     __pyx_t_35 = (((__pyx_v_step_i % __pyx_v_steps_per_print) == 0) != 0);
@@ -9445,14 +10957,21 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       /* "pyrossgeo/_simulation.pyx":611
 =======
       goto __pyx_L206_bool_binop_done;
+=======
+      goto __pyx_L217_bool_binop_done;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     }
     __pyx_t_35 = (((__pyx_v_step_i % __pyx_v_steps_per_print) == 0) != 0);
     __pyx_t_17 = __pyx_t_35;
-    __pyx_L206_bool_binop_done:;
+    __pyx_L217_bool_binop_done:;
     if (__pyx_t_17) {
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":609
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":611
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         if steps_per_print != -1 and step_i % steps_per_print==0:
  *             print("Step %s out of %s" % (step_i, steps))             # <<<<<<<<<<<<<<
@@ -9460,18 +10979,26 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
  *         #### Store state
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_18 = PyTuple_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 611, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
 =======
       __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_18 = PyTuple_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __pyx_t_43 = 0;
       __pyx_t_44 = 127;
       __Pyx_INCREF(__pyx_kp_u_Step);
       __pyx_t_43 += 5;
       __Pyx_GIVEREF(__pyx_kp_u_Step);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_kp_u_Step);
       __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_step_i, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
@@ -9479,6 +11006,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_t_2);
       __pyx_t_2 = 0;
+<<<<<<< HEAD
       __Pyx_INCREF(__pyx_kp_u_out_of);
       __pyx_t_43 += 8;
       __Pyx_GIVEREF(__pyx_kp_u_out_of);
@@ -9506,26 +11034,32 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       __Pyx_GIVEREF(__pyx_t_18);
       PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_18);
       __pyx_t_18 = 0;
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_INCREF(__pyx_kp_u_out_of);
       __pyx_t_43 += 8;
       __Pyx_GIVEREF(__pyx_kp_u_out_of);
-      PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_kp_u_out_of);
-      __pyx_t_18 = __Pyx_PyUnicode_From_int(__pyx_v_steps, 0, ' ', 'd'); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
-      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_18);
-      __Pyx_GIVEREF(__pyx_t_18);
-      PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_t_18);
-      __pyx_t_18 = 0;
-      __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_3, 4, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_18); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
+      PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_kp_u_out_of);
+      __pyx_t_2 = __Pyx_PyUnicode_From_int(__pyx_v_steps, 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
+      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2);
+      __Pyx_GIVEREF(__pyx_t_2);
+      PyTuple_SET_ITEM(__pyx_t_18, 3, __pyx_t_2);
+      __pyx_t_2 = 0;
+      __pyx_t_2 = __Pyx_PyUnicode_Join(__pyx_t_18, 4, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_18 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 611, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":608
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":610
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         t += dt
  * 
  *         if steps_per_print != -1 and step_i % steps_per_print==0:             # <<<<<<<<<<<<<<
@@ -9535,10 +11069,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":615
 =======
     /* "pyrossgeo/_simulation.pyx":613
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":615
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### Store state
  * 
  *         if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -9549,10 +11087,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":617
 =======
       /* "pyrossgeo/_simulation.pyx":615
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":617
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         if steps_per_save != -1:
  * 
  *             if (step_i+1) % steps_per_save == 0:             # <<<<<<<<<<<<<<
@@ -9563,10 +11105,14 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
       if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":618
 =======
         /* "pyrossgeo/_simulation.pyx":616
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":618
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *             if (step_i+1) % steps_per_save == 0:
  *                 X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]             # <<<<<<<<<<<<<<
@@ -9591,6 +11137,7 @@ static PyObject *__pyx_f_9pyrossgeo_11_simulation_simulate(struct __pyx_obj_9pyr
     0,
     1) < 0))
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
     __PYX_ERR(0, 618, __pyx_L1_error)
 }
@@ -9617,29 +11164,36 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) _
         /* "pyrossgeo/_simulation.pyx":619
 =======
     __PYX_ERR(0, 616, __pyx_L1_error)
+=======
+    __PYX_ERR(0, 618, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 }
 
-__pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
+__pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 618, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
         __PYX_XDEC_MEMVIEW(&__pyx_t_16, 1);
         __pyx_t_16.memview = NULL;
         __pyx_t_16.data = NULL;
-        __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_save_i); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 616, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_18);
-        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 616, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_save_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 618, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_GIVEREF(__pyx_t_18);
-        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_18);
+        __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 618, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
         __Pyx_INCREF(__pyx_slice__4);
         __Pyx_GIVEREF(__pyx_slice__4);
-        PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_slice__4);
-        __pyx_t_18 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_X_states_saved, __pyx_t_2, __pyx_t_3) < 0)) __PYX_ERR(0, 616, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_slice__4);
+        __pyx_t_2 = 0;
+        if (unlikely(PyObject_SetItem(__pyx_v_X_states_saved, __pyx_t_3, __pyx_t_18) < 0)) __PYX_ERR(0, 618, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":617
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":619
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             if (step_i+1) % steps_per_save == 0:
  *                 X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]
  *                 ts_saved[save_i] = t             # <<<<<<<<<<<<<<
@@ -9647,10 +11201,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __pyx_t_18 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 619, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
         if (unlikely(__Pyx_SetItemInt(__pyx_v_ts_saved, __pyx_v_save_i, __pyx_t_18, int, 1, __Pyx_PyInt_From_int, 0, 0, 0) < 0)) __PYX_ERR(0, 619, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+<<<<<<< HEAD
 
         /* "pyrossgeo/_simulation.pyx":620
 =======
@@ -9661,6 +11219,10 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 
         /* "pyrossgeo/_simulation.pyx":618
 >>>>>>> Implemented stochastic protocol
+=======
+
+        /* "pyrossgeo/_simulation.pyx":620
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 X_states_saved[save_i,:] = X_state[:X_states_saved_col_num]
  *                 ts_saved[save_i] = t
  *                 save_i += 1             # <<<<<<<<<<<<<<
@@ -9670,10 +11232,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         __pyx_v_save_i = (__pyx_v_save_i + 1);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":617
 =======
         /* "pyrossgeo/_simulation.pyx":615
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":617
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         if steps_per_save != -1:
  * 
  *             if (step_i+1) % steps_per_save == 0:             # <<<<<<<<<<<<<<
@@ -9683,10 +11249,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":615
 =======
       /* "pyrossgeo/_simulation.pyx":613
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":615
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### Store state
  * 
  *         if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -9696,16 +11266,21 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":624
 =======
     /* "pyrossgeo/_simulation.pyx":622
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":624
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### Call event function
  * 
  *         if event_steps[step_i]:             # <<<<<<<<<<<<<<
  *             if steps_per_save == -1:
  *                 event_function(self, step_i, t, dt, X_state, dX_state)
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
     __pyx_t_184 = __pyx_v_step_i;
     __pyx_t_17 = ((*((char *) ( /* dim=0 */ (__pyx_v_event_steps.data + __pyx_t_184 * __pyx_v_event_steps.strides[0]) ))) != 0);
@@ -9719,6 +11294,13 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 
       /* "pyrossgeo/_simulation.pyx":623
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_184 = __pyx_v_step_i;
+    __pyx_t_17 = ((*((char *) ( /* dim=0 */ (__pyx_v_event_steps.data + __pyx_t_184 * __pyx_v_event_steps.strides[0]) ))) != 0);
+    if (__pyx_t_17) {
+
+      /* "pyrossgeo/_simulation.pyx":625
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         if event_steps[step_i]:
  *             if steps_per_save == -1:             # <<<<<<<<<<<<<<
@@ -9729,16 +11311,21 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":626
 =======
         /* "pyrossgeo/_simulation.pyx":624
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":626
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         if event_steps[step_i]:
  *             if steps_per_save == -1:
  *                 event_function(self, step_i, t, dt, X_state, dX_state)             # <<<<<<<<<<<<<<
  *             else:
  *                 event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
@@ -9760,24 +11347,31 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_INCREF(__pyx_t_185);
 =======
         __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 624, __pyx_L1_error)
+=======
+        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_2 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 626, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_18 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 624, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_18);
-        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __pyx_t_1 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_X_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_X_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 626, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_20 = __pyx_memoryview_fromslice(__pyx_v_dX_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 624, __pyx_L1_error)
+        __pyx_t_20 = __pyx_memoryview_fromslice(__pyx_v_dX_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 626, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_20);
         __Pyx_INCREF(__pyx_v_event_function);
-        __pyx_t_19 = __pyx_v_event_function; __pyx_t_174 = NULL;
+        __pyx_t_19 = __pyx_v_event_function; __pyx_t_185 = NULL;
         __pyx_t_25 = 0;
         if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_19))) {
-          __pyx_t_174 = PyMethod_GET_SELF(__pyx_t_19);
-          if (likely(__pyx_t_174)) {
+          __pyx_t_185 = PyMethod_GET_SELF(__pyx_t_19);
+          if (likely(__pyx_t_185)) {
             PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_19);
+<<<<<<< HEAD
             __Pyx_INCREF(__pyx_t_174);
 >>>>>>> Implemented stochastic protocol
+=======
+            __Pyx_INCREF(__pyx_t_185);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_INCREF(function);
             __Pyx_DECREF_SET(__pyx_t_19, function);
             __pyx_t_25 = 1;
@@ -9786,11 +11380,15 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_19)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           PyObject *__pyx_temp[7] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_3, __pyx_t_2, __pyx_t_1, __pyx_t_4, __pyx_t_20};
           __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_25, 6+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
           __Pyx_GOTREF(__pyx_t_18);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+<<<<<<< HEAD
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 =======
           PyObject *__pyx_temp[7] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_2, __pyx_t_18, __pyx_t_1, __pyx_t_4, __pyx_t_20};
@@ -9800,6 +11398,9 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -9808,11 +11409,15 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_19)) {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           PyObject *__pyx_temp[7] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_3, __pyx_t_2, __pyx_t_1, __pyx_t_4, __pyx_t_20};
           __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_19, __pyx_temp+1-__pyx_t_25, 6+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
           __Pyx_GOTREF(__pyx_t_18);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+<<<<<<< HEAD
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 =======
           PyObject *__pyx_temp[7] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_2, __pyx_t_18, __pyx_t_1, __pyx_t_4, __pyx_t_20};
@@ -9822,6 +11427,9 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
           __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -9829,10 +11437,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         #endif
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __pyx_t_186 = PyTuple_New(6+__pyx_t_25); if (unlikely(!__pyx_t_186)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_186);
           if (__pyx_t_185) {
             __Pyx_GIVEREF(__pyx_t_185); PyTuple_SET_ITEM(__pyx_t_186, 0, __pyx_t_185); __pyx_t_185 = NULL;
+<<<<<<< HEAD
           }
           __Pyx_INCREF(((PyObject *)__pyx_v_self));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
@@ -9865,40 +11477,47 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
           __Pyx_GOTREF(__pyx_t_175);
           if (__pyx_t_174) {
             __Pyx_GIVEREF(__pyx_t_174); PyTuple_SET_ITEM(__pyx_t_175, 0, __pyx_t_174); __pyx_t_174 = NULL;
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           }
           __Pyx_INCREF(((PyObject *)__pyx_v_self));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-          PyTuple_SET_ITEM(__pyx_t_175, 0+__pyx_t_25, ((PyObject *)__pyx_v_self));
+          PyTuple_SET_ITEM(__pyx_t_186, 0+__pyx_t_25, ((PyObject *)__pyx_v_self));
+          __Pyx_GIVEREF(__pyx_t_3);
+          PyTuple_SET_ITEM(__pyx_t_186, 1+__pyx_t_25, __pyx_t_3);
           __Pyx_GIVEREF(__pyx_t_2);
-          PyTuple_SET_ITEM(__pyx_t_175, 1+__pyx_t_25, __pyx_t_2);
-          __Pyx_GIVEREF(__pyx_t_18);
-          PyTuple_SET_ITEM(__pyx_t_175, 2+__pyx_t_25, __pyx_t_18);
+          PyTuple_SET_ITEM(__pyx_t_186, 2+__pyx_t_25, __pyx_t_2);
           __Pyx_GIVEREF(__pyx_t_1);
-          PyTuple_SET_ITEM(__pyx_t_175, 3+__pyx_t_25, __pyx_t_1);
+          PyTuple_SET_ITEM(__pyx_t_186, 3+__pyx_t_25, __pyx_t_1);
           __Pyx_GIVEREF(__pyx_t_4);
-          PyTuple_SET_ITEM(__pyx_t_175, 4+__pyx_t_25, __pyx_t_4);
+          PyTuple_SET_ITEM(__pyx_t_186, 4+__pyx_t_25, __pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_20);
-          PyTuple_SET_ITEM(__pyx_t_175, 5+__pyx_t_25, __pyx_t_20);
+          PyTuple_SET_ITEM(__pyx_t_186, 5+__pyx_t_25, __pyx_t_20);
+          __pyx_t_3 = 0;
           __pyx_t_2 = 0;
-          __pyx_t_18 = 0;
           __pyx_t_1 = 0;
           __pyx_t_4 = 0;
           __pyx_t_20 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_175, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 624, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_DECREF(__pyx_t_175); __pyx_t_175 = 0;
+          __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_19, __pyx_t_186, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_18);
+          __Pyx_DECREF(__pyx_t_186); __pyx_t_186 = 0;
         }
         __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
 
+<<<<<<< HEAD
         /* "pyrossgeo/_simulation.pyx":623
 >>>>>>> Implemented stochastic protocol
+=======
+        /* "pyrossgeo/_simulation.pyx":625
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         if event_steps[step_i]:
  *             if steps_per_save == -1:             # <<<<<<<<<<<<<<
  *                 event_function(self, step_i, t, dt, X_state, dX_state)
  *             else:
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
         goto __pyx_L222;
       }
@@ -9910,6 +11529,12 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 
       /* "pyrossgeo/_simulation.pyx":626
 >>>>>>> Implemented stochastic protocol
+=======
+        goto __pyx_L222;
+      }
+
+      /* "pyrossgeo/_simulation.pyx":628
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *                 event_function(self, step_i, t, dt, X_state, dX_state)
  *             else:
  *                 event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)             # <<<<<<<<<<<<<<
@@ -9917,6 +11542,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  *         #### Call Cython event function
  */
       /*else*/ {
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_19 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_19);
@@ -9942,38 +11568,49 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_DECREF_SET(__pyx_t_3, function);
 =======
         __pyx_t_19 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 626, __pyx_L1_error)
+=======
+        __pyx_t_19 = __Pyx_PyInt_From_int(__pyx_v_step_i); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 628, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_GOTREF(__pyx_t_19);
-        __pyx_t_175 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_175)) __PYX_ERR(0, 626, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_175);
-        __pyx_t_20 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __pyx_t_186 = PyFloat_FromDouble(__pyx_v_t); if (unlikely(!__pyx_t_186)) __PYX_ERR(0, 628, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_186);
+        __pyx_t_20 = PyFloat_FromDouble(__pyx_v_dt); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_20);
-        __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_X_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_X_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_dX_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 626, __pyx_L1_error)
+        __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_dX_state, 1, (PyObject *(*)(char *)) __pyx_memview_get_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, (int (*)(char *, PyObject *)) __pyx_memview_set_nn___pyx_t_9pyrossgeo_8__defs___DTYPE_t, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 628, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_18 = __Pyx_PyInt_From_int(__pyx_v_save_i); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 626, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_18);
+        __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_save_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 628, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
         __Pyx_INCREF(__pyx_v_event_function);
-        __pyx_t_2 = __pyx_v_event_function; __pyx_t_174 = NULL;
+        __pyx_t_3 = __pyx_v_event_function; __pyx_t_185 = NULL;
         __pyx_t_25 = 0;
-        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
-          __pyx_t_174 = PyMethod_GET_SELF(__pyx_t_2);
-          if (likely(__pyx_t_174)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
-            __Pyx_INCREF(__pyx_t_174);
+        if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+          __pyx_t_185 = PyMethod_GET_SELF(__pyx_t_3);
+          if (likely(__pyx_t_185)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+            __Pyx_INCREF(__pyx_t_185);
             __Pyx_INCREF(function);
+<<<<<<< HEAD
             __Pyx_DECREF_SET(__pyx_t_2, function);
 >>>>>>> Implemented stochastic protocol
+=======
+            __Pyx_DECREF_SET(__pyx_t_3, function);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __pyx_t_25 = 1;
           }
         }
         #if CYTHON_FAST_PYCALL
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         if (PyFunction_Check(__pyx_t_3)) {
           PyObject *__pyx_temp[10] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_19, __pyx_t_186, __pyx_t_20, __pyx_t_4, __pyx_t_1, __pyx_v_X_states_saved, __pyx_v_ts_saved, __pyx_t_2};
           __pyx_t_18 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 628, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
           __Pyx_GOTREF(__pyx_t_18);
+<<<<<<< HEAD
           __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
           __Pyx_DECREF(__pyx_t_186); __pyx_t_186 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -10045,72 +11682,78 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
           __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
           __Pyx_GOTREF(__pyx_t_3);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-          __Pyx_DECREF(__pyx_t_175); __pyx_t_175 = 0;
+          __Pyx_DECREF(__pyx_t_186); __pyx_t_186 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
-        if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
-          PyObject *__pyx_temp[10] = {__pyx_t_174, ((PyObject *)__pyx_v_self), __pyx_t_19, __pyx_t_175, __pyx_t_20, __pyx_t_4, __pyx_t_1, __pyx_v_X_states_saved, __pyx_v_ts_saved, __pyx_t_18};
-          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
-          __Pyx_XDECREF(__pyx_t_174); __pyx_t_174 = 0;
-          __Pyx_GOTREF(__pyx_t_3);
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
+          PyObject *__pyx_temp[10] = {__pyx_t_185, ((PyObject *)__pyx_v_self), __pyx_t_19, __pyx_t_186, __pyx_t_20, __pyx_t_4, __pyx_t_1, __pyx_v_X_states_saved, __pyx_v_ts_saved, __pyx_t_2};
+          __pyx_t_18 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_25, 9+__pyx_t_25); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 628, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
+          __Pyx_GOTREF(__pyx_t_18);
           __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-          __Pyx_DECREF(__pyx_t_175); __pyx_t_175 = 0;
+          __Pyx_DECREF(__pyx_t_186); __pyx_t_186 = 0;
           __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+          __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         } else
         #endif
         {
-          __pyx_t_176 = PyTuple_New(9+__pyx_t_25); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 626, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_176);
-          if (__pyx_t_174) {
-            __Pyx_GIVEREF(__pyx_t_174); PyTuple_SET_ITEM(__pyx_t_176, 0, __pyx_t_174); __pyx_t_174 = NULL;
+          __pyx_t_187 = PyTuple_New(9+__pyx_t_25); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 628, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_187);
+          if (__pyx_t_185) {
+            __Pyx_GIVEREF(__pyx_t_185); PyTuple_SET_ITEM(__pyx_t_187, 0, __pyx_t_185); __pyx_t_185 = NULL;
           }
           __Pyx_INCREF(((PyObject *)__pyx_v_self));
           __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
-          PyTuple_SET_ITEM(__pyx_t_176, 0+__pyx_t_25, ((PyObject *)__pyx_v_self));
+          PyTuple_SET_ITEM(__pyx_t_187, 0+__pyx_t_25, ((PyObject *)__pyx_v_self));
           __Pyx_GIVEREF(__pyx_t_19);
-          PyTuple_SET_ITEM(__pyx_t_176, 1+__pyx_t_25, __pyx_t_19);
-          __Pyx_GIVEREF(__pyx_t_175);
-          PyTuple_SET_ITEM(__pyx_t_176, 2+__pyx_t_25, __pyx_t_175);
+          PyTuple_SET_ITEM(__pyx_t_187, 1+__pyx_t_25, __pyx_t_19);
+          __Pyx_GIVEREF(__pyx_t_186);
+          PyTuple_SET_ITEM(__pyx_t_187, 2+__pyx_t_25, __pyx_t_186);
           __Pyx_GIVEREF(__pyx_t_20);
-          PyTuple_SET_ITEM(__pyx_t_176, 3+__pyx_t_25, __pyx_t_20);
+          PyTuple_SET_ITEM(__pyx_t_187, 3+__pyx_t_25, __pyx_t_20);
           __Pyx_GIVEREF(__pyx_t_4);
-          PyTuple_SET_ITEM(__pyx_t_176, 4+__pyx_t_25, __pyx_t_4);
+          PyTuple_SET_ITEM(__pyx_t_187, 4+__pyx_t_25, __pyx_t_4);
           __Pyx_GIVEREF(__pyx_t_1);
-          PyTuple_SET_ITEM(__pyx_t_176, 5+__pyx_t_25, __pyx_t_1);
+          PyTuple_SET_ITEM(__pyx_t_187, 5+__pyx_t_25, __pyx_t_1);
           __Pyx_INCREF(__pyx_v_X_states_saved);
           __Pyx_GIVEREF(__pyx_v_X_states_saved);
-          PyTuple_SET_ITEM(__pyx_t_176, 6+__pyx_t_25, __pyx_v_X_states_saved);
+          PyTuple_SET_ITEM(__pyx_t_187, 6+__pyx_t_25, __pyx_v_X_states_saved);
           __Pyx_INCREF(__pyx_v_ts_saved);
           __Pyx_GIVEREF(__pyx_v_ts_saved);
-          PyTuple_SET_ITEM(__pyx_t_176, 7+__pyx_t_25, __pyx_v_ts_saved);
-          __Pyx_GIVEREF(__pyx_t_18);
-          PyTuple_SET_ITEM(__pyx_t_176, 8+__pyx_t_25, __pyx_t_18);
+          PyTuple_SET_ITEM(__pyx_t_187, 7+__pyx_t_25, __pyx_v_ts_saved);
+          __Pyx_GIVEREF(__pyx_t_2);
+          PyTuple_SET_ITEM(__pyx_t_187, 8+__pyx_t_25, __pyx_t_2);
           __pyx_t_19 = 0;
-          __pyx_t_175 = 0;
+          __pyx_t_186 = 0;
           __pyx_t_20 = 0;
           __pyx_t_4 = 0;
           __pyx_t_1 = 0;
-          __pyx_t_18 = 0;
-          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_176, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 626, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_3);
-          __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+          __pyx_t_2 = 0;
+          __pyx_t_18 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_187, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 628, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_18);
+          __Pyx_DECREF(__pyx_t_187); __pyx_t_187 = 0;
         }
-        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       }
-      __pyx_L211:;
+      __pyx_L222:;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":622
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":624
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #### Call event function
  * 
  *         if event_steps[step_i]:             # <<<<<<<<<<<<<<
@@ -10121,10 +11764,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":635
 =======
   /* "pyrossgeo/_simulation.pyx":633
 >>>>>>> Implemented stochastic protocol
+=======
+  /* "pyrossgeo/_simulation.pyx":635
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         #    cevent_function(self, step_i, t, dt, X_state, dX_state)
  * 
  *     free(loc_j_is_stochastic)             # <<<<<<<<<<<<<<
@@ -10134,10 +11781,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   free(__pyx_v_loc_j_is_stochastic);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":636
 =======
   /* "pyrossgeo/_simulation.pyx":634
 >>>>>>> Implemented stochastic protocol
+=======
+  /* "pyrossgeo/_simulation.pyx":636
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *     free(loc_j_is_stochastic)
  *     free(to_k_is_stochastic)             # <<<<<<<<<<<<<<
@@ -10147,10 +11798,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   free(__pyx_v_to_k_is_stochastic);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /* "pyrossgeo/_simulation.pyx":638
 =======
   /* "pyrossgeo/_simulation.pyx":636
 >>>>>>> Implemented stochastic protocol
+=======
+  /* "pyrossgeo/_simulation.pyx":638
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *     free(to_k_is_stochastic)
  * 
  *     if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -10161,10 +11816,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   if (__pyx_t_17) {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":640
 =======
     /* "pyrossgeo/_simulation.pyx":638
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":640
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *     if steps_per_save != -1:
  * 
  *         node_mappings = self.node_mappings.copy()             # <<<<<<<<<<<<<<
@@ -10172,6 +11831,9 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->node_mappings, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 640, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_187 = NULL;
@@ -10180,6 +11842,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       if (likely(__pyx_t_187)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_187);
+<<<<<<< HEAD
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_3, function);
       }
@@ -10202,20 +11865,26 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       if (likely(__pyx_t_176)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_176);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
       }
     }
-    __pyx_t_3 = (__pyx_t_176) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_176) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
-    __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_node_mappings = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __pyx_t_18 = (__pyx_t_187) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_187) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+    __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
+    if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 640, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_18);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_node_mappings = __pyx_t_18;
+    __pyx_t_18 = 0;
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":639
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":641
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         node_mappings = self.node_mappings.copy()
  *         cnode_mappings = self.cnode_mappings.copy()             # <<<<<<<<<<<<<<
@@ -10223,6 +11892,9 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_self->cnode_mappings, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_187 = NULL;
@@ -10231,6 +11903,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       if (likely(__pyx_t_187)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_187);
+<<<<<<< HEAD
         __Pyx_INCREF(function);
         __Pyx_DECREF_SET(__pyx_t_3, function);
       }
@@ -10253,26 +11926,33 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       if (likely(__pyx_t_176)) {
         PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
         __Pyx_INCREF(__pyx_t_176);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_2, function);
+        __Pyx_DECREF_SET(__pyx_t_3, function);
       }
     }
-    __pyx_t_3 = (__pyx_t_176) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_176) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
-    __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 639, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_v_cnode_mappings = __pyx_t_3;
-    __pyx_t_3 = 0;
+    __pyx_t_18 = (__pyx_t_187) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_187) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
+    __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
+    if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 641, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_18);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __pyx_v_cnode_mappings = __pyx_t_18;
+    __pyx_t_18 = 0;
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":641
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":643
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         cnode_mappings = self.cnode_mappings.copy()
  * 
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)             # <<<<<<<<<<<<<<
  * 
  *         if save_path != '':
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
     __pyx_t_18 = PyTuple_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 643, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_18);
@@ -10295,29 +11975,38 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 =======
     __pyx_t_3 = PyTuple_New(4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 641, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
+=======
+    __pyx_t_18 = PyTuple_New(4); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 643, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_18);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_INCREF(__pyx_v_node_mappings);
     __Pyx_GIVEREF(__pyx_v_node_mappings);
-    PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_node_mappings);
+    PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_v_node_mappings);
     __Pyx_INCREF(__pyx_v_cnode_mappings);
     __Pyx_GIVEREF(__pyx_v_cnode_mappings);
-    PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_v_cnode_mappings);
+    PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_v_cnode_mappings);
     __Pyx_INCREF(__pyx_v_ts_saved);
     __Pyx_GIVEREF(__pyx_v_ts_saved);
-    PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_v_ts_saved);
+    PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_v_ts_saved);
     __Pyx_INCREF(__pyx_v_X_states_saved);
     __Pyx_GIVEREF(__pyx_v_X_states_saved);
-    PyTuple_SET_ITEM(__pyx_t_3, 3, __pyx_v_X_states_saved);
-    __pyx_v_sim_data = ((PyObject*)__pyx_t_3);
-    __pyx_t_3 = 0;
+    PyTuple_SET_ITEM(__pyx_t_18, 3, __pyx_v_X_states_saved);
+    __pyx_v_sim_data = ((PyObject*)__pyx_t_18);
+    __pyx_t_18 = 0;
 
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":643
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":645
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
  * 
  *         if save_path != '':             # <<<<<<<<<<<<<<
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
     __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_v_save_path, __pyx_kp_u_, Py_NE)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 645, __pyx_L1_error)
     __pyx_t_35 = (__pyx_t_17 != 0);
@@ -10331,6 +12020,13 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 
       /* "pyrossgeo/_simulation.pyx":644
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_17 = (__Pyx_PyUnicode_Equals(__pyx_v_save_path, __pyx_kp_u_, Py_NE)); if (unlikely(__pyx_t_17 < 0)) __PYX_ERR(0, 645, __pyx_L1_error)
+    __pyx_t_35 = (__pyx_t_17 != 0);
+    if (__pyx_t_35) {
+
+      /* "pyrossgeo/_simulation.pyx":646
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         if save_path != '':
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)             # <<<<<<<<<<<<<<
@@ -10338,6 +12034,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
  */
       /*with:*/ {
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
@@ -10357,24 +12054,33 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 =======
         __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
+=======
+        __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __pyx_t_43 = 0;
         __pyx_t_44 = 127;
-        __pyx_t_2 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_2) : __pyx_t_44;
-        __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2);
-        __Pyx_GIVEREF(__pyx_t_2);
-        PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
-        __pyx_t_2 = 0;
+        __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_44;
+        __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
+        __pyx_t_3 = 0;
         __Pyx_INCREF(__pyx_kp_u__3);
         __pyx_t_43 += 1;
         __Pyx_GIVEREF(__pyx_kp_u__3);
+<<<<<<< HEAD
         PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_kp_u__3);
 >>>>>>> Implemented stochastic protocol
+=======
+        PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_kp_u__3);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_INCREF(__pyx_v_save_node_mappings_path);
         __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_node_mappings_path) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_node_mappings_path) : __pyx_t_44;
         __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_v_save_node_mappings_path);
         __Pyx_GIVEREF(__pyx_v_save_node_mappings_path);
+<<<<<<< HEAD
 <<<<<<< HEAD
         PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_v_save_node_mappings_path);
         __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_18, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
@@ -10419,30 +12125,38 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L1_error)
+=======
+        PyTuple_SET_ITEM(__pyx_t_18, 2, __pyx_v_save_node_mappings_path);
+        __pyx_t_3 = __Pyx_PyUnicode_Join(__pyx_t_18, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_GIVEREF(__pyx_t_2);
-        PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_2);
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_GIVEREF(__pyx_t_3);
+        PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
         __Pyx_INCREF(__pyx_n_u_wb);
         __Pyx_GIVEREF(__pyx_n_u_wb);
-        PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_n_u_wb);
-        __pyx_t_2 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_177 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_exit); if (unlikely(!__pyx_t_177)) __PYX_ERR(0, 644, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_177);
-        __pyx_t_176 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_n_s_enter); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L214_error)
-        __Pyx_GOTREF(__pyx_t_176);
-        __pyx_t_18 = NULL;
-        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_176))) {
-          __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_176);
-          if (likely(__pyx_t_18)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_176);
-            __Pyx_INCREF(__pyx_t_18);
+        PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_n_u_wb);
+        __pyx_t_3 = 0;
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+        __pyx_t_188 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_188)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_188);
+        __pyx_t_187 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 646, __pyx_L225_error)
+        __Pyx_GOTREF(__pyx_t_187);
+        __pyx_t_2 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_187))) {
+          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_187);
+          if (likely(__pyx_t_2)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_187);
+            __Pyx_INCREF(__pyx_t_2);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_176, function);
+            __Pyx_DECREF_SET(__pyx_t_187, function);
           }
         }
+<<<<<<< HEAD
         __pyx_t_3 = (__pyx_t_18) ? __Pyx_PyObject_CallOneArg(__pyx_t_176, __pyx_t_18) : __Pyx_PyObject_CallNoArg(__pyx_t_176);
         __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
         if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L214_error)
@@ -10452,15 +12166,29 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         __pyx_t_3 = 0;
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+        __pyx_t_18 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_187, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_187);
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L225_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_DECREF(__pyx_t_187); __pyx_t_187 = 0;
+        __pyx_t_187 = __pyx_t_18;
+        __pyx_t_18 = 0;
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         /*try:*/ {
           {
             __Pyx_PyThreadState_declare
             __Pyx_PyThreadState_assign
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_ExceptionSave(&__pyx_t_189, &__pyx_t_190, &__pyx_t_191);
             __Pyx_XGOTREF(__pyx_t_189);
             __Pyx_XGOTREF(__pyx_t_190);
             __Pyx_XGOTREF(__pyx_t_191);
+<<<<<<< HEAD
             /*try:*/ {
               __pyx_v_f = __pyx_t_187;
               __pyx_t_187 = 0;
@@ -10483,34 +12211,44 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_XGOTREF(__pyx_t_178);
             __Pyx_XGOTREF(__pyx_t_179);
             __Pyx_XGOTREF(__pyx_t_180);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             /*try:*/ {
-              __pyx_v_f = __pyx_t_176;
-              __pyx_t_176 = 0;
-              __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_pickle); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L218_error)
-              __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dump); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 644, __pyx_L218_error)
+              __pyx_v_f = __pyx_t_187;
+              __pyx_t_187 = 0;
+              __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pickle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L229_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              __pyx_t_2 = NULL;
+              __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_dump); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L229_error)
+              __Pyx_GOTREF(__pyx_t_18);
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+              __pyx_t_3 = NULL;
               __pyx_t_5 = 0;
-              if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
-                __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
-                if (likely(__pyx_t_2)) {
-                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
-                  __Pyx_INCREF(__pyx_t_2);
+              if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_18))) {
+                __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_18);
+                if (likely(__pyx_t_3)) {
+                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_18);
+                  __Pyx_INCREF(__pyx_t_3);
                   __Pyx_INCREF(function);
+<<<<<<< HEAD
                   __Pyx_DECREF_SET(__pyx_t_3, function);
 >>>>>>> Implemented stochastic protocol
+=======
+                  __Pyx_DECREF_SET(__pyx_t_18, function);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                   __pyx_t_5 = 1;
                 }
               }
               #if CYTHON_FAST_PYCALL
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
               if (PyFunction_Check(__pyx_t_18)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_node_mappings, __pyx_v_f};
                 __pyx_t_187 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 646, __pyx_L229_error)
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_GOTREF(__pyx_t_187);
+<<<<<<< HEAD
               } else
               #endif
               #if CYTHON_FAST_PYCCALL
@@ -10551,45 +12289,56 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
                 __pyx_t_176 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L218_error)
                 __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
                 __Pyx_GOTREF(__pyx_t_176);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
               } else
               #endif
               #if CYTHON_FAST_PYCCALL
-              if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-                PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_v_node_mappings, __pyx_v_f};
-                __pyx_t_176 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L218_error)
-                __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-                __Pyx_GOTREF(__pyx_t_176);
+              if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
+                PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_node_mappings, __pyx_v_f};
+                __pyx_t_187 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 646, __pyx_L229_error)
+                __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+                __Pyx_GOTREF(__pyx_t_187);
               } else
               #endif
               {
-                __pyx_t_18 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 644, __pyx_L218_error)
-                __Pyx_GOTREF(__pyx_t_18);
-                if (__pyx_t_2) {
-                  __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_2); __pyx_t_2 = NULL;
+                __pyx_t_2 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L229_error)
+                __Pyx_GOTREF(__pyx_t_2);
+                if (__pyx_t_3) {
+                  __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
                 }
                 __Pyx_INCREF(__pyx_v_node_mappings);
                 __Pyx_GIVEREF(__pyx_v_node_mappings);
-                PyTuple_SET_ITEM(__pyx_t_18, 0+__pyx_t_5, __pyx_v_node_mappings);
+                PyTuple_SET_ITEM(__pyx_t_2, 0+__pyx_t_5, __pyx_v_node_mappings);
                 __Pyx_INCREF(__pyx_v_f);
                 __Pyx_GIVEREF(__pyx_v_f);
-                PyTuple_SET_ITEM(__pyx_t_18, 1+__pyx_t_5, __pyx_v_f);
-                __pyx_t_176 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_18, NULL); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 644, __pyx_L218_error)
-                __Pyx_GOTREF(__pyx_t_176);
-                __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+                PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_5, __pyx_v_f);
+                __pyx_t_187 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_2, NULL); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 646, __pyx_L229_error)
+                __Pyx_GOTREF(__pyx_t_187);
+                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
               }
-              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+              __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+              __Pyx_DECREF(__pyx_t_187); __pyx_t_187 = 0;
             }
+<<<<<<< HEAD
             __Pyx_XDECREF(__pyx_t_178); __pyx_t_178 = 0;
             __Pyx_XDECREF(__pyx_t_179); __pyx_t_179 = 0;
             __Pyx_XDECREF(__pyx_t_180); __pyx_t_180 = 0;
             goto __pyx_L223_try_end;
             __pyx_L218_error:;
 >>>>>>> Implemented stochastic protocol
+=======
+            __Pyx_XDECREF(__pyx_t_189); __pyx_t_189 = 0;
+            __Pyx_XDECREF(__pyx_t_190); __pyx_t_190 = 0;
+            __Pyx_XDECREF(__pyx_t_191); __pyx_t_191 = 0;
+            goto __pyx_L234_try_end;
+            __pyx_L229_error:;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_16, 1);
+<<<<<<< HEAD
 <<<<<<< HEAD
             __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
             __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
@@ -10601,6 +12350,12 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
             __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+            __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+            __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
+            __Pyx_XDECREF(__pyx_t_186); __pyx_t_186 = 0;
+            __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -10609,6 +12364,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __PYX_XDEC_MEMVIEW(&__pyx_t_45, 1);
             /*except:*/ {
               __Pyx_AddTraceback("pyrossgeo._simulation.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+<<<<<<< HEAD
 <<<<<<< HEAD
               if (__Pyx_GetException(&__pyx_t_187, &__pyx_t_18, &__pyx_t_2) < 0) __PYX_ERR(0, 646, __pyx_L231_except_error)
               __Pyx_GOTREF(__pyx_t_187);
@@ -10654,37 +12410,43 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
               if (__Pyx_GetException(&__pyx_t_176, &__pyx_t_3, &__pyx_t_18) < 0) __PYX_ERR(0, 644, __pyx_L220_except_error)
               __Pyx_GOTREF(__pyx_t_176);
               __Pyx_GOTREF(__pyx_t_3);
+=======
+              if (__Pyx_GetException(&__pyx_t_187, &__pyx_t_18, &__pyx_t_2) < 0) __PYX_ERR(0, 646, __pyx_L231_except_error)
+              __Pyx_GOTREF(__pyx_t_187);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
               __Pyx_GOTREF(__pyx_t_18);
-              __pyx_t_2 = PyTuple_Pack(3, __pyx_t_176, __pyx_t_3, __pyx_t_18); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 644, __pyx_L220_except_error)
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_181 = __Pyx_PyObject_Call(__pyx_t_177, __pyx_t_2, NULL);
-              __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
-              __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-              if (unlikely(!__pyx_t_181)) __PYX_ERR(0, 644, __pyx_L220_except_error)
-              __Pyx_GOTREF(__pyx_t_181);
-              __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_181);
-              __Pyx_DECREF(__pyx_t_181); __pyx_t_181 = 0;
-              if (__pyx_t_35 < 0) __PYX_ERR(0, 644, __pyx_L220_except_error)
+              __pyx_t_3 = PyTuple_Pack(3, __pyx_t_187, __pyx_t_18, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L231_except_error)
+              __Pyx_GOTREF(__pyx_t_3);
+              __pyx_t_192 = __Pyx_PyObject_Call(__pyx_t_188, __pyx_t_3, NULL);
+              __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
+              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+              if (unlikely(!__pyx_t_192)) __PYX_ERR(0, 646, __pyx_L231_except_error)
+              __Pyx_GOTREF(__pyx_t_192);
+              __pyx_t_35 = __Pyx_PyObject_IsTrue(__pyx_t_192);
+              __Pyx_DECREF(__pyx_t_192); __pyx_t_192 = 0;
+              if (__pyx_t_35 < 0) __PYX_ERR(0, 646, __pyx_L231_except_error)
               __pyx_t_17 = ((!(__pyx_t_35 != 0)) != 0);
               if (__pyx_t_17) {
-                __Pyx_GIVEREF(__pyx_t_176);
-                __Pyx_GIVEREF(__pyx_t_3);
-                __Pyx_XGIVEREF(__pyx_t_18);
-                __Pyx_ErrRestoreWithState(__pyx_t_176, __pyx_t_3, __pyx_t_18);
-                __pyx_t_176 = 0; __pyx_t_3 = 0; __pyx_t_18 = 0; 
-                __PYX_ERR(0, 644, __pyx_L220_except_error)
+                __Pyx_GIVEREF(__pyx_t_187);
+                __Pyx_GIVEREF(__pyx_t_18);
+                __Pyx_XGIVEREF(__pyx_t_2);
+                __Pyx_ErrRestoreWithState(__pyx_t_187, __pyx_t_18, __pyx_t_2);
+                __pyx_t_187 = 0; __pyx_t_18 = 0; __pyx_t_2 = 0; 
+                __PYX_ERR(0, 646, __pyx_L231_except_error)
               }
-              __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
-              __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+              __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
               __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
-              goto __pyx_L219_exception_handled;
+              __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+              goto __pyx_L230_exception_handled;
             }
-            __pyx_L220_except_error:;
-            __Pyx_XGIVEREF(__pyx_t_178);
-            __Pyx_XGIVEREF(__pyx_t_179);
-            __Pyx_XGIVEREF(__pyx_t_180);
-            __Pyx_ExceptionReset(__pyx_t_178, __pyx_t_179, __pyx_t_180);
+            __pyx_L231_except_error:;
+            __Pyx_XGIVEREF(__pyx_t_189);
+            __Pyx_XGIVEREF(__pyx_t_190);
+            __Pyx_XGIVEREF(__pyx_t_191);
+            __Pyx_ExceptionReset(__pyx_t_189, __pyx_t_190, __pyx_t_191);
             goto __pyx_L1_error;
+<<<<<<< HEAD
             __pyx_L219_exception_handled:;
             __Pyx_XGIVEREF(__pyx_t_178);
             __Pyx_XGIVEREF(__pyx_t_179);
@@ -10692,17 +12454,29 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_ExceptionReset(__pyx_t_178, __pyx_t_179, __pyx_t_180);
             __pyx_L223_try_end:;
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_L230_exception_handled:;
+            __Pyx_XGIVEREF(__pyx_t_189);
+            __Pyx_XGIVEREF(__pyx_t_190);
+            __Pyx_XGIVEREF(__pyx_t_191);
+            __Pyx_ExceptionReset(__pyx_t_189, __pyx_t_190, __pyx_t_191);
+            __pyx_L234_try_end:;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           }
         }
         /*finally:*/ {
           /*normal exit:*/{
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             if (__pyx_t_188) {
               __pyx_t_191 = __Pyx_PyObject_Call(__pyx_t_188, __pyx_tuple__7, NULL);
               __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
               if (unlikely(!__pyx_t_191)) __PYX_ERR(0, 646, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_191);
               __Pyx_DECREF(__pyx_t_191); __pyx_t_191 = 0;
+<<<<<<< HEAD
             }
             goto __pyx_L228;
           }
@@ -10723,20 +12497,26 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
               if (unlikely(!__pyx_t_180)) __PYX_ERR(0, 644, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_180);
               __Pyx_DECREF(__pyx_t_180); __pyx_t_180 = 0;
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             }
-            goto __pyx_L217;
+            goto __pyx_L228;
           }
-          __pyx_L217:;
+          __pyx_L228:;
         }
-        goto __pyx_L227;
-        __pyx_L214_error:;
-        __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+        goto __pyx_L238;
+        __pyx_L225_error:;
+        __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
         goto __pyx_L1_error;
-        __pyx_L227:;
+        __pyx_L238:;
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":645
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":647
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         if save_path != '':
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)             # <<<<<<<<<<<<<<
@@ -10744,6 +12524,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  * 
  */
       /*with:*/ {
+<<<<<<< HEAD
 <<<<<<< HEAD
         __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
@@ -10763,24 +12544,33 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
 =======
         __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
+=======
+        __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __pyx_t_43 = 0;
         __pyx_t_44 = 127;
-        __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_44;
-        __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
-        __Pyx_GIVEREF(__pyx_t_3);
-        PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
-        __pyx_t_3 = 0;
+        __pyx_t_18 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_18) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_18) : __pyx_t_44;
+        __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_18);
+        __Pyx_GIVEREF(__pyx_t_18);
+        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_18);
+        __pyx_t_18 = 0;
         __Pyx_INCREF(__pyx_kp_u__3);
         __pyx_t_43 += 1;
         __Pyx_GIVEREF(__pyx_kp_u__3);
+<<<<<<< HEAD
         PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_kp_u__3);
 >>>>>>> Implemented stochastic protocol
+=======
+        PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_kp_u__3);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_INCREF(__pyx_v_save_cnode_mappings_path);
         __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_cnode_mappings_path) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_cnode_mappings_path) : __pyx_t_44;
         __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_v_save_cnode_mappings_path);
         __Pyx_GIVEREF(__pyx_v_save_cnode_mappings_path);
+<<<<<<< HEAD
 <<<<<<< HEAD
         PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_save_cnode_mappings_path);
         __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_2, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L1_error)
@@ -10825,30 +12615,38 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         __pyx_t_18 = PyTuple_New(2); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L1_error)
+=======
+        PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_save_cnode_mappings_path);
+        __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_2, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_GOTREF(__pyx_t_18);
-        __Pyx_GIVEREF(__pyx_t_3);
-        PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_GIVEREF(__pyx_t_18);
+        PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_18);
         __Pyx_INCREF(__pyx_n_u_wb);
         __Pyx_GIVEREF(__pyx_n_u_wb);
-        PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_n_u_wb);
-        __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
-        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-        __pyx_t_177 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_exit); if (unlikely(!__pyx_t_177)) __PYX_ERR(0, 645, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_177);
-        __pyx_t_176 = __Pyx_PyObject_LookupSpecial(__pyx_t_3, __pyx_n_s_enter); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L228_error)
-        __Pyx_GOTREF(__pyx_t_176);
-        __pyx_t_2 = NULL;
-        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_176))) {
-          __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_176);
-          if (likely(__pyx_t_2)) {
-            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_176);
-            __Pyx_INCREF(__pyx_t_2);
+        PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_n_u_wb);
+        __pyx_t_18 = 0;
+        __pyx_t_18 = __Pyx_PyObject_Call(__pyx_builtin_open, __pyx_t_2, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __pyx_t_188 = __Pyx_PyObject_LookupSpecial(__pyx_t_18, __pyx_n_s_exit); if (unlikely(!__pyx_t_188)) __PYX_ERR(0, 647, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_188);
+        __pyx_t_187 = __Pyx_PyObject_LookupSpecial(__pyx_t_18, __pyx_n_s_enter); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 647, __pyx_L239_error)
+        __Pyx_GOTREF(__pyx_t_187);
+        __pyx_t_3 = NULL;
+        if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_187))) {
+          __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_187);
+          if (likely(__pyx_t_3)) {
+            PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_187);
+            __Pyx_INCREF(__pyx_t_3);
             __Pyx_INCREF(function);
-            __Pyx_DECREF_SET(__pyx_t_176, function);
+            __Pyx_DECREF_SET(__pyx_t_187, function);
           }
         }
+<<<<<<< HEAD
         __pyx_t_18 = (__pyx_t_2) ? __Pyx_PyObject_CallOneArg(__pyx_t_176, __pyx_t_2) : __Pyx_PyObject_CallNoArg(__pyx_t_176);
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L228_error)
@@ -10858,15 +12656,29 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         __pyx_t_18 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+        __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_187, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_187);
+        __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L239_error)
+        __Pyx_GOTREF(__pyx_t_2);
+        __Pyx_DECREF(__pyx_t_187); __pyx_t_187 = 0;
+        __pyx_t_187 = __pyx_t_2;
+        __pyx_t_2 = 0;
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         /*try:*/ {
           {
             __Pyx_PyThreadState_declare
             __Pyx_PyThreadState_assign
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_ExceptionSave(&__pyx_t_191, &__pyx_t_190, &__pyx_t_189);
             __Pyx_XGOTREF(__pyx_t_191);
             __Pyx_XGOTREF(__pyx_t_190);
             __Pyx_XGOTREF(__pyx_t_189);
+<<<<<<< HEAD
             /*try:*/ {
               __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_187);
               __pyx_t_187 = 0;
@@ -10889,34 +12701,44 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_XGOTREF(__pyx_t_180);
             __Pyx_XGOTREF(__pyx_t_179);
             __Pyx_XGOTREF(__pyx_t_178);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             /*try:*/ {
-              __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_176);
-              __pyx_t_176 = 0;
-              __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_pickle); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L232_error)
-              __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_dump); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 645, __pyx_L232_error)
+              __Pyx_XDECREF_SET(__pyx_v_f, __pyx_t_187);
+              __pyx_t_187 = 0;
+              __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_n_s_pickle); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L243_error)
               __Pyx_GOTREF(__pyx_t_18);
-              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              __pyx_t_3 = NULL;
+              __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_dump); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 647, __pyx_L243_error)
+              __Pyx_GOTREF(__pyx_t_2);
+              __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+              __pyx_t_18 = NULL;
               __pyx_t_5 = 0;
-              if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_18))) {
-                __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_18);
-                if (likely(__pyx_t_3)) {
-                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_18);
-                  __Pyx_INCREF(__pyx_t_3);
+              if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
+                __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_2);
+                if (likely(__pyx_t_18)) {
+                  PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_2);
+                  __Pyx_INCREF(__pyx_t_18);
                   __Pyx_INCREF(function);
+<<<<<<< HEAD
                   __Pyx_DECREF_SET(__pyx_t_18, function);
 >>>>>>> Implemented stochastic protocol
+=======
+                  __Pyx_DECREF_SET(__pyx_t_2, function);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
                   __pyx_t_5 = 1;
                 }
               }
               #if CYTHON_FAST_PYCALL
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
               if (PyFunction_Check(__pyx_t_2)) {
                 PyObject *__pyx_temp[3] = {__pyx_t_18, __pyx_v_cnode_mappings, __pyx_v_f};
                 __pyx_t_187 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 647, __pyx_L243_error)
                 __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
                 __Pyx_GOTREF(__pyx_t_187);
+<<<<<<< HEAD
               } else
               #endif
               #if CYTHON_FAST_PYCCALL
@@ -10957,45 +12779,56 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
                 __pyx_t_176 = __Pyx_PyFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L232_error)
                 __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
                 __Pyx_GOTREF(__pyx_t_176);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
               } else
               #endif
               #if CYTHON_FAST_PYCCALL
-              if (__Pyx_PyFastCFunction_Check(__pyx_t_18)) {
-                PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_cnode_mappings, __pyx_v_f};
-                __pyx_t_176 = __Pyx_PyCFunction_FastCall(__pyx_t_18, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L232_error)
-                __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-                __Pyx_GOTREF(__pyx_t_176);
+              if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
+                PyObject *__pyx_temp[3] = {__pyx_t_18, __pyx_v_cnode_mappings, __pyx_v_f};
+                __pyx_t_187 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 647, __pyx_L243_error)
+                __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+                __Pyx_GOTREF(__pyx_t_187);
               } else
               #endif
               {
-                __pyx_t_2 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 645, __pyx_L232_error)
-                __Pyx_GOTREF(__pyx_t_2);
-                if (__pyx_t_3) {
-                  __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_3); __pyx_t_3 = NULL;
+                __pyx_t_3 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 647, __pyx_L243_error)
+                __Pyx_GOTREF(__pyx_t_3);
+                if (__pyx_t_18) {
+                  __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_18); __pyx_t_18 = NULL;
                 }
                 __Pyx_INCREF(__pyx_v_cnode_mappings);
                 __Pyx_GIVEREF(__pyx_v_cnode_mappings);
-                PyTuple_SET_ITEM(__pyx_t_2, 0+__pyx_t_5, __pyx_v_cnode_mappings);
+                PyTuple_SET_ITEM(__pyx_t_3, 0+__pyx_t_5, __pyx_v_cnode_mappings);
                 __Pyx_INCREF(__pyx_v_f);
                 __Pyx_GIVEREF(__pyx_v_f);
-                PyTuple_SET_ITEM(__pyx_t_2, 1+__pyx_t_5, __pyx_v_f);
-                __pyx_t_176 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_2, NULL); if (unlikely(!__pyx_t_176)) __PYX_ERR(0, 645, __pyx_L232_error)
-                __Pyx_GOTREF(__pyx_t_176);
-                __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+                PyTuple_SET_ITEM(__pyx_t_3, 1+__pyx_t_5, __pyx_v_f);
+                __pyx_t_187 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_3, NULL); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 647, __pyx_L243_error)
+                __Pyx_GOTREF(__pyx_t_187);
+                __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
               }
-              __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-              __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
+              __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+              __Pyx_DECREF(__pyx_t_187); __pyx_t_187 = 0;
             }
+<<<<<<< HEAD
             __Pyx_XDECREF(__pyx_t_180); __pyx_t_180 = 0;
             __Pyx_XDECREF(__pyx_t_179); __pyx_t_179 = 0;
             __Pyx_XDECREF(__pyx_t_178); __pyx_t_178 = 0;
             goto __pyx_L237_try_end;
             __pyx_L232_error:;
 >>>>>>> Implemented stochastic protocol
+=======
+            __Pyx_XDECREF(__pyx_t_191); __pyx_t_191 = 0;
+            __Pyx_XDECREF(__pyx_t_190); __pyx_t_190 = 0;
+            __Pyx_XDECREF(__pyx_t_189); __pyx_t_189 = 0;
+            goto __pyx_L248_try_end;
+            __pyx_L243_error:;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
             __PYX_XDEC_MEMVIEW(&__pyx_t_10, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_11, 1);
             __PYX_XDEC_MEMVIEW(&__pyx_t_16, 1);
+<<<<<<< HEAD
 <<<<<<< HEAD
             __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
             __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
@@ -11007,6 +12840,12 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
             __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
 >>>>>>> Implemented stochastic protocol
+=======
+            __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+            __Pyx_XDECREF(__pyx_t_185); __pyx_t_185 = 0;
+            __Pyx_XDECREF(__pyx_t_186); __pyx_t_186 = 0;
+            __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
@@ -11015,6 +12854,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __PYX_XDEC_MEMVIEW(&__pyx_t_45, 1);
             /*except:*/ {
               __Pyx_AddTraceback("pyrossgeo._simulation.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+<<<<<<< HEAD
 <<<<<<< HEAD
               if (__Pyx_GetException(&__pyx_t_187, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 647, __pyx_L245_except_error)
               __Pyx_GOTREF(__pyx_t_187);
@@ -11060,37 +12900,43 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
               if (__Pyx_GetException(&__pyx_t_176, &__pyx_t_18, &__pyx_t_2) < 0) __PYX_ERR(0, 645, __pyx_L234_except_error)
               __Pyx_GOTREF(__pyx_t_176);
               __Pyx_GOTREF(__pyx_t_18);
+=======
+              if (__Pyx_GetException(&__pyx_t_187, &__pyx_t_2, &__pyx_t_3) < 0) __PYX_ERR(0, 647, __pyx_L245_except_error)
+              __Pyx_GOTREF(__pyx_t_187);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
               __Pyx_GOTREF(__pyx_t_2);
-              __pyx_t_3 = PyTuple_Pack(3, __pyx_t_176, __pyx_t_18, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L234_except_error)
               __Pyx_GOTREF(__pyx_t_3);
-              __pyx_t_181 = __Pyx_PyObject_Call(__pyx_t_177, __pyx_t_3, NULL);
-              __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
-              __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-              if (unlikely(!__pyx_t_181)) __PYX_ERR(0, 645, __pyx_L234_except_error)
-              __Pyx_GOTREF(__pyx_t_181);
-              __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_181);
-              __Pyx_DECREF(__pyx_t_181); __pyx_t_181 = 0;
-              if (__pyx_t_17 < 0) __PYX_ERR(0, 645, __pyx_L234_except_error)
+              __pyx_t_18 = PyTuple_Pack(3, __pyx_t_187, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 647, __pyx_L245_except_error)
+              __Pyx_GOTREF(__pyx_t_18);
+              __pyx_t_192 = __Pyx_PyObject_Call(__pyx_t_188, __pyx_t_18, NULL);
+              __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
+              __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+              if (unlikely(!__pyx_t_192)) __PYX_ERR(0, 647, __pyx_L245_except_error)
+              __Pyx_GOTREF(__pyx_t_192);
+              __pyx_t_17 = __Pyx_PyObject_IsTrue(__pyx_t_192);
+              __Pyx_DECREF(__pyx_t_192); __pyx_t_192 = 0;
+              if (__pyx_t_17 < 0) __PYX_ERR(0, 647, __pyx_L245_except_error)
               __pyx_t_35 = ((!(__pyx_t_17 != 0)) != 0);
               if (__pyx_t_35) {
-                __Pyx_GIVEREF(__pyx_t_176);
-                __Pyx_GIVEREF(__pyx_t_18);
-                __Pyx_XGIVEREF(__pyx_t_2);
-                __Pyx_ErrRestoreWithState(__pyx_t_176, __pyx_t_18, __pyx_t_2);
-                __pyx_t_176 = 0; __pyx_t_18 = 0; __pyx_t_2 = 0; 
-                __PYX_ERR(0, 645, __pyx_L234_except_error)
+                __Pyx_GIVEREF(__pyx_t_187);
+                __Pyx_GIVEREF(__pyx_t_2);
+                __Pyx_XGIVEREF(__pyx_t_3);
+                __Pyx_ErrRestoreWithState(__pyx_t_187, __pyx_t_2, __pyx_t_3);
+                __pyx_t_187 = 0; __pyx_t_2 = 0; __pyx_t_3 = 0; 
+                __PYX_ERR(0, 647, __pyx_L245_except_error)
               }
-              __Pyx_XDECREF(__pyx_t_176); __pyx_t_176 = 0;
-              __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
+              __Pyx_XDECREF(__pyx_t_187); __pyx_t_187 = 0;
               __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-              goto __pyx_L233_exception_handled;
+              __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
+              goto __pyx_L244_exception_handled;
             }
-            __pyx_L234_except_error:;
-            __Pyx_XGIVEREF(__pyx_t_180);
-            __Pyx_XGIVEREF(__pyx_t_179);
-            __Pyx_XGIVEREF(__pyx_t_178);
-            __Pyx_ExceptionReset(__pyx_t_180, __pyx_t_179, __pyx_t_178);
+            __pyx_L245_except_error:;
+            __Pyx_XGIVEREF(__pyx_t_191);
+            __Pyx_XGIVEREF(__pyx_t_190);
+            __Pyx_XGIVEREF(__pyx_t_189);
+            __Pyx_ExceptionReset(__pyx_t_191, __pyx_t_190, __pyx_t_189);
             goto __pyx_L1_error;
+<<<<<<< HEAD
             __pyx_L233_exception_handled:;
             __Pyx_XGIVEREF(__pyx_t_180);
             __Pyx_XGIVEREF(__pyx_t_179);
@@ -11098,17 +12944,29 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
             __Pyx_ExceptionReset(__pyx_t_180, __pyx_t_179, __pyx_t_178);
             __pyx_L237_try_end:;
 >>>>>>> Implemented stochastic protocol
+=======
+            __pyx_L244_exception_handled:;
+            __Pyx_XGIVEREF(__pyx_t_191);
+            __Pyx_XGIVEREF(__pyx_t_190);
+            __Pyx_XGIVEREF(__pyx_t_189);
+            __Pyx_ExceptionReset(__pyx_t_191, __pyx_t_190, __pyx_t_189);
+            __pyx_L248_try_end:;
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           }
         }
         /*finally:*/ {
           /*normal exit:*/{
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             if (__pyx_t_188) {
               __pyx_t_189 = __Pyx_PyObject_Call(__pyx_t_188, __pyx_tuple__7, NULL);
               __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
               if (unlikely(!__pyx_t_189)) __PYX_ERR(0, 647, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_189);
               __Pyx_DECREF(__pyx_t_189); __pyx_t_189 = 0;
+<<<<<<< HEAD
             }
             goto __pyx_L242;
           }
@@ -11129,20 +12987,26 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
               if (unlikely(!__pyx_t_178)) __PYX_ERR(0, 645, __pyx_L1_error)
               __Pyx_GOTREF(__pyx_t_178);
               __Pyx_DECREF(__pyx_t_178); __pyx_t_178 = 0;
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
             }
-            goto __pyx_L231;
+            goto __pyx_L242;
           }
-          __pyx_L231:;
+          __pyx_L242:;
         }
-        goto __pyx_L241;
-        __pyx_L228_error:;
-        __Pyx_DECREF(__pyx_t_177); __pyx_t_177 = 0;
+        goto __pyx_L252;
+        __pyx_L239_error:;
+        __Pyx_DECREF(__pyx_t_188); __pyx_t_188 = 0;
         goto __pyx_L1_error;
-        __pyx_L241:;
+        __pyx_L252:;
       }
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":646
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":648
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)             # <<<<<<<<<<<<<<
@@ -11150,6 +13014,9 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
  *         return sim_data
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __pyx_t_187 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_save); if (unlikely(!__pyx_t_187)) __PYX_ERR(0, 648, __pyx_L1_error)
@@ -11157,6 +13024,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = PyTuple_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 648, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
+<<<<<<< HEAD
       __pyx_t_43 = 0;
       __pyx_t_44 = 127;
       __pyx_t_18 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 648, __pyx_L1_error)
@@ -11178,30 +13046,40 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __pyx_t_18 = PyTuple_New(3); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 646, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __pyx_t_43 = 0;
       __pyx_t_44 = 127;
-      __pyx_t_3 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 646, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3) : __pyx_t_44;
-      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3);
-      __Pyx_GIVEREF(__pyx_t_3);
-      PyTuple_SET_ITEM(__pyx_t_18, 0, __pyx_t_3);
-      __pyx_t_3 = 0;
+      __pyx_t_18 = __Pyx_PyUnicode_Unicode(__pyx_v_save_path); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 648, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_18);
+      __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_18) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_18) : __pyx_t_44;
+      __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_t_18);
+      __Pyx_GIVEREF(__pyx_t_18);
+      PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_18);
+      __pyx_t_18 = 0;
       __Pyx_INCREF(__pyx_kp_u__3);
       __pyx_t_43 += 1;
       __Pyx_GIVEREF(__pyx_kp_u__3);
+<<<<<<< HEAD
       PyTuple_SET_ITEM(__pyx_t_18, 1, __pyx_kp_u__3);
 >>>>>>> Implemented stochastic protocol
+=======
+      PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_kp_u__3);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_INCREF(__pyx_v_save_ts_path);
       __pyx_t_44 = (__Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_ts_path) > __pyx_t_44) ? __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_v_save_ts_path) : __pyx_t_44;
       __pyx_t_43 += __Pyx_PyUnicode_GET_LENGTH(__pyx_v_save_ts_path);
       __Pyx_GIVEREF(__pyx_v_save_ts_path);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_v_save_ts_path);
       __pyx_t_18 = __Pyx_PyUnicode_Join(__pyx_t_2, 3, __pyx_t_43, __pyx_t_44); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 648, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_t_2 = NULL;
+<<<<<<< HEAD
       __pyx_t_5 = 0;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_187))) {
         __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_187);
@@ -11216,26 +13094,36 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __pyx_t_18 = NULL;
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __pyx_t_5 = 0;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_176))) {
-        __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_176);
-        if (likely(__pyx_t_18)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_176);
-          __Pyx_INCREF(__pyx_t_18);
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_187))) {
+        __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_187);
+        if (likely(__pyx_t_2)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_187);
+          __Pyx_INCREF(__pyx_t_2);
           __Pyx_INCREF(function);
+<<<<<<< HEAD
           __Pyx_DECREF_SET(__pyx_t_176, function);
 >>>>>>> Implemented stochastic protocol
+=======
+          __Pyx_DECREF_SET(__pyx_t_187, function);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
           __pyx_t_5 = 1;
         }
       }
       #if CYTHON_FAST_PYCALL
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       if (PyFunction_Check(__pyx_t_187)) {
         PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_18, __pyx_v_ts_saved};
         __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_187, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+<<<<<<< HEAD
       } else
       #endif
       #if CYTHON_FAST_PYCCALL
@@ -11274,38 +13162,44 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
         __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       } else
       #endif
       #if CYTHON_FAST_PYCCALL
-      if (__Pyx_PyFastCFunction_Check(__pyx_t_176)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_18, __pyx_t_3, __pyx_v_ts_saved};
-        __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_176, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
-        __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_187)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_2, __pyx_t_18, __pyx_v_ts_saved};
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_187, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       } else
       #endif
       {
-        __pyx_t_1 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 646, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (__pyx_t_18) {
-          __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_18); __pyx_t_18 = NULL;
+        if (__pyx_t_2) {
+          __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_2); __pyx_t_2 = NULL;
         }
-        __Pyx_GIVEREF(__pyx_t_3);
-        PyTuple_SET_ITEM(__pyx_t_1, 0+__pyx_t_5, __pyx_t_3);
+        __Pyx_GIVEREF(__pyx_t_18);
+        PyTuple_SET_ITEM(__pyx_t_1, 0+__pyx_t_5, __pyx_t_18);
         __Pyx_INCREF(__pyx_v_ts_saved);
         __Pyx_GIVEREF(__pyx_v_ts_saved);
         PyTuple_SET_ITEM(__pyx_t_1, 1+__pyx_t_5, __pyx_v_ts_saved);
-        __pyx_t_3 = 0;
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_176, __pyx_t_1, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 646, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_2);
+        __pyx_t_18 = 0;
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_187, __pyx_t_1, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 648, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
-      __Pyx_DECREF(__pyx_t_176); __pyx_t_176 = 0;
-      __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+      __Pyx_DECREF(__pyx_t_187); __pyx_t_187 = 0;
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
+<<<<<<< HEAD
       /* "pyrossgeo/_simulation.pyx":643
 >>>>>>> Implemented stochastic protocol
+=======
+      /* "pyrossgeo/_simulation.pyx":645
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
  * 
  *         if save_path != '':             # <<<<<<<<<<<<<<
@@ -11315,10 +13209,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":650
 =======
     /* "pyrossgeo/_simulation.pyx":648
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":650
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
  * 
  *         return sim_data             # <<<<<<<<<<<<<<
@@ -11329,10 +13227,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
     goto __pyx_L0;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* "pyrossgeo/_simulation.pyx":638
 =======
     /* "pyrossgeo/_simulation.pyx":636
 >>>>>>> Implemented stochastic protocol
+=======
+    /* "pyrossgeo/_simulation.pyx":638
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  *     free(to_k_is_stochastic)
  * 
  *     if steps_per_save != -1:             # <<<<<<<<<<<<<<
@@ -11365,6 +13267,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   __Pyx_XDECREF(__pyx_t_20);
   __PYX_XDEC_MEMVIEW(&__pyx_t_45, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
   __Pyx_XDECREF(__pyx_t_185);
   __Pyx_XDECREF(__pyx_t_186);
   __Pyx_XDECREF(__pyx_t_187);
@@ -11373,6 +13276,11 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   __Pyx_XDECREF(__pyx_t_175);
   __Pyx_XDECREF(__pyx_t_176);
 >>>>>>> Implemented stochastic protocol
+=======
+  __Pyx_XDECREF(__pyx_t_185);
+  __Pyx_XDECREF(__pyx_t_186);
+  __Pyx_XDECREF(__pyx_t_187);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_AddTraceback("pyrossgeo._simulation.simulate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -11383,16 +13291,22 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_16, 1, (PyObject *(*)(char *)) __
   __Pyx_XDECREF(__pyx_v_total_Os_arr);
   __PYX_XDEC_MEMVIEW(&__pyx_v_total_Os, 1);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_below_arr);
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_above_arr);
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_below);
   __Pyx_XDECREF(__pyx_v_stochastic_threshold_from_above);
+<<<<<<< HEAD
 =======
   __Pyx_XDECREF(__pyx_v_stoch_threshold_from_below_arr);
   __Pyx_XDECREF(__pyx_v_stoch_threshold_from_above_arr);
   __Pyx_XDECREF(__pyx_v_stoch_threshold_from_below);
   __Pyx_XDECREF(__pyx_v_stoch_threshold_from_above);
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_XDECREF(__pyx_v_save_node_mappings_path);
   __Pyx_XDECREF(__pyx_v_save_cnode_mappings_path);
   __Pyx_XDECREF(__pyx_v_save_ts_path);
@@ -11536,10 +13450,14 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 272, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 272, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 272, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11596,10 +13514,14 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *             info.buf = PyArray_DATA(self)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 276, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -11858,10 +13780,14 @@ static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, P
  *                 elif t == NPY_UBYTE:       f = "B"
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 306, __pyx_L1_error)
 =======
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 306, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 306, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12742,10 +14668,14 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         if ((child.byteorder == c'>' and little_endian) or
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 856, __pyx_L1_error)
 =======
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 856, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 856, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12814,10 +14744,14 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             # complain instead, BUT: < and > in format strings also imply
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 860, __pyx_L1_error)
 =======
       __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 860, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 860, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_Raise(__pyx_t_3, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -12927,10 +14861,14 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
         __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 880, __pyx_L1_error)
 =======
         __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 880, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_builtin_RuntimeError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 880, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_Raise(__pyx_t_4, 0, 0, 0);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -13559,10 +15497,14 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  * cdef inline int import_umath() except -1:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1038, __pyx_L5_except_error)
 =======
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__12, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1038, __pyx_L5_except_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1038, __pyx_L5_except_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -13692,10 +15634,14 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  * cdef inline int import_ufunc() except -1:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1044, __pyx_L5_except_error)
 =======
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1044, __pyx_L5_except_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1044, __pyx_L5_except_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -13822,10 +15768,14 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1050, __pyx_L5_except_error)
 =======
       __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__13, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1050, __pyx_L5_except_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 1050, __pyx_L5_except_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
@@ -14070,10 +16020,14 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  *         if itemsize <= 0:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 133, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__14, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 133, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 133, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -14106,10 +16060,14 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  *         if not isinstance(format, bytes):
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 136, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__15, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 136, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 136, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -14237,10 +16195,14 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 148, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 148, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 148, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -14515,10 +16477,14 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __
  *             if self.dtype_is_object:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(2, 176, __pyx_L1_error)
 =======
       __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(2, 176, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_10 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(2, 176, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_10);
       __Pyx_Raise(__pyx_t_10, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
@@ -14760,10 +16726,14 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(stru
  *         info.len = self.len
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 192, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 192, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 192, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -15480,10 +17450,14 @@ static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __p
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
 =======
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -15537,10 +17511,14 @@ static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct 
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
 =======
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__20, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -17224,10 +19202,14 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setit
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 418, __pyx_L1_error)
 =======
     __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__21, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 418, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 418, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18255,10 +20237,14 @@ static PyObject *__pyx_memoryview_convert_item_to_object(struct __pyx_memoryview
  *             if len(self.view.format) == 1:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 495, __pyx_L5_except_error)
 =======
       __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 495, __pyx_L5_except_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_6 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_6)) __PYX_ERR(2, 495, __pyx_L5_except_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_Raise(__pyx_t_6, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -18615,10 +20601,14 @@ static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_8__getbu
  *         if flags & PyBUF_ND:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 520, __pyx_L1_error)
 =======
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__23, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 520, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 520, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -19159,10 +21149,14 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_7strides___get__(st
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 570, __pyx_L1_error)
 =======
     __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__24, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 570, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__25, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 570, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -19277,10 +21271,14 @@ static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_10suboffsets___get_
     __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_self->view.ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 577, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
 <<<<<<< HEAD
+<<<<<<< HEAD
     __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__26, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 577, __pyx_L1_error)
 =======
     __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__25, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 577, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+    __pyx_t_3 = PyNumber_Multiply(__pyx_tuple__26, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 577, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_r = __pyx_t_3;
@@ -20282,10 +22280,14 @@ static PyObject *__pyx_pf___pyx_memoryview___reduce_cython__(CYTHON_UNUSED struc
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
 =======
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20339,10 +22341,14 @@ static PyObject *__pyx_pf___pyx_memoryview_2__setstate_cython__(CYTHON_UNUSED st
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
 =======
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__27, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -20995,10 +23001,14 @@ static PyObject *assert_direct_dimensions(Py_ssize_t *__pyx_v_suboffsets, int __
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
       __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 703, __pyx_L1_error)
 =======
       __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__28, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 703, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 703, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -23162,10 +25172,14 @@ static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED 
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
 =======
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__29, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23219,10 +25233,14 @@ static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUS
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
 =======
   __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__30, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -27572,9 +29590,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
 <<<<<<< HEAD
+<<<<<<< HEAD
   {&__pyx_n_s_poisson, __pyx_k_poisson, sizeof(__pyx_k_poisson), 0, 0, 1, 1},
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+  {&__pyx_n_s_poisson, __pyx_k_poisson, sizeof(__pyx_k_poisson), 0, 0, 1, 1},
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_pyrossgeo___defs, __pyx_k_pyrossgeo___defs, sizeof(__pyx_k_pyrossgeo___defs), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
@@ -27591,9 +29613,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
   {&__pyx_n_s_round, __pyx_k_round, sizeof(__pyx_k_round), 0, 0, 1, 1},
 <<<<<<< HEAD
+<<<<<<< HEAD
   {&__pyx_n_s_rvs, __pyx_k_rvs, sizeof(__pyx_k_rvs), 0, 0, 1, 1},
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+  {&__pyx_n_s_rvs, __pyx_k_rvs, sizeof(__pyx_k_rvs), 0, 0, 1, 1},
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   {&__pyx_n_s_save, __pyx_k_save, sizeof(__pyx_k_save), 0, 0, 1, 1},
   {&__pyx_n_s_scipy, __pyx_k_scipy, sizeof(__pyx_k_scipy), 0, 0, 1, 1},
   {&__pyx_n_s_scipy_stats, __pyx_k_scipy_stats, sizeof(__pyx_k_scipy_stats), 0, 0, 1, 1},
@@ -27603,9 +29629,13 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
   {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
 <<<<<<< HEAD
+<<<<<<< HEAD
   {&__pyx_n_s_stats, __pyx_k_stats, sizeof(__pyx_k_stats), 0, 0, 1, 1},
 =======
 >>>>>>> Implemented stochastic protocol
+=======
+  {&__pyx_n_s_stats, __pyx_k_stats, sizeof(__pyx_k_stats), 0, 0, 1, 1},
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   {&__pyx_n_s_step, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
   {&__pyx_n_s_stop, __pyx_k_stop, sizeof(__pyx_k_stop), 0, 0, 1, 1},
   {&__pyx_kp_s_strided_and_direct, __pyx_k_strided_and_direct, sizeof(__pyx_k_strided_and_direct), 0, 0, 1, 0},
@@ -27630,12 +29660,17 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 129, __pyx_L1_error)
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 456, __pyx_L1_error)
   __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 646, __pyx_L1_error)
 =======
   __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 609, __pyx_L1_error)
   __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 644, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 456, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_n_s_open); if (!__pyx_builtin_open) __PYX_ERR(0, 646, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 272, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 856, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 1038, __pyx_L1_error)
@@ -27669,6 +29704,9 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__5);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   /* "pyrossgeo/_simulation.pyx":456
  *             # Deterministic
  *             else:
@@ -27681,15 +29719,19 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__6);
 
   /* "pyrossgeo/_simulation.pyx":646
+<<<<<<< HEAD
 =======
   /* "pyrossgeo/_simulation.pyx":644
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
  * 
  *         if save_path != '':
  *             with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)             # <<<<<<<<<<<<<<
  *             with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
  *             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__7 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 646, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
@@ -27699,6 +29741,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__7 = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__7);
+  __Pyx_GIVEREF(__pyx_tuple__7);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":272
  *             if ((flags & pybuf.PyBUF_C_CONTIGUOUS == pybuf.PyBUF_C_CONTIGUOUS)
@@ -27708,6 +29755,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 272, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
@@ -27716,6 +29764,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_C_contiguous); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(1, 272, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__8);
+  __Pyx_GIVEREF(__pyx_tuple__8);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":276
  *             if ((flags & pybuf.PyBUF_F_CONTIGUOUS == pybuf.PyBUF_F_CONTIGUOUS)
@@ -27725,6 +29778,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *             info.buf = PyArray_DATA(self)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 276, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
@@ -27733,6 +29787,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_u_ndarray_is_not_Fortran_contiguou); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(1, 276, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__9);
+  __Pyx_GIVEREF(__pyx_tuple__9);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":306
  *                 if ((descr.byteorder == c'>' and little_endian) or
@@ -27742,6 +29801,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *                 elif t == NPY_UBYTE:       f = "B"
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 306, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
@@ -27750,6 +29810,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_u_Non_native_byte_order_not_suppor); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(1, 306, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__10);
+  __Pyx_GIVEREF(__pyx_tuple__10);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":856
  * 
@@ -27759,6 +29824,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if ((child.byteorder == c'>' and little_endian) or
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 856, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
@@ -27767,6 +29833,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(1, 856, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__11);
+  __Pyx_GIVEREF(__pyx_tuple__11);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":880
  *             t = child.type_num
@@ -27776,6 +29847,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *             # Until ticket #99 is fixed, use integers to avoid warnings
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 880, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
@@ -27784,6 +29856,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__12 = PyTuple_Pack(1, __pyx_kp_u_Format_string_allocated_too_shor_2); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(1, 880, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__12);
+  __Pyx_GIVEREF(__pyx_tuple__12);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1038
  *         _import_array()
@@ -27793,6 +29870,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef inline int import_umath() except -1:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 1038, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
@@ -27801,6 +29879,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__13 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(1, 1038, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "../../anaconda3/lib/python3.7/site-packages/Cython/Includes/numpy/__init__.pxd":1044
  *         _import_umath()
@@ -27810,6 +29893,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef inline int import_ufunc() except -1:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 1044, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
@@ -27818,6 +29902,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(1, 1044, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__14);
+  __Pyx_GIVEREF(__pyx_tuple__14);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":133
  * 
@@ -27827,6 +29916,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if itemsize <= 0:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(2, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
@@ -27835,6 +29925,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__15 = PyTuple_Pack(1, __pyx_kp_s_Empty_shape_tuple_for_cython_arr); if (unlikely(!__pyx_tuple__15)) __PYX_ERR(2, 133, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__15);
+  __Pyx_GIVEREF(__pyx_tuple__15);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":136
  * 
@@ -27844,6 +29939,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if not isinstance(format, bytes):
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(2, 136, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
@@ -27852,6 +29948,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__15);
   __Pyx_GIVEREF(__pyx_tuple__15);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_itemsize_0_for_cython_array); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(2, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__16);
+  __Pyx_GIVEREF(__pyx_tuple__16);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":148
  * 
@@ -27861,6 +29962,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(2, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
@@ -27869,6 +29971,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_shape_and_str); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(2, 148, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__17);
+  __Pyx_GIVEREF(__pyx_tuple__17);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":176
  *             self.data = <char *>malloc(self.len)
@@ -27878,6 +29985,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *             if self.dtype_is_object:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(2, 176, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
@@ -27886,6 +29994,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_unable_to_allocate_array_data); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(2, 176, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__18);
+  __Pyx_GIVEREF(__pyx_tuple__18);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":192
  *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
@@ -27895,6 +30008,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         info.len = self.len
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(2, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
@@ -27903,6 +30017,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_Can_only_create_a_buffer_that_is); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(2, 192, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__19);
+  __Pyx_GIVEREF(__pyx_tuple__19);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -27910,6 +30029,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__20);
@@ -27919,12 +30039,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__20 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__20)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__20);
+  __Pyx_GIVEREF(__pyx_tuple__20);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
@@ -27934,6 +30060,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__21 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__21);
+  __Pyx_GIVEREF(__pyx_tuple__21);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":418
  *     def __setitem__(memoryview self, object index, object value):
@@ -27943,6 +30074,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         have_slices, index = _unellipsify(index, self.view.ndim)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(2, 418, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
@@ -27951,6 +30083,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_kp_s_Cannot_assign_to_read_only_memor); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(2, 418, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__22);
+  __Pyx_GIVEREF(__pyx_tuple__22);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":495
  *             result = struct.unpack(self.view.format, bytesitem)
@@ -27960,6 +30097,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *             if len(self.view.format) == 1:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(2, 495, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
@@ -27968,6 +30106,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__23 = PyTuple_Pack(1, __pyx_kp_s_Unable_to_convert_item_to_object); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(2, 495, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__23);
+  __Pyx_GIVEREF(__pyx_tuple__23);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":520
  *     def __getbuffer__(self, Py_buffer *info, int flags):
@@ -27977,6 +30120,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         if flags & PyBUF_ND:
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(2, 520, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
@@ -27985,6 +30129,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__24 = PyTuple_Pack(1, __pyx_kp_s_Cannot_create_writable_memory_vi); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(2, 520, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__24);
+  __Pyx_GIVEREF(__pyx_tuple__24);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":570
  *         if self.view.strides == NULL:
@@ -27994,6 +30143,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *         return tuple([stride for stride in self.view.strides[:self.view.ndim]])
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(2, 570, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
@@ -28002,6 +30152,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__25 = PyTuple_Pack(1, __pyx_kp_s_Buffer_view_does_not_expose_stri); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(2, 570, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__25);
+  __Pyx_GIVEREF(__pyx_tuple__25);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":577
  *     def suboffsets(self):
@@ -28010,6 +30165,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  *         return tuple([suboffset for suboffset in self.view.suboffsets[:self.view.ndim]])
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__26 = PyTuple_New(1); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(2, 577, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
@@ -28025,6 +30181,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   PyTuple_SET_ITEM(__pyx_tuple__25, 0, __pyx_int_neg_1);
   __Pyx_GIVEREF(__pyx_tuple__25);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__26 = PyTuple_New(1); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(2, 577, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__26);
+  __Pyx_INCREF(__pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_int_neg_1);
+  PyTuple_SET_ITEM(__pyx_tuple__26, 0, __pyx_int_neg_1);
+  __Pyx_GIVEREF(__pyx_tuple__26);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -28032,6 +30196,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
@@ -28041,12 +30206,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__27 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__27);
+  __Pyx_GIVEREF(__pyx_tuple__27);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__28);
@@ -28056,6 +30227,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__28 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__28)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__28);
+  __Pyx_GIVEREF(__pyx_tuple__28);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":703
  *     for suboffset in suboffsets[:ndim]:
@@ -28065,6 +30241,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(2, 703, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
@@ -28073,6 +30250,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__28);
   __Pyx_GIVEREF(__pyx_tuple__28);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__29 = PyTuple_Pack(1, __pyx_kp_s_Indirect_dimensions_not_supporte); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(2, 703, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__29);
+  __Pyx_GIVEREF(__pyx_tuple__29);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":2
  * def __reduce_cython__(self):
@@ -28080,6 +30262,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(2, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__30);
@@ -28089,12 +30272,18 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__30 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__30)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__30);
+  __Pyx_GIVEREF(__pyx_tuple__30);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":4
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  * def __setstate_cython__(self, __pyx_state):
  *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
  */
+<<<<<<< HEAD
 <<<<<<< HEAD
   __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(2, 4, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
@@ -28104,6 +30293,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__30);
   __Pyx_GIVEREF(__pyx_tuple__30);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__31 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__31);
+  __Pyx_GIVEREF(__pyx_tuple__31);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":286
  *         return self.name
@@ -28113,6 +30307,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * cdef indirect = Enum("<strided and indirect>")
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(2, 286, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
@@ -28121,6 +30316,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__32 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct_or_indirect); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(2, 286, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__32);
+  __Pyx_GIVEREF(__pyx_tuple__32);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":287
  * 
@@ -28130,6 +30330,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(2, 287, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
@@ -28138,6 +30339,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__33 = PyTuple_Pack(1, __pyx_kp_s_strided_and_direct); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(2, 287, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__33);
+  __Pyx_GIVEREF(__pyx_tuple__33);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":288
  * cdef generic = Enum("<strided and direct or indirect>")
@@ -28147,6 +30353,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(2, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
@@ -28155,6 +30362,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__34 = PyTuple_Pack(1, __pyx_kp_s_strided_and_indirect); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(2, 288, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__34);
+  __Pyx_GIVEREF(__pyx_tuple__34);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":291
  * 
@@ -28164,6 +30376,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(2, 291, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
@@ -28172,6 +30385,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__35 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_direct); if (unlikely(!__pyx_tuple__35)) __PYX_ERR(2, 291, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__35);
+  __Pyx_GIVEREF(__pyx_tuple__35);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "View.MemoryView":292
  * 
@@ -28181,6 +30399,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 292, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
@@ -28189,6 +30408,11 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__35);
   __Pyx_GIVEREF(__pyx_tuple__35);
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_tuple__36 = PyTuple_Pack(1, __pyx_kp_s_contiguous_and_indirect); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 292, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__36);
+  __Pyx_GIVEREF(__pyx_tuple__36);
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
 
   /* "(tree fragment)":1
  * def __pyx_unpickle_Enum(__pyx_type, long __pyx_checksum, __pyx_state):             # <<<<<<<<<<<<<<
@@ -28196,16 +30420,22 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  *     cdef object __pyx_result
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_tuple__37 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__37)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__37);
   __Pyx_GIVEREF(__pyx_tuple__37);
   __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__37, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(2, 1, __pyx_L1_error)
+<<<<<<< HEAD
 =======
   __pyx_tuple__36 = PyTuple_Pack(5, __pyx_n_s_pyx_type, __pyx_n_s_pyx_checksum, __pyx_n_s_pyx_state, __pyx_n_s_pyx_PickleError, __pyx_n_s_pyx_result); if (unlikely(!__pyx_tuple__36)) __PYX_ERR(2, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__36);
   __Pyx_GIVEREF(__pyx_tuple__36);
   __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(3, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__36, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_pyx_unpickle_Enum, 1, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(2, 1, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -28225,6 +30455,7 @@ if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_0 = PyInt_FromLong(0); if (unlikely(!__pyx_int_0)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_int_500 = PyInt_FromLong(500); if (unlikely(!__pyx_int_500)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_123123 = PyInt_FromLong(123123L); if (unlikely(!__pyx_int_123123)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_10000000 = PyInt_FromLong(10000000L); if (unlikely(!__pyx_int_10000000)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -28232,6 +30463,11 @@ if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_50 = PyInt_FromLong(50); if (unlikely(!__pyx_int_50)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_100 = PyInt_FromLong(100); if (unlikely(!__pyx_int_100)) __PYX_ERR(0, 1, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_int_500 = PyInt_FromLong(500); if (unlikely(!__pyx_int_500)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_123123 = PyInt_FromLong(123123L); if (unlikely(!__pyx_int_123123)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_int_10000000 = PyInt_FromLong(10000000L); if (unlikely(!__pyx_int_10000000)) __PYX_ERR(0, 1, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __pyx_int_184977713 = PyInt_FromLong(184977713L); if (unlikely(!__pyx_int_184977713)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_neg_1 = PyInt_FromLong(-1); if (unlikely(!__pyx_int_neg_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
@@ -28722,10 +30958,14 @@ if (!__Pyx_RefNanny) {
  * cdef indirect = Enum("<strided and indirect>")
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 286, __pyx_L1_error)
 =======
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__31, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 286, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 286, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(generic);
   __Pyx_DECREF_SET(generic, __pyx_t_2);
@@ -28740,10 +30980,14 @@ if (!__Pyx_RefNanny) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 287, __pyx_L1_error)
 =======
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__32, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 287, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 287, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(strided);
   __Pyx_DECREF_SET(strided, __pyx_t_2);
@@ -28758,10 +31002,14 @@ if (!__Pyx_RefNanny) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 288, __pyx_L1_error)
 =======
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__33, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 288, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 288, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(indirect);
   __Pyx_DECREF_SET(indirect, __pyx_t_2);
@@ -28776,10 +31024,14 @@ if (!__Pyx_RefNanny) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 291, __pyx_L1_error)
 =======
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__34, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 291, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 291, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(contiguous);
   __Pyx_DECREF_SET(contiguous, __pyx_t_2);
@@ -28794,10 +31046,14 @@ if (!__Pyx_RefNanny) {
  * 
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 292, __pyx_L1_error)
 =======
   __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__35, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 292, __pyx_L1_error)
 >>>>>>> Implemented stochastic protocol
+=======
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_MemviewEnum_type), __pyx_tuple__36, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 292, __pyx_L1_error)
+>>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(indirect_contiguous);
   __Pyx_DECREF_SET(indirect_contiguous, __pyx_t_2);
