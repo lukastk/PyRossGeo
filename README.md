@@ -1,16 +1,19 @@
-## PyRossGeo: Spatially resolved infectious disease models in Python 
+## PyRossGeo: Spatially resolved infectious disease models in Python
 
-[About](#about) | [Installation](#installation) | [Documentation](#documentation)  | [Examples](#examples) | [Publications](#publications) | [License](#license) |  [Wiki](https://github.com/lukastk/PyRossGeo/wiki) |  [Contact](#contact)
+[About](#about) | [Model](#model) | [Installation](#installation) | [Documentation](#documentation)  | <!--[Publications](#publications) |--> [License](#license) |  [Contact](#contact)
 
-![Imagel](docs/banner.jpg)
+![Imagel](docs/figs/banner.jpg)
 
 ## About
 
-[PyRossGeo](https://github.com/lukastk/PyRossGeo) is a numerical library for spatially resolved mathematical modelling of infectious disease in Python.
+[PyRossGeo](https://github.com/lukastk/PyRossGeo) is a numerical library for spatially resolved mathematical modelling of infectious diseases. The library has a Python interface, but is coded in C using *Cython*. See below for more details on the model.
 
-Note that PyRossGeo has a Python interface, but runs at C-speeds using Cython.
+[PyRoss](https://github.com/rajeshrinet/pyross) is a companion library that offers tools for both deterministic and stochastic simulation of macroscopic compartmental models, as well as a complete
+suite of inference and optimal control tools.
 
-Add a few lines about link to PyRoss
+Please open an issue, or join our [public slack](https://join.slack.com/t/pyross/shared_invite/zt-e8th6kcz-S4b_oJIZWPsGLruSPl3Zuw),
+if you have any queries, in preference to e-mailing us. For urgent
+enquiries, please contact Lukas Kikuchi at [ltk26@cam.ac.uk](ltk26@cam.ac.uk).
 
 The authors are part of the [Rapid Assistance in Modelling the Pandemic (RAMP)](https://royalsociety.org/news/2020/03/urgent-call-epidemic-modelling/) taskforce at the **University of Cambridge**. In alphabetical order, we are:
 [Jakub Dolezal](https://github.com/JakubJDolezal),
@@ -20,6 +23,22 @@ The authors are part of the [Rapid Assistance in Modelling the Pandemic (RAMP)](
 [Paul Rohrbach](https://github.com/prohrbach),
 [Rajesh Singh](https://github.com/rajeshrinet) and
 [Fernando Pedrero](https://github.com/Ferfer93).
+
+## Model
+
+The PyRossGeo uses a spatially resolved infectious disease model, where geographical spread is simulated by explicitly modelling the commuting patterns of the population.
+
+Locally at each geographical node, we simulate compartmental epidemiological dynamics with an age-contact structure. The resident population at each node can move between nodes via the *commuter network*. The epidemics of the commute itself is modelled using the *"commuterverse"*: People moving between geographical nodes must spend the requisite amount of time (corresponding to the distance travelled) with their fellow commuters in a *commuter node*. See the figure below for an example of a commuter network:
+
+<div style="text-align: center; margin-bottom: 30px;">
+  <img src="docs/figs/network.svg" width="350px">
+</div>
+
+The local infective dynamics at a node-level is customizable, and any variant of the compartmental epidemilogical models (e.g. SIR, SEIR, SEAIR, etc.) can be coded using a configuration file.
+
+The model has been tested with synthetic data on London, at an MSOA (Middle Super Output Area) level. We used ~1000 geographical nodes, with a commuter network of ~300'000 edges, constructed using the [2011 UK Census data](https://www.ons.gov.uk/census/2011census). We are currently developing the test for a UK-wide simulation at an LAD (Local Authority District) level.
+
+For a more detailed description of the model, please read [this](https://github.com/rajeshrinet/pyross/blob/master/docs/models.pdf).
 
 ## Installation
 Clone (or download) the repository and use a terminal to install using
@@ -39,16 +58,16 @@ PyRossGeo requires the following software
 | [SciPy 1.1.x+](https://www.scipy.org/)
 - Optional dependencies:
 | [Zarr](https://zarr.readthedocs.io/) (Saving simulations results)
-| [Matplotlib 2.0.x+](https://matplotlib.org) (Notebooks)
-| [Jupyter](https://jupyter.org/) (Notebooks)
+| [Matplotlib 2.0.x+](https://matplotlib.org) (Example notebooks)
+| [Jupyter](https://jupyter.org/) (Example notebooks)
 | [PyTest](https://docs.pytest.org/) (Testing)
 | [GeoPandas](https://geopandas.org/) (Visualisations)
 
 ## Documentation
 
-## Examples
+See the [here](https://github.com/lukastk/PyRossGeo/blob/master/docs/Documentation.md) for documentation, tutorials and example notebooks.
 
-## Publications
+<!--## Publications-->
 
 ## License
 
@@ -56,4 +75,5 @@ We believe that openness and sharing improves the practice of science and increa
 
 ## Contact
 
-For inquiries about the code or the model, please contact [Lukas Kikuchi](ltk26@cam.ac.uk).
+For inquiries about PyRossGeo, please join the *#pyrossgeo* channel of our public slack
+[here](https://join.slack.com/t/pyross/shared_invite/zt-e8th6kcz-S4b_oJIZWPsGLruSPl3Zuw).

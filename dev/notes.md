@@ -25,6 +25,17 @@ python -m readme2tex --output "Configuration files.md" "Configuration files.tex.
 Synthetic data:
 - Do the above, with synthetic data.
 
+## Docs stuff
+
+- Add area to configuration docs
+- Use $\beta_{ij}^\alpha-..."
+- Change "age-structure" to contact-structure
+- Introduce terminology
+  - Node = n(a,i,j)
+  - Commuter node = cn(a,i,j,k)
+  - Geographic node (geonode) = gn(a,j)
+  - Communities aren't nodes
+
 ## Todo (main):
 
 - Make a tool that makes sure that `model.json` adds to 0.
@@ -56,6 +67,9 @@ do that no other can: When we look at very coarse grained network, it's
 not overly hard to get nodes where the population of infecteds is quite small such
 that stochastic dynamic overtake. In which case, it is possible that the infetion
 dies out. This is how the geographic model can model lockdown better than any else.
+
+- Add over save options. Just output network data, for example,
+or any of the others.
 
 ## Todo:
 
