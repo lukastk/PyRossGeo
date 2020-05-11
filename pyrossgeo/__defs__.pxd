@@ -4,7 +4,7 @@ cimport numpy as np
 ctypedef np.float_t DTYPE_t
 
 cdef struct node:
-    #Contains relevant information for each node.
+    # Contains relevant information for each node.
     int home
     int loc
     int age
@@ -14,11 +14,11 @@ cdef struct node:
     int* outgoing_T_indices
     int outgoing_T_indices_len
     int* contact_matrix_indices
-    DTYPE_t** linear_coeffs
-    DTYPE_t** infection_coeffs
+    DTYPE_t* linear_coeffs
+    DTYPE_t* infection_coeffs
 
 cdef struct cnode:
-    #Contains relevant information for each commuter node.
+    # Contains relevant information for each commuter node.
     int home
     int fro
     int to
@@ -31,11 +31,11 @@ cdef struct cnode:
     int* contact_matrix_indices
     DTYPE_t area
     bint is_on
-    DTYPE_t** linear_coeffs
-    DTYPE_t** infection_coeffs
+    DTYPE_t* linear_coeffs
+    DTYPE_t* infection_coeffs
 
 cdef struct transporter:
-    #Represents a commuting schedule.
+    # Represents a commuting schedule.
     int T_index
     int age
     int home
@@ -53,3 +53,10 @@ cdef struct transporter:
     bint* moving_classes
     bint is_on # When true, the transport is on
     DTYPE_t N0
+
+cdef struct model_term:
+    # Represents a term in the model, either linear or non-linear
+    int oi_pos # Which model class to add to
+    int oi_neg # Which model class to subtract from
+    int oi_coupling # Which model class that couples
+    int infection_index # Class infection index (only used if infection term)

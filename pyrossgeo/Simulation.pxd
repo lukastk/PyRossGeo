@@ -1,7 +1,7 @@
 import numpy as np
 cimport numpy as np
 
-from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
 from pyrossgeo.__defs__ import DTYPE
 
 #ctypedef void (*SIM_EVENT)(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
@@ -25,12 +25,12 @@ cdef class Simulation:
     cdef readonly object cnode_mappings
 
     # Model
-    cdef int** class_infections
-    cdef int* class_infections_num
-    cdef int[:] infection_classes_indices
+    cdef model_term* model_linear_terms
+    cdef int model_linear_terms_len
+    cdef model_term* model_infection_terms
+    cdef int model_infection_terms_len
+    cdef np.ndarray infection_classes_indices
     cdef int infection_classes_num
-    cdef int** linear_terms
-    cdef int* linear_terms_num
     cdef np.ndarray contact_matrices
     cdef readonly dict contact_matrices_key_to_index
     cdef object _lambdas_arr
@@ -62,8 +62,11 @@ cdef class Simulation:
     cdef DTYPE_t transport_profile_c
     cdef DTYPE_t transport_profile_c_r
 
-    # Misc
+    # Stochasticity
+    cdef np.ndarray stoch_threshold_from_below # If all classes go above their threshold, start deterministic
+    cdef np.ndarray stoch_threshold_from_above # If any class go below their threshold, start stochastic
 
+    # Misc
     cdef readonly dict storage # Persistent storage that will be used for events
     cdef readonly object has_been_initialized # Python bool. If True, then the simulation has been initialized. 
 

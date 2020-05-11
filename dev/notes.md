@@ -57,6 +57,9 @@ not overly hard to get nodes where the population of infecteds is quite small su
 that stochastic dynamic overtake. In which case, it is possible that the infetion
 dies out. This is how the geographic model can model lockdown better than any else.
 
+- At various points in the code I divide with `dt`. I should define a
+variable `r_dt = 1/dt`.
+
 ## Todo:
 
 - Make it so that SIR dynamics cant overstep
