@@ -93,7 +93,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     #### Find model_dim
 
-    model_dim = len(model_dat['classes'])
+    model_dim = len(model_dat['settings']['classes'])
 
     #### Find age_groups
 
@@ -367,12 +367,10 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     #### Set node and cnode parameters #################################
 
-    # Note: This section is the most complicated part of the initialisation procedure.
-
     model_class_name_to_class_index = {}
     model_class_index_to_class_name = {}
-    for i in range(len(model_dat['classes'])):
-        oclass = model_dat['classes'][i]
+    for i in range(len(model_dat['settings']['classes'])):
+        oclass = model_dat['settings']['classes'][i]
         model_class_name_to_class_index[oclass] = i
         model_class_index_to_class_name[i] = oclass
 
@@ -385,7 +383,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     ## Construct internal representation of model
 
     for class_name in model_dat:
-        if class_name == 'classes':
+        if class_name == 'settings':
             continue
 
         for coupling_class, model_param in model_dat[class_name]['linear']:
