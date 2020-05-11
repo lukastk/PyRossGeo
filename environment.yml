@@ -1,0 +1,13 @@
+name: pyrossgeo
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - cython
+  - numpy
+  - matplotlib
+  - scipy 
+  - pip
+  - pandas
+  - geopandas
+  - zarr
