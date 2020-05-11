@@ -1,6 +1,6 @@
 from libc.stdlib cimport free
 
-from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
 from pyrossgeo.__defs__ import DTYPE
 from pyrossgeo.Simulation cimport Simulation
 
@@ -22,25 +22,13 @@ cpdef free_sim(Simulation self):
         free(self.nodes[ni].incoming_T_indices)
         free(self.nodes[ni].outgoing_T_indices)
         free(self.nodes[ni].contact_matrix_indices)
-
-        for o in range(self.model_dim):
-            free(self.nodes[ni].linear_coeffs[o])
         free(self.nodes[ni].linear_coeffs)
-
-        for o in range(self.model_dim):
-            free(self.nodes[ni].infection_coeffs[o])
         free(self.nodes[ni].infection_coeffs)
     free(self.nodes)
 
     for ni in range(self.cnodes_num):
         free(self.cnodes[ni].contact_matrix_indices)
-
-        for o in range(self.model_dim):
-            free(self.cnodes[ni].linear_coeffs[o])
         free(self.cnodes[ni].linear_coeffs)
-
-        for o in range(self.model_dim):
-            free(self.cnodes[ni].infection_coeffs[o])
         free(self.cnodes[ni].infection_coeffs)
     free(self.cnodes)
 
@@ -68,10 +56,6 @@ cpdef free_sim(Simulation self):
     free(self.cnodes_into_k)
     free(self.cnodes_into_k_len)
 
-    for o in range(self.model_dim):
-        free(self.class_infections[o])
-    free(self.class_infections_num)
-
-    for o in range(self.model_dim):
-        free(self.linear_terms[o])
-    free(self.linear_terms_num)
+    free(self.model_linear_terms)
+    free(self.model_infection_terms)
+    
