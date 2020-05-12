@@ -6,7 +6,7 @@ for all changes between updates.
 
 #### Tutorials
 
-sdsds
+CLick the *Binder* links to try the tutorials without having to install PyRossGeo.
 
 - [**Tutorial 1: Introduction to PyRossGeo**](https://github.com/lukastk/PyRossGeo/blob/master/examples/tutorial1-introduction-to-pyrossgeo/tutorial1-introduction-to-pyrossgeo.ipynb)
 &nbsp;&nbsp;&nbsp;
