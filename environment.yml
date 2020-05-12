@@ -9,3 +9,5 @@ dependencies:
   - scipy 
   - pip
   - pandas
+  - geopandas
+  - zarr
