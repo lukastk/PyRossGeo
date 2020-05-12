@@ -1,13 +1,17 @@
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+=======
+>>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
     "C_home" : [
         [1, 1, 0],
         [1, 1, 0],
         [0, 1, 1]
     ]
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     "C_home" : [[1]],
@@ -16,4 +20,6 @@
 >>>>>>> Implemented stochastic protocol
 =======
 >>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
+=======
+>>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
 }

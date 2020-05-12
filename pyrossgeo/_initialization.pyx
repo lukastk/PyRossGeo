@@ -368,12 +368,16 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     #### Set node and cnode parameters #################################
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
     model_class_name_to_class_index = {}
     model_class_index_to_class_name = {}
     for i in range(len(model_dat['settings']['classes'])):
         oclass = model_dat['settings']['classes'][i]
         model_class_name_to_class_index[oclass] = i
         model_class_index_to_class_name[i] = oclass
+<<<<<<< HEAD
 
 <<<<<<< HEAD
     py_model_linear_terms = []
@@ -456,6 +460,64 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     for model_param in linear_model_param_to_model_term:
         mt = linear_model_param_to_model_term[model_param]
     
+=======
+
+    py_model_linear_terms = []
+    py_model_infection_terms = []
+
+    infection_model_param_to_model_term = {}
+    linear_model_param_to_model_term = {}
+
+    ## Construct internal representation of model
+
+    for class_name in model_dat:
+        if class_name == 'settings':
+            continue
+
+        for coupling_class, model_param in model_dat[class_name]['linear']:
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in linear_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                linear_model_param_to_model_term[model_param] = mt
+                py_model_linear_terms.append(mt)
+            mt = linear_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+        for coupling_class, model_param in model_dat[class_name]['infection']: 
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in infection_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                infection_model_param_to_model_term[model_param] = mt
+                py_model_infection_terms.append(mt)
+            mt = infection_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+    # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
+    
+    for model_param in linear_model_param_to_model_term:
+        mt = linear_model_param_to_model_term[model_param]
+    
+>>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
     for model_param in infection_model_param_to_model_term:
         mt = infection_model_param_to_model_term[model_param]
 
