@@ -1,4 +1,4 @@
-## PyRossGeo: Spatially resolved infectious disease models in Python
+## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples)
 
 [About](#about) | [Model](#model) | [Installation](#installation) | [Documentation](#documentation)  | <!--[Publications](#publications) |--> [License](#license) |  [Contact](#contact)
 
@@ -41,6 +41,9 @@ The model has been tested with synthetic data on London, at an MSOA (Middle Supe
 For a more detailed description of the model, please read [this](https://github.com/lukastk/PyRossGeo/blob/master/docs/model.pdf).
 
 ## Installation
+
+You can take PyRossGeo for a spin **without installation**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples). Please be patient while Binder loads.
+
 Clone (or download) the repository and use a terminal to install using
 
 ```bash
