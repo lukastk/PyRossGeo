@@ -63,23 +63,8 @@ cdef class Simulation:
     cdef DTYPE_t transport_profile_c_r
 
     # Stochasticity
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     cdef np.ndarray stochastic_threshold_from_below # If all classes go above their threshold, start deterministic
     cdef np.ndarray stochastic_threshold_from_above # If any class go below their threshold, start stochastic
-=======
-    cdef np.ndarray stoch_threshold_from_below # If all classes go above their threshold, start deterministic
-    cdef np.ndarray stoch_threshold_from_above # If any class go below their threshold, start stochastic
->>>>>>> Implemented stochastic protocol
-=======
-    cdef np.ndarray stochastic_threshold_from_below # If all classes go above their threshold, start deterministic
-    cdef np.ndarray stochastic_threshold_from_above # If any class go below their threshold, start stochastic
->>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
-=======
-    cdef np.ndarray stochastic_threshold_from_below # If all classes go above their threshold, start deterministic
-    cdef np.ndarray stochastic_threshold_from_above # If any class go below their threshold, start stochastic
->>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
 
     # Misc
     cdef readonly dict storage # Persistent storage that will be used for events

@@ -1,17 +1,2 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-Home,Location,S0,I0,R0,S1,I1,R1,S2,I2,R2
-0,0,30,3,0,100,0,0,60,0,0
-=======
-Home,Location,S0,I0,R0
-0,0,2000,2,0
->>>>>>> Implemented stochastic protocol
-=======
-Home,Location,S0,I0,R0,S1,I1,R1,S2,I2,R2
-0,0,30,3,0,100,0,0,60,0,0
->>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
-=======
-Home,Location,S0,I0,R0,S1,I1,R1,S2,I2,R2
-0,0,30,3,0,100,0,0,60,0,0
->>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
+Home,Location,S0,I0,R0,S1,I1,R1,S2,I2,R2,S3,I3,R3
+0,0,1000,1,0,2000,0,0,3000,0,0,1500,0,0

@@ -132,6 +132,11 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     py_location_area = None # Array containing the areas of each location
 
+    # Stochastic
+
+    py_stochastic_threshold_from_below = None
+    py_stochastic_threshold_from_above = None
+
     #### Go through the commuter networks, and add nodes and cnodes ####
 
     for i, row in commuter_networks_dat.iterrows():
@@ -367,32 +372,6 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     #### Set node and cnode parameters #################################
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
-    model_class_name_to_class_index = {}
-    model_class_index_to_class_name = {}
-    for i in range(len(model_dat['settings']['classes'])):
-        oclass = model_dat['settings']['classes'][i]
-        model_class_name_to_class_index[oclass] = i
-        model_class_index_to_class_name[i] = oclass
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-    py_model_linear_terms = []
-    py_model_infection_terms = []
-
-    infection_model_param_to_model_term = {}
-    linear_model_param_to_model_term = {}
-
-    ## Construct internal representation of model
-
-    for class_name in model_dat:
-        if class_name == 'settings':
-=======
-=======
->>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
     model_class_name_to_class_index = {}
     model_class_index_to_class_name = {}
     for i in range(len(model_dat['settings']['classes'])):
@@ -406,67 +385,10 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     infection_model_param_to_model_term = {}
     linear_model_param_to_model_term = {}
 
-    ## Construct internal representation of model
+    ## Get the stochastic thresholds
 
-    for class_name in model_dat:
-<<<<<<< HEAD
-        if class_name == 'classes':
->>>>>>> Implemented stochastic protocol
-=======
-        if class_name == 'settings':
->>>>>>> Switched to scipy.stats.poisson.rvs as C++ rvs caused lags for large numbers
-            continue
-
-        for coupling_class, model_param in model_dat[class_name]['linear']:
-            if model_param[0] == '-':
-                is_neg = True
-                model_param = model_param[1:]
-            else:
-                is_neg = False
-
-            if not model_param in linear_model_param_to_model_term:
-                mt = py_model_term()
-                mt.model_param = model_param
-                linear_model_param_to_model_term[model_param] = mt
-                py_model_linear_terms.append(mt)
-            mt = linear_model_param_to_model_term[model_param]
-            if is_neg:
-                mt.oi_neg = model_class_name_to_class_index[class_name]
-            else:
-                mt.oi_pos = model_class_name_to_class_index[class_name]
-            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
-
-        for coupling_class, model_param in model_dat[class_name]['infection']: 
-            if model_param[0] == '-':
-                is_neg = True
-                model_param = model_param[1:]
-            else:
-                is_neg = False
-
-            if not model_param in infection_model_param_to_model_term:
-                mt = py_model_term()
-                mt.model_param = model_param
-                infection_model_param_to_model_term[model_param] = mt
-                py_model_infection_terms.append(mt)
-            mt = infection_model_param_to_model_term[model_param]
-            if is_neg:
-                mt.oi_neg = model_class_name_to_class_index[class_name]
-            else:
-                mt.oi_pos = model_class_name_to_class_index[class_name]
-            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
-
-    # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
-    
-    for model_param in linear_model_param_to_model_term:
-        mt = linear_model_param_to_model_term[model_param]
-    
-=======
-
-    py_model_linear_terms = []
-    py_model_infection_terms = []
-
-    infection_model_param_to_model_term = {}
-    linear_model_param_to_model_term = {}
+    py_stochastic_threshold_from_below = model_dat['settings']['stochastic_threshold_from_below']
+    py_stochastic_threshold_from_above = model_dat['settings']['stochastic_threshold_from_above']
 
     ## Construct internal representation of model
 
@@ -516,8 +438,59 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     
     for model_param in linear_model_param_to_model_term:
         mt = linear_model_param_to_model_term[model_param]
+
+    py_model_linear_terms = []
+    py_model_infection_terms = []
+
+    infection_model_param_to_model_term = {}
+    linear_model_param_to_model_term = {}
+
+    ## Construct internal representation of model
+
+    for class_name in model_dat:
+        if class_name == 'settings':
+            continue
+
+        for coupling_class, model_param in model_dat[class_name]['linear']:
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in linear_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                linear_model_param_to_model_term[model_param] = mt
+                py_model_linear_terms.append(mt)
+            mt = linear_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+        for coupling_class, model_param in model_dat[class_name]['infection']: 
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in infection_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                infection_model_param_to_model_term[model_param] = mt
+                py_model_infection_terms.append(mt)
+            mt = infection_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+    # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
     
->>>>>>> dba57548048d03c27738ccf8ff2d7d4339570a7e
     for model_param in infection_model_param_to_model_term:
         mt = infection_model_param_to_model_term[model_param]
 
@@ -658,13 +631,15 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     return _initialize(self, max_node_index, model_dim, age_groups, X_state0, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_model_linear_terms, py_model_infection_terms,
-                        py_contact_matrices, py_contact_matrices_key_to_index)
+                        py_contact_matrices, py_contact_matrices_key_to_index,
+                        py_stochastic_threshold_from_below, py_stochastic_threshold_from_above)
 
 
 cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_state_arr, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_model_linear_terms, py_model_infection_terms,
-                        py_contact_matrices, py_contact_matrices_key_to_index):
+                        py_contact_matrices, py_contact_matrices_key_to_index,
+                        py_stochastic_threshold_from_below, py_stochastic_threshold_from_above):
     """Initialize the simulation."""
 
     self.has_been_initialized = True
@@ -854,6 +829,9 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
 
     self._Ns_arr = np.zeros( (self.age_groups) )
     self._Ns = self._Ns_arr
+
+    self.stochastic_threshold_from_below = np.array(py_stochastic_threshold_from_below, dtype=DTYPE)
+    self.stochastic_threshold_from_above = np.array(py_stochastic_threshold_from_above, dtype=DTYPE)
 
     return X_state_arr
 
