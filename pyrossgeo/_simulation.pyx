@@ -2,9 +2,12 @@ import zarr
 import pickle
 import cython
 from libc.math cimport exp
+from libc.stdlib cimport malloc, free
 from cython.parallel import prange
 import numpy as np
 cimport numpy as np
+import time # For seeding random
+import scipy.stats
 
 from pyrossgeo.__defs__ import DTYPE
 
@@ -14,16 +17,18 @@ from pyrossgeo.__defs__ import DTYPE
 @cython.nonecheck(False)
 cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=-1,
                             str save_path="", bint only_save_nodes=False, int steps_per_print=-1,
-                            object event_times=[], object event_function=None):
+                            object event_times=[], object event_function=None,
+                            int random_seed=-1):
                             #object cevent_times=[], SIM_EVENT cevent_function=SIM_EVENT_NULL):
-    #########################################################################
-    #### Definitions ########################################################
-    #########################################################################
+    ####################################################################
+    #### Definitions ###################################################
+    ####################################################################
 
-    #### Forward-Euler variables ########################################
+    #### Forward-Euler variables #######################################
 
     cdef DTYPE_t t = t_start
     cdef DTYPE_t dt
+    cdef DTYPE_t r_dt
     cdef DTYPE_t[:] dts
     cdef DTYPE_t tday
     cdef int dts_num
@@ -31,7 +36,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef int steps
     cdef np.ndarray X_state_arr = np.asarray(X_state)
 
-    #### System variables ###############################################
+    #### System variables ##############################################
 
     cdef int age_groups = self.age_groups
     cdef int model_dim = self.model_dim
@@ -45,12 +50,12 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef int node_states_len = self.node_states_len
 
     # Model
-    cdef int** class_infections = self.class_infections
-    cdef int* class_infections_num = self.class_infections_num
+    cdef model_term* model_linear_terms = self.model_linear_terms
+    cdef int model_linear_terms_len = self.model_linear_terms_len
+    cdef model_term* model_infection_terms = self.model_infection_terms
+    cdef int model_infection_terms_len = self.model_infection_terms_len
     cdef int[:] infection_classes_indices = self.infection_classes_indices
     cdef int infection_classes_num = self.infection_classes_num
-    cdef int** linear_terms = self.linear_terms
-    cdef int* linear_terms_num = self.linear_terms_num
     cdef DTYPE_t[:,:,:] contact_matrices = self.contact_matrices
     cdef int contact_matrices_num = self.contact_matrices.shape[0]
 
@@ -75,21 +80,37 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef DTYPE_t transport_profile_c = self.transport_profile_c
     cdef DTYPE_t transport_profile_c_r = self.transport_profile_c_r
 
-    # Consts
+    # Stochasticity
+    total_Os_arr = np.zeros(model_dim, dtype=DTYPE)
+    cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on
+    cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
+    cdef DTYPE_t[:] stochastic_threshold_from_above = self.stochastic_threshold_from_above
+    cdef bint* loc_j_is_stochastic
+    cdef bint* to_k_is_stochastic
 
+    if random_seed == -1:
+        random_seed = np.int64(np.round(time.time()))
+    cdef mt19937 gen = mt19937(random_seed)
+    cdef poisson_distribution[int] dist
+
+    #if random_seed == -1:
+    #    np.random.seed( np.int64(np.round(time.time())) )
+
+    # Consts
     cdef int minutes_in_day = 1440
     save_node_mappings_path = 'node_mappings.pkl'
     save_cnode_mappings_path = 'cnode_mappings.pkl'
     save_ts_path = 'ts.npy'
     save_X_states_path = 'X_states.zarr'
 
-    #### Simulation variables ###########################################
+    #### Simulation variables ##########################################
 
     cdef int cni, ni, si, Ti, cTi, i, j, ui, u, o, cmat_i, oi, X_index, loc_j, to_k, age_a, age_b
     cdef bint to_k_is_active = False
-    cdef DTYPE_t S, t1, t2, transport_profile, fro_N, cn_N, mt, transport_profile_exponent
+    cdef DTYPE_t S, t1, t2, transport_profile, fro_N, cn_N, term, transport_profile_exponent
     cdef node n, fro_n, to_n
     cdef cnode cn
+    cdef model_term mt
     
     cdef DTYPE_t[:, :, :] _lambdas = self._lambdas
     cdef DTYPE_t[:] _Is = self._Is
@@ -98,7 +119,48 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef np.ndarray dX_state_arr
     cdef DTYPE_t[:] dX_state
 
-    #### Calcuate steps for the Forward-Euler integration ###############
+    #### Initialize stochasticity ######################################
+
+    loc_j_is_stochastic = <bint *> malloc( (self.max_node_index+1) * sizeof(bint))
+    to_k_is_stochastic = <bint *> malloc( (self.max_node_index+1) * sizeof(bint))
+
+    for loc_j in range(max_node_index+1):
+        n = nodes[i]
+
+        for o in range(model_dim):
+            total_Os[o] = 0
+
+        for age_a in range(age_groups):
+            for i in range(nodes_at_j_len[age_a][loc_j]):
+                n = nodes[nodes_at_j[age_a][loc_j][i]]
+                for o in range(model_dim):
+                    total_Os[o] += X_state[n.state_index + o]
+
+        loc_j_is_stochastic[loc_j] = False
+
+        for o in range(model_dim):
+            loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+
+    for to_k in range(max_node_index+1):
+        n = nodes[i]
+
+        for o in range(model_dim):
+            total_Os[o] = 0
+
+        for age_a in range(age_groups):
+            for i in range(cnodes_into_k_len[age_a][to_k]):
+                cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+                for o in range(model_dim):
+                    total_Os[o] += X_state[n.state_index + o]
+
+        to_k_is_stochastic[to_k] = False
+
+        for o in range(model_dim):
+            to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
+
+    # Loop through nodes and cnodes to see if they should start out as stochastic or not
+
+    #### Calcuate steps for the Forward-Euler integration ##############
 
     if type(_dts) == list:
         _dts= np.array(_dts)
@@ -118,7 +180,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
     dts_num = len(dts)
 
-    #### Set-up variables for storing the simulation history ############
+    #### Set-up variables for storing the simulation history ###########
 
     cdef int save_i, X_states_saved_col_num
     X_states_saved = None
@@ -154,7 +216,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         ts_saved[0] = t_start
         save_i = 1
 
-    #### Event management ###############################################
+    #### Event management ##############################################
 
     cdef np.ndarray event_steps_arr = np.full(steps, 0, dtype=np.int8)
     cdef char[:] event_steps = event_steps_arr
@@ -175,38 +237,43 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         #    if et <= t and t < et+dt:
         #        cevent_steps[step_i] = 1
 
-    #########################################################################
-    #### Simulation #########################################################
-    #########################################################################
+    ####################################################################
+    #### Simulation ####################################################
+    ####################################################################
 
     t = t_start
 
     for step_i in range(steps):
         tday = t % minutes_in_day
         dt = dts[step_i % dts_num]
+        r_dt = 1/dt
 
         # Reset dX_state to 0
         for i in prange(state_size, nogil=True):
             dX_state[i] = 0
 
-        #####################################################################
-        #### Dynamics #######################################################
-        #####################################################################
+        ################################################################
+        #### Dynamics ##################################################
+        ################################################################
 
-        #### Node dynamics ##################################################
+        #### Node dynamics #############################################
 
         for loc_j in range(max_node_index+1):
 
-            # Find the populations of each age group
+            # Compute the total populations of each class at loc_j, as well as the populaitons of each age group
+
+            for o in range(model_dim):
+                total_Os[o] = 0
 
             for age_a in range(age_groups):
                 _Ns[age_a] = 0
                 for i in range(nodes_at_j_len[age_a][loc_j]):
                     n = nodes[nodes_at_j[age_a][loc_j][i]]
                     for o in range(model_dim):
+                        total_Os[o] += X_state[n.state_index + o]
                         _Ns[age_a] += X_state[n.state_index + o]
 
-            # Compute lambdas
+            #### Compute lambdas
 
             for ui in range(infection_classes_num):
                 u = infection_classes_indices[ui]
@@ -228,29 +295,69 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
                                 _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
 
-            # Compute the derivatives at each node
-            
-            for age_a in range(age_groups):
-                for i in range(nodes_at_j_len[age_a][loc_j]): 
-                    n = nodes[nodes_at_j[age_a][loc_j][i]]
-                    si = n.state_index
-                    S = X_state[si] # S is always located at the state index
-                    
-                    for o in range(model_dim):
-                        # Apply infection terms
-                        for j in range(class_infections_num[o]):
-                            ui = class_infections[o][j]
-                            cmat_i = n.contact_matrix_indices[ui]
+            #### Decide whether deterministic or stochastic
 
-                            dX_state[si+o] += n.infection_coeffs[o][j] * _lambdas[cmat_i][age_a][ui] * S
+            if loc_j_is_stochastic[loc_j]:
+                loc_j_is_stochastic[loc_j] = False
+                for o in range(model_dim):
+                    loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+            else:
+                loc_j_is_stochastic[loc_j] = False
+                for o in range(model_dim):
+                    loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
 
-                        # Apply linear terms
-                        for j in range(linear_terms_num[o]):
-                            u = linear_terms[o][j]
-                            if X_state[ si + u ] > 0: # Only allow interaction if the class is positive
-                                dX_state[si+o] += n.linear_coeffs[o][j] * X_state[ si + u ]
+            #### Compute the derivatives at each node
 
-        #### CNode dynamics #################################################
+            # Stochastic
+            if loc_j_is_stochastic[loc_j]:
+                for age_a in range(age_groups):
+                    for i in range(nodes_at_j_len[age_a][loc_j]): 
+                        n = nodes[nodes_at_j[age_a][loc_j][i]]
+                        si = n.state_index
+                        S = X_state[si] # S is always located at the state index
+
+                        for j in range(model_linear_terms_len):
+                            mt = model_linear_terms[j]   
+                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                                dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+                                term = dist(gen) * r_dt
+                                #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term
+
+                        for j in range(model_infection_terms_len):
+                            mt = model_infection_terms[j]
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
+                                cmat_i = n.contact_matrix_indices[mt.infection_index]
+                                dist = poisson_distribution[int](dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+                                term = dist(gen) * r_dt
+                                #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term            
+            # Deterministic
+            else:
+                for age_a in range(age_groups):
+                    for i in range(nodes_at_j_len[age_a][loc_j]): 
+                        n = nodes[nodes_at_j[age_a][loc_j][i]]
+                        si = n.state_index
+                        S = X_state[si] # S is always located at the state index
+
+                        for j in range(model_linear_terms_len):
+                            mt = model_linear_terms[j]
+                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                                term = n.linear_coeffs[j] * X_state[si+mt.oi_coupling]
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term
+
+                        for j in range(model_infection_terms_len):
+                            mt = model_infection_terms[j]
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
+                                cmat_i = n.contact_matrix_indices[mt.infection_index]
+                                term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term
+
+        #### CNode dynamics ############################################
 
         for to_k in range(max_node_index+1):
 
@@ -266,16 +373,23 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 if to_k_is_active:
                     break
 
-            # Find the populations of each age group
+            if not to_k_is_active:
+                continue
+
+            # Compute the total populations of each class at loc_j, as well as the populaitons of each age group
+
+            for o in range(model_dim):
+                total_Os[o] = 0
 
             for age_a in range(age_groups):
                 _Ns[age_a] = 0
                 for i in range(cnodes_into_k_len[age_a][to_k]):
                     cn = cnodes[cnodes_into_k[age_a][to_k][i]]
                     for o in range(model_dim):
+                        total_Os[o] += X_state[cn.state_index + o]
                         _Ns[age_a] += X_state[cn.state_index + o]
 
-            # Compute lambdas
+            #### Compute lambdas
 
             for ui in range(infection_classes_num):
                 u = infection_classes_indices[ui]
@@ -297,37 +411,71 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
                                 _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
 
-            # Compute the derivatives at each commuter node
+            #### Decide whether deterministic or stochastic
 
-            for age_a in range(age_groups):
-                for i in range(cnodes_into_k_len[age_a][to_k]):
-                    cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+            if to_k_is_stochastic[loc_j]:
+                to_k_is_stochastic[loc_j] = False
+                for o in range(model_dim):
+                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+            else:
+                to_k_is_stochastic[loc_j] = True
+                for o in range(model_dim):
+                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
 
-                    if not cn.is_on:
-                        continue
+            # Stochastic
+            if loc_j_is_stochastic[to_k]:
+                for age_a in range(age_groups):
+                    for i in range(cnodes_into_k_len[age_a][to_k]): 
+                        cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+                        si = cn.state_index
+                        S = X_state[si] # S is always located at the state index
 
-                    si = cn.state_index
-                    S = X_state[si]
+                        for j in range(model_linear_terms_len):
+                            mt = model_linear_terms[j]
+                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                                #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+                                #term = dist(gen) * r_dt
+                                term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term
 
-                    for o in range(model_dim):
-                        # Apply infection terms
-                        for j in range(class_infections_num[o]):
-                            ui = class_infections[o][j]
-                            cmat_i = cn.contact_matrix_indices[ui]
-                            dX_state[si+o] += cn.infection_coeffs[o][j] * _lambdas[cmat_i][age_a][ui] * S
-                        
-                        # Apply linear terms
-                        for j in range(linear_terms_num[o]):
-                            u = linear_terms[o][j]
-                            if X_state[ si + u ] > 0: # Only allow interaction if the class is positive
-                                dX_state[si+o] += cn.linear_coeffs[o][j] * X_state[ si + u ]
+                        for j in range(model_infection_terms_len):
+                            mt = model_infection_terms[j]
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
+                                cmat_i = cn.contact_matrix_indices[mt.infection_index]
+                                #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+                                #term = dist(gen) * r_dt
+                                term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term
+            # Deterministic
+            else:
+                for age_a in range(age_groups):
+                    for i in range(cnodes_into_k_len[age_a][to_k]): 
+                        cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+                        si = cn.state_index
+                        S = X_state[si] # S is always located at the state index
 
+                        for j in range(model_linear_terms_len):
+                            mt = model_linear_terms[j]
+                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                                term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term
+
+                        for j in range(model_infection_terms_len):
+                            mt = model_infection_terms[j]
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
+                                cmat_i = cn.contact_matrix_indices[mt.infection_index]
+                                term = cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S
+                                dX_state[si+mt.oi_pos] += term
+                                dX_state[si+mt.oi_neg] -= term               
         
-        #####################################################################
-        #### Transport ######################################################
-        #####################################################################
+        ################################################################
+        #### Transport #################################################
+        ################################################################
 
-        #### Node to CNode ##################################################
+        #### Node to CNode #############################################
 
         for Ti in range(Ts_num):
 
@@ -366,24 +514,24 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                         continue
 
                     # Compute the amount of people to move
-                    mt = Ts[Ti].N0 * transport_profile * (X_state[fro_n.state_index+oi] / fro_N)
+                    term = Ts[Ti].N0 * transport_profile * (X_state[fro_n.state_index+oi] / fro_N)
 
                     # If the change will cause X_state[si+oi] to go negative,
-                    # then adjust mt so that X_state[si+oi] will be set 
+                    # then adjust term so that X_state[si+oi] will be set 
                     # to 0.
-                    if X_state[si+oi] + dt*(dX_state[si+oi] - mt) < 0:
-                        mt = X_state[si+oi]/dt
-                        dX_state[cn.state_index+oi] += mt + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
-                        dX_state[si+oi] += -(mt + dX_state[si+oi])
+                    if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
+                        term = X_state[si+oi]*r_dt
+                        dX_state[cn.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the node into the cnode
+                        dX_state[si+oi] += -(term + dX_state[si+oi])
                     # Otherwise apply the transport as usual
                     else:
-                        dX_state[si+oi] -= mt
-                        dX_state[cn.state_index+oi] += mt
+                        dX_state[si+oi] -= term
+                        dX_state[cn.state_index+oi] += term
 
             else:
                 Ts[Ti].is_on = False
         
-        #### CNode to Node ##################################################
+        #### CNode to Node #############################################
         
         for cTi in range(cTs_num):
 
@@ -422,33 +570,33 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                     # If the commuting window is ending, force all to leave the commuterverse
                     if tday+dt >= t2:
-                        mt = X_state[si+oi]/dt
-                        dX_state[to_node.state_index+oi] += mt + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
-                        dX_state[si+oi] += - (mt + dX_state[si+oi])
+                        term = X_state[si+oi]*r_dt
+                        dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
+                        dX_state[si+oi] += - (term + dX_state[si+oi])
                     else:
                         # Compute the amount of people to move
-                        mt = cTs[cTi].N0 * transport_profile * (X_state[si+oi] / cn_N)
+                        term = cTs[cTi].N0 * transport_profile * (X_state[si+oi] / cn_N)
 
                         # If the change will cause X_state[si+oi] to go negative,
-                        # then adjust mt so that X_state[si+oi] will be set 
+                        # then adjust term so that X_state[si+oi] will be set 
                         # to 0. 
-                        if X_state[si+oi] + dt*(dX_state[si+oi] - mt) < 0:
-                            mt = X_state[si+oi]/dt
-                            dX_state[to_node.state_index+oi] += mt + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
-                            dX_state[si+oi] += - (mt + dX_state[si+oi])
+                        if X_state[si+oi] + dt*(dX_state[si+oi] - term) < 0:
+                            term = X_state[si+oi]*r_dt
+                            dX_state[to_node.state_index+oi] += term + dX_state[si+oi] # We shift the SIR dynamics that transpired in the cnode into the node
+                            dX_state[si+oi] += - (term + dX_state[si+oi])
                         # Otherwise apply the transport as usual
                         else:
-                            dX_state[si+oi] -= mt
-                            dX_state[to_node.state_index+oi] += mt
+                            dX_state[si+oi] -= term
+                            dX_state[to_node.state_index+oi] += term
             else:
                 cTs[cTi].is_on = False
                 cn = cnodes[cTs[cTi].cnode_index]
                 cn.is_on = False # Turn off commuter node
                 
 
-        #####################################################################
-        #### Forward-Euler ##################################################
-        #####################################################################
+        ################################################################
+        #### Forward-Euler #############################################
+        ################################################################
         
         for j in prange(X_state_size, nogil=True):
             X_state[j] += dX_state[j]*dt
@@ -479,6 +627,9 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
         #if cevent_steps[step_i]:
         #    cevent_function(self, step_i, t, dt, X_state, dX_state)
+
+    free(loc_j_is_stochastic)
+    free(to_k_is_stochastic)
 
     if steps_per_save != -1:
 

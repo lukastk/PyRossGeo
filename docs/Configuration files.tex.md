@@ -242,7 +242,7 @@ Below is an example of a `node_parameters.csv` file for the SEAIR model.
             <td>0.01</td>
             <td>0.05</td>
             <td>0.05</td>
-            <td>0.07</td>
+            <td>0.04</td>
         </tr>
     </tbody>
 </table>
