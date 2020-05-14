@@ -4,7 +4,7 @@
 
 ![Imagel](docs/figs/banner.jpg)
 
-**Public event announcement:**
+## Public event announcement:
 
 We have two lecture-demonstration events coming up:
 
