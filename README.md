@@ -11,7 +11,7 @@ We have two lecture-demonstration events coming up:
 - **Introduction to *PyRoss* for Bayesian inference and latent variable estimation** - 11-12 AM on Friday (15 May)
 - **Introduction to *PyRossGeo* for spatial epidemiological simulations** - 11-12 AM  Monday (18 May)
 
-Both meetings will be using Google Meet, in the following room: https://meet.google.com/auu-kevq-qpa
+Both meetings will be using Google Meet, in the following room: https://meet.google.com/amv-qevr-fjp
 
 
 
