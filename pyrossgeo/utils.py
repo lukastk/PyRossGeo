@@ -16,7 +16,7 @@ def extract_node_data(sim_data):
         A dictionary of keys of the form `(i, j)`, corresponding to
         home node, and location node respectively.
         `node_data[i,j,k]` is an `np.ndarray` of shape
-        `(ts.size, # of age groups, # of classes)`.
+        `(ts.size, &#35; of age groups, &#35; of classes)`.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
     node_data = {}
@@ -58,7 +58,7 @@ def extract_cnode_data(sim_data):
         A dictionary of keys of the form `(i, j, k)`, corresponding to
         home node, origin node and destination node respectively.
         `cnode_data[i,j,k]` is an `np.ndarray` of shape
-        `(ts.size, # of age groups, # of classes)`.
+        `(ts.size, &#35; of age groups, &#35; of classes)`.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
     cnode_data = {}
@@ -97,7 +97,7 @@ def extract_network_data(sim_data):
     Returns
     -------
     np.ndarray
-        An array of shape (ts.size, # of age groups, # of classes).
+        An array of shape (ts.size, &#35; of age groups, &#35; of classes).
         It contains the result of the simulation of the network as a whole
         for each age group and class.
     """
@@ -137,8 +137,8 @@ def extract_location_data(sim_data):
     Returns
     -------
     np.ndarray
-        An array of shape (ts.size, # of age groups, # of classes,
-        # of locations). It contains the results of the simulation at each
+        An array of shape (ts.size, &#35; of age groups, &#35; of classes,
+        &#35; of locations). It contains the results of the simulation at each
         location. So `community_data[5,0,1,32]` contains the state of
         people of age-bracket 0, class 1 who are at location 32, at step 5
         of the simulation.
@@ -182,8 +182,8 @@ def extract_community_data(sim_data):
     Returns
     -------
     np.ndarray
-        An array of shape (ts.size, # of age groups, # of classes,
-        # of locations). It contains the results of the simulation summed
+        An array of shape (ts.size, &#35; of age groups, &#35; of classes,
+        &#35; of locations). It contains the results of the simulation summed
         over each community. So `community_data[:,0,1,32]` contains the
         history of all people of age-bracket 0, class 1 and who live at location 32.
     """
