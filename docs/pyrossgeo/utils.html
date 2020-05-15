@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.8.1" />
+<title>pyrossgeo.utils API documentation</title>
+<meta name="description" content="" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>pyrossgeo.utils</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import numpy as np
+import pickle
+import zarr
+
+def extract_node_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for each node.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    dict
+        A dictionary of keys of the form `(i, j)`, corresponding to
+        home node, and location node respectively.
+        `node_data[i,j,k]` is an `np.ndarray` of shape
+        `(ts.size, # of age groups, # of classes)`.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+    node_data = {}
+
+    age_groups = 0
+    model_dim = 0
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+
+    for a,o,i,j in node_mappings:
+        index = node_mappings[a,o,i,j]
+
+        if not (i,j) in node_data:
+            node_data[i,j] = np.zeros( (len(ts), age_groups, model_dim) )
+
+        node_data[i,j][:,a,o] = X_states[:,index]
+
+    return node_data
+
+def extract_cnode_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for each commuter node.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    dict
+        A dictionary of keys of the form `(i, j, k)`, corresponding to
+        home node, origin node and destination node respectively.
+        `cnode_data[i,j,k]` is an `np.ndarray` of shape
+        `(ts.size, # of age groups, # of classes)`.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+    cnode_data = {}
+
+    age_groups = 0
+    model_dim = 0
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+
+    for a,o,i,j,k in cnode_mappings:
+        index = cnode_mappings[a,o,i,j,k]
+
+        if not (i,j,k) in cnode_data:
+            cnode_data[i,j,k] = np.zeros( (len(ts), age_groups, model_dim) )
+
+        cnode_data[i,j,k][:,a,o] = X_states[:,index]
+
+    return cnode_data
+
+def extract_network_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for the whole network.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes).
+        It contains the result of the simulation of the network as a whole
+        for each age group and class.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+
+    age_groups = 0
+    model_dim = 0
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+
+    network_data = np.zeros( (len(ts), age_groups, model_dim) )
+
+    for a,o,i,j in node_mappings:
+        network_data[:,a,o] += X_states[:,node_mappings[a,o,i,j]]
+
+    for a,o,i,j,k in cnode_mappings:
+        network_data[:,a,o] += X_states[:,cnode_mappings[a,o,i,j,k]]
+
+    return network_data
+
+def extract_location_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for a given location.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes,
+        # of locations). It contains the results of the simulation at each
+        location. So `community_data[5,0,1,32]` contains the state of
+        people of age-bracket 0, class 1 who are at location 32, at step 5
+        of the simulation.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+
+    age_groups = 0
+    model_dim = 0
+    max_loc_index = 0
+
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if j &gt; max_loc_index:
+            max_loc_index = j
+    for a,o,i,j,_ in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if j &gt; max_loc_index:
+            max_loc_index = j
+
+    location_data = np.zeros( (len(ts), age_groups, model_dim, max_loc_index+1) )
+
+    for a,o,i,j in node_mappings:
+        location_data[:,a,o,j] += X_states[:,node_mappings[a,o,i,j]]
+
+    return location_data
+
+def extract_community_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for each community.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes,
+        # of locations). It contains the results of the simulation summed
+        over each community. So `community_data[:,0,1,32]` contains the
+        history of all people of age-bracket 0, class 1 and who live at location 32.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+
+    age_groups = 0
+    model_dim = 0
+    max_home_index = 0
+
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+
+    community_data = np.zeros( (len(ts), age_groups, model_dim, max_home_index+1) )
+
+    for a,o,i,j in node_mappings:
+        community_data[:,a,o,i] += X_states[:,node_mappings[a,o,i,j]]
+
+    for a,o,i,j,k in cnode_mappings:
+        community_data[:,a,o,i] += X_states[:,cnode_mappings[a,o,i,j,k]]
+
+    return community_data
+
+def extract_simulation_data(sim_data):
+    &#34;&#34;&#34;Returns a tuple containing various formatted data for a given simulation result.
+
+    It returns `node_data, cnode_data, location_data, community_data, network_data`.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, _ = sim_data
+
+    node_data = extract_node_data(sim_data)
+    cnode_data = extract_cnode_data(sim_data)
+
+    age_groups = 0
+    model_dim = 0
+    max_home_index = 0
+    max_loc_index = 0
+
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+        if j &gt; max_loc_index:
+            max_loc_index = j
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+        if j &gt; max_loc_index:
+            max_loc_index = j
+
+    location_data = np.zeros( (len(ts), age_groups, model_dim, max_loc_index+1) )
+    community_data = np.zeros( (len(ts), age_groups, model_dim, max_home_index+1) )
+    network_data = np.zeros( (len(ts), age_groups, model_dim) )
+
+    for i,j in node_data:
+        node_data_ij = node_data[i,j]
+        location_data[:, :, :, j] += node_data_ij
+        community_data[:, :, :, i] += node_data_ij
+        network_data[:, :, :] += node_data_ij
+
+    for i,j,k in cnode_data:
+        cnode_data_ijk = cnode_data[i,j,k]
+        community_data[:, :, :, i] += cnode_data_ijk
+        network_data[:, :, :] += cnode_data_ijk
+
+    return ts, node_data, cnode_data, location_data, community_data, network_data
+
+def extract_ts(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation times given simulation data.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        A 1D array containing each time-step.
+    &#34;&#34;&#34;
+    ts_saved = sim_data[2]
+    return ts_saved
+
+def load_sim_data(load_path, use_zarr=False):
+    &#34;&#34;&#34;Loads 
+
+    Parameters
+    ----------
+        load_path : str
+            Path of the simulation data folder.
+        use_zarr : bool, optional
+            If True, the simulation data will be given as a zarr array,
+            rather than as a numpy array. The former is useful if the
+            data is very large.
+
+    Returns
+    -------
+    tuple
+        A tuple `(node_mappings, cnode_mappings, ts, X_states)`, containing
+        all simulation data. `X_states` is either an `np.ndarray` or a `zarr.core.Array`.
+        If `use_zarr=True`, the latter will be given.
+    &#34;&#34;&#34;
+    node_mappings_path = &#39;node_mappings.pkl&#39;
+    cnode_mappings_path = &#39;cnode_mappings.pkl&#39;
+    ts_path = &#39;ts.npy&#39;
+    X_states_path = &#39;X_states.zarr&#39;
+
+    node_mappings = pickle.load( open( &#34;%s/%s&#34; %( load_path, node_mappings_path ), &#34;rb&#34; ) )
+    cnode_mappings = pickle.load( open( &#34;%s/%s&#34; %( load_path, cnode_mappings_path ), &#34;rb&#34; ) )
+    ts = np.load(&#34;%s/%s&#34; %( load_path, ts_path ))
+    X_states = zarr.open( &#34;%s/%s&#34; %( load_path, X_states_path ) , chunks=(len(ts), 1))
+
+    if not use_zarr:
+        X_states = X_states[:]
+
+    sim_data = ( node_mappings, cnode_mappings, ts, X_states )
+    return sim_data
+
+def get_dt_schedule(times, end_time):
+    &#34;&#34;&#34;Generates a time-step schedule.
+
+    Example:
+
+    The following generates a time-step schedule where we use a time-step
+    of one minute between 7-10 and 17-19 o\&#39;clock, and 2 hours for all
+    other times.
+
+        ts, dts = pyrossgeo.utils.get_dt_schedule([
+            (0,  2*60),
+            (7*60,  1),
+            (10*60, 2*60),
+            (17*60, 1),
+            (19*60, 2*60)
+            ], end_time=24*60)
+
+    Parameters
+    ----------
+        times : lost
+            list of tuples
+        end_time : float
+            The final time of the schedule.
+
+    Returns
+    -------
+        tuple
+            A tuple `(ts, dts)`. `dts` are the time-steps and `ts`
+            the times.
+    &#34;&#34;&#34;
+    times = list(times)
+    times.append( (end_time, 0) )
+    ts = []
+
+    for i in range(len(times)-1):
+        t, dt = times[i]
+        t_next = times[i+1][0]
+        ts.append(np.arange(t, t_next, dt))
+        
+    ts.append([end_time])
+    ts = np.concatenate(ts)
+    dts = (ts - np.roll(ts, 1))[1:]
+        
+    return np.array(ts, dtype=np.double), np.array(dts, dtype=np.double)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="pyrossgeo.utils.extract_cnode_data"><code class="name flex">
+<span>def <span class="ident">extract_cnode_data</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the results of the simulation for each commuter node.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>sim_data : Tuple
+    Simulation data.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>A dictionary of keys of the form <code>(i, j, k)</code>, corresponding to
+home node, origin node and destination node respectively.
+<code>cnode_data[i,j,k]</code> is an <code>np.ndarray</code> of shape
+<code>(ts.size, # of age groups, # of classes)</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_cnode_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for each commuter node.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    dict
+        A dictionary of keys of the form `(i, j, k)`, corresponding to
+        home node, origin node and destination node respectively.
+        `cnode_data[i,j,k]` is an `np.ndarray` of shape
+        `(ts.size, # of age groups, # of classes)`.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+    cnode_data = {}
+
+    age_groups = 0
+    model_dim = 0
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+
+    for a,o,i,j,k in cnode_mappings:
+        index = cnode_mappings[a,o,i,j,k]
+
+        if not (i,j,k) in cnode_data:
+            cnode_data[i,j,k] = np.zeros( (len(ts), age_groups, model_dim) )
+
+        cnode_data[i,j,k][:,a,o] = X_states[:,index]
+
+    return cnode_data</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.extract_community_data"><code class="name flex">
+<span>def <span class="ident">extract_community_data</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the results of the simulation for each community.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>sim_data : Tuple
+    Simulation data.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>An array of shape (ts.size, # of age groups, # of classes,<h1 id="of-locations-it-contains-the-results-of-the-simulation-summed">of locations). It contains the results of the simulation summed</h1>
+over each community. So <code>community_data[:,0,1,32]</code> contains the
+history of all people of age-bracket 0, class 1 and who live at location 32.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_community_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for each community.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes,
+        # of locations). It contains the results of the simulation summed
+        over each community. So `community_data[:,0,1,32]` contains the
+        history of all people of age-bracket 0, class 1 and who live at location 32.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+
+    age_groups = 0
+    model_dim = 0
+    max_home_index = 0
+
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+
+    community_data = np.zeros( (len(ts), age_groups, model_dim, max_home_index+1) )
+
+    for a,o,i,j in node_mappings:
+        community_data[:,a,o,i] += X_states[:,node_mappings[a,o,i,j]]
+
+    for a,o,i,j,k in cnode_mappings:
+        community_data[:,a,o,i] += X_states[:,cnode_mappings[a,o,i,j,k]]
+
+    return community_data</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.extract_location_data"><code class="name flex">
+<span>def <span class="ident">extract_location_data</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the results of the simulation for a given location.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>sim_data : Tuple
+    Simulation data.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>An array of shape (ts.size, # of age groups, # of classes,<h1 id="of-locations-it-contains-the-results-of-the-simulation-at-each">of locations). It contains the results of the simulation at each</h1>
+location. So <code>community_data[5,0,1,32]</code> contains the state of
+people of age-bracket 0, class 1 who are at location 32, at step 5
+of the simulation.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_location_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for a given location.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes,
+        # of locations). It contains the results of the simulation at each
+        location. So `community_data[5,0,1,32]` contains the state of
+        people of age-bracket 0, class 1 who are at location 32, at step 5
+        of the simulation.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+
+    age_groups = 0
+    model_dim = 0
+    max_loc_index = 0
+
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if j &gt; max_loc_index:
+            max_loc_index = j
+    for a,o,i,j,_ in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if j &gt; max_loc_index:
+            max_loc_index = j
+
+    location_data = np.zeros( (len(ts), age_groups, model_dim, max_loc_index+1) )
+
+    for a,o,i,j in node_mappings:
+        location_data[:,a,o,j] += X_states[:,node_mappings[a,o,i,j]]
+
+    return location_data</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.extract_network_data"><code class="name flex">
+<span>def <span class="ident">extract_network_data</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the results of the simulation for the whole network.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>sim_data : Tuple
+    Simulation data.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>An array of shape (ts.size, # of age groups, # of classes).
+It contains the result of the simulation of the network as a whole
+for each age group and class.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_network_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for the whole network.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes).
+        It contains the result of the simulation of the network as a whole
+        for each age group and class.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+
+    age_groups = 0
+    model_dim = 0
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+
+    network_data = np.zeros( (len(ts), age_groups, model_dim) )
+
+    for a,o,i,j in node_mappings:
+        network_data[:,a,o] += X_states[:,node_mappings[a,o,i,j]]
+
+    for a,o,i,j,k in cnode_mappings:
+        network_data[:,a,o] += X_states[:,cnode_mappings[a,o,i,j,k]]
+
+    return network_data</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.extract_node_data"><code class="name flex">
+<span>def <span class="ident">extract_node_data</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the results of the simulation for each node.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>sim_data : Tuple
+    Simulation data.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>A dictionary of keys of the form <code>(i, j)</code>, corresponding to
+home node, and location node respectively.
+<code>node_data[i,j,k]</code> is an <code>np.ndarray</code> of shape
+<code>(ts.size, # of age groups, # of classes)</code>.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_node_data(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation for each node.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    dict
+        A dictionary of keys of the form `(i, j)`, corresponding to
+        home node, and location node respectively.
+        `node_data[i,j,k]` is an `np.ndarray` of shape
+        `(ts.size, # of age groups, # of classes)`.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, X_states = sim_data
+    node_data = {}
+
+    age_groups = 0
+    model_dim = 0
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+
+    for a,o,i,j in node_mappings:
+        index = node_mappings[a,o,i,j]
+
+        if not (i,j) in node_data:
+            node_data[i,j] = np.zeros( (len(ts), age_groups, model_dim) )
+
+        node_data[i,j][:,a,o] = X_states[:,index]
+
+    return node_data</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.extract_simulation_data"><code class="name flex">
+<span>def <span class="ident">extract_simulation_data</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns a tuple containing various formatted data for a given simulation result.</p>
+<p>It returns <code>node_data, cnode_data, location_data, community_data, network_data</code>.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_simulation_data(sim_data):
+    &#34;&#34;&#34;Returns a tuple containing various formatted data for a given simulation result.
+
+    It returns `node_data, cnode_data, location_data, community_data, network_data`.
+    &#34;&#34;&#34;
+    node_mappings, cnode_mappings, ts, _ = sim_data
+
+    node_data = extract_node_data(sim_data)
+    cnode_data = extract_cnode_data(sim_data)
+
+    age_groups = 0
+    model_dim = 0
+    max_home_index = 0
+    max_loc_index = 0
+
+    for a,o,i,j in node_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+        if j &gt; max_loc_index:
+            max_loc_index = j
+    for a,o,i,j,k in cnode_mappings:
+        if a+1 &gt; age_groups:
+            age_groups = a+1
+        if o+1 &gt; model_dim:
+            model_dim = o+1
+        if i &gt; max_home_index:
+            max_home_index = i
+        if j &gt; max_loc_index:
+            max_loc_index = j
+
+    location_data = np.zeros( (len(ts), age_groups, model_dim, max_loc_index+1) )
+    community_data = np.zeros( (len(ts), age_groups, model_dim, max_home_index+1) )
+    network_data = np.zeros( (len(ts), age_groups, model_dim) )
+
+    for i,j in node_data:
+        node_data_ij = node_data[i,j]
+        location_data[:, :, :, j] += node_data_ij
+        community_data[:, :, :, i] += node_data_ij
+        network_data[:, :, :] += node_data_ij
+
+    for i,j,k in cnode_data:
+        cnode_data_ijk = cnode_data[i,j,k]
+        community_data[:, :, :, i] += cnode_data_ijk
+        network_data[:, :, :] += cnode_data_ijk
+
+    return ts, node_data, cnode_data, location_data, community_data, network_data</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.extract_ts"><code class="name flex">
+<span>def <span class="ident">extract_ts</span></span>(<span>sim_data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Returns the results of the simulation times given simulation data.</p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>sim_data : Tuple
+    Simulation data.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>A 1D array containing each time-step.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def extract_ts(sim_data):
+    &#34;&#34;&#34;Returns the results of the simulation times given simulation data.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        A 1D array containing each time-step.
+    &#34;&#34;&#34;
+    ts_saved = sim_data[2]
+    return ts_saved</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.get_dt_schedule"><code class="name flex">
+<span>def <span class="ident">get_dt_schedule</span></span>(<span>times, end_time)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates a time-step schedule.</p>
+<p>Example:</p>
+<p>The following generates a time-step schedule where we use a time-step
+of one minute between 7-10 and 17-19 o'clock, and 2 hours for all
+other times.</p>
+<pre><code>ts, dts = pyrossgeo.utils.get_dt_schedule([
+    (0,  2*60),
+    (7*60,  1),
+    (10*60, 2*60),
+    (17*60, 1),
+    (19*60, 2*60)
+    ], end_time=24*60)
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<pre><code>times : lost
+    list of tuples
+end_time : float
+    The final time of the schedule.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<pre><code>tuple
+    A tuple &lt;code&gt;(ts, dts)&lt;/code&gt;. &lt;code&gt;dts&lt;/code&gt; are the time-steps and &lt;code&gt;ts&lt;/code&gt;
+    the times.
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_dt_schedule(times, end_time):
+    &#34;&#34;&#34;Generates a time-step schedule.
+
+    Example:
+
+    The following generates a time-step schedule where we use a time-step
+    of one minute between 7-10 and 17-19 o\&#39;clock, and 2 hours for all
+    other times.
+
+        ts, dts = pyrossgeo.utils.get_dt_schedule([
+            (0,  2*60),
+            (7*60,  1),
+            (10*60, 2*60),
+            (17*60, 1),
+            (19*60, 2*60)
+            ], end_time=24*60)
+
+    Parameters
+    ----------
+        times : lost
+            list of tuples
+        end_time : float
+            The final time of the schedule.
+
+    Returns
+    -------
+        tuple
+            A tuple `(ts, dts)`. `dts` are the time-steps and `ts`
+            the times.
+    &#34;&#34;&#34;
+    times = list(times)
+    times.append( (end_time, 0) )
+    ts = []
+
+    for i in range(len(times)-1):
+        t, dt = times[i]
+        t_next = times[i+1][0]
+        ts.append(np.arange(t, t_next, dt))
+        
+    ts.append([end_time])
+    ts = np.concatenate(ts)
+    dts = (ts - np.roll(ts, 1))[1:]
+        
+    return np.array(ts, dtype=np.double), np.array(dts, dtype=np.double)</code></pre>
+</details>
+</dd>
+<dt id="pyrossgeo.utils.load_sim_data"><code class="name flex">
+<span>def <span class="ident">load_sim_data</span></span>(<span>load_path, use_zarr=False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Loads </p>
+<h2 id="parameters">Parameters</h2>
+<pre><code>load_path : str
+    Path of the simulation data folder.
+use_zarr : bool, optional
+    If True, the simulation data will be given as a zarr array,
+    rather than as a numpy array. The former is useful if the
+    data is very large.
+</code></pre>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>tuple</code></dt>
+<dd>A tuple <code>(node_mappings, cnode_mappings, ts, X_states)</code>, containing
+all simulation data. <code>X_states</code> is either an <code>np.ndarray</code> or a <code>zarr.core.Array</code>.
+If <code>use_zarr=True</code>, the latter will be given.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_sim_data(load_path, use_zarr=False):
+    &#34;&#34;&#34;Loads 
+
+    Parameters
+    ----------
+        load_path : str
+            Path of the simulation data folder.
+        use_zarr : bool, optional
+            If True, the simulation data will be given as a zarr array,
+            rather than as a numpy array. The former is useful if the
+            data is very large.
+
+    Returns
+    -------
+    tuple
+        A tuple `(node_mappings, cnode_mappings, ts, X_states)`, containing
+        all simulation data. `X_states` is either an `np.ndarray` or a `zarr.core.Array`.
+        If `use_zarr=True`, the latter will be given.
+    &#34;&#34;&#34;
+    node_mappings_path = &#39;node_mappings.pkl&#39;
+    cnode_mappings_path = &#39;cnode_mappings.pkl&#39;
+    ts_path = &#39;ts.npy&#39;
+    X_states_path = &#39;X_states.zarr&#39;
+
+    node_mappings = pickle.load( open( &#34;%s/%s&#34; %( load_path, node_mappings_path ), &#34;rb&#34; ) )
+    cnode_mappings = pickle.load( open( &#34;%s/%s&#34; %( load_path, cnode_mappings_path ), &#34;rb&#34; ) )
+    ts = np.load(&#34;%s/%s&#34; %( load_path, ts_path ))
+    X_states = zarr.open( &#34;%s/%s&#34; %( load_path, X_states_path ) , chunks=(len(ts), 1))
+
+    if not use_zarr:
+        X_states = X_states[:]
+
+    sim_data = ( node_mappings, cnode_mappings, ts, X_states )
+    return sim_data</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="pyrossgeo" href="index.html">pyrossgeo</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="pyrossgeo.utils.extract_cnode_data" href="#pyrossgeo.utils.extract_cnode_data">extract_cnode_data</a></code></li>
+<li><code><a title="pyrossgeo.utils.extract_community_data" href="#pyrossgeo.utils.extract_community_data">extract_community_data</a></code></li>
+<li><code><a title="pyrossgeo.utils.extract_location_data" href="#pyrossgeo.utils.extract_location_data">extract_location_data</a></code></li>
+<li><code><a title="pyrossgeo.utils.extract_network_data" href="#pyrossgeo.utils.extract_network_data">extract_network_data</a></code></li>
+<li><code><a title="pyrossgeo.utils.extract_node_data" href="#pyrossgeo.utils.extract_node_data">extract_node_data</a></code></li>
+<li><code><a title="pyrossgeo.utils.extract_simulation_data" href="#pyrossgeo.utils.extract_simulation_data">extract_simulation_data</a></code></li>
+<li><code><a title="pyrossgeo.utils.extract_ts" href="#pyrossgeo.utils.extract_ts">extract_ts</a></code></li>
+<li><code><a title="pyrossgeo.utils.get_dt_schedule" href="#pyrossgeo.utils.get_dt_schedule">get_dt_schedule</a></code></li>
+<li><code><a title="pyrossgeo.utils.load_sim_data" href="#pyrossgeo.utils.load_sim_data">load_sim_data</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.8.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
