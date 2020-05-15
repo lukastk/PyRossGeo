@@ -27,7 +27,7 @@ For a description of the various epidemiological models used in the examples (SI
 
 - [Configuration files](https://github.com/lukastk/PyRossGeo/blob/master/docs/Configuration%20files.md).  Detailed documentation of the PyRossGeo simulation configuration files.
 - [The geographical compartmental model](https://github.com/lukastk/PyRossGeo/blob/master/docs/model.pdf). Description of the model.
-- [API](https://lukastk.github.io/pyrossgeo/)
+- [API](https://lukastk.github.io/pyrossgeo-api/)
 
 
 #### Examples
