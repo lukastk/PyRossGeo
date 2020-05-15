@@ -8,14 +8,15 @@ def extract_node_data(sim_data):
     Parameters
     ----------
         sim_data : Tuple
-            Result of a simulation.
+            Simulation data.
 
     Returns
     -------
-    A dictionary of keys of the form `(i, j)`, corresponding to
-    home node, and location node respectively.
-    `node_data[i,j,k]` is an `np.ndarray` of shape
-    `(ts.size, # of age groups, # of classes)`.
+    dict
+        A dictionary of keys of the form `(i, j)`, corresponding to
+        home node, and location node respectively.
+        `node_data[i,j,k]` is an `np.ndarray` of shape
+        `(ts.size, # of age groups, # of classes)`.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
     node_data = {}
@@ -49,14 +50,15 @@ def extract_cnode_data(sim_data):
     Parameters
     ----------
         sim_data : Tuple
-            Result of a simulation.
+            Simulation data.
 
     Returns
     -------
-    A dictionary of keys of the form `(i, j, k)`, corresponding to
-    home node, origin node and destination node respectively.
-    `cnode_data[i,j,k]` is an `np.ndarray` of shape
-    `(ts.size, # of age groups, # of classes)`.
+    dict
+        A dictionary of keys of the form `(i, j, k)`, corresponding to
+        home node, origin node and destination node respectively.
+        `cnode_data[i,j,k]` is an `np.ndarray` of shape
+        `(ts.size, # of age groups, # of classes)`.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
     cnode_data = {}
@@ -90,13 +92,14 @@ def extract_network_data(sim_data):
     Parameters
     ----------
         sim_data : Tuple
-            Result of a simulation.
+            Simulation data.
 
     Returns
     -------
-    An np.ndarray of shape (ts.size, # of age groups, # of classes).
-    It contains the result of the simulation of the network as a whole
-    for each age group and class.
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes).
+        It contains the result of the simulation of the network as a whole
+        for each age group and class.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
 
@@ -129,15 +132,16 @@ def extract_location_data(sim_data):
     Parameters
     ----------
         sim_data : Tuple
-            Result of a simulation.
+            Simulation data.
 
     Returns
     -------
-    An np.ndarray of shape (ts.size, # of age groups, # of classes,
-    # of locations). It contains the results of the simulation at each
-    location. So `community_data[5,0,1,32]` contains the state of
-    people of age-bracket 0, class 1 who are at location 32, at step 5
-    of the simulation.
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes,
+        # of locations). It contains the results of the simulation at each
+        location. So `community_data[5,0,1,32]` contains the state of
+        people of age-bracket 0, class 1 who are at location 32, at step 5
+        of the simulation.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
 
@@ -173,14 +177,15 @@ def extract_community_data(sim_data):
     Parameters
     ----------
         sim_data : Tuple
-            Result of a simulation.
+            Simulation data.
 
     Returns
     -------
-    An np.ndarray of shape (ts.size, # of age groups, # of classes,
-    # of locations). It contains the results of the simulation summed
-    over each community. So `community_data[:,0,1,32]` contains the
-    history of all people of age-bracket 0, class 1 and who live at location 32.
+    np.ndarray
+        An array of shape (ts.size, # of age groups, # of classes,
+        # of locations). It contains the results of the simulation summed
+        over each community. So `community_data[:,0,1,32]` contains the
+        history of all people of age-bracket 0, class 1 and who live at location 32.
     """
     node_mappings, cnode_mappings, ts, X_states = sim_data
 
@@ -265,10 +270,40 @@ def extract_simulation_data(sim_data):
     return ts, node_data, cnode_data, location_data, community_data, network_data
 
 def extract_ts(sim_data):
+    """Returns the results of the simulation times given simulation data.
+
+    Parameters
+    ----------
+        sim_data : Tuple
+            Simulation data.
+
+    Returns
+    -------
+    np.ndarray
+        A 1D array containing each time-step.
+    """
     ts_saved = sim_data[2]
     return ts_saved
 
 def load_sim_data(load_path, use_zarr=False):
+    """Loads 
+
+    Parameters
+    ----------
+        load_path : str
+            Path of the simulation data folder.
+        use_zarr : bool, optional
+            If True, the simulation data will be given as a zarr array,
+            rather than as a numpy array. The former is useful if the
+            data is very large.
+
+    Returns
+    -------
+    tuple
+        A tuple `(node_mappings, cnode_mappings, ts, X_states)`, containing
+        all simulation data. `X_states` is either an `np.ndarray` or a `zarr.core.Array`.
+        If `use_zarr=True`, the latter will be given.
+    """
     node_mappings_path = 'node_mappings.pkl'
     cnode_mappings_path = 'cnode_mappings.pkl'
     ts_path = 'ts.npy'
@@ -291,28 +326,29 @@ def get_dt_schedule(times, end_time):
     Example:
 
     The following generates a time-step schedule where we use a time-step
-    of one minute between 7-10 and 17-19 o'clock, and 2 hours for all
+    of one minute between 7-10 and 17-19 o\'clock, and 2 hours for all
     other times.
 
-    ```
-    ts, dts = pyrossgeo.utils.get_dt_schedule([
-                (0,  2*60),
-                (7*60,  1),
-                (10*60, 2*60),
-                (17*60, 1),
-                (19*60, 2*60)
-                ], end_time=24*60)
-    ```
+        ts, dts = pyrossgeo.utils.get_dt_schedule([
+            (0,  2*60),
+            (7*60,  1),
+            (10*60, 2*60),
+            (17*60, 1),
+            (19*60, 2*60)
+            ], end_time=24*60)
 
     Parameters
     ----------
-        times : list of tuples
-        end_times : float
+        times : lost
+            list of tuples
+        end_time : float
+            The final time of the schedule.
 
     Returns
     -------
-        A tuple `(ts, dts)`, where `dts` are the time-steps and `ts`
-        the times.
+        tuple
+            A tuple `(ts, dts)`. `dts` are the time-steps and `ts`
+            the times.
     """
     times = list(times)
     times.append( (end_time, 0) )
