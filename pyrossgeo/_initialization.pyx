@@ -6,7 +6,7 @@ import scipy.special
 import pandas as pd
 import csv, json
 
-from pyrossgeo.__defs__ cimport node, cnode, transporter, DTYPE_t
+from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
 from pyrossgeo.__defs__ import DTYPE
 from pyrossgeo.Simulation cimport Simulation
 
@@ -93,7 +93,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     #### Find model_dim
 
-    model_dim = len(model_dat['classes'])
+    model_dim = len(model_dat['settings']['classes'])
 
     #### Find age_groups
 
@@ -131,6 +131,11 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     py_contact_matrices = [] # A list of all contact matrices used
 
     py_location_area = None # Array containing the areas of each location
+
+    # Stochastic
+
+    py_stochastic_threshold_from_below = None
+    py_stochastic_threshold_from_above = None
 
     #### Go through the commuter networks, and add nodes and cnodes ####
 
@@ -367,57 +372,136 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     #### Set node and cnode parameters #################################
 
-    # Note: This section is the most complicated part of the initialisation procedure.
+    model_class_name_to_class_index = {}
+    model_class_index_to_class_name = {}
+    for i in range(len(model_dat['settings']['classes'])):
+        oclass = model_dat['settings']['classes'][i]
+        model_class_name_to_class_index[oclass] = i
+        model_class_index_to_class_name[i] = oclass
 
-    model_class_to_class_index_o = {}
-    model_class_index_o_to_class = {}
-    for i in range(len(model_dat['classes'])):
-        oclass = model_dat['classes'][i]
-        model_class_to_class_index_o[oclass] = i
-        model_class_index_o_to_class[i] = oclass
+    py_model_linear_terms = []
+    py_model_infection_terms = []
 
-    # Infection terms
+    infection_model_param_to_model_term = {}
+    linear_model_param_to_model_term = {}
 
-    model_class_to_infection_class_index = {}
-    model_parameter_to_class_index = {}
-    for oclass in model_dat:
-        if oclass == 'classes':
+    ## Get the stochastic thresholds
+
+    py_stochastic_threshold_from_below = model_dat['settings']['stochastic_threshold_from_below']
+    py_stochastic_threshold_from_above = model_dat['settings']['stochastic_threshold_from_above']
+
+    ## Construct internal representation of model
+
+    for class_name in model_dat:
+        if class_name == 'settings':
             continue
-        for uclass, model_parameter_key in model_dat[oclass]['infection']:
-            class_index = model_class_to_class_index_o[uclass]
-            if not class_index in py_infection_classes_indices:
-                model_class_to_infection_class_index[ uclass ] = len(py_infection_classes_indices)
-                py_infection_classes_indices.append( int(class_index) )
-            if not model_parameter_key in model_parameter_to_class_index:
-                model_parameter_to_class_index[model_parameter_key] = model_class_to_class_index_o[uclass]
 
-    py_infection_classes_indices = np.array(py_infection_classes_indices, dtype=np.dtype("i"))
+        for coupling_class, model_param in model_dat[class_name]['linear']:
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in linear_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                linear_model_param_to_model_term[model_param] = mt
+                py_model_linear_terms.append(mt)
+            mt = linear_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+        for coupling_class, model_param in model_dat[class_name]['infection']: 
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in infection_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                infection_model_param_to_model_term[model_param] = mt
+                py_model_infection_terms.append(mt)
+            mt = infection_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+    # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
     
-    infection_terms_class_index_to_index = []
-    for o in range(model_dim):
-        py_class_infections.append( [] )
-        infection_terms_class_index_to_index.append( {} )
-        for oclass, _ in model_dat[ model_class_index_o_to_class[o] ]['infection']:
-            infection_terms_class_index_to_index[o][ model_class_to_class_index_o[oclass] ] = len(py_class_infections[o])
-            py_class_infections[o].append( model_class_to_infection_class_index[oclass] )
+    for model_param in linear_model_param_to_model_term:
+        mt = linear_model_param_to_model_term[model_param]
 
-    # Linear terms
- 
-    for o in range(model_dim):
-        py_linear_terms.append([])
-        for oclass, model_parameter_key in model_dat[ model_class_index_o_to_class[o] ]['linear']:
-            py_linear_terms[o].append( model_class_to_class_index_o[oclass] )
+    py_model_linear_terms = []
+    py_model_infection_terms = []
 
-            if not model_parameter_key in model_parameter_to_class_index:
-                model_parameter_to_class_index[model_parameter_key] = model_class_to_class_index_o[oclass]
+    infection_model_param_to_model_term = {}
+    linear_model_param_to_model_term = {}
 
-    linear_terms_class_index_to_index = []
-    for o in range(model_dim):
-        linear_terms_class_index_to_index.append({})
-        for i in range(len(py_linear_terms[o])):
-            linear_terms_class_index_to_index[o][ py_linear_terms[o][i] ] = i
+    ## Construct internal representation of model
 
-    # Set the model parameters for each node
+    for class_name in model_dat:
+        if class_name == 'settings':
+            continue
+
+        for coupling_class, model_param in model_dat[class_name]['linear']:
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in linear_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                linear_model_param_to_model_term[model_param] = mt
+                py_model_linear_terms.append(mt)
+            mt = linear_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+        for coupling_class, model_param in model_dat[class_name]['infection']: 
+            if model_param[0] == '-':
+                is_neg = True
+                model_param = model_param[1:]
+            else:
+                is_neg = False
+
+            if not model_param in infection_model_param_to_model_term:
+                mt = py_model_term()
+                mt.model_param = model_param
+                infection_model_param_to_model_term[model_param] = mt
+                py_model_infection_terms.append(mt)
+            mt = infection_model_param_to_model_term[model_param]
+            if is_neg:
+                mt.oi_neg = model_class_name_to_class_index[class_name]
+            else:
+                mt.oi_pos = model_class_name_to_class_index[class_name]
+            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
+
+    # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
+    
+    for model_param in infection_model_param_to_model_term:
+        mt = infection_model_param_to_model_term[model_param]
+
+        if not mt.oi_coupling in infection_model_param_to_model_term:
+            py_infection_classes_indices.append(mt.oi_coupling)
+
+        mt.infection_index = py_infection_classes_indices.index(mt.oi_coupling)
+
+    py_infection_classes_indices = np.array(py_infection_classes_indices, dtype=np.dtype('i'))
+
+    ## Set node model parameters
 
     py_location_area = np.zeros( max_node_index+1 )
 
@@ -442,31 +526,17 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
             if n.home == n.loc: # Areas are only defined for locations, not specific nodes
                 py_location_area[n.loc] = area
 
-            n.linear_coeffs = [ np.zeros( len(linear_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
-            n.infection_coeffs = [ np.zeros( len(infection_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
+            for i in range(len(py_model_linear_terms)):
+                mt = py_model_linear_terms[i]
+                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                n.linear_coeffs.append(param_val)
 
-            for oclass in model_dat:
-                if oclass == 'classes':
-                    continue
-                
-                o = model_class_to_class_index_o[oclass]
-                for linear_class, param_key in model_dat[oclass]['linear']:
-                    lo = model_class_to_class_index_o[linear_class]
-                    if param_key[0] == '-':
-                        param = -DTYPE(row[param_key[1:]]) * days_to_minutes
-                    else:
-                        param = DTYPE(row[param_key]) * days_to_minutes
-                    n.linear_coeffs[o][linear_terms_class_index_to_index[o][lo]] = param
+            for i in range(len(py_model_infection_terms)):
+                mt = py_model_infection_terms[i]
+                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                n.infection_coeffs.append(param_val)
 
-                for infected_class, param_key in model_dat[oclass]['infection']:
-                    io = model_class_to_class_index_o[infected_class]
-                    if param_key[0] == '-':
-                        param = -DTYPE(row[param_key[1:]]) * days_to_minutes
-                    else:
-                        param = DTYPE(row[param_key]) * days_to_minutes
-                    n.infection_coeffs[o][infection_terms_class_index_to_index[o][io]] = param
-
-    # Set the model parameters for each commuter node
+    ## Set cnode model parameters
 
     for cn in py_cnodes:
         for row_i, row in cnode_parameters_dat.iterrows():
@@ -491,30 +561,15 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
             cn.area = area
 
-            cn.linear_coeffs = [ np.zeros( len(linear_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
-            cn.infection_coeffs = [ np.zeros( len(infection_terms_class_index_to_index[u]) ) for u in range(model_dim) ]
+            for i in range(len(py_model_linear_terms)):
+                mt = py_model_linear_terms[i]
+                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                cn.linear_coeffs.append(param_val)
 
-            for oclass in model_dat:
-                if oclass == 'classes':
-                    continue
-                
-                o = model_class_to_class_index_o[oclass]
-                
-                for linear_class, param_key in model_dat[oclass]['linear']:
-                    lo = model_class_to_class_index_o[linear_class]
-                    if param_key[0] == '-':
-                        param = -DTYPE(row[param_key[1:]]) * days_to_minutes
-                    else:
-                        param = DTYPE(row[param_key]) * days_to_minutes
-                    cn.linear_coeffs[o][linear_terms_class_index_to_index[o][lo]] = param
-
-                for infected_class, param_key in model_dat[oclass]['infection']:
-                    io = model_class_to_class_index_o[infected_class]
-                    if param_key[0] == '-':
-                        param = -DTYPE(row[param_key[1:]]) * days_to_minutes
-                    else:
-                        param = DTYPE(row[param_key]) * days_to_minutes
-                    cn.infection_coeffs[o][infection_terms_class_index_to_index[o][io]] = param
+            for i in range(len(py_model_infection_terms)):
+                mt = py_model_infection_terms[i]
+                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                cn.infection_coeffs.append(param_val)
 
     #### Set contact matrices ##########################################
 
@@ -575,14 +630,16 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     return _initialize(self, max_node_index, model_dim, age_groups, X_state0, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
-                        py_infection_classes_indices, py_class_infections, py_linear_terms,
-                        py_contact_matrices, py_contact_matrices_key_to_index)
+                        py_infection_classes_indices, py_model_linear_terms, py_model_infection_terms,
+                        py_contact_matrices, py_contact_matrices_key_to_index,
+                        py_stochastic_threshold_from_below, py_stochastic_threshold_from_above)
 
 
 cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_state_arr, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
-                        py_infection_classes_indices, py_class_infections, py_linear_terms,
-                        py_contact_matrices, py_contact_matrices_key_to_index):
+                        py_infection_classes_indices, py_model_linear_terms, py_model_infection_terms,
+                        py_contact_matrices, py_contact_matrices_key_to_index,
+                        py_stochastic_threshold_from_below, py_stochastic_threshold_from_above):
     """Initialize the simulation."""
 
     self.has_been_initialized = True
@@ -627,17 +684,13 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
         for Ti in range(self.nodes[ni].outgoing_T_indices_len):
             self.nodes[ni].outgoing_T_indices[Ti] = pn.outgoing_T_indices[Ti]
 
-        self.nodes[ni].linear_coeffs = <DTYPE_t **> malloc(len(pn.linear_coeffs) * sizeof(DTYPE_t*))
-        for o in range(len(pn.linear_coeffs)):
-            self.nodes[ni].linear_coeffs[o] = <DTYPE_t *> malloc(len(pn.linear_coeffs[o]) * sizeof(DTYPE_t))
-            for i in range(len(pn.linear_coeffs[o])):
-                self.nodes[ni].linear_coeffs[o][i] = pn.linear_coeffs[o][i]
+        self.nodes[ni].linear_coeffs = <DTYPE_t *> malloc(len(pn.linear_coeffs) * sizeof(DTYPE_t))
+        for i in range(len(pn.linear_coeffs)):
+            self.nodes[ni].linear_coeffs[i] = pn.linear_coeffs[i]
 
-        self.nodes[ni].infection_coeffs = <DTYPE_t **> malloc(len(pn.infection_coeffs) * sizeof(DTYPE_t*))
-        for o in range(len(pn.infection_coeffs)):
-            self.nodes[ni].infection_coeffs[o] = <DTYPE_t *> malloc(len(pn.infection_coeffs[o]) * sizeof(DTYPE_t))
-            for i in range(len(pn.infection_coeffs[o])):
-                self.nodes[ni].infection_coeffs[o][i] = pn.infection_coeffs[o][i]
+        self.nodes[ni].infection_coeffs = <DTYPE_t *> malloc(len(pn.infection_coeffs) * sizeof(DTYPE_t))
+        for i in range(len(pn.infection_coeffs)):
+            self.nodes[ni].infection_coeffs[i] = pn.infection_coeffs[i]
 
     self.cnodes_num = len(py_cnodes)
     self.cnodes = <cnode *> malloc(self.cnodes_num * sizeof(cnode))
@@ -659,17 +712,13 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
         for i in range(len(pcn.contact_matrix_indices)):
             self.cnodes[ni].contact_matrix_indices[i] = pcn.contact_matrix_indices[i]
 
-        self.cnodes[ni].linear_coeffs = <DTYPE_t **> malloc(len(pcn.linear_coeffs) * sizeof(DTYPE_t*))
-        for o in range(len(pcn.linear_coeffs)):
-            self.cnodes[ni].linear_coeffs[o] = <DTYPE_t *> malloc(len(pcn.linear_coeffs[o]) * sizeof(DTYPE_t))
-            for i in range(len(pcn.linear_coeffs[o])):
-                self.cnodes[ni].linear_coeffs[o][i] = pcn.linear_coeffs[o][i]
+        self.cnodes[ni].linear_coeffs = <DTYPE_t *> malloc(len(pcn.linear_coeffs) * sizeof(DTYPE_t))
+        for i in range(len(pcn.linear_coeffs)):
+            self.cnodes[ni].linear_coeffs[i] = pcn.linear_coeffs[i]
 
-        self.cnodes[ni].infection_coeffs = <DTYPE_t **> malloc(len(pcn.infection_coeffs) * sizeof(DTYPE_t*))
-        for o in range(len(pcn.infection_coeffs)):
-            self.cnodes[ni].infection_coeffs[o] = <DTYPE_t *> malloc(len(pcn.infection_coeffs[o]) * sizeof(DTYPE_t))
-            for i in range(len(pcn.infection_coeffs[o])):
-                self.cnodes[ni].infection_coeffs[o][i] = pcn.infection_coeffs[o][i]
+        self.cnodes[ni].infection_coeffs = <DTYPE_t *> malloc(len(pcn.infection_coeffs) * sizeof(DTYPE_t))
+        for i in range(len(pcn.infection_coeffs)):
+            self.cnodes[ni].infection_coeffs[i] = pcn.infection_coeffs[i]
 
     # Transport
 
@@ -752,21 +801,23 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     self.infection_classes_indices = py_infection_classes_indices
     self.infection_classes_num = len(py_infection_classes_indices)
 
-    self.class_infections = <int **> malloc(len(py_class_infections) * sizeof(int *))
-    self.class_infections_num = <int *> malloc(len(py_class_infections) * sizeof(int))
-    for o in range(len(py_class_infections)):
-        self.class_infections[o] = <int *> malloc(len(py_class_infections[o]) * sizeof(int))
-        self.class_infections_num[o] = len(py_class_infections[o])
-        for i in range(len(py_class_infections[o])):
-            self.class_infections[o][i] = py_class_infections[o][i]
+    self.model_linear_terms = <model_term *> malloc(len(py_model_linear_terms) * sizeof(model_term))
+    self.model_linear_terms_len = len(py_model_linear_terms)
+    for i in range(len(py_model_linear_terms)):
+        py_mt = py_model_linear_terms[i]
+        self.model_linear_terms[i].oi_pos = py_mt.oi_pos
+        self.model_linear_terms[i].oi_neg = py_mt.oi_neg
+        self.model_linear_terms[i].oi_coupling = py_mt.oi_coupling
+        self.model_linear_terms[i].infection_index = py_mt.infection_index
 
-    self.linear_terms = <int **> malloc(len(py_linear_terms) * sizeof(int *))
-    self.linear_terms_num = <int *> malloc(len(py_linear_terms) * sizeof(int))
-    for o in range(len(py_linear_terms)):
-        self.linear_terms[o] = <int *> malloc(len(py_linear_terms[o]) * sizeof(int))
-        self.linear_terms_num[o] = len(py_linear_terms[o])
-        for i in range(len(py_linear_terms[o])):
-            self.linear_terms[o][i] = py_linear_terms[o][i]
+    self.model_infection_terms = <model_term *> malloc(len(py_model_infection_terms) * sizeof(model_term))
+    self.model_infection_terms_len = len(py_model_infection_terms)
+    for i in range(len(py_model_infection_terms)):
+        py_mt = py_model_infection_terms[i]
+        self.model_infection_terms[i].oi_pos = py_mt.oi_pos
+        self.model_infection_terms[i].oi_neg = py_mt.oi_neg
+        self.model_infection_terms[i].oi_coupling = py_mt.oi_coupling
+        self.model_infection_terms[i].infection_index = py_mt.infection_index
 
     self.contact_matrices = py_contact_matrices
     self.contact_matrices_key_to_index = py_contact_matrices_key_to_index
@@ -778,6 +829,9 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
 
     self._Ns_arr = np.zeros( (self.age_groups) )
     self._Ns = self._Ns_arr
+
+    self.stochastic_threshold_from_below = np.array(py_stochastic_threshold_from_below, dtype=DTYPE)
+    self.stochastic_threshold_from_above = np.array(py_stochastic_threshold_from_above, dtype=DTYPE)
 
     return X_state_arr
 
@@ -791,8 +845,8 @@ class py_node:
         self.incoming_T_indices = []
         self.outgoing_T_indices = []
         self.state_pop = None
-        self.linear_coeffs = None
-        self.infection_coeffs = None
+        self.linear_coeffs = []
+        self.infection_coeffs = []
         self.contact_matrix_indices = None
 
     def __str__(self):
@@ -812,8 +866,8 @@ class py_cnode:
         self.outgoing_T = -1
         self.area = -1
         self.state_pop = None
-        self.linear_coeffs = None
-        self.infection_coeffs = None
+        self.linear_coeffs = []
+        self.infection_coeffs = []
         self.is_on = False
         self.contact_matrix_indices = None
 
@@ -840,3 +894,10 @@ class py_transporter:
 
     def __str__(self):
         return "ti: %s, a: %s, home: %s, fro: %s, to: %s" % (self.T_index, self.age, self.home, self.fro, self.to)
+
+class py_model_term:
+    def __init__(self):
+        self.oi_pos = -1
+        self.oi_neg = -1
+        self.oi_coupling  = -1
+        self.infection_index = -1

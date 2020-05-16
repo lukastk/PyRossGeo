@@ -9,6 +9,29 @@ from pyrossgeo._helpers import compute, free_sim
 #    raise(Exception('SIM_EVENT_NULL triggered'))
 
 cdef class Simulation:
+    """Simulates the geographic compartmental model.
+
+    Attributes
+    ----------
+    age_groups : int
+        The number of age-groups.
+    model_dim : int
+        The number of model classes.
+    max_node_index : int
+        The highest index of all nodes (not including cnodes). "Index" here is not to be confused
+        with `(age, model_class, home, location)`.
+    node_mappings : dict
+        Contains mappings between nodes `(age, model_class, home, location)`
+        to its index in the state vector `X_state`.
+    cnode_mappings : dict
+        Contains mappings between cnodes `(age, model_class, home, from, to)`
+        to its index in the state vector `X_state`.
+    storage : dict
+        Persistent storage used for events.
+    has_been_initialized : bool
+        If True, then Simulation.initialize has been called.
+
+    """
 
     def __cinit__(self):
         self.storage = {}
@@ -28,7 +51,8 @@ cdef class Simulation:
         to a file containing the data. See the documentation for the
         format each configuration file should take.
 
-        Args:
+        Parameters
+        ----------
             model_dat : str or dict
                 Specifies the epidemic model
             commuter_networks_dat : str or np.ndarray
@@ -64,7 +88,7 @@ cdef class Simulation:
         `dts[i]` is the time-step used during step `i` of the simualtion.
 
         If `save_path` is specified, then the result of the simulation 
-        will be outputted directly to the hard-drive as a .zarr array
+        will be outputted directly to the hard-drive as a `zarr` array
         at the given path.
 
         Parameters
@@ -90,17 +114,18 @@ cdef class Simulation:
 
         Returns
         -------
-            A tuple `((node_mappings, cnode_mappings), ts, X_states)`. `X_states` is an
-            np.ndarray of shape `(ts.size, N)` where `N` is the total
-            degrees of freedom of the system. If `only_save_nodes = True`
-            then `N` is just the degrees of freedom of the nodes, and excludes
-            the commuting nodes. `ts` is the times corresponding to `X_states`.
-            `node_mappings` is a dictionary with keys of form `(a,o,i,j)`,
-            corresponding to age-bracket, class, home and location respectively.
-            `node_mappings[a,o,i,j]` is the column of `X_states` for the 
-            corresponding state value. Similarly, `cnode_mappings` is
-            a dictionary with keys of the form `(a,o,i,j,k)`, corresponding
-            to age-bracket, class, home, origin, destination respectively.
+            tuple
+                A tuple `((node_mappings, cnode_mappings), ts, X_states)`.
+                `X_states` is an np.ndarray of shape `(ts.size, N)` where `N` is the total
+                degrees of freedom of the system. If `only_save_nodes = True`
+                then `N` is just the degrees of freedom of the nodes, and excludes
+                the commuting nodes. `ts` is the times corresponding to `X_states`.
+                `node_mappings` is a dictionary with keys of form `(a,o,i,j)`,
+                corresponding to age-bracket, class, home and location respectively.
+                `node_mappings[a,o,i,j]` is the column of `X_states` for the 
+                corresponding state value. Similarly, `cnode_mappings` is
+                a dictionary with keys of the form `(a,o,i,j,k)`, corresponding
+                to age-bracket, class, home, origin, destination respectively.
         """
         return simulate(self, X_state, t_start, t_end, dts, steps_per_save,
                     save_path, only_save_nodes, steps_per_print,

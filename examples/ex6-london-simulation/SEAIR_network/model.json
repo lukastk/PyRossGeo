@@ -1,0 +1,32 @@
+{
+    "settings" : {
+        "classes" : ["S", "E", "A", "I", "R"],
+        "stochastic_threshold_from_below" : [1000, 1000, 1000, 1000, 1000],
+        "stochastic_threshold_from_above" : [500, 500, 500, 500, 500]
+    },
+
+    "S" : {
+        "linear"    : [],
+        "infection" : [ ["I", "-betaI"], ["A", "-betaA"] ]
+    },
+
+    "E" : {
+        "linear"    : [ ["E", "-gammaE"] ],
+        "infection" : [ ["I", "betaI"], ["A", "betaA"] ]
+    },
+
+    "A" : {
+        "linear"    : [ ["E", "gammaE"], ["A", "-gammaA"] ],
+        "infection" : []
+    },
+
+    "I" : {
+        "linear"    : [ ["A", "gammaA"], ["I", "-gammaI"] ],
+        "infection" : []
+    },
+
+    "R" : {
+        "linear"    : [ ["I", "gammaI"] ],
+        "infection" : []
+    }
+}

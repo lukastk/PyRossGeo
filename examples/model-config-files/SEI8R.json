@@ -1,0 +1,53 @@
+{
+    "classes" : ["S", "E", "Ia", "Is", "Is'", "Ih", "Ih'", "Ic", "Ic'", "Im"],
+
+    "S" : {
+        "linear" :      [ ],
+        "infection" :   [ ["Ia", "-beta"], ["Is", "-beta"] ]
+    },
+
+    "E" : {
+        "linear" :      [ ["E", "-gammaE"] ],
+        "infection" :   [ ["Ia", "beta"], ["Is", "beta"] ]
+    },
+
+    "Ia" : {
+        "linear" :      [ ["E", "a*gammaE"], ["Ia", "-gammaIa"] ],
+        "infection" :   [ ]
+    },
+
+    "Is" : {
+        "linear" :      [ ["E", "abar*gammaE"], ["Is", "-gammaIs"] ],
+        "infection" :   [ ]
+    },
+
+    "Is'" : {
+        "linear" :      [ ["Is", "hbar*gammaIs"], ["Is'", "-gammaIs'"] ],
+        "infection" :   [ ]
+    },
+
+    "Ih" : {
+        "linear" :      [ ["Is", "h*gammaIs"], ["Ih", "-gammaIh"] ],
+        "infection" :   [ ]
+    },
+
+    "Ih'" : {
+        "linear" :      [ ["Ih", "cbar*gammaIh"], ["Ih'", "-gammaIh'"] ],
+        "infection" :   [ ]
+    },
+
+    "Ic" : {
+        "linear" :      [ ["Ic", "c*gammaIh"], ["Ic", "-gammaIc"] ],
+        "infection" :   [ ]
+    },
+
+    "Ic'" : {
+        "linear" :      [ ["Ic", "mbar*gammaIc"], ["Ic'", "-gammaIc'"] ],
+        "infection" :   [ ]
+    },
+
+    "Im" : {
+        "linear" :      [ ["Ic", "m*gammaIc"] ],
+        "infection" :   [ ]
+    }
+}

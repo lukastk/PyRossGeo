@@ -1,0 +1,23 @@
+{
+    "classes" : ["S", "E", "I", "R"],
+
+    "S" : {
+        "linear"    : [],
+        "infection" : [ ["I", "-beta"] ]
+    },
+
+    "E" : {
+        "linear"    : [ ["E", "-gammaE"] ],
+        "infection" : [ ["I", "beta"] ]
+    },
+
+    "I" : {
+        "linear"    : [ ["E", "gammaE"], ["I", "-gammaI"] ],
+        "infection" : []
+    },
+
+    "R" : {
+        "linear"    : [ ["I", "gammaI"] ],
+        "infection" : []
+    }
+}
