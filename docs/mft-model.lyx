@@ -1,0 +1,518 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrbook
+\begin_preamble
+\usepackage{epigraph}
+\setlength\epigraphwidth{.6\textwidth}
+\usepackage{tikz}
+\usetikzlibrary{automata, positioning}
+
+\definecolor{myBlue}{rgb}{0,0.396,0.6}
+
+\usepackage[colorlinks=true,linkcolor=myBlue,urlcolor=myBlue,citecolor=myBlue,anchorcolor=myBlue]{hyperref}
+% Added by lyx2lyx
+\renewcommand{\textendash}{--}
+\renewcommand{\textemdash}{---}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+tcolorbox
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+PyRossGeo: The mean field approach of the geographical compartmental model
+ for infective diseases
+\end_layout
+
+\begin_layout Author
+Hideki Kobayashi and Rajesh Singh
+\end_layout
+
+\begin_layout Date
+May 16, 2020
+\end_layout
+
+\begin_layout Section*
+1.
+ Model: Weighted interaction
+\end_layout
+
+\begin_layout Standard
+We now consider a structured metapopulation 
+\begin_inset Formula $\boldsymbol{x}=\{x_{in}\,|\,i=1,\ldots M\times L,\,in=1,\ldots N_{d}\}$
+\end_inset
+
+ consisting of 
+\begin_inset Formula $M$
+\end_inset
+
+ age-compartments and 
+\begin_inset Formula $L$
+\end_inset
+
+ classes of epidemiological states.
+ We also add another 
+\begin_inset Formula $n=1,\dots,N_{d}$
+\end_inset
+
+, which specifies a geographical node, while the dynamics has a time scale
+ of 1 hour.
+ The interaction between the nodes is captured by the rate of infection
+ of a susceptible individual.
+ Although we apply this approach to a simple model, It can be applied to
+ arbitrary models.
+ This method uses 3 models depending on the time period called HOME, TRANSPORT
+ and WORK.
+\end_layout
+
+\begin_layout Standard
+In the HOME period means everyone is in the home node, the time progress
+ of the system can be represented as the simple SIR model:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\mathrm{d}S_{in}}{\mathrm{d}t} & = & -\lambda_{in}S_{in}\\
+\frac{\mathrm{d}I_{in}}{\mathrm{d}t} & = & \lambda_{in}S_{in}-\gamma I_{in}\\
+\frac{\mathrm{d}R_{in}}{\mathrm{d}t} & = & \gamma I_{in}\\
+\lambda_{in} & = & \beta\sum_{j=1}^{M}C_{ij}\frac{I_{jn}}{N_{jn}^{H}}
+\end{eqnarray*}
+
+\end_inset
+
+where
+\begin_inset Formula $\ensuremath{S_{in}},\ensuremath{I_{in}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ensuremath{R_{in}}$
+\end_inset
+
+ are defined as Susceptible, Infectious and Recovered of the residence in
+ the node 
+\begin_inset Formula $n$
+\end_inset
+
+ and the age group
+\begin_inset Formula $i$
+\end_inset
+
+, respectively.
+\begin_inset Formula $N_{in}^{H}$
+\end_inset
+
+ is the number of the people who live in 
+\begin_inset Formula $n$
+\end_inset
+
+ in age group 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the WORK period, someone moves to another node, and someone stays in
+ the home node.
+ Here we focus on the behavior of 
+\begin_inset Formula $\hat{\bm{S}}_{in}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\bm{I}}_{in}$
+\end_inset
+
+, which are the total value of the Susceptible and Infectious in the node
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ and age group 
+\begin_inset Formula $i$
+\end_inset
+
+ during WORK period.
+ The definition of these are in following.
+ The time evolution of the model is represented as:
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\mathrm{d}\hat{\bm{S}}_{in}}{\mathrm{d}t} & = & -\lambda_{in}^{W}\hat{\bm{S}}_{in}\\
+\frac{\mathrm{d}\hat{\bm{I}}_{in}}{\mathrm{d}t} & = & \lambda_{in}^{W}\hat{\bm{S}}_{in}-\gamma\hat{\bm{I}}_{in}\\
+\lambda_{in}^{W} & = & r^{W}\beta\sum_{j=1}^{M}C_{ij}\frac{\hat{\bm{I}}_{jn}}{N_{jn}^{w}}\\
+\hat{\bm{S}}_{in} & = & \sum_{m=1}^{N_{d}}\frac{D_{i,nm}}{N_{im}^{R}}S_{im}=\sum_{m=1}^{N_{d}}P_{i,nm}^{H}S_{im}\\
+\hat{\bm{I}}_{in} & = & \sum_{m=1}^{N_{d}}\frac{D_{i,nm}}{N_{in}^{H}}I_{im}=\sum_{m=1}^{N_{d}}P_{i,nm}^{H}I_{im}
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $D_{i,nm}$
+\end_inset
+
+, which can be obtained from the census dataset, is the number of people
+ working at index 
+\begin_inset Formula $n$
+\end_inset
+
+ and living in 
+\begin_inset Formula $m$
+\end_inset
+
+ in the age group 
+\begin_inset Formula $i$
+\end_inset
+
+, 
+\begin_inset Formula $N_{in}^{H}=\sum_{m}D_{i,mn}$
+\end_inset
+
+ is the total number of residence people, 
+\begin_inset Formula $N_{in}^{w}=\sum_{m}D_{i,nm}$
+\end_inset
+
+ is the total number of the people working at the node 
+\begin_inset Formula $n$
+\end_inset
+
+ in the age group 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $P_{i,nm}^{R}=D_{i,nm}/N_{in}^{H}$
+\end_inset
+
+.
+ Under the assumption that the term of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ in both sides of the ODE of 
+\begin_inset Formula $\hat{\bm{S}}_{im}$
+\end_inset
+
+ are equal to each other, 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ satisfies the equation as:
+\begin_inset Formula 
+\begin{eqnarray*}
+P_{i,mn}^{H}\frac{\mathrm{d}S_{in}}{\mathrm{d}t} & = & -\lambda_{im}^{W}P_{i,mn}^{H}S_{in}
+\end{eqnarray*}
+
+\end_inset
+
+The ODE of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ can be obtained by summation for 
+\begin_inset Formula $m$
+\end_inset
+
+ in both sides.
+ Thus, we can represent the ODE of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{in}$
+\end_inset
+
+ as:
+\begin_inset Formula 
+\begin{align*}
+\frac{\mathrm{d}S_{in}}{\mathrm{d}t} & =-\sum_{m=1}^{N_{d}}\lambda_{im}^{W}P_{i,mn}^{H}S_{in}\\
+\frac{\mathrm{d}I_{in}}{\mathrm{d}t} & =\sum_{m=1}^{N_{d}}\lambda_{im}^{W}P_{i,mn}^{H}S_{in}-\gamma I_{in}
+\end{align*}
+
+\end_inset
+
+Although we DO NOT need to expand the ODE of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{in}$
+\end_inset
+
+ in simulations, the expanded formula is written down for a reference:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\frac{\mathrm{d}S_{in}}{\mathrm{d}t} & =-\sum_{m=1}^{N_{d}}\lambda_{im}^{W}P_{i,mn}^{H}S_{in}\\
+ & =-r^{w}\beta\sum_{j=1}^{M}\sum_{m=1}^{N_{d}}C_{ij}\frac{\hat{\bm{I}}_{jm}}{N_{jm}^{W}}P_{i,mn}^{H}S_{in}\\
+ & =-r^{w}\beta\sum_{j=1}^{M}\sum_{m,k=1}^{N_{d}}C_{ij}\frac{P_{j,mk}^{H}P_{i,mn}^{H}}{N_{jm}^{W}}I_{jk}S_{in}
+\end{align*}
+
+\end_inset
+
+The expanded formula insist that the incremantaion value of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ includes the contact between 
+\begin_inset Formula $I_{jk}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ in the node 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ We call this effect as 
+\begin_inset Quotes eld
+\end_inset
+
+second order effect
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the TRANSPORT period, we focus on the behaviour of 
+\begin_inset Formula $S_{i,nm}=P_{i,nm}^{H}S_{im}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\bm{I}}_{i,nm}$
+\end_inset
+
+ that is the total value of the Infectious who will go from node 
+\begin_inset Formula $m$
+\end_inset
+
+ to node 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ The time evolution of the model is represented as:
+\begin_inset Formula 
+\begin{align*}
+\frac{\mathrm{d}S_{i,nm}}{\mathrm{d}t} & =-\lambda_{i,nm}^{T}S_{i,nm}\\
+\frac{\mathrm{d}\hat{\bm{I}}_{i,nm}}{\mathrm{d}t} & =\lambda_{i,nm}^{T}-\gamma\hat{\bm{I}}_{i,nm}\\
+\lambda_{i,nm}^{T} & =r^{T}\beta\sum_{j=1}^{M}C_{ij}\frac{\hat{I}_{j,nm}}{N_{j,nm}^{T}}\\
+S_{i,nm} & =P_{i,nm}^{H}S_{im}\\
+\hat{\bm{I}}_{i,nm} & =\sum_{<kl>}I_{i,kl}\frac{d_{kl}}{d_{nm}}\\
+N_{i,nm}^{T} & =\sum_{<kl>}R_{i,kl}\frac{d_{kl}}{d_{nm}}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $N_{i,nm}^{T}$
+\end_inset
+
+ is the effective number of the commuter in the age group 
+\begin_inset Formula $i$
+\end_inset
+
+ using the route between 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+, 
+\begin_inset Formula $<kl>$
+\end_inset
+
+ indicate summation of all pair of neighbour node 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $l$
+\end_inset
+
+ included in the shortest path between node 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{nm}$
+\end_inset
+
+ is the distance between node 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ along the shortest path.
+ 
+\begin_inset Formula $R_{i,nm}=\sum_{<kl>}D_{i,kl}$
+\end_inset
+
+ is the number of the commuter in the age group 
+\begin_inset Formula $i$
+\end_inset
+
+ using the route between the neighbor node 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+.
+ The node 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ are included in the shortest path between node pair 
+\begin_inset Formula $(k,l)$
+\end_inset
+
+ took up all combinations satisfying the conditions.
+ Similarly 
+\begin_inset Formula $I_{i,nm}$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $I_{i,nm}=\sum_{<kl>}D_{i,kl}I_{il}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The ODE of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ is obtained by the summation for 
+\begin_inset Formula $m$
+\end_inset
+
+ in the equation of 
+\begin_inset Formula $S_{i,mn}$
+\end_inset
+
+.
+ Thus, the equations are represented as: 
+\begin_inset Formula 
+\begin{align*}
+\frac{\mathrm{d}S_{in}}{\mathrm{d}t} & =-\sum_{m=1}^{N_{d}}\lambda_{i,mn}^{T}P_{i,mn}^{H}S_{in}\\
+\frac{\mathrm{d}I_{in}}{\mathrm{d}t} & =\sum_{m=1}^{N_{d}}\lambda_{i,mn}^{T}P_{i,mn}^{R}S_{in}-\gamma I_{in}
+\end{align*}
+
+\end_inset
+
+The expanded formula of 
+\begin_inset Formula $S_{in}$
+\end_inset
+
+ in TRANSPORT period is also written down for a reference:
+\begin_inset Formula 
+\begin{align*}
+\frac{\mathrm{d}S_{in}}{\mathrm{d}t} & =-\sum_{m=1}^{N_{d}}\lambda_{i,mn}^{T}P_{i,mn}^{H}S_{in}\\
+ & =-r^{T}\beta\sum_{j=1}^{M}\sum_{m=1}^{N_{d}}\sum_{<k,l>}C_{ij}\frac{P_{j,kl}^{H}I_{lj}}{N_{j,mn}^{T}}P_{i,mn}^{H}S_{in}
+\end{align*}
+
+\end_inset
+
+The computation rate of this approach is swift.
+ Additionally, this model can include the "second-order" effect.
+ If there is frequent movement between nodes, the network model is identical
+ with the standard model.
+ The advantage of network models is that the model can estimate the effect
+ of travel restrictions directory.
+\end_layout
+
+\end_body
+\end_document
