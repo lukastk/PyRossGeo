@@ -110,7 +110,7 @@ May 16, 2020
 
 \begin_layout Standard
 We now consider a structured metapopulation 
-\begin_inset Formula $\boldsymbol{x}=\{x_{in}\,|\,i=1,\ldots M\times L,\,in=1,\ldots N_{d}\}$
+\begin_inset Formula $\boldsymbol{x}=\{x_{in}\,|\,i=1,\ldots M\times L,\,n=1,\ldots N_{d}\}$
 \end_inset
 
  consisting of 
@@ -130,8 +130,8 @@ We now consider a structured metapopulation
  of 1 hour.
  The interaction between the nodes is captured by the rate of infection
  of a susceptible individual.
- Although we apply this approach to a simple model, It can be applied to
- arbitrary models.
+ Although we apply this approach to SIR model, It can be applied to arbitrary
+ models.
  This method uses 3 models depending on the time period called HOME, TRANSPORT
  and WORK.
 \end_layout
@@ -210,7 +210,7 @@ In the WORK period, someone moves to another node, and someone stays in
 \frac{\mathrm{d}\hat{\bm{S}}_{in}}{\mathrm{d}t} & = & -\lambda_{in}^{W}\hat{\bm{S}}_{in}\\
 \frac{\mathrm{d}\hat{\bm{I}}_{in}}{\mathrm{d}t} & = & \lambda_{in}^{W}\hat{\bm{S}}_{in}-\gamma\hat{\bm{I}}_{in}\\
 \lambda_{in}^{W} & = & r^{W}\beta\sum_{j=1}^{M}C_{ij}\frac{\hat{\bm{I}}_{jn}}{N_{jn}^{w}}\\
-\hat{\bm{S}}_{in} & = & \sum_{m=1}^{N_{d}}\frac{D_{i,nm}}{N_{im}^{R}}S_{im}=\sum_{m=1}^{N_{d}}P_{i,nm}^{H}S_{im}\\
+\hat{\bm{S}}_{in} & = & \sum_{m=1}^{N_{d}}\frac{D_{i,nm}}{N_{im}^{H}}S_{im}=\sum_{m=1}^{N_{d}}P_{i,nm}^{H}S_{im}\\
 \hat{\bm{I}}_{in} & = & \sum_{m=1}^{N_{d}}\frac{D_{i,nm}}{N_{in}^{H}}I_{im}=\sum_{m=1}^{N_{d}}P_{i,nm}^{H}I_{im}
 \end{eqnarray*}
 
