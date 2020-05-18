@@ -1,8 +1,19 @@
-## PyRossGeo: Spatially resolved infectious disease models in Python
+## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples)
 
 [About](#about) | [Model](#model) | [Installation](#installation) | [Documentation](#documentation)  | <!--[Publications](#publications) |--> [License](#license) |  [Contact](#contact)
 
 ![Imagel](docs/figs/banner.jpg)
+
+## Public event announcement:
+
+We have two lecture-demonstration events coming up:
+
+- **Introduction to [*PyRoss*](https://github.com/rajeshrinet/pyross/) for Bayesian inference and latent variable estimation** - 11-12 AM on Friday (15 May)
+- **Introduction to [*PyRossGeo*](https://github.com/lukastk/PyRossGeo) for spatial epidemiological simulations** - 11-12 AM on Monday (18 May)
+
+Both meetings will be using Google Meet, in the following room: https://meet.google.com/amv-qevr-fjp
+
+
 
 ## About
 
@@ -41,6 +52,9 @@ The model has been tested with synthetic data on London, at an MSOA (Middle Supe
 For a more detailed description of the model, please read [this](https://github.com/lukastk/PyRossGeo/blob/master/docs/model.pdf).
 
 ## Installation
+
+You can take PyRossGeo for a spin **without installation**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples). Please be patient while Binder loads.
+
 Clone (or download) the repository and use a terminal to install using
 
 ```bash

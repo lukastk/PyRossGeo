@@ -242,7 +242,7 @@ Below is an example of a `node_parameters.csv` file for the SEAIR model.
             <td>0.01</td>
             <td>0.05</td>
             <td>0.05</td>
-            <td>0.07</td>
+            <td>0.04</td>
         </tr>
     </tbody>
 </table>
@@ -950,3 +950,4 @@ between nodes over time.
   reasons for this is that it will lead to migration if there are other
   commuting patterns that share intermediate nodes such as $0 \to 3 \to 2 \to 0$.
   This will be rectified in a future iteration of PyRossGeo.
+  

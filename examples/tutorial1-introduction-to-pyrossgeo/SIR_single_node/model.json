@@ -1,5 +1,9 @@
 {
-    "classes" : ["S", "I", "R"],
+    "settings" : {
+        "classes" : ["S", "I", "R"],
+        "stochastic_threshold_from_below" : [1000, 1000, 1000],
+        "stochastic_threshold_from_above" : [500, 500, 500]
+    },
 
     "S" : {
         "linear"    : [],

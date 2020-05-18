@@ -5,6 +5,7 @@ simulation_results
 .nfs*
 *.zarr
 pyrossgeo/*.c
+pyrossgeo/*.cpp
 pyrossgeo/*.html
 pyrossgeo/*.so
 pyrossgeo/mft/*.c
