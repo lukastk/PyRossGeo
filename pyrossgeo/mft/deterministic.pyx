@@ -1051,7 +1051,6 @@ cdef class SEI5R:
         cdef:
             int highSpeed=self.highSpeed
             int M=self.M, Nnode=self.Nnode, M1=self.M*self.Nnode, t_divid_100=int(tt/100)
-            int ir=self.ir
             unsigned short i, j, k, alp, gam, age_id, ii, jj
             unsigned long t_i, t_j
             double beta=self.beta, gIa=self.gIa
@@ -1132,8 +1131,8 @@ cdef class SEI5R:
                         if Nh[alp,i] > 0.0:
                             iNh[alp,i]  = 1.0/Nh[alp,i]
                             # determin decreased work place index
-                            ccc = RM[ir]
-                            ir += 1
+                            ccc = RM[self.ir]
+                            self.ir += 1
                             ii = int(ccc*indexI[alp,i,0]) + 1 # decreased work index
                             k = indexI[alp,i,ii] # decreased work place
                             #print(i, ii, indexI[alp,i,0], k)
@@ -1205,8 +1204,8 @@ cdef class SEI5R:
                             if Nh[alp,i] > 0.0:
                                 iNh[alp,i]  = 1.0/Nh[alp,i]
                                 # determin decreased work place index
-                                ccc = RM[ir]
-                                ir += 1
+                                ccc = RM[self.ir]
+                                self.ir += 1
                                 ii = int(ccc*indexI[alp,i,0]) + 1 # decreased I-index
                                 k = indexI[alp,i,ii] # decreased work node index
                                 #print(i, ii, indexI[alp,i,0], k)
@@ -1291,8 +1290,8 @@ cdef class SEI5R:
                             if Nh[alp,i] > 0.0:
                                 iNh[alp,i]  = 1.0/Nh[alp,i]
                                 # determin decreased work place index
-                                ccc = RM[ir]
-                                ir += 1
+                                ccc = RM[self.ir]
+                                self.ir += 1
                                 ii = int(ccc*indexI[alp,i,0]) + 1 # decreased I-index
                                 k = indexI[alp,i,ii] # decreased work node index
                                 #print(i, ii, indexI[alp,i,0], k)
@@ -1371,8 +1370,8 @@ cdef class SEI5R:
                             if Nh[alp,i] > 0.0:
                                 iNh[alp,i]  = 1.0/Nh[alp,i]
                                 # determin decreased work place index
-                                ccc = RM[ir]
-                                ir += 1
+                                ccc = RM[self.ir]
+                                self.ir += 1
                                 ii = int(ccc*indexI[alp,i,0]) + 1 # decreased I-index
                                 k = indexI[alp,i,ii] # decreased work node index
                                 #print(i, ii, indexI[alp,i,0], k)
@@ -1627,6 +1626,10 @@ cdef class SEI5R:
         print('#Calculation Start')
         
         def rhs0(t, rp):
+            if self.ir > 998*self.M*self.Nnode:
+                np.random.seed()
+                self.RM    = np.random.rand(1000*self.M*self.Nnode)
+                self.ir = 0
             self.rhs(rp, t)
             return self.drpdt
 
@@ -1788,7 +1791,6 @@ cdef class SEI8R:
         cdef:
             int highSpeed=self.highSpeed
             int M=self.M, Nnode=self.Nnode, M1=self.M*self.Nnode, t_divid_100=int(tt/100)
-            int ir=self.ir
             unsigned short i, j, k, alp, gam, age_id, ii, jj
             unsigned long t_i, t_j
             double beta=self.beta, gIa=self.gIa
@@ -1879,8 +1881,8 @@ cdef class SEI8R:
                         if Nh[alp,i] > 0.0:
                             iNh[alp,i]  = 1.0/Nh[alp,i]
                             # determin decreased work place index
-                            ccc = RM[ir]
-                            ir += 1
+                            ccc = RM[self.ir]
+                            self.ir += 1
                             ii = int(ccc*indexI[alp,i,0]) + 1 # decreased work index
                             k = indexI[alp,i,ii] # decreased work place
                             #print(i, ii, indexI[alp,i,0], k)
@@ -1958,8 +1960,8 @@ cdef class SEI8R:
                             if Nh[alp,i] > 0.0:
                                 iNh[alp,i]  = 1.0/Nh[alp,i]
                                 # determin decreased work place index
-                                ccc = RM[ir]
-                                ir += 1
+                                ccc = RM[self.ir]
+                                self.ir += 1
                                 ii = int(ccc*indexI[alp,i,0]) + 1 # decreased I-index
                                 k = indexI[alp,i,ii] # decreased work node index
                                 #print(i, ii, indexI[alp,i,0], k)
@@ -2047,8 +2049,8 @@ cdef class SEI8R:
                             if Nh[alp,i] > 0.0:
                                 iNh[alp,i]  = 1.0/Nh[alp,i]
                                 # determin decreased work place index
-                                ccc = RM[ir]
-                                ir += 1
+                                ccc = RM[self.ir]
+                                self.ir += 1
                                 ii = int(ccc*indexI[alp,i,0]) + 1 # decreased I-index
                                 k = indexI[alp,i,ii] # decreased work node index
                                 #print(i, ii, indexI[alp,i,0], k)
@@ -2130,8 +2132,8 @@ cdef class SEI8R:
                             if Nh[alp,i] > 0.0:
                                 iNh[alp,i]  = 1.0/Nh[alp,i]
                                 # determin decreased work place index
-                                ccc = RM[ir]
-                                ir += 1
+                                ccc = RM[self.ir]
+                                self.ir += 1
                                 ii = int(ccc*indexI[alp,i,0]) + 1 # decreased I-index
                                 k = indexI[alp,i,ii] # decreased work node index
                                 #print(i, ii, indexI[alp,i,0], k)
@@ -2386,6 +2388,10 @@ cdef class SEI8R:
         print('#Calculation Start')
         
         def rhs0(t, rp):
+            if self.ir > 998*self.M*self.Nnode:
+                np.random.seed()
+                self.RM    = np.random.rand(1000*self.M*self.Nnode)
+                self.ir = 0
             self.rhs(rp, t)
             return self.drpdt
 
