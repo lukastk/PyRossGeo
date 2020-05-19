@@ -60,7 +60,9 @@ Clone (or download) the repository and use a terminal to install using
 ```bash
 >> git clone https://github.com/lukastk/PyRossGeo.git
 >> cd pyross
->> python setup.py install
+>> make env
+>> conda activate pyrossgeo
+>> make
 ```
 
 PyRossGeo requires the following software

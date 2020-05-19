@@ -1,0 +1,55 @@
+name: Notebooks
+
+on:
+    schedule:
+      # 4am daily
+      - cron:  '0 4 * * *'
+
+jobs:
+
+  build-and-test:
+    name: notebooks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+    
+      - name: Setup Miniconda
+        uses: goanpeca/setup-miniconda@v1.2.0
+        with:
+         activate-environment: pyrossgeo
+         environment-file: environment.yml
+         # auto-activate-base: true
+      - name: make-pyross-geo
+        shell: bash -l {0}
+        run: |
+          conda activate pyrossgeo
+          make
+          # make nbtest
+      - name: testing-deterministic
+        shell: bash -l {0}
+        run: |
+          make path="examples/deterministic" nbtest
+      - name: testing-stochastic
+        shell: bash -l {0}
+        run: |
+          make path="examples/stochastic" nbtest
+      - name: testing-hybrid
+        shell: bash -l {0}
+        run: |
+          make path="examples/hybrid" nbtest
+      - name: testing-contactMatrix
+        shell: bash -l {0}
+        run: |
+          make path="examples/contactMatrix" nbtest
+      - name: testing-control
+        shell: bash -l {0}
+        run: |
+          make path="examples/control" nbtest
+      - name: end
+        shell: bash -l {0}
+        run: |
+          echo "skipped inference and forcast"
+    
+
+                # make nbtest
