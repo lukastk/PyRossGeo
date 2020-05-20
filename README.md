@@ -59,7 +59,7 @@ Clone (or download) the repository and use a terminal to install using
 
 ```bash
 >> git clone https://github.com/lukastk/PyRossGeo.git
->> cd pyross
+>> cd PyRossGeo
 >> make env
 >> conda activate pyrossgeo
 >> make
