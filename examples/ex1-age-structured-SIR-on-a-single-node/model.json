@@ -1,5 +1,11 @@
 {
-    "classes" : ["S", "I", "R"],
+    "settings" : {
+        "classes" : ["S", "I", "R"],
+        "stochastic_threshold_from_below" : [1000, 1000, 1000, 1000, 1000],
+        "stochastic_threshold_from_above" : [500, 500, 500, 500, 500],
+        "infection_scaling" : "powerlaw",
+        "infection_scaling_parameters" : [0, 0.004, 0.5]
+    },
 
     "S" : {
         "linear"    : [],
@@ -13,6 +19,6 @@
 
     "R" : {
         "linear"    : [ ["I", "gamma"] ],
-        "infection" : []
+        "infection" : [ ]
     }
 }

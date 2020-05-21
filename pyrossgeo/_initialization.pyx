@@ -7,7 +7,7 @@ import pandas as pd
 import csv, json
 
 from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE
+from pyrossgeo.__defs__ import DTYPE, infection_scaling_types
 from pyrossgeo.Simulation cimport Simulation
 
 def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
@@ -387,63 +387,38 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     ## Get the stochastic thresholds
 
-    py_stochastic_threshold_from_below = model_dat['settings']['stochastic_threshold_from_below']
-    py_stochastic_threshold_from_above = model_dat['settings']['stochastic_threshold_from_above']
+    if 'stochastic_threshold_from_below' in model_dat['settings'] and 'stochastic_threshold_from_above' in model_dat['settings']:
+        py_stochastic_threshold_from_below = model_dat['settings']['stochastic_threshold_from_below']
+        py_stochastic_threshold_from_above = model_dat['settings']['stochastic_threshold_from_above']
+        py_stochastic_simulation = True
+    elif 'stochastic_threshold_from_below' in model_dat['settings'] or 'stochastic_threshold_from_above' in model_dat['settings']:
+        raise Exception('Either both "stochastic_threshold_from_above" or "stochastic_threshold_from_below" need to be defined, or neither of them.')
+    else:
+        py_stochastic_threshold_from_below = []
+        py_stochastic_threshold_from_above = []
+        py_stochastic_simulation = False
+        print("Stochastic thresholds not defined. Will simulate deterministically.")
 
-    ## Construct internal representation of model
+    # Get parameters for the infection scaling
 
-    for class_name in model_dat:
-        if class_name == 'settings':
-            continue
+    if 'infection_scaling' in model_dat['settings'] and 'infection_scaling_parameters' in model_dat['settings']:
+        py_infection_scaling_params = np.array(model_dat['settings']['infection_scaling_parameters'], dtype=DTYPE)
+        scaling_types = {
+            'linear' : infection_scaling_types.linear,
+            'powerlaw': infection_scaling_types.powerlaw,
+            'exp' : infection_scaling_types.exp,
+            'log' : infection_scaling_types.log
+        }
 
-        for coupling_class, model_param in model_dat[class_name]['linear']:
-            if model_param[0] == '-':
-                is_neg = True
-                model_param = model_param[1:]
-            else:
-                is_neg = False
-
-            if not model_param in linear_model_param_to_model_term:
-                mt = py_model_term()
-                mt.model_param = model_param
-                linear_model_param_to_model_term[model_param] = mt
-                py_model_linear_terms.append(mt)
-            mt = linear_model_param_to_model_term[model_param]
-            if is_neg:
-                mt.oi_neg = model_class_name_to_class_index[class_name]
-            else:
-                mt.oi_pos = model_class_name_to_class_index[class_name]
-            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
-
-        for coupling_class, model_param in model_dat[class_name]['infection']: 
-            if model_param[0] == '-':
-                is_neg = True
-                model_param = model_param[1:]
-            else:
-                is_neg = False
-
-            if not model_param in infection_model_param_to_model_term:
-                mt = py_model_term()
-                mt.model_param = model_param
-                infection_model_param_to_model_term[model_param] = mt
-                py_model_infection_terms.append(mt)
-            mt = infection_model_param_to_model_term[model_param]
-            if is_neg:
-                mt.oi_neg = model_class_name_to_class_index[class_name]
-            else:
-                mt.oi_pos = model_class_name_to_class_index[class_name]
-            mt.oi_coupling = model_class_name_to_class_index[coupling_class]
-
-    # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
-    
-    for model_param in linear_model_param_to_model_term:
-        mt = linear_model_param_to_model_term[model_param]
-
-    py_model_linear_terms = []
-    py_model_infection_terms = []
-
-    infection_model_param_to_model_term = {}
-    linear_model_param_to_model_term = {}
+        if model_dat['settings']['infection_scaling'] in scaling_types:
+            py_infection_scaling_type = scaling_types[ model_dat['settings']['infection_scaling'] ]
+        else:
+            raise Exception('Infection scaling type "%s" does not exist.' % model_dat['settings']['infection_scaling'])
+    elif 'infection_scaling' in model_dat['settings'] or 'infection_scaling_parameters' in model_dat['settings']:
+        raise Exception('Either both "infection_scaling" or "infection_scaling_parameters" need to be defined, or neither of them.')
+    else:
+        py_infection_scaling_params = np.zeros(0)
+        py_infection_scaling_type = infection_scaling_types.none
 
     ## Construct internal representation of model
 
@@ -503,40 +478,59 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     ## Set node model parameters
 
-    py_location_area = np.zeros( max_node_index+1 )
+    py_location_area = np.full( max_node_index+1, np.nan )
 
-    for n in py_nodes:
-        for row_i, row in node_parameters_dat.iterrows():
-            home = row[0] # row['Home']
-            loc = row[1] # row['Location']
-            age = row[2] # row['Age']
-            area = row[3] # row['Area']
+    for row_i, row in node_parameters_dat.iterrows():        
+        home = row[0] # row['Home']
+        loc = row[1] # row['Location']
+        age = row[2] # row['Age']
+        area = row[3] # row['Area']
 
-            home = int(home)  if home != 'ALL' else 'ALL'
-            loc = int(loc) if (loc != 'ALL' and loc != 'HOME') else loc
-            age = int(age)  if age != 'ALL' else 'ALL'
+        home = int(home)  if home != 'ALL' else 'ALL'
+        loc = int(loc) if (loc != 'ALL' and loc != 'HOME') else loc
+        age = int(age)  if age != 'ALL' else 'ALL'
 
-            if not (home == n.home or home == 'ALL'):
-                continue
-            if not (loc == n.loc or loc == 'ALL' or (n.loc==n.home and loc=='HOME')):
-                continue
-            if not (age == n.age or age == 'ALL'):
-                continue
+        homes = list(range(max_node_index+1)) if home == 'ALL' else [home]
+        if loc == 'ALL':
+            locs = list(range(max_node_index+1))
+        elif loc != 'HOME':
+            locs = [loc]
+        ages = list(range(age_groups)) if age == 'ALL' else [age]
 
-            if n.home == n.loc: # Areas are only defined for locations, not specific nodes
-                py_location_area[n.loc] = area
+        for _home in homes:
+            if loc == 'HOME':
+                locs = [_home]
+            for _loc in locs:
+                for _age in ages:
+                    n = aij_to_node.get( (_age, _home, _loc) )
+                    if n:
+                        if not pd.isnull(area) and n.home == n.loc: # Areas are only defined for locations, not specific nodes
+                            py_location_area[n.loc] = area
 
-            for i in range(len(py_model_linear_terms)):
-                mt = py_model_linear_terms[i]
-                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
-                n.linear_coeffs.append(param_val)
+                        if n.linear_coeffs is None:
+                            n.linear_coeffs = np.full(len(py_model_linear_terms), np.nan)
+                        if n.infection_coeffs is None:
+                            n.infection_coeffs = np.full(len(py_model_infection_terms), np.nan)
 
-            for i in range(len(py_model_infection_terms)):
-                mt = py_model_infection_terms[i]
-                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
-                n.infection_coeffs.append(param_val)
+                        for i in range(len(py_model_linear_terms)):
+                            mt = py_model_linear_terms[i]
 
+                            # Only assign parameter if it isn't NaN
+                            if not pd.isnull(row[mt.model_param]):
+                                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                                n.linear_coeffs[i] = param_val
+
+                        for i in range(len(py_model_infection_terms)):
+                            mt = py_model_infection_terms[i]
+
+                            # Only assign parameter if it isn't NaN
+                            if not pd.isnull(row[mt.model_param]):
+                                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                                n.infection_coeffs[i]= param_val
+    
     ## Set cnode model parameters
+
+    py_commuterverse_area = np.full( max_node_index+1, np.nan )
 
     for cn in py_cnodes:
         for row_i, row in cnode_parameters_dat.iterrows():
@@ -559,17 +553,30 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
             if not (age == cn.age or age == 'ALL'):
                 continue
 
-            cn.area = area
+            if not pd.isnull(area):
+                cn.area = area
+                py_commuterverse_area[cn.to] = area
+
+            if cn.linear_coeffs is None:
+                cn.linear_coeffs = np.full(len(py_model_linear_terms), np.nan)
+            if cn.infection_coeffs is None:
+                cn.infection_coeffs = np.full(len(py_model_infection_terms), np.nan)
 
             for i in range(len(py_model_linear_terms)):
                 mt = py_model_linear_terms[i]
-                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
-                cn.linear_coeffs.append(param_val)
+
+                # Only assign parameter if it isn't NaN
+                if not pd.isnull(row[mt.model_param]):
+                    param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                    cn.linear_coeffs[i] = param_val
 
             for i in range(len(py_model_infection_terms)):
                 mt = py_model_infection_terms[i]
-                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
-                cn.infection_coeffs.append(param_val)
+
+                # Only assign parameter if it isn't NaN
+                if not pd.isnull(row[mt.model_param]):
+                    param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                    cn.infection_coeffs[i]= param_val
 
     #### Set contact matrices ##########################################
 
@@ -578,7 +585,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
         py_contact_matrices.append( contact_matrices_dat[cmat_key] )
 
     py_contact_matrices = np.array(py_contact_matrices, dtype=DTYPE)
-    
+
     # Set node contact matrices
 
     for row_i, row in node_cmatrices_dat.iterrows():
@@ -597,49 +604,71 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                     for age_a in range(age_groups):
                         n = aij_to_node.get((age_a, home_i, loc_j))
                         if not n is None:
-                            n.contact_matrix_indices = cmat_indices[py_infection_classes_indices]
-                            if -1 in n.contact_matrix_indices:
-                                raise Exception("Contact matrix missing for node (%i, %i, %i)" % (age_a, home_i, loc_j))
+                            n.contact_matrices_used = cmat_indices[py_infection_classes_indices]
 
     # Set cnode contact matrices
 
-    for row_i, row in cnode_cmatrices_dat.iterrows():
-        home = row[0] #row['Home']
-        fro = row[1] #row['From']
-        to = row[2] #row['To']
-        home = int(home) if home != 'ALL' else home
-        fro = int(loc) if (fro != 'ALL' and fro != 'HOME') else fro
-        to = int(to) if (to != 'ALL' and to != 'HOME') else to
+    for cn in py_cnodes:
+        for row_i, row in cnode_parameters_dat.iterrows():
+            home = row[0] #row['Home']
+            fro = row[1] #row['From']
+            to = row[2] #row['To']
+            home = int(home) if home != 'ALL' else home
+            fro = int(loc) if (fro != 'ALL' and fro != 'HOME') else fro
+            to = int(to) if (to != 'ALL' and to != 'HOME') else to
 
-        cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[3:]])
+            cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[3:]])
 
-        for home_i in range(max_node_index+1):
-            _fro = home_i if fro == 'HOME' else fro
-            _to = home_i if to == 'HOME' else to
+            if not (home == cn.home or home == 'ALL'):
+                continue
+            if not (fro == cn.fro or fro == 'ALL' or (cn.fro==cn.home and fro=='HOME')):
+                continue
+            if not (to == cn.to or to == 'ALL' or (cn.to==cn.home and to=='HOME')):
+                continue
 
-            for fro_j in range(max_node_index+1):
-                for to_j in range(max_node_index+1):
-                    if (home_i == home or home == 'ALL') and (fro_j == _fro or _fro == 'ALL') and (to_j == _to or _to == 'ALL'):
-                        for age_a in range(age_groups):
-                            cn = aijk_to_cnode.get((age_a, home_i, fro_j, to_j))
-                            if not cn is None:
-                                cn.contact_matrix_indices = cmat_indices[py_infection_classes_indices]
+            cn.contact_matrices_used = cmat_indices[py_infection_classes_indices]
 
-                                if -1 in cn.contact_matrix_indices:
-                                    raise Exception("Contact matrix missing for cnode (%i, %i, %i)" % (age_a, home_i, fro_j, to_j))
+    # contact_matrices_at_each_loc and contact_matrices_at_each_to
+
+    py_contact_matrices_at_each_loc = [ set() for i in range(max_node_index+1) ]
+    py_contact_matrices_at_each_to = [ set() for i in range(max_node_index+1) ]
+    
+    for n in py_nodes:
+        py_contact_matrices_at_each_loc[n.loc].update(n.contact_matrices_used)
+
+    for cn in py_cnodes:
+        py_contact_matrices_at_each_to[cn.to].update(cn.contact_matrices_used)
+
+    py_contact_matrices_at_each_loc = [list(ct) for ct in py_contact_matrices_at_each_loc]
+    py_contact_matrices_at_each_to = [list(ct) for ct in py_contact_matrices_at_each_to]
+
+    for n in py_nodes:
+        cmat_indices = [py_contact_matrices_at_each_loc[n.loc].index(c) for c in n.contact_matrices_used]
+        n.contact_matrix_indices = np.array(cmat_indices, dtype='i')
+
+    for cn in py_cnodes:
+        cmat_indices = [py_contact_matrices_at_each_to[cn.to].index(c) for c in cn.contact_matrices_used]
+        cn.contact_matrix_indices = np.array(cmat_indices, dtype='i')
+
 
     return _initialize(self, max_node_index, model_dim, age_groups, X_state0, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_model_linear_terms, py_model_infection_terms,
                         py_contact_matrices, py_contact_matrices_key_to_index,
-                        py_stochastic_threshold_from_below, py_stochastic_threshold_from_above)
+                        py_contact_matrices_at_each_loc, py_contact_matrices_at_each_to,
+                        py_stochastic_simulation, py_stochastic_threshold_from_below, py_stochastic_threshold_from_above,
+                        py_infection_scaling_params, py_infection_scaling_type,
+                        py_location_area, py_commuterverse_area)
 
 
 cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_state_arr, node_states_len, py_nodes, py_cnodes,
                         py_Ts, py_cTs, py_nodes_at_j, py_cnodes_into_k, py_state_mappings,
                         py_infection_classes_indices, py_model_linear_terms, py_model_infection_terms,
                         py_contact_matrices, py_contact_matrices_key_to_index,
-                        py_stochastic_threshold_from_below, py_stochastic_threshold_from_above):
+                        py_contact_matrices_at_each_loc, py_contact_matrices_at_each_to,
+                        py_stochastic_simulation, py_stochastic_threshold_from_below, py_stochastic_threshold_from_above,
+                        py_infection_scaling_params, py_infection_scaling_type,
+                        py_location_area, py_commuterverse_area):
     """Initialize the simulation."""
 
     self.has_been_initialized = True
@@ -822,7 +851,21 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     self.contact_matrices = py_contact_matrices
     self.contact_matrices_key_to_index = py_contact_matrices_key_to_index
 
-    self._lambdas = np.zeros( (self.contact_matrices.shape[0], self.age_groups, self.infection_classes_num) )
+    self.contact_matrices_at_each_loc = <int **> malloc((self.max_node_index+1) * sizeof(int *))
+    self.contact_matrices_at_each_loc_len = <int *> malloc((self.max_node_index+1) * sizeof(int))
+    for loc in range(self.max_node_index+1):
+        self.contact_matrices_at_each_loc_len[loc] = len(py_contact_matrices_at_each_loc[loc])
+        self.contact_matrices_at_each_loc[loc] = <int *> malloc( len(py_contact_matrices_at_each_loc[loc]) * sizeof(int) )
+        for i in range(len(py_contact_matrices_at_each_loc[loc])):
+            self.contact_matrices_at_each_loc[loc][i] = py_contact_matrices_at_each_loc[loc][i]
+
+    self.contact_matrices_at_each_to = <int **> malloc((self.max_node_index+1) * sizeof(int *))
+    self.contact_matrices_at_each_to_len = <int *> malloc((self.max_node_index+1) * sizeof(int))
+    for to in range(self.max_node_index+1):
+        self.contact_matrices_at_each_to_len[to] = len(py_contact_matrices_at_each_to[to])
+        self.contact_matrices_at_each_to[to] = <int *> malloc( len(py_contact_matrices_at_each_to[to]) * sizeof(int) )
+        for i in range(len(py_contact_matrices_at_each_to[to])):
+            self.contact_matrices_at_each_to[to][i] = py_contact_matrices_at_each_to[to][i]
 
     self._Is_arr = np.zeros( (self.age_groups) )
     self._Is = self._Is_arr
@@ -830,8 +873,15 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     self._Ns_arr = np.zeros( (self.age_groups) )
     self._Ns = self._Ns_arr
 
+    self.stochastic_simulation = py_stochastic_simulation
     self.stochastic_threshold_from_below = np.array(py_stochastic_threshold_from_below, dtype=DTYPE)
     self.stochastic_threshold_from_above = np.array(py_stochastic_threshold_from_above, dtype=DTYPE)
+
+    self.infection_scaling_params = py_infection_scaling_params
+    self.infection_scaling_type = py_infection_scaling_type
+
+    self.location_area = np.array(py_location_area, dtype=DTYPE)
+    self.commuterverse_area = np.array(py_commuterverse_area, dtype=DTYPE)
 
     return X_state_arr
 
@@ -845,9 +895,10 @@ class py_node:
         self.incoming_T_indices = []
         self.outgoing_T_indices = []
         self.state_pop = None
-        self.linear_coeffs = []
-        self.infection_coeffs = []
+        self.linear_coeffs = None
+        self.infection_coeffs = None
         self.contact_matrix_indices = None
+        self.contact_matrices_used = None
 
     def __str__(self):
         return "ni: %s, Age: %s, Home: %s, Loc: %s" % (self.node_index, self.age, self.home, self.loc)
@@ -866,10 +917,11 @@ class py_cnode:
         self.outgoing_T = -1
         self.area = -1
         self.state_pop = None
-        self.linear_coeffs = []
-        self.infection_coeffs = []
+        self.linear_coeffs = None
+        self.infection_coeffs = None
         self.is_on = False
         self.contact_matrix_indices = None
+        self.contact_matrices_used = None
 
     def __str__(self):
         return "cni: %s, Age: %s, Home: %s, Fro: %s, To: %s" % (self.cnode_index, self.age, self.home, self.fro, self.to)

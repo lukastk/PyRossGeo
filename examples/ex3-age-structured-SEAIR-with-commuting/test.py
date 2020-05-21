@@ -1,9 +1,6 @@
 # Compile and import local pyrossgeo module
 import os, sys
-owd = os.getcwd()
-os.chdir('../../../')
-sys.path.insert(0,'../../../')
-os.chdir(owd)
+sys.path.insert(0,'../../')
 
 import numpy as np
 import matplotlib as mpl

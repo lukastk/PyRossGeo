@@ -26,6 +26,8 @@ cdef class Simulation:
     cnode_mappings : dict
         Contains mappings between cnodes `(age, model_class, home, from, to)`
         to its index in the state vector `X_state`.
+    stochastic_simulation : bool
+        If True, simulation will be stochastic.
     storage : dict
         Persistent storage used for events.
     has_been_initialized : bool
@@ -36,6 +38,10 @@ cdef class Simulation:
     def __cinit__(self):
         self.storage = {}
         self.has_been_initialized = False
+
+        self.event_functions = []
+        self.event_times = []
+        self.event_repeat_times = []
 
     def __dealloc__(self):
         free_sim(self)
@@ -79,8 +85,7 @@ cdef class Simulation:
                         cnode_populations_dat)
 
     def simulate(self, X_state, t_start, t_end, dts, steps_per_save=-1,
-                    save_path="", only_save_nodes=False, steps_per_print=-1,
-                    event_times=[], event_function=None):
+                    save_path="", only_save_nodes=False, steps_per_print=-1):
         """Simulates the system.
         
         Simulates the system between times `t_start` and `t_end`, with the 
@@ -107,10 +112,6 @@ cdef class Simulation:
                 The path of the folder to save the output to (default "")
             only_save_nodes : bool
                 If True, commuter nodes will not be saved (default False)
-            event_times : list or array of floats
-                The times at which the `event_function` should be called (default [])
-            event_function : function
-                The function that will be called at each event time (default None)
 
         Returns
         -------
@@ -128,8 +129,7 @@ cdef class Simulation:
                 to age-bracket, class, home, origin, destination respectively.
         """
         return simulate(self, X_state, t_start, t_end, dts, steps_per_save,
-                    save_path, only_save_nodes, steps_per_print,
-                    event_times, event_function)
+                    save_path, only_save_nodes, steps_per_print)
 
     def compute(self, X_state, dX_state, t, dt):
         """Computes the right-hand side of the dynamical system.
@@ -160,8 +160,9 @@ cdef class Simulation:
 
     cpdef set_contact_matrix(self, str cmat_key, np.ndarray cmat):
         """Change the contact matrix of the given key.
-        
-        Args:
+
+        Parameters
+        ----------
             cmat_key: the key of the contact matrix
             cmat: the array to set the contact matrix to.
         """
@@ -213,6 +214,24 @@ cdef class Simulation:
             return self.storage['commuting_is_stopped']
         else:
             return False
+
+    def add_event(self, event_times, event_function, repeat_time=-1):
+        """Adds an event function to be called at specific times of the simulation.
+
+        Parameters
+        ----------
+            event_times : list or np.ndarray
+                The times at which the event function is to be called.
+            event_function : function
+                The event function.
+            repeat_time : float, optional
+                If specified, then the event will be triggered every
+                time `event_time == simulation_time % repeat_time`,
+                for each time in `event_times`.
+        """
+        self.event_times.append(event_times)
+        self.event_functions.append(event_function)
+        self.event_repeat_times.append(repeat_time)
 
     #TODO
     # - function that returns what contact matrix is sued for a specific node

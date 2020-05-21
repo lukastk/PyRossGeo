@@ -24,7 +24,7 @@ node_positions_path = 'node_positions.csv'
 node_populations_path = 'node_populations.csv' 
 
 t_start = 0
-t_end = 24*60*100
+t_end = 20#24*60*100
 
 _, dts = pyrossgeo.utils.get_dt_schedule([
     (0,  1*60),
@@ -40,7 +40,7 @@ X_state = sim.initialize()
 
 start_time = time.time()
 dX_state = np.zeros(X_state.size)
-sim_data = sim.simulate(X_state, t_start, t_end, dts, steps_per_save=1)
+sim_data = sim.simulate(X_state, t_start, t_end, 1, steps_per_save=1, steps_per_print=1)
 end_time = time.time()
 sim_time = (end_time - start_time)/(60*60)
 print("Simulation complete. Run-time (h): %s" % sim_time)

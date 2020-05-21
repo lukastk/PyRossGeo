@@ -56,6 +56,16 @@ cpdef free_sim(Simulation self):
     free(self.cnodes_into_k)
     free(self.cnodes_into_k_len)
 
+    for loc in range(self.max_node_index+1):
+        free(self.contact_matrices_at_each_loc[loc])
+    free(self.contact_matrices_at_each_loc)
+    free(self.contact_matrices_at_each_loc_len)
+
+    for to in range(self.max_node_index+1):
+        free(self.contact_matrices_at_each_to[to])
+    free(self.contact_matrices_at_each_to)
+    free(self.contact_matrices_at_each_to_len)
+
     free(self.model_linear_terms)
     free(self.model_infection_terms)
     

@@ -2,7 +2,7 @@ import numpy as np
 cimport numpy as np
 
 from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE
+from pyrossgeo.__defs__ import DTYPE, infection_scaling_types
 
 #ctypedef void (*SIM_EVENT)(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
 #cdef void SIM_EVENT_NULL(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
@@ -31,15 +31,17 @@ cdef class Simulation:
     cdef int model_infection_terms_len
     cdef np.ndarray infection_classes_indices
     cdef int infection_classes_num
-    cdef np.ndarray contact_matrices
-    cdef readonly dict contact_matrices_key_to_index
-    cdef object _lambdas_arr
-    cdef np.ndarray _lambdas
     cdef object _Is_arr
     cdef np.ndarray _Is
     cdef object _Ns_arr
     cdef np.ndarray _Ns
-    cdef readonly np.ndarray location_area
+
+    cdef np.ndarray contact_matrices
+    cdef int** contact_matrices_at_each_loc # Contains what contact matrices are used at each location
+    cdef int* contact_matrices_at_each_loc_len
+    cdef int** contact_matrices_at_each_to # Contains what contact matrices are used for each destination (cnodes)
+    cdef int* contact_matrices_at_each_to_len
+    cdef readonly dict contact_matrices_key_to_index
 
     # Transport
     cdef transporter* Ts # Going into commuterverses
@@ -63,8 +65,20 @@ cdef class Simulation:
     cdef DTYPE_t transport_profile_c_r
 
     # Stochasticity
+    cdef readonly bint stochastic_simulation
     cdef np.ndarray stochastic_threshold_from_below # If all classes go above their threshold, start deterministic
     cdef np.ndarray stochastic_threshold_from_above # If any class go below their threshold, start stochastic
+
+    # Infection scaling
+    cdef int infection_scaling_type
+    cdef np.ndarray infection_scaling_params
+    cdef readonly np.ndarray location_area
+    cdef readonly np.ndarray commuterverse_area
+
+    # Events
+    cdef list event_functions
+    cdef list event_times
+    cdef list event_repeat_times
 
     # Misc
     cdef readonly dict storage # Persistent storage that will be used for events

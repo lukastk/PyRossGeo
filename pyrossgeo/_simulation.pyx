@@ -1,7 +1,7 @@
 import zarr
 import pickle
 import cython
-from libc.math cimport exp
+cimport libc.math
 from libc.stdlib cimport malloc, free
 from cython.parallel import prange
 import numpy as np
@@ -9,7 +9,7 @@ cimport numpy as np
 import time # For seeding random
 import scipy.stats
 
-from pyrossgeo.__defs__ import DTYPE
+from pyrossgeo.__defs__ import DTYPE, infection_scaling_types
 
 @cython.wraparound(False)
 @cython.boundscheck(False)
@@ -17,15 +17,17 @@ from pyrossgeo.__defs__ import DTYPE
 @cython.nonecheck(False)
 cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=-1,
                             str save_path="", bint only_save_nodes=False, int steps_per_print=-1,
-                            object event_times=[], object event_function=None,
                             int random_seed=-1):
-                            #object cevent_times=[], SIM_EVENT cevent_function=SIM_EVENT_NULL):
+
+    if not self.has_been_initialized:
+        raise Exception("Must initialise before starting simulation.")
+
     ####################################################################
     #### Definitions ###################################################
     ####################################################################
 
     #### Forward-Euler variables #######################################
-
+    
     cdef DTYPE_t t = t_start
     cdef DTYPE_t dt
     cdef DTYPE_t r_dt
@@ -56,8 +58,18 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef int model_infection_terms_len = self.model_infection_terms_len
     cdef int[:] infection_classes_indices = self.infection_classes_indices
     cdef int infection_classes_num = self.infection_classes_num
+
     cdef DTYPE_t[:,:,:] contact_matrices = self.contact_matrices
     cdef int contact_matrices_num = self.contact_matrices.shape[0]
+    cdef int** contact_matrices_at_each_loc = self.contact_matrices_at_each_loc
+    cdef int* contact_matrices_at_each_loc_len = self.contact_matrices_at_each_loc_len
+    cdef int** contact_matrices_at_each_to = self.contact_matrices_at_each_to
+    cdef int* contact_matrices_at_each_to_len = self.contact_matrices_at_each_to_len
+    
+    cdef int max_contact_matrices_used_at_single_node = np.max( np.concatenate([
+        [contact_matrices_at_each_loc_len[i] for i in range(max_node_index+1)],
+        [contact_matrices_at_each_to_len[i] for i in range(max_node_index+1)]
+    ])) # Used to create _lambda
 
     # Transport
     cdef transporter* Ts = self.Ts # Going into commuterverses
@@ -81,6 +93,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef DTYPE_t transport_profile_c_r = self.transport_profile_c_r
 
     # Stochasticity
+    cdef bint stochastic_simulation = self.stochastic_simulation
     total_Os_arr = np.zeros(model_dim, dtype=DTYPE)
     cdef DTYPE_t[:] total_Os = total_Os_arr # Used to see whether stochasticity should be turned on
     cdef DTYPE_t[:] stochastic_threshold_from_below = self.stochastic_threshold_from_below
@@ -88,6 +101,17 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef bint* loc_j_is_stochastic
     cdef bint* to_k_is_stochastic
 
+    # Infection scaling
+    cdef int infection_scaling_type = self.infection_scaling_type
+    cdef DTYPE_t[:] infection_scaling_params = self.infection_scaling_params
+    cdef DTYPE_t infection_scaling, rho, N_tot
+    
+    location_r_area_arr = np.array([1.0/a if not np.isnan(a) else np.nan for a in self.location_area]) # Compute inverse of area
+    cdef DTYPE_t[:] location_r_area = location_r_area_arr
+
+    commuterverse_r_area_arr = np.array([1.0/a if not np.isnan(a) else np.nan for a in self.commuterverse_area])
+    cdef DTYPE_t[:] commuterverse_r_area = commuterverse_r_area_arr
+    
     if random_seed == -1:
         random_seed = np.int64(np.round(time.time()))
     cdef mt19937 gen = mt19937(random_seed)
@@ -112,7 +136,8 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef cnode cn
     cdef model_term mt
     
-    cdef DTYPE_t[:, :, :] _lambdas = self._lambdas
+    _lambdas_arr = np.zeros(( max_contact_matrices_used_at_single_node, self.age_groups, self.infection_classes_num ))
+    cdef DTYPE_t[:, :, :] _lambdas = _lambdas_arr
     cdef DTYPE_t[:] _Is = self._Is
     cdef DTYPE_t[:] _Ns = self._Ns
 
@@ -124,39 +149,41 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     loc_j_is_stochastic = <bint *> malloc( (self.max_node_index+1) * sizeof(bint))
     to_k_is_stochastic = <bint *> malloc( (self.max_node_index+1) * sizeof(bint))
 
-    for loc_j in range(max_node_index+1):
-        n = nodes[i]
+    if stochastic_simulation:
 
-        for o in range(model_dim):
-            total_Os[o] = 0
+        for loc_j in range(max_node_index+1):
+            n = nodes[i]
 
-        for age_a in range(age_groups):
-            for i in range(nodes_at_j_len[age_a][loc_j]):
-                n = nodes[nodes_at_j[age_a][loc_j][i]]
-                for o in range(model_dim):
-                    total_Os[o] += X_state[n.state_index + o]
+            for o in range(model_dim):
+                total_Os[o] = 0
 
-        loc_j_is_stochastic[loc_j] = False
+            for age_a in range(age_groups):
+                for i in range(nodes_at_j_len[age_a][loc_j]):
+                    n = nodes[nodes_at_j[age_a][loc_j][i]]
+                    for o in range(model_dim):
+                        total_Os[o] += X_state[n.state_index + o]
 
-        for o in range(model_dim):
-            loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+            loc_j_is_stochastic[loc_j] = False
 
-    for to_k in range(max_node_index+1):
-        n = nodes[i]
+            for o in range(model_dim):
+                loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
 
-        for o in range(model_dim):
-            total_Os[o] = 0
+        for to_k in range(max_node_index+1):
+            n = nodes[i]
 
-        for age_a in range(age_groups):
-            for i in range(cnodes_into_k_len[age_a][to_k]):
-                cn = cnodes[cnodes_into_k[age_a][to_k][i]]
-                for o in range(model_dim):
-                    total_Os[o] += X_state[n.state_index + o]
+            for o in range(model_dim):
+                total_Os[o] = 0
 
-        to_k_is_stochastic[to_k] = False
+            for age_a in range(age_groups):
+                for i in range(cnodes_into_k_len[age_a][to_k]):
+                    cn = cnodes[cnodes_into_k[age_a][to_k][i]]
+                    for o in range(model_dim):
+                        total_Os[o] += X_state[n.state_index + o]
 
-        for o in range(model_dim):
-            to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
+            to_k_is_stochastic[to_k] = False
+
+            for o in range(model_dim):
+                to_k_is_stochastic[to_k] = to_k_is_stochastic[to_k] or (total_Os[o] < stochastic_threshold_from_below[o])
 
     # Loop through nodes and cnodes to see if they should start out as stochastic or not
 
@@ -218,24 +245,31 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
     #### Event management ##############################################
 
-    cdef np.ndarray event_steps_arr = np.full(steps, 0, dtype=np.int8)
-    cdef char[:] event_steps = event_steps_arr
+    cdef list event_functions = self.event_functions
+    cdef np.ndarray is_event_on_arr = np.zeros((steps, len(self.event_functions)), dtype=np.int8)
+    cdef char[:,:] is_event_on = is_event_on_arr
+    cdef int event_i
 
-    #cdef np.ndarray cevent_steps_arr = np.full(steps, 0, dtype=np.int8)
-    #cdef char[:] cevent_steps = cevent_steps_arr
+    is_a_event_on_arr = np.zeros(steps, dtype=np.int8)
+    cdef char[:] is_a_event_on = is_a_event_on_arr
+
+    # Align event times with simulation steps
 
     t = t_start
     for step_i in range(steps):
         dt = dts[step_i % dts_num]
         t += dt
 
-        for et in event_times:
-            if et <= t and t < et+dt:
-                event_steps[step_i] = 1
+        for event_i in range(len(self.event_times)):
+            for et in self.event_times[event_i]:
+                if self.event_repeat_times[event_i] == -1:
+                    _t = t
+                else:
+                    _t = (t % self.event_repeat_times[event_i])
 
-        #for et in cevent_times:
-        #    if et <= t and t < et+dt:
-        #        cevent_steps[step_i] = 1
+                if et <= _t and _t < et+dt:
+                    is_event_on_arr[step_i][event_i] = 1
+                    is_a_event_on[step_i] = 1
 
     ####################################################################
     #### Simulation ####################################################
@@ -288,28 +322,52 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute lambdas
 
-                for cmat_i in range(contact_matrices_num):
+                for cmat_i in range(contact_matrices_at_each_loc_len[loc_j]):
                     for age_a in range(age_groups):
                         _lambdas[cmat_i][age_a][ui] = 0
                         for age_b in range(age_groups):
                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
-                                _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+                                _lambdas[cmat_i][age_a][ui] += contact_matrices[contact_matrices_at_each_loc[loc_j][cmat_i]][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+
+            #### Infection scaling
+            
+            if infection_scaling_type != infection_scaling_types.none:
+                N_tot = 0
+                for age_a in range(age_groups):
+                    N_tot += _Ns[age_a]
+                rho = N_tot * location_r_area[loc_j]
+
+                if infection_scaling_type == infection_scaling_types.linear:
+                    infection_scaling = infection_scaling_linear(rho, infection_scaling_params)
+                elif infection_scaling_type == infection_scaling_types.powerlaw:
+                    infection_scaling = infection_scaling_powerlaw(rho, infection_scaling_params)
+                elif infection_scaling_type == infection_scaling_types.exp:
+                    infection_scaling = infection_scaling_exp(rho, infection_scaling_params)
+                elif infection_scaling_type == infection_scaling_types.log:
+                    infection_scaling = infection_scaling_log(rho, infection_scaling_params)
+                
+                # Apply infection scaling to lambda
+                for cmat_i in range(contact_matrices_at_each_loc_len[loc_j]):
+                    for age_a in range(age_groups):
+                        for ui in range(infection_classes_num):
+                            _lambdas[cmat_i][age_a][ui] = _lambdas[cmat_i][age_a][ui] * infection_scaling
 
             #### Decide whether deterministic or stochastic
-
-            if loc_j_is_stochastic[loc_j]:
-                loc_j_is_stochastic[loc_j] = False
-                for o in range(model_dim):
-                    loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
-            else:
-                loc_j_is_stochastic[loc_j] = False
-                for o in range(model_dim):
-                    loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
-
+            
+            if stochastic_simulation:
+                if loc_j_is_stochastic[loc_j]:
+                    loc_j_is_stochastic[loc_j] = False
+                    for o in range(model_dim):
+                        loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+                else:
+                    loc_j_is_stochastic[loc_j] = False
+                    for o in range(model_dim):
+                        loc_j_is_stochastic[loc_j] = loc_j_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_above[o])
+            
             #### Compute the derivatives at each node
 
             # Stochastic
-            if loc_j_is_stochastic[loc_j]:
+            if stochastic_simulation and loc_j_is_stochastic[loc_j]:
                 for age_a in range(age_groups):
                     for i in range(nodes_at_j_len[age_a][loc_j]): 
                         n = nodes[nodes_at_j[age_a][loc_j][i]]
@@ -333,7 +391,8 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 term = dist(gen) * r_dt
                                 #term = scipy.stats.poisson.rvs(dt*n.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
                                 dX_state[si+mt.oi_pos] += term
-                                dX_state[si+mt.oi_neg] -= term            
+                                dX_state[si+mt.oi_neg] -= term      
+ 
             # Deterministic
             else:
                 for age_a in range(age_groups):
@@ -404,26 +463,50 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute lambdas
 
-                for cmat_i in range(contact_matrices_num):
+                for cmat_i in range(contact_matrices_at_each_to_len[to_k]):
                     for age_a in range(age_groups):
                         _lambdas[cmat_i][age_a][ui] = 0
                         for age_b in range(age_groups):
                             if _Ns[age_b] > 1: # No infections can occur if there are fewer than one person at node
-                                _lambdas[cmat_i][age_a][ui] += contact_matrices[cmat_i][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+                                _lambdas[cmat_i][age_a][ui] += contact_matrices[contact_matrices_at_each_to[to_k][cmat_i]][age_a][age_b] * _Is[age_b] / _Ns[age_b]
+
+            #### Infection scaling
+
+            if infection_scaling_type != infection_scaling_types.none:
+                N_tot = 0
+                for age_a in range(age_groups):
+                    N_tot += _Ns[age_a]
+                rho = N_tot * commuterverse_r_area[to_k]
+
+                if infection_scaling_type == infection_scaling_types.linear:
+                    infection_scaling = infection_scaling_linear(rho, infection_scaling_params)
+                elif infection_scaling_type == infection_scaling_types.powerlaw:
+                    infection_scaling = infection_scaling_powerlaw(rho, infection_scaling_params)
+                elif infection_scaling_type == infection_scaling_types.exp:
+                    infection_scaling = infection_scaling_exp(rho, infection_scaling_params)
+                elif infection_scaling_type == infection_scaling_types.log:
+                    infection_scaling = infection_scaling_log(rho, infection_scaling_params)
+
+                # Apply infection scaling to lambda
+                for cmat_i in range(contact_matrices_at_each_to_len[to_k]):
+                    for age_a in range(age_groups):
+                        for ui in range(infection_classes_num):
+                            _lambdas[cmat_i][age_a][ui] = _lambdas[cmat_i][age_a][ui] * infection_scaling
 
             #### Decide whether deterministic or stochastic
 
-            if to_k_is_stochastic[loc_j]:
-                to_k_is_stochastic[loc_j] = False
-                for o in range(model_dim):
-                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
-            else:
-                to_k_is_stochastic[loc_j] = True
-                for o in range(model_dim):
-                    to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
+            if stochastic_simulation:
+                if to_k_is_stochastic[loc_j]:
+                    to_k_is_stochastic[loc_j] = False
+                    for o in range(model_dim):
+                        to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] or (total_Os[o] < stochastic_threshold_from_below[o])
+                else:
+                    to_k_is_stochastic[loc_j] = True
+                    for o in range(model_dim):
+                        to_k_is_stochastic[loc_j] = to_k_is_stochastic[loc_j] and (total_Os[o] > stochastic_threshold_from_above[o])
 
             # Stochastic
-            if loc_j_is_stochastic[to_k]:
+            if stochastic_simulation and loc_j_is_stochastic[to_k]:
                 for age_a in range(age_groups):
                     for i in range(cnodes_into_k_len[age_a][to_k]): 
                         cn = cnodes[cnodes_into_k[age_a][to_k][i]]
@@ -503,7 +586,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute the transport profile
                 transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m
-                transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
+                transport_profile = libc.math.exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * Ts[Ti].r_T_Delta_t
                 
                 if fro_N <= 0:
                     continue
@@ -558,7 +641,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                 # Compute the transport profile
                 transport_profile_exponent = (tday - t1)*cTs[cTi].r_T_Delta_t - transport_profile_m
-                transport_profile = exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
+                transport_profile = libc.math.exp(- transport_profile_exponent * transport_profile_exponent * transport_profile_c_r) * transport_profile_integrated_r * cTs[cTi].r_T_Delta_t
 
                 if cn_N <= 0:
                     continue
@@ -617,11 +700,15 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
         #### Call event function
 
-        if event_steps[step_i]:
-            if steps_per_save == -1:
-                event_function(self, step_i, t, dt, X_state, dX_state)
-            else:
-                event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)
+        if is_a_event_on[step_i]:
+            event_i = 0
+            for event_function in event_functions:
+                if is_event_on[step_i][event_i]:
+                    if steps_per_save == -1:
+                        event_function(self, step_i, t, dt, X_state, dX_state)
+                    else:
+                        event_function(self, step_i, t, dt, X_state, dX_state, X_states_saved, ts_saved, save_i)
+                event_i += 1
 
         #### Call Cython event function
 
@@ -644,3 +731,19 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
 
         return sim_data
+
+cdef infection_scaling_linear(DTYPE_t rho, DTYPE_t[:] params):
+    """a + b*rho"""
+    return params[0] + params[1]*rho
+
+cdef infection_scaling_powerlaw(DTYPE_t rho, DTYPE_t[:] params):
+    """a + b*rho^c"""
+    return params[0] + params[1] * libc.math.pow(rho, params[2])
+
+cdef infection_scaling_exp(DTYPE_t rho, DTYPE_t[:] params):
+    """a * b^rho"""
+    return params[0] * libc.math.pow(params[1], rho)
+
+cdef infection_scaling_log(DTYPE_t rho, DTYPE_t[:] params):
+    """log(a + b*rho)"""
+    return libc.math.log(params[0] + params[1]*rho)
