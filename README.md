@@ -1,4 +1,4 @@
-## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples)
+## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples) ![Installation](https://github.com/lukastk/PyRossGeo/workflows/Installation/badge.svg)
 
 [About](#about) | [Model](#model) | [Installation](#installation) | [Documentation](#documentation)  | <!--[Publications](#publications) |--> [License](#license) |  [Contact](#contact)
 
@@ -59,8 +59,10 @@ Clone (or download) the repository and use a terminal to install using
 
 ```bash
 >> git clone https://github.com/lukastk/PyRossGeo.git
->> cd pyross
->> python setup.py install
+>> cd PyRossGeo
+>> make env
+>> conda activate pyrossgeo
+>> make
 ```
 
 PyRossGeo requires the following software
