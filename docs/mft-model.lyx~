@@ -487,21 +487,7 @@ I_{i,nm}^{CG}=P_{i,nm}^{H}I_{im}-\left(N_{i,nm}^{T}-D_{i,nm}\right)\frac{\sum_{k
 
 \end_inset
 
-This definition implies that we capture the contribution from people moving
- 
-\begin_inset Formula $m$
-\end_inset
-
- to 
-\begin_inset Formula $n$
-\end_inset
-
- into 
-\begin_inset Formula $I_{i,nm}^{CG}$
-\end_inset
-
- accurately, but we replace the other inputs with a mean value.
- When we use 
+When we use 
 \begin_inset Formula $I_{i,nm}^{CG}$
 \end_inset
 
