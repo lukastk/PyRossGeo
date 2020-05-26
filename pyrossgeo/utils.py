@@ -364,3 +364,14 @@ def get_dt_schedule(times, end_time):
     dts = (ts - np.roll(ts, 1))[1:]
         
     return np.array(ts, dtype=np.double), np.array(dts, dtype=np.double)
+
+def correct_contact_matrix(cmat, Ni_old, Ni):
+    """Corrects a contact matrix so that it satisfies consistency relations.
+    """
+
+def construct_local_contact_matrices(cmat, loc_pops, scaling_function):
+    """Constructs local contact matrices from a global contact matrix.
+
+    Constructs local contact matrices from a global contact matrix that
+    scale with population density as well as obey local 
+    """
