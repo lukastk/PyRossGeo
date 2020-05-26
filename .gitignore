@@ -16,3 +16,5 @@ __pycache__
 sim_data
 .~lock*
 dev
+examples/geodata
+*.mp4

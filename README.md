@@ -4,6 +4,7 @@
 
 ![Imagel](docs/figs/banner.jpg)
 
+<!--
 ## Public event announcement:
 
 We have two lecture-demonstration events coming up:
@@ -12,7 +13,7 @@ We have two lecture-demonstration events coming up:
 - **Introduction to [*PyRossGeo*](https://github.com/lukastk/PyRossGeo) for spatial epidemiological simulations** - 11-12 AM on Monday (18 May)
 
 Both meetings will be using Google Meet, in the following room: https://meet.google.com/amv-qevr-fjp
-
+-->
 
 
 ## About
@@ -78,6 +79,7 @@ PyRossGeo requires the following software
 | [Jupyter](https://jupyter.org/) (Example notebooks)
 | [PyTest](https://docs.pytest.org/) (Testing)
 | [GeoPandas](https://geopandas.org/) (Visualisations)
+| [PyRoss](https://github.com/rajeshrinet/pyross) (Example notebooks, contact matrices)
 
 ## Documentation
 
