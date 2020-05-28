@@ -25,7 +25,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
     if not self.has_been_initialized:
         raise Exception("Must initialise before starting simulation.")
-
+    
     ####################################################################
     #### Definitions ###################################################
     ####################################################################
@@ -120,7 +120,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     # Contact matrix scaling
     cdef int contact_scaling_type = self.contact_scaling_type
     cdef DTYPE_t[:] contact_scaling_params = self.contact_scaling_params
-    cdef DTYPE_t f, g
+    cdef DTYPE_t _f, _g, _cg
     
     location_r_area_arr = np.array([1.0/a if not np.isnan(a) else np.nan for a in self.location_area]) # Compute inverse of area
     cdef DTYPE_t[:] location_r_area = location_r_area_arr
@@ -376,29 +376,29 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
             for i in range(age_groups):
                 for j in range(age_groups):
 
-                    g = Ns[loc, i]*Ns[loc, j] * location_r_area[loc]*location_r_area[loc]
-                    cg = cNs[loc, i]*cNs[loc, j] * commuterverse_r_area[loc]*commuterverse_r_area[loc]
+                    _g = Ns[loc, i]*Ns[loc, j] * location_r_area[loc]*location_r_area[loc]
+                    _cg = cNs[loc, i]*cNs[loc, j] * commuterverse_r_area[loc]*commuterverse_r_area[loc]
 
                     if contact_scaling_type == contact_scaling_types.linear:
-                        g = contact_scaling_linear(g, contact_scaling_params)
-                        cg = contact_scaling_linear(cg, contact_scaling_params)
+                        _g = contact_scaling_linear(_g, contact_scaling_params)
+                        _cg = contact_scaling_linear(_cg, contact_scaling_params)
                     elif contact_scaling_type == contact_scaling_types.powerlaw:
-                        g = contact_scaling_powerlaw(g, contact_scaling_params)
-                        cg = contact_scaling_powerlaw(cg, contact_scaling_params)
+                        _g = contact_scaling_powerlaw(_g, contact_scaling_params)
+                        _cg = contact_scaling_powerlaw(_cg, contact_scaling_params)
                     elif contact_scaling_type == contact_scaling_types.exp:
-                        g = contact_scaling_exp(g, contact_scaling_params)
-                        cg = contact_scaling_exp(cg, contact_scaling_params)
+                        _g = contact_scaling_exp(_g, contact_scaling_params)
+                        _cg = contact_scaling_exp(_cg, contact_scaling_params)
                     elif contact_scaling_type == contact_scaling_types.log:
-                        g = contact_scaling_log(g, contact_scaling_params)
-                        cg = contact_scaling_log(cg, contact_scaling_params)
+                        _g = contact_scaling_log(_g, contact_scaling_params)
+                        _cg = contact_scaling_log(_cg, contact_scaling_params)
                     
-                    f = libc.math.sqrt( total_N[i] * Ns[loc, j] / (Ns[loc, i] * total_N[j]) )
-                    cmat_scaling_fg[loc,i,j] = f*g
+                    _f = libc.math.sqrt( total_N[i] * Ns[loc, j] / (Ns[loc, i] * total_N[j]) )
+                    cmat_scaling_fg[loc,i,j] = _f*_g
                     cmat_scaling_a[i,j] += Ns[loc, i]*cmat_scaling_fg[loc,i,j]
 
                     if cNs[loc, i] != 0:
-                        f = libc.math.sqrt( total_N[i] * cNs[loc, j] / (cNs[loc, i] * total_N[j]) )
-                        cmat_scaling_fg_cverse[loc,i,j] = f*cg
+                        _f = libc.math.sqrt( total_N[i] * cNs[loc, j] / (cNs[loc, i] * total_N[j]) )
+                        cmat_scaling_fg_cverse[loc,i,j] = _f*_cg
                         cmat_scaling_a[i,j] += cNs[loc, i]*cmat_scaling_fg_cverse[loc,i,j]
                     else:
                         cmat_scaling_fg_cverse[loc,i,j]=0
@@ -791,8 +791,10 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         sim_data = (node_mappings, cnode_mappings, ts_saved, X_states_saved)
 
         if save_path != '':
-            with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f: pickle.dump(node_mappings, f)
-            with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f: pickle.dump(cnode_mappings, f)
+            with open("%s/%s" % (save_path, save_node_mappings_path),"wb") as f:
+                pickle.dump(node_mappings, f)
+            with open("%s/%s" % (save_path, save_cnode_mappings_path),"wb") as f:
+                pickle.dump(cnode_mappings, f)
             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
 
         return sim_data
