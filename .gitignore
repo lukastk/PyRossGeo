@@ -18,3 +18,4 @@ sim_data
 dev
 examples/geodata
 *.mp4
+examples/test
