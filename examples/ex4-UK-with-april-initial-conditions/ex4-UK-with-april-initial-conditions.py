@@ -101,7 +101,7 @@ import json
 # +
 sim_config_path = 'uk_march_20'
 
-min_num_moving = 500 # Remove all commuting edges where less than `min_num_moving` are moving
+min_num_moving = 50 # Remove all commuting edges where less than `min_num_moving` are moving
 
 # Decide which classes are allowed to commute
 allow_class = [
@@ -323,13 +323,13 @@ for l in range(age_groups):
         j1 = j1+z[j]
     i1 = i1+z[l] 
 
-# Rescale contact matrices from units of days to minutes
+# Rescale contact matrices
     
-C_home = C_home / (24*60)
 work_hours = 17-9
-C_work = C_work / (work_hours*60)
-C_school = C_school / (work_hours*60)
-C_other = C_other / (24*60)
+C_work = C_work * 24 / work_hours
+C_school = C_school * 24 / work_hours
+
+# Construct contact matrices
     
 C_no_work = C_home + C_other
 C_at_work = C_home + C_work + C_school + C_other
