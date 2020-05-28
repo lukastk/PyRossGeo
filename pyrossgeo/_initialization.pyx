@@ -466,6 +466,19 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                 mt.oi_pos = model_class_name_to_class_index[class_name]
             mt.oi_coupling = model_class_name_to_class_index[coupling_class]
 
+    # Check if RHS adds up to 0
+
+    for mt in py_model_linear_terms:
+        if mt.oi_neg == -1:
+            print("Warning: Model parameter %s has no negative." % linear_model_param_to_model_term[mt.model_param])
+        if mt.oi_pos== -1:
+            print("Warning: Model parameter %s has no positive." % linear_model_param_to_model_term[mt.model_param])
+    for mt in py_model_infection_terms:
+        if mt.oi_neg == -1:
+            print("Warning: Model parameter %s has no negative." % infection_model_param_to_model_term[mt.model_param])
+        if mt.oi_pos== -1:
+            print("Warning: Model parameter %s has no positive." % infection_model_param_to_model_term[mt.model_param])
+
     # Find all infection classes (py_infection_classes_indices), and assign model_term.infection_index
     
     for model_param in infection_model_param_to_model_term:
@@ -584,7 +597,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     for cmat_key in contact_matrices_dat:
         py_contact_matrices_key_to_index[ cmat_key ] = len(py_contact_matrices)
-        py_contact_matrices.append( contact_matrices_dat[cmat_key]*days_to_minutes )
+        py_contact_matrices.append( contact_matrices_dat[cmat_key] )
 
     py_contact_matrices = np.array(py_contact_matrices, dtype=DTYPE)
 

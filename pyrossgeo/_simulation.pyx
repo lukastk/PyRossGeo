@@ -351,7 +351,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                         Os[loc,age,o] += X_state[n.state_index + o]
                         _N += X_state[n.state_index + o]
 
-                    if _N < 1e-8:
+                    if _N < 1e-1:
                         n.is_on = False
                     else:
                         n.is_on = True
@@ -467,7 +467,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]   
-                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
                                 dist = poisson_distribution[int](dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling])
                                 term = dist(gen) * r_dt
                                 #term = scipy.stats.poisson.rvs(dt*n.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
@@ -499,13 +499,14 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]
-                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
                                 term = n.linear_coeffs[j] * X_state[si+mt.oi_coupling]
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
 
                         for j in range(model_infection_terms_len):
                             mt = model_infection_terms[j]
+
                             if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
                                 cmat_i = n.contact_matrix_indices[mt.infection_index]
                                 term = n.infection_coeffs[j] * _lambdas[cmat_i][age_a][mt.infection_index] * S
@@ -576,7 +577,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]
-                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
                                 #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
                                 #term = dist(gen) * r_dt
                                 term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
@@ -606,7 +607,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]
-                            if X_state[si+mt.oi_coupling] > 0: # Only allow interaction if the class is positive
+                            if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
                                 term = cn.linear_coeffs[j] * X_state[si+mt.oi_coupling]
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
