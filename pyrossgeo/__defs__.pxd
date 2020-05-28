@@ -14,6 +14,7 @@ cdef struct node:
     int* outgoing_T_indices
     int outgoing_T_indices_len
     int* contact_matrix_indices
+    bint is_on
     DTYPE_t* linear_coeffs
     DTYPE_t* infection_coeffs
 
@@ -61,8 +62,7 @@ cdef struct model_term:
     int oi_coupling # Which model class that couples
     int infection_index # Class infection index (only used if infection term)
 
-cpdef enum infection_scaling_types:
-    none,
+cpdef enum contact_scaling_types:
     linear,
     powerlaw,
     exp,

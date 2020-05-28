@@ -2,7 +2,7 @@ import numpy as np
 cimport numpy as np
 
 from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE, infection_scaling_types
+from pyrossgeo.__defs__ import DTYPE, contact_scaling_types
 
 #ctypedef void (*SIM_EVENT)(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
 #cdef void SIM_EVENT_NULL(Simulation cg, int step_i, DTYPE_t t, DTYPE_t dt, DTYPE_t[:] X_state, DTYPE_t[:] dX_state)
@@ -70,8 +70,8 @@ cdef class Simulation:
     cdef np.ndarray stochastic_threshold_from_above # If any class go below their threshold, start stochastic
 
     # Infection scaling
-    cdef int infection_scaling_type
-    cdef np.ndarray infection_scaling_params
+    cdef int contact_scaling_type
+    cdef np.ndarray contact_scaling_params
     cdef readonly np.ndarray location_area
     cdef readonly np.ndarray commuterverse_area
 

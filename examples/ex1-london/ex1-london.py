@@ -31,32 +31,6 @@ import pandas as pd
 import json
 # -
 
-# We will generate most of the simulation configuration files based on parameters we feed into the simulation.
-#
-# Warnings about RAM
-#
-# Allow to have names in the node populations
-#
-# Explanation about how node pop and commtuer network awas construced.
-#
-# Explain what age groups we have
-#
-# Mention that we set `min_num_moving` quite high here for demonstration purposes.
-
-# - ~~Implement density-dependent beta~~
-# - ~~Set node parameters~~
-# - Contact matrices, different ones for school.
-#     - Note that the units of the contact matries are per hour, rather than day
-# - Write up nicely.
-# - Plot density dependence, with population also
-# - Make python version
-# - Make UK version
-# - Clean up rest of notebooks.
-# - Update config documentation
-#     - Can have NaNs in node parameters.
-# - Only compute necessary contact matrices at each node
-#     - Allow user to update this
-
 # # Generate the configuration files
 
 # ### Define model
@@ -108,7 +82,7 @@ model_dim = len(model_classes)
 # +
 sim_config_path = 'london_simulation'
 
-min_num_moving = 200 # Remove all commuting edges where less than `min_num_moving` are moving
+min_num_moving = 20 # Remove all commuting edges where less than `min_num_moving` are moving
 
 # Decide which classes are allowed to commute
 allow_class = [
@@ -135,8 +109,8 @@ seed_pop = [
 
 # Node parameters
 
-n_betaI = 0.3
-n_betaA = 0.3
+n_betaI = 0.02
+n_betaA = 0.02
 n_gammaE = 1/3.0
 n_gammaA = 1/3.0
 n_gammaI = 1/3.0
@@ -152,7 +126,7 @@ cn_gammaI = n_gammaI
 # Time steps
 
 t_start = 0
-t_end = 24*60*2
+t_end = 24*60*100
 
 _, dts = pyrossgeo.utils.get_dt_schedule([
     (0,  1*60),
@@ -262,7 +236,7 @@ nparam.iloc[-2:-1,:]
 # Define the contact matrices
 
 # +
-C_home= np.array( [
+C_home = np.array( [
     [5.0,4.83,4.69,4.58,4.48,4.4,4.33,4.28,4.23],
     [4.83,5.0,4.83,4.69,4.58,4.48,4.4,4.33,4.28],
     [4.69,4.83,5.0,4.83,4.69,4.58,4.48,4.4,4.33],
@@ -363,6 +337,8 @@ ts_hours = ts / 60
 
 # ## Plot the result
 
+# Plot the evolution of the whole network
+
 # +
 plt.figure( figsize=(8,3) )
 
@@ -380,6 +356,11 @@ plt.plot(ts_days, R, label="R")
 
 plt.legend(loc='upper right', fontsize=12)
 plt.xlabel('Days')
+# -
+
+# ### Plotting the result using GeoPandas
+
+# Assemble geo data and define helper functions. Edit `plot_frame` to change the format of the video.
 
 # +
 import pickle
@@ -388,148 +369,144 @@ import geopandas as gpd
 from geopandas.plotting import plot_polygon_collection
 from matplotlib import animation
 
-tmp_dir = tempfile.TemporaryDirectory()
-# -
+# Simulation data
 
-node_table = pd.read_csv('london_simulation/node_table.csv')
+N_ = np.sum(location_data[:,:,:,:], axis=(1,2))
 
-# +
-S = np.sum(location_data[:,:,0,:], axis=1)
-E = np.sum(location_data[:,:,1,:], axis=1)
-A = np.sum(location_data[:,:,2,:], axis=1)
-I = np.sum(location_data[:,:,3,:], axis=1)
-R = np.sum(location_data[:,:,4,:], axis=1)
+S_ = np.sum(location_data[:,:,0,:], axis=1)
+E_ = np.sum(location_data[:,:,1,:], axis=1)
+A_ = np.sum(location_data[:,:,2,:], axis=1)
+I_ = np.sum(location_data[:,:,3,:], axis=1)
+R_ = np.sum(location_data[:,:,4,:], axis=1)
 
-ts = pyrossgeo.utils.extract_ts(sim_data)
+s_ = S_ / N_
+e_ = E_ / N_
+a_ = A_ / N_
+i_ = I_ / N_
+r_ = R_ / N_
 
-epi_data = np.array([
+ts_days = pyrossgeo.utils.extract_ts(sim_data) / (24*60)
+
+epi_data = np.sum(np.array([   # Used to plot pandemic curves
+    S_,E_,A_,I_,R_
+]), axis=2)
+
+# Load geometry
+
+geometry_node_key = 'msoa11cd'
+geometry = gpd.read_file("../geodata/london_geo/london_msoa_shapes/Middle_Layer_Super_Output_Areas_December_2011_Boundaries_EW_BGC.shp")
+
+loc_table = pd.read_csv('london_simulation/loc_table.csv')
+loc_table_loc_col = loc_table.columns[0]
+loc_table_loc_key_col = loc_table.columns[1]
+
+geometry = geometry[ geometry[geometry_node_key].isin(loc_table.iloc[:,1]) ] # Remove locations in geometry that are not in loc_table
+geometry = geometry.merge(loc_table, left_on=geometry_node_key, right_on=loc_table_loc_key_col) # Add location indices
+geometry = geometry.sort_values(by=loc_table_loc_col) # Sort them by location indices
+
+# Edit this function to adjust the layout of the video
+
+def plot_frame(ti, close_plot=False, tmp_save=None):
+    fig, axes = plt.subplots(ncols=3, nrows=2, gridspec_kw={'width_ratios':[1, 1, 1.3]}, figsize=(18, 14))
+
+    geometry['S'] = s_[ti,:]
+    geometry['E'] = e_[ti,:]
+    geometry['A'] = a_[ti,:]
+    geometry['I'] = i_[ti,:]
+    geometry['R'] = r_[ti,:]
     
-])
-
-# +
-sir_data = np.zeros( (location_data.shape[0],location_data.shape[1], 3, location_data.shape[3]) )
-sir_data[:,:,0,:] = location_data[:,:,0,:]
-sir_data[:,:,1,:] = location_data[:,:,1,:] + location_data[:,:,2,:] + location_data[:,:,3,:]
-sir_data[:,:,2,:] = location_data[:,:,4,:]
-
-time_stesp = ts
-# -
-
-pd.DataFrame(sir_indices, columns=["AgeGroup", "Class", "NodeIndex"])  
-
-sir_frame.plot
-
-# +
-sir_indices = [[*index] for index, _ in np.ndenumerate(sir_data[0,:,:,:])]
-sir_frame = pd.DataFrame(sir_indices, columns=["AgeGroup", "Class", "NodeIndex"])     
-s1, s2, s3, s4 = sir_data.shape
-n_days = s1
-for i in range(s1):
-    sir_frame[i] = sir_data.reshape((s1, s2*s3*s4))[i,:]
-sir_frame = sir_frame.merge(node_table)
-
-# Useful quantities:
-population = sir_frame.sum()[0]
-population_per_msoa = sir_frame.groupby('msoa').sum().reset_index()
-# -
-
-population_per_msoa
-
-
-# +
-# Example: Plot percentage of infected in each MSOA at a day
-def plot_infected_relative(frame, day, ax, close_plot=True, title_prefix="", legend=True, cax=None): 
-    # Plot relative number of infected (wrt the number of people in the node at the time):
-    tmp_table = frame.merge(population_per_msoa[['msoa', day]], on='msoa', suffixes=('', '_persons'))
-    tmp_table['rel'] = tmp_table[str(day)] / tmp_table[str(day) + '_persons']
-    tmp_table = geometry_msoa.merge(tmp_table)
-    if legend:
-        if cax is None:
-            tmp_table.plot(ax = ax, column='rel', vmin=0, vmax=1, legend=True, 
-                           legend_kwds={'label': "Relative number of infected"})
-        else:
-            tmp_table.plot(ax = ax, column='rel', vmin=0, vmax=1, legend=True, cax=cax,
-                           legend_kwds={'label': "Relative number of infected"})
-    else:
-        tmp_table.plot(ax = ax, column='rel', vmin=0, vmax=1, legend=False)
+    plot_geo(geometry, axes[0,0], vmin=0, vmax=1, value_key='S', title="Susceptible", legend=False)
+    plot_geo(geometry, axes[0,1], vmin=0, vmax=1, value_key='E', title="Exposed", legend=False)
+    plot_geo(geometry, axes[0,2], vmin=0, vmax=1, value_key='A', title="Activated", legend=True)
+    plot_geo(geometry, axes[1,0], vmin=0, vmax=1, value_key='I', title="Infected", legend=False)
+    plot_geo(geometry, axes[1,1], vmin=0, vmax=1, value_key='R', title="Recovered", legend=False)
     
-    ax.set_title(title_prefix + "Day {}".format(day))
-    ax.set_axis_off()
-    plt.savefig(tmp_dir.name + '/day-{}.png'.format(day))
-    if close_plot:
-        plt.close(fig)
-    else:
-        return plt
-
-def plot_relative(frame, day, ax, title="", legend=True, cax=None): 
-    # Plot relative number of infected (wrt the number of people in the node at the time):
-    tmp_table = frame.merge(population_per_msoa[['msoa', day]], on='msoa', suffixes=('', '_persons'))
-    tmp_table['rel'] = tmp_table[str(day)] / tmp_table[str(day) + '_persons']
-    tmp_table = geometry_msoa.merge(tmp_table)
-    if legend:
-        if cax is None:
-            tmp_table.plot(ax = ax, column='rel', vmin=0, vmax=1, legend=True, 
-                           legend_kwds={'label': "Relative number of infected"})
-        else:
-            tmp_table.plot(ax = ax, column='rel', vmin=0, vmax=1, legend=True, cax=cax,
-                           legend_kwds={'label': "Relative number of infected"})
-    else:
-        tmp_table.plot(ax = ax, column='rel', vmin=0, vmax=1, legend=False)
-    
-    ax.set_title(title)
-    ax.set_axis_off()
-    return plt
-    
-susceptible_sir_frame = sir_frame[sir_frame.Class == 0].groupby('msoa').sum().reset_index()
-infected_sir_frame = sir_frame[sir_frame.Class == 1].groupby('msoa').sum().reset_index()
-recovered_sir_frame = sir_frame[sir_frame.Class == 2].groupby('msoa').sum().reset_index()
-
-# + jupyter={"outputs_hidden": true}
-fig, (ax1, ax2, ax3, cax) = plt.subplots(1, 4, figsize=(18, 5), gridspec_kw={'width_ratios':[15, 15, 15, 0.6]})
-plot_relative(infected_sir_frame, 15, ax1, title="Day %s" % 15, legend=False)
-plot_relative(infected_sir_frame, 30, ax2, title="Day %s" % 30, legend=False)
-plot_relative(infected_sir_frame, 45, ax3, title="Day %s" % 45, legend=True, cax=cax)
-fig.tight_layout(rect=[0, 0.03, 1, 0.9])
-fig.suptitle("Percentage of Infected - SIR Model", fontsize=18)
-plt.savefig("sir-plot.pdf")
-
-# +
-sum_susceptible_sir = susceptible_sir_frame.sum()
-s_vals = [sum_susceptible_sir[i] for i in range(n_days)]
-sum_infected_sir = infected_sir_frame.sum()
-i_vals = [sum_infected_sir[i] for i in range(n_days)]
-sum_recovered_sir = recovered_sir_frame.sum()
-r_vals = [sum_recovered_sir[i] for i in range(n_days)]
-
-def plot_seir(day, ax):
-    ax.plot(list(range(day)), s_vals[0:day], label="Susceptible")
-    ax.plot(list(range(day)), i_vals[0:day], label="Infected")
-    ax.plot(list(range(day)), r_vals[0:day], label="Recovered")
-
-    ax.set_xlim(0, n_days)
-    ax.set_ylim(0, population)
-    ax.legend(loc='center left')
-
-
-def plot_seir_day(day, close_plot=False):
-    fig, axes = plt.subplots(ncols=3, nrows=2, gridspec_kw={'width_ratios':[15, 15, 0.5]}, figsize=(12, 10))
-
-    plot_relative(susceptible_sir_frame, day, axes[0][0], title="Susceptible", legend=False)
-    plot_relative(infected_sir_frame, day, axes[0][1], title="Infected", legend=True, cax=axes[0][2])
-    plot_relative(recovered_sir_frame, day, axes[1][1], title="Recovered", legend=False)
-    plot_seir(day, axes[1][0])
-    axes[1][2].set_visible(False)
+    plot_epi(axes[1,2], ti, ts_days, epi_data, ['S','E','A','I','R'])
     
     fig.tight_layout(rect=[0, 0.03, 1, 0.92])
-    fig.suptitle("S(E+A+I)R Model - Day {}".format(day), fontsize=18)
-    plt.savefig(tmp_dir.name + '/day-{}.png'.format(day))
+    fig.suptitle("SEAIR Model - Day %s" % ti, fontsize=18)
+    
+    if not tmp_save is None:
+        plt.savefig(tmp_save.name + '/%s.png' % ti)
     if close_plot:
         plt.close(fig)
+    if not tmp_save is None:
+        return tmp_save.name + '/%s.png' % ti
 
-# Uncomment this to create the video:
-for day in range(n_days):
-    if day % 10 == 0:
-        print(day, " of ", n_days)
-    plot_seir_day(day, close_plot=True)
-# This probably only works on Linux (also needs ffmpeg)
-os.system('ffmpeg -framerate 10 -i \'{}/day-%d.png\' -c:v libx264 -pix_fmt yuv420p ./sir-animation-no-lockdown.mp4'.format(tmp_dir.name))
+# Helper functions for plotting
+
+def plot_geo(geometry, ax, vmin, vmax, value_key='val', title="", legend=True, legend_label='', cax=None, axis_on=False):
+    if legend:
+        if cax is None:
+            geometry.plot(column=value_key, ax=ax, vmin=vmin, vmax=vmax, legend=True, legend_kwds={'label': legend_label})
+        else:
+            geometry.plot(column=value_key, ax=ax, cax=cax, vmin=vmin, vmax=vmax, legend=True, legend_kwds={'label': legend_label})
+    else:
+        geometry.plot(column=value_key, ax=ax, cax=cax, vmin=vmin, vmax=vmax, legend=False)
+        
+    ax.set_title(title)
+    if not axis_on:
+        ax.set_axis_off()
+        
+def plot_epi(ax, ti, ts, epi_data, epi_data_labels):
+    for oi in range(epi_data.shape[0]):
+        ax.plot(ts[:ti], epi_data[oi,:ti], label=epi_data_labels[oi])
+    ax.legend(loc='center left')
+    
+    ax.set_xlim(np.min(ts_days), np.max(ts_days))
+    ax.set_ylim(0, np.max(epi_data))
+
+
+# -
+
+# Plot the pandemic at a given day
+
+# +
+day = 50
+
+geometry['S'] = s_[day,:]
+geometry['E'] = e_[day,:]
+geometry['A'] = a_[day,:]
+geometry['I'] = i_[day,:]
+geometry['R'] = r_[day,:]
+
+fig, ax = plt.subplots(figsize=(7, 5))
+
+plot_geo(geometry, ax, vmin=0, vmax=1, value_key='S', title='Susceptibles at day %s' % day)
+
+# +
+day = 50
+
+plot_frame(day)
+# -
+
+# Create a video of the pandemic
+
+# +
+tmp_dir = tempfile.TemporaryDirectory()
+
+frames_paths = []
+
+for ti in range(len(ts)):
+    if ti % 1 == 0:
+        print("Frame %s of %s" % (ti, len(ts)))
+    frame_path = plot_frame(ti, close_plot=True, tmp_save=tmp_dir)
+    frames_paths.append(frame_path)
+    
+import cv2
+
+video_name = 'sim_video.mp4'
+
+frame = cv2.imread(frames_paths[0])
+height, width, layers = frame.shape
+fps = 6
+#codec=cv2.VideoWriter_fourcc('D', 'I', 'V', 'X')
+codec=cv2.VideoWriter_fourcc(*'DIVX')
+
+video = cv2.VideoWriter(video_name, codec, fps, (width,height))
+
+for frame_path in frames_paths:
+    video.write(cv2.imread(frame_path))
+
+cv2.destroyAllWindows()
+video.release()

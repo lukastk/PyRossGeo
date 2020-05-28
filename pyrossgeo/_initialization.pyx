@@ -7,7 +7,7 @@ import pandas as pd
 import csv, json
 
 from pyrossgeo.__defs__ cimport node, cnode, transporter, model_term, DTYPE_t
-from pyrossgeo.__defs__ import DTYPE, infection_scaling_types
+from pyrossgeo.__defs__ import DTYPE, contact_scaling_types
 from pyrossgeo.Simulation cimport Simulation
 
 def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
@@ -401,24 +401,26 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
     # Get parameters for the infection scaling
 
-    if 'infection_scaling' in model_dat['settings'] and 'infection_scaling_parameters' in model_dat['settings']:
-        py_infection_scaling_params = np.array(model_dat['settings']['infection_scaling_parameters'], dtype=DTYPE)
-        scaling_types = {
-            'linear' : infection_scaling_types.linear,
-            'powerlaw': infection_scaling_types.powerlaw,
-            'exp' : infection_scaling_types.exp,
-            'log' : infection_scaling_types.log
-        }
+    scaling_types = {
+        'linear' : contact_scaling_types.linear,
+        'powerlaw': contact_scaling_types.powerlaw,
+        'exp' : contact_scaling_types.exp,
+        'log' : contact_scaling_types.log
+    }
 
-        if model_dat['settings']['infection_scaling'] in scaling_types:
-            py_infection_scaling_type = scaling_types[ model_dat['settings']['infection_scaling'] ]
+    if 'contact_scaling' in model_dat['settings'] and 'contact_scaling_parameters' in model_dat['settings']:
+        py_contact_scaling_params = np.array(model_dat['settings']['contact_scaling_parameters'], dtype=DTYPE)
+
+        if model_dat['settings']['contact_scaling'] in scaling_types:
+            py_contact_scaling_type = scaling_types[ model_dat['settings']['contact_scaling'] ]
         else:
-            raise Exception('Infection scaling type "%s" does not exist.' % model_dat['settings']['infection_scaling'])
-    elif 'infection_scaling' in model_dat['settings'] or 'infection_scaling_parameters' in model_dat['settings']:
-        raise Exception('Either both "infection_scaling" or "infection_scaling_parameters" need to be defined, or neither of them.')
+            raise Exception('Infection scaling type "%s" does not exist.' % model_dat['settings']['contact_scaling'])
+    elif 'contact_scaling' in model_dat['settings'] or 'contact_scaling_parameters' in model_dat['settings']:
+        raise Exception('Either both "contact_scaling" or "contact_scaling_parameters" need to be defined, or neither of them.')
     else:
-        py_infection_scaling_params = np.zeros(0)
-        py_infection_scaling_type = infection_scaling_types.none
+        py_contact_scaling_type = scaling_types[ 'powerlaw' ]
+        py_contact_scaling_params = np.array( [0, 1, 0.5] )
+        print("Assuming contacts scale as a powerlaw, with parameters [%s, %s, %s]" % tuple(py_contact_scaling_params))
 
     ## Construct internal representation of model
 
@@ -525,7 +527,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
                             # Only assign parameter if it isn't NaN
                             if not pd.isnull(row[mt.model_param]):
-                                param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                                param_val = DTYPE(row[mt.model_param]) # Infection parameters are not given in units of time 
                                 n.infection_coeffs[i]= param_val
     
     ## Set cnode model parameters
@@ -575,14 +577,14 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
 
                 # Only assign parameter if it isn't NaN
                 if not pd.isnull(row[mt.model_param]):
-                    param_val = DTYPE(row[mt.model_param]* days_to_minutes) 
+                    param_val = DTYPE(row[mt.model_param]) # Infection parameters are not given in units of time 
                     cn.infection_coeffs[i]= param_val
 
     #### Set contact matrices ##########################################
 
     for cmat_key in contact_matrices_dat:
         py_contact_matrices_key_to_index[ cmat_key ] = len(py_contact_matrices)
-        py_contact_matrices.append( contact_matrices_dat[cmat_key] )
+        py_contact_matrices.append( contact_matrices_dat[cmat_key]*days_to_minutes )
 
     py_contact_matrices = np.array(py_contact_matrices, dtype=DTYPE)
 
@@ -657,7 +659,7 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                         py_contact_matrices, py_contact_matrices_key_to_index,
                         py_contact_matrices_at_each_loc, py_contact_matrices_at_each_to,
                         py_stochastic_simulation, py_stochastic_threshold_from_below, py_stochastic_threshold_from_above,
-                        py_infection_scaling_params, py_infection_scaling_type,
+                        py_contact_scaling_params, py_contact_scaling_type,
                         py_location_area, py_commuterverse_area)
 
 
@@ -667,7 +669,7 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
                         py_contact_matrices, py_contact_matrices_key_to_index,
                         py_contact_matrices_at_each_loc, py_contact_matrices_at_each_to,
                         py_stochastic_simulation, py_stochastic_threshold_from_below, py_stochastic_threshold_from_above,
-                        py_infection_scaling_params, py_infection_scaling_type,
+                        py_contact_scaling_params, py_contact_scaling_type,
                         py_location_area, py_commuterverse_area):
     """Initialize the simulation."""
 
@@ -877,8 +879,8 @@ cdef _initialize(Simulation self, py_max_node_index, model_dim, age_groups, X_st
     self.stochastic_threshold_from_below = np.array(py_stochastic_threshold_from_below, dtype=DTYPE)
     self.stochastic_threshold_from_above = np.array(py_stochastic_threshold_from_above, dtype=DTYPE)
 
-    self.infection_scaling_params = py_infection_scaling_params
-    self.infection_scaling_type = py_infection_scaling_type
+    self.contact_scaling_params = py_contact_scaling_params
+    self.contact_scaling_type = py_contact_scaling_type
 
     self.location_area = np.array(py_location_area, dtype=DTYPE)
     self.commuterverse_area = np.array(py_commuterverse_area, dtype=DTYPE)
