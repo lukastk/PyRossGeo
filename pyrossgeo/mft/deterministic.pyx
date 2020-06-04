@@ -1034,9 +1034,9 @@ cdef class SIR:
             return self.drpdt
 
         from scipy.integrate import solve_ivp
-        #time_points=np.linspace(Ti, Tf);  ## intervals at which output is returned by integrator.
+        time_points=np.linspace(Ti, Tf, int(Nf/24));  ## intervals at which output is returned by integrator.
         time_step = 1.0*Tf/Nf
-        u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, Ia0, Is0)), method='RK23', t_eval=None, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
+        u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, Ia0, Is0)), method='RK23', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
         
         data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M,'alpha':self.alpha, 'beta':self.beta,'gIa':self.gIa, 'gIs':self.gIs }
         
@@ -1123,9 +1123,9 @@ cdef class SEI5R:
         readonly np.ndarray rp0, Nh, Nw, Ntrans, Ntrans0, drpdt, CMh, CMw, CMt, Dnm, Dnm0, RM
         readonly np.ndarray route_index, route_ratio
         readonly np.ndarray PWRh, PWRw, PP, FF, II, IT, TT
-        readonly np.ndarray iNh, iNw, iNtrans, indexJ, indexI, indexAGJ, aveS, aveI, Lambda
+        readonly np.ndarray iNh, iNw, iNtrans, indexJ, indexI, aveS, aveI, Lambda
         
-    def __init__(self, parameters, M, Nd, Dnm, dnm, travel_restriction, cutoff):
+    def __init__(self, parameters, M, Nd, Dnm, dnm, travel_restriction, cutoff, highSpeed):
         alpha       = parameters.get('alpha')             # fraction of asymptomatic infectives
         self.beta   = parameters.get('beta')              # infection rate
         self.gE     = parameters.get('gE')                # recovery rate of E class
@@ -1141,38 +1141,33 @@ cdef class SEI5R:
         cc          = parameters.get('cc')                # ICU
         mm          = parameters.get('mm')                # mortality
         self.cutoff = cutoff                              # cutoff value of census data
+        self.highSpeed = highSpeed
         self.M      = M
         self.Nd     = Nd
         self.travel_restriction = travel_restriction
-        self.Nh     = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)         # # people living in node i
-        self.Nw     = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)         # # people working at node i
-        self.Ntrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
-        self.Ntrans0= np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
-        self.iNh    = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)        # inv people living in node i
-        self.iNw    = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)        # inv people working at node i
-        self.iNtrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# inv people comuteing i->j
+        self.Nh     = np.zeros( (self.M, self.Nd), dtype=DTYPE)         # # people living in node i
+        self.Nw     = np.zeros( (self.M, self.Nd), dtype=DTYPE)         # # people working at node i
+        self.iNh    = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people living in node i
+        self.iNw    = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people working at node i
         self.seed  = 1
         np.random.seed(self.seed)
-        self.RM    = np.random.rand(5000*self.M*self.Nd) # random matrix 
+        self.RM    = np.random.rand(100*self.M*self.Nd) # random matrix 
         self.CMh   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in HOME
         self.CMw   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in WORK
         self.CMt   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in TRANS
-        self.Dnm   = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# census data matrix WR
+        self.Dnm   = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# census data matrix WR
         self.Dnm   = Dnm
-        self.Dnm0  = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# backup od Dnm
-        self.PWRh  = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
-        self.PWRw  = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
+        self.Dnm0  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# backup od Dnm
+        self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
+        #self.PWRw  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         self.aveS  = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)   # average S at i node
         self.aveI  = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)   # average I at i node
         self.Lambda= np.zeros( (self.M, self.Nd), dtype=DTYPE)     # effective infection rate
         self.drpdt = np.zeros( 8*self.Nd*self.M, dtype=DTYPE)      # right hand side
-        self.indexJ= np.zeros( (self.M+1, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
-        self.indexI= np.zeros( (self.M+1, self.Nd, self.Nd + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
+        self.indexJ= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
+        self.indexI= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
         #self.indexAGJ= np.zeros( (self.M, self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij*Dnm_gam_ij at specifi alp, gam and i
         #self.distances = np.zeros((self.Nd,self.Nd), DTYPE)
-        self.II = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
-        self.IT = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
-        self.TT = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
         self.FF = np.zeros( (self.M, self.Nd), dtype=DTYPE)               # Working memory
         self.PP = np.zeros( (self.Nd, self.Nd), dtype=np.int32)        # Working memory
 
@@ -1214,11 +1209,20 @@ cdef class SEI5R:
 
         self.ir = 0
 
-        from scipy.sparse.csgraph import shortest_path, floyd_warshall, dijkstra, bellman_ford, johnson
-        from scipy.sparse import csr_matrix
+        if highSpeed == 0:
+            self.Ntrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
+            self.Ntrans0= np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
+            self.iNtrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# inv people comuteing i->j
+            self.II = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
+            self.IT = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
+            self.TT = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
+
+
+            from scipy.sparse.csgraph import shortest_path, floyd_warshall, dijkstra, bellman_ford, johnson
+            from scipy.sparse import csr_matrix
         
-        print('#Start finding the shortest path between each node')
-        self.II[0], self.PP = shortest_path(dnm, return_predecessors=True)
+            print('#Start finding the shortest path between each node')
+            self.II[0], self.PP = shortest_path(dnm, return_predecessors=True)
         print('#Start to calculate fixed variables')
         self.prepare_fixed_variable(travel_restriction, 0)
         print('#Finish calculating fixed variables')
@@ -1275,20 +1279,18 @@ cdef class SEI5R:
         cc          = parameters.get('cc')                # ICU
         mm          = parameters.get('mm')                # mortality
         self.travel_restriction = travel_restriction
-        self.Nh    = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)         # # people living in node i
-        self.Nw    = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)         # # people working at node i
-        self.Ntrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
-        self.iNh    = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)        # inv people living in node i
-        self.iNw    = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)        # inv people working at node i
-        self.iNtrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# inv people comuteing i->j
+        self.Nh    = np.zeros( (self.M, self.Nd), dtype=DTYPE)         # # people living in node i
+        self.Nw    = np.zeros( (self.M, self.Nd), dtype=DTYPE)         # # people working at node i
+        self.iNh    = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people living in node i
+        self.iNw    = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people working at node i
         self.seed    = 1
         np.random.seed(self.seed)
-        self.RM    = np.random.rand(5000*self.M*self.Nd) # random matrix 
-        self.PWRh  = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
-        self.PWRw  = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
+        self.RM    = np.random.rand(100*self.M*self.Nd) # random matrix 
+        self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
+        #self.PWRw  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         self.drpdt = np.zeros( 8*self.Nd*self.M, dtype=DTYPE)      # right hand side
-        self.indexJ= np.zeros( (self.M+1, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
-        self.indexI= np.zeros( (self.M+1, self.Nd, self.Nd + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
+        self.indexJ= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
+        self.indexI= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
 
         self.alpha  = np.zeros( self.M, dtype=DTYPE)
         self.alphab = np.zeros( self.M, dtype=DTYPE)
@@ -1327,6 +1329,10 @@ cdef class SEI5R:
 
         self.ir = 0
         self.t_old = 0
+
+        if self.highSpeed == 0:
+            self.Ntrans = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
+            self.iNtrans = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# inv people comuteing i->j
 
         print('#Start to calculate fixed variables')
         self.prepare_fixed_variable(self.travel_restriction, 1)
@@ -1368,7 +1374,7 @@ cdef class SEI5R:
             double [:,:]   CMt     = self.CMt
             double [:,:,:] Dnm     = self.Dnm
             double [:,:,:] PWRh    = self.PWRh
-            double [:,:,:] PWRw    = self.PWRw
+            #double [:,:,:] PWRw    = self.PWRw
             double [:,:]   aveS    = self.aveS
             double [:,:]   aveI    = self.aveI
             double [:,:,:] II      = self.II
@@ -1410,48 +1416,47 @@ cdef class SEI5R:
                     X[t_i + 4*M1] = hh[alp]*gIs*Is[t_i] - gIh*Ih[t_i]
                     X[t_i + 5*M1] = cc[alp]*gIh*Ih[t_i] - gIc*Ic[t_i]
                         
-        elif t_p_24  > 9.0 and t_p_24  < 17.0: #WORK
+        elif t_p_24  > 9.0 and t_p_24  < 17.0 or highSpeed == 1: #WORK
         #elif True: #WORK
             #print("TIME_in_WORK", t_p_24)
-            if True: #distinguishable
-                for i in range(Nd):
-                    for alp in range(M):
-                        aveI[alp,i] = 0.0
-                        for j in range(1, indexJ[alp,i,0] + 1):
-                            jj = indexJ[alp,i,j]
-                            t_j = alp*Nd + jj
-                            aveI[alp,i] += PWRh[alp,i,jj]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])
-                    for alp in range(M):
-                        Lambda[alp, i] = 0.0
-                        for gam in range(M):
-                            Lambda[alp,i] += CMw[alp,gam]*aveI[gam,i]*iNw[gam,i]
-                        Lambda[alp, i] = rW*beta*Lambda[alp,i]
+            for i in prange(Nd, nogil=True):
+                for alp in range(M):
+                    aveI[alp,i] = 0.0
+                    for j in range(1, indexJ[alp,i,0] + 1):
+                        jj = indexJ[alp,i,j]
+                        t_j = alp*Nd + jj
+                        aveI[alp,i] += PWRh[alp,i,jj]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])
+                for alp in range(M):
+                    Lambda[alp, i] = 0.0
+                    for gam in range(M):
+                        Lambda[alp,i] += CMw[alp,gam]*aveI[gam,i]*iNw[gam,i]
+                    Lambda[alp, i] = rW*beta*Lambda[alp,i]
 
-                        t_i = alp*Nd + i
+                    t_i = alp*Nd + i
                             
-                        X[t_i]        = 0.0
-                        X[t_i + M1]   = 0.0
-                        X[t_i + 2*M1] = 0.0
-                        X[t_i + 3*M1] = 0.0
-                        X[t_i + 4*M1] = 0.0
-                        X[t_i + 5*M1] = 0.0
-                        X[t_i + 6*M1] = 0.0
-                        X[t_i + 7*M1] = 0.0
+                    X[t_i]        = 0.0
+                    X[t_i + M1]   = 0.0
+                    X[t_i + 2*M1] = 0.0
+                    X[t_i + 3*M1] = 0.0
+                    X[t_i + 4*M1] = 0.0
+                    X[t_i + 5*M1] = 0.0
+                    X[t_i + 6*M1] = 0.0
+                    X[t_i + 7*M1] = 0.0
                             
-                for i in range(Nd):
-                    for alp in range(M):
-                        t_i = alp*Nd + i
-                        X[t_i + M1]   = - gE*E[t_i]
-                        X[t_i + 2*M1] = ce1[alp]*E[t_i] - gIa*Ia[t_i]
-                        X[t_i + 3*M1] = ce2[alp]*E[t_i] - gIs*Is[t_i]
-                        X[t_i + 4*M1] = hh[alp]*gIs*Is[t_i] - gIh*Ih[t_i]
-                        X[t_i + 5*M1] = cc[alp]*gIh*Ih[t_i] - gIc*Ic[t_i]
-                        for j in range(1, indexI[alp,i,0] + 1):
-                            ii = indexI[alp,i,j]
-                            if S[t_i] > 0.0:
-                                aa = Lambda[alp,ii]*PWRh[alp,ii,i]*S[t_i]
-                                X[t_i]        += -aa
-                                X[t_i + M1]   += aa
+            for i in prange(Nd, nogil=True):
+                for alp in range(M):
+                    t_i = alp*Nd + i
+                    X[t_i + M1]   = - gE*E[t_i]
+                    X[t_i + 2*M1] = ce1[alp]*E[t_i] - gIa*Ia[t_i]
+                    X[t_i + 3*M1] = ce2[alp]*E[t_i] - gIs*Is[t_i]
+                    X[t_i + 4*M1] = hh[alp]*gIs*Is[t_i] - gIh*Ih[t_i]
+                    X[t_i + 5*M1] = cc[alp]*gIh*Ih[t_i] - gIc*Ic[t_i]
+                    for j in range(1, indexI[alp,i,0] + 1):
+                        ii = indexI[alp,i,j]
+                        if S[t_i] > 0.0:
+                            aa = Lambda[alp,ii]*PWRh[alp,ii,i]*S[t_i]
+                            X[t_i]        += -aa
+                            X[t_i + M1]   += aa
 
         else: #TRANS
             #print("TIME_in_TRANS", t_p_24)
@@ -1550,7 +1555,7 @@ cdef class SEI5R:
                 X[t_i + 7*M1] = -aa
                 aa = Nh[alp,i] - N[t_i]
                 if aa > 0.0 and N[t_i] > 0.0: # procedure of decreasing the number of people
-                    Nh[M,i]    -= aa
+                    #Nh[M,i]    -= aa
                     Nh[alp,i]  -= aa
                     if Nh[alp,i] > 0.1:
                         iNh[alp,i]  = 1.0/Nh[alp,i]
@@ -1571,7 +1576,7 @@ cdef class SEI5R:
                             indexI[alp,i,0] -= 1
                             Dnm[alp,k,i] = 0.0
                         PWRh[alp,k,i] = Dnm[alp,k,i]*iNh[alp,i]
-                        PWRw[alp,k,i] = Dnm[alp,k,i]*iNw[alp,k]
+                        #PWRw[alp,k,i] = Dnm[alp,k,i]*iNw[alp,k]
                     else:
                         N[t_i] = 0.0
                         Nh[alp,i]  = 0.0
@@ -1588,14 +1593,11 @@ cdef class SEI5R:
             double [:,:,:] Dnm     = self.Dnm
             double [:,:,:] Dnm0    = self.Dnm0
             double [:,:,:] PWRh    = self.PWRh
-            double [:,:,:] PWRw    = self.PWRw
+            #double [:,:,:] PWRw    = self.PWRw
             double [:,:]   Nh     = self.Nh
             double [:,:]   Nw     = self.Nw
-            double [:,:,:] Ntrans  = self.Ntrans
-            double [:,:,:] Ntrans0 = self.Ntrans0
             double [:,:]   iNh    = self.iNh
             double [:,:]   iNw    = self.iNw
-            double [:,:,:] iNtrans = self.iNtrans
             #double [:,:] distances = self.distances
             unsigned short [:,:,:]   indexJ  = self.indexJ
             unsigned short [:,:,:]   indexI  = self.indexI
@@ -1604,22 +1606,34 @@ cdef class SEI5R:
             #double [:,:,:] C_Dnm   = self.IT
             unsigned short [:,:,:] route_index # the list of node in the route i -> j
             float [:,:,:] route_ratio          # the list of the distance ratio in the route i -> j
-            double [:,:]  dij  = self.II[0]    # the distance between node i and j
-            int [:,:]     pred = self.PP       # predecessor node belong the route i -> j
+            double [:,:,:] iNtrans
+            double [:,:,:] Ntrans
+            double [:,:,:] Ntrans0
+            double [:,:]  dij    # the distance between node i and j
+            int [:,:]     pred   # predecessor node belong the route i -> j
+
+        if self.highSpeed == 0:
+            N_Matrix = np.zeros((M,Nd,Nd), dtype=DTYPE)
+            route_num = np.zeros(Nd*Nd, dtype=int)
+            iNtrans = self.iNtrans
+            Ntrans  = self.Ntrans
+            Ntrans0 = self.Ntrans0
+            dij  = self.II[0]    # the distance between node i and j
+            pred = self.PP       # predecessor node belong the route i -> j
 
         if restart == 0:
-            for alp in prange(M+1, nogil=True):
+            for alp in prange(M, nogil=True):
                 for i in range(Nd):
                     for j in range(Nd):
                         Dnm0[alp,i,j] = Dnm[alp,i,j]
         else:
-            for alp in prange(M+1, nogil=True):
+            for alp in prange(M, nogil=True):
                 for i in range(Nd):
                     for j in range(Nd):
                         Dnm[alp,i,j] = Dnm0[alp,i,j]            
             
         #travel restriction
-        for alp in prange(M+1, nogil=True):
+        for alp in prange(M, nogil=True):
             for i in range(Nd):
                 for j in range(Nd):
                     if i != j:
@@ -1633,7 +1647,7 @@ cdef class SEI5R:
         cdef int nonzero_element = 0
         cdef double cutoff_total = 0.0
         #C_Dnm = Dnm.copy()
-        for alp in prange(M+1, nogil=True):
+        for alp in prange(M, nogil=True):
             for i in range(Nd):
                 for j in range(Nd):
                     cij = Dnm0[alp,i,j]
@@ -1659,19 +1673,17 @@ cdef class SEI5R:
                     Nh[alp,i] += Dnm[alp,j,i]
                     Nw[alp,i] += Dnm[alp,i,j]
 
-        for i in prange(Nd, nogil=True):
-            for alp in range(M):
-                Nh[M,i] += Nh[alp,i] ## N^{H}_i residence in Node i
-                Nw[M,i] += Nw[alp,i] ## N^{w}_i working in Node i
+        #for i in prange(Nd, nogil=True):
+        #    for alp in range(M):
+                #Nh[M,i] += Nh[alp,i] ## N^{H}_i residence in Node i
+                #Nw[M,i] += Nw[alp,i] ## N^{w}_i working in Node i
 
         #Generating the Ntrans from route and predecessor
-        cdef N_Matrix = np.zeros((M,Nd,Nd), dtype=DTYPE)
-        cdef route_num = np.zeros(Nd*Nd, dtype=int)
-        cdef int total_route_index = 0
-        if restart == 0:
+        cdef total_route_index = 0
+        if restart == 0 and self.highSpeed == 0:
             for i in range(Nd):
                 for j in range(Nd):
-                    if i != j and Dnm[M,j,i] > cutoff:
+                    if i != j:# and Dnm[M,j,i] > cutoff:
                         #route = get_path(i, j, p)
                         count = 0
                         ii = j
@@ -1695,8 +1707,9 @@ cdef class SEI5R:
                         count = 0
                         for k in range(len(route) - 1):
                             for alp in range(M):
-                                N_Matrix[alp,route[k + 1],route[k]] += Dnm[alp,j,i]
-                                count += 1
+                                if Dnm[alp,j,i] > cutoff:
+                                    N_Matrix[alp,route[k + 1],route[k]] += Dnm[alp,j,i]
+                                    count += 1
                         total_route_index += len(route)
                         route_num[i*Nd + j] = len(route)
             route_num.sort() # should be improved
@@ -1710,7 +1723,7 @@ cdef class SEI5R:
             route_ratio = self.route_ratio
             for i in range(Nd):
                 for j in range(Nd):
-                    if i != j and Dnm[M,j,i] > cutoff:
+                    if i != j: # and Dnm[M,j,i] > cutoff:
 
                         count = 0
                         ii = j
@@ -1746,17 +1759,17 @@ cdef class SEI5R:
             for i in prange(Nd, nogil=True):
                 for j in range(Nd):
                     for alp in range(M):
-                        Ntrans[M,i,j] += Ntrans[alp,i,j] ## N^{t}_{ij} the effective number of the people using the route j->i
+                        #Ntrans[M,i,j] += Ntrans[alp,i,j] ## N^{t}_{ij} the effective number of the people using the route j->i
                         Ntrans0[alp,i,j] = Ntrans[alp,i,j]
-                    Ntrans0[M,i,j] = Ntrans[M,i,j]
-        else:
-            for alp in prange(M+1, nogil=True):
+                    #Ntrans0[M,i,j] = Ntrans[M,i,j]
+        elif self.highSpeed == 0:
+            for alp in prange(M, nogil=True):
                 for i in range(Nd):
                     for j in range(Nd):
                         Ntrans[alp,i,j] = Ntrans0[alp,i,j]
         #End Generating the Ntrans from route and predecessor
         
-        for alp in range(M+1):
+        for alp in range(M):
             for i in range(Nd):
                 if Nh[alp,i] != 0:
                     iNh[alp,i] = 1.0/Nh[alp,i]
@@ -1776,15 +1789,16 @@ cdef class SEI5R:
                     else:
                         PWRh[alp,i,j] = 0.0
                 
-                    if Nw[alp,i] != 0:
-                        PWRw[alp,i,j] = Dnm[alp,i,j]/Nw[alp,i]
-                    else:
-                        PWRw[alp,i,j] = 0.0
-                    
-                    if Ntrans[alp,i,j] != 0:
-                        iNtrans[alp,i,j] = 1.0/Ntrans[alp,i,j]
-                    else:
-                        iNtrans[alp,i,j] = 0.0
+                    #if Nw[alp,i] != 0:
+                    #    PWRw[alp,i,j] = Dnm[alp,i,j]/Nw[alp,i]
+                    #else:
+                    #    PWRw[alp,i,j] = 0.0
+
+                    if self.highSpeed == 0:
+                        if Ntrans[alp,i,j] != 0:
+                            iNtrans[alp,i,j] = 1.0/Ntrans[alp,i,j]
+                        else:
+                            iNtrans[alp,i,j] = 0.0
                     
                     if Dnm[alp,i,j] > cutoff or i == j:
                         indexJ[alp,i,index_j + 1] = j
@@ -1812,7 +1826,7 @@ cdef class SEI5R:
         #            indexAGJ[alp,gam,i,0] = index_agj
 
 
-    def simulate(self, S0, E0, Ia0, Is0, Ih0, Ic0, Im0, N0, contactMatrix, Tf, Nf, Ti=0, highSpeed=0):
+    def simulate(self, S0, E0, Ia0, Is0, Ih0, Ic0, Im0, N0, contactMatrix, Tf, Nf, Ti=0):
         """
         Parameters
         ----------
@@ -1840,8 +1854,8 @@ cdef class SEI5R:
             Number of time points to evaluate.
         Ti: float, optional
             Start time of integrator. The default is 0.
-        highSpeed: int, optional
-            Flag of more coasening calculation.
+        #highSpeed: int, optional
+        #    Flag of more coasening calculation.
 
         Returns
         -------
@@ -1850,7 +1864,7 @@ cdef class SEI5R:
             'param': input param to integrator.
         """
 
-        self.highSpeed = highSpeed      # flag of hispeed calculation   
+        #self.highSpeed = highSpeed      # flag of hispeed calculation   
 
         print('travel restriction', self.travel_restriction)
         print('cutoff', self.cutoff)
@@ -1862,24 +1876,17 @@ cdef class SEI5R:
         print("#Calculation Start")
         
         def rhs0(t, rp):
-            if self.ir > 4998*self.M*self.Nd:
+            if self.ir > 99*self.M*self.Nd:
                 np.random.seed()
-                self.RM    = np.random.rand(5000*self.M*self.Nd)
+                self.RM    = np.random.rand(100*self.M*self.Nd)
                 self.ir = 0
             self.rhs(rp, t)
             return self.drpdt
 
         from scipy.integrate import solve_ivp
-        time_points=np.linspace(Ti, Tf);  ## intervals at which output is returned by integrator.
+        time_points=np.linspace(Ti, Tf, int(Tf/24 + 1));  ## intervals at which output is returned by integrator.
         time_step = 1.0*Tf/Nf
-        calc_time = []
-        for i in range(int(Tf/24)):
-            calc_time.append(i*24.0)
-            calc_time.append(8.0 + i*24.0)
-            calc_time.append(9.01 + i*24.0)
-            calc_time.append(17.0 + i*24.0)
-            calc_time.append(18.01 + i*24.0)
-        u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, E0, Ia0, Is0, Ih0, Ic0, Im0, N0)), method='RK23', t_eval=calc_time, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
+        u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, E0, Ia0, Is0, Ih0, Ic0, Im0, N0)), method='RK23', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
             
         data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M,'alpha':self.alpha, 'beta':self.beta,'gIa':self.gIa, 'gIs':self.gIs }
 
@@ -2789,18 +2796,10 @@ cdef class SEI8R:
             return self.drpdt
 
         from scipy.integrate import solve_ivp
-        time_points=np.linspace(Ti, Tf);  ## intervals at which output is returned by integrator.
+        time_points=np.linspace(Ti, Tf, int(Nf/24));  ## intervals at which output is returned by integrator.
         time_step = 1.0*Tf/Nf
-        calc_time = []
-        for i in range(int(Tf/24)):
-            calc_time.append(i*24.0)
-            calc_time.append(8.0 + i*24.0)
-            calc_time.append(9.01 + i*24.0)
-            calc_time.append(17.0 + i*24.0)
-            calc_time.append(18.01 + i*24.0)
-        #u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, E0, Ia0, Is0, Isd0, Ih0, Ihd0, Ic0, Icd0, Im0, N0)), method='RK45', t_eval=None, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
-        u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, E0, Ia0, Is0, Isd0, Ih0, Ihd0, Ic0, Icd0, Im0, N0)), method='RK23', t_eval=calc_time, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
-            
+        u = solve_ivp(rhs0, [Ti, Tf], np.concatenate((S0, E0, Ia0, Is0, Isd0, Ih0, Ihd0, Ic0, Icd0, Im0, N0)), method='RK23', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
+        
         data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M,'alpha':self.alpha, 'beta':self.beta,'gIa':self.gIa, 'gIs':self.gIs }
 
         return data
