@@ -1,4 +1,4 @@
-import numpy as np                                                                                                    
+import numpy numpy                                                                                                    
 import os, sys                                                                                                        
 from distutils.core import setup                                                                                      
 from Cython.Build import cythonize                                                                                    
