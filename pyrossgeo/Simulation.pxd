@@ -83,6 +83,7 @@ cdef class Simulation:
     # Misc
     cdef readonly dict storage # Persistent storage that will be used for events
     cdef readonly object has_been_initialized # Python bool. If True, then the simulation has been initialized. 
+    cdef public bint measure_sim_times
 
     #cdef csimulate(self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=*,
     #                            str out_file=*, int steps_per_print=*, bint only_save_nodes=*,

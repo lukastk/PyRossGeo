@@ -391,6 +391,9 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
         py_stochastic_threshold_from_below = model_dat['settings']['stochastic_threshold_from_below']
         py_stochastic_threshold_from_above = model_dat['settings']['stochastic_threshold_from_above']
         py_stochastic_simulation = True
+
+        if len(py_stochastic_threshold_from_below) != model_dim or len(py_stochastic_threshold_from_above) != model_dim:
+            raise Exception('Stochastic threshold array lengths must match the model dimension.')
     elif 'stochastic_threshold_from_below' in model_dat['settings'] or 'stochastic_threshold_from_above' in model_dat['settings']:
         raise Exception('Either both "stochastic_threshold_from_above" or "stochastic_threshold_from_below" need to be defined, or neither of them.')
     else:
@@ -602,14 +605,22 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
     py_contact_matrices = np.array(py_contact_matrices, dtype=DTYPE)
 
     # Set node contact matrices
-
+    
     for row_i, row in node_cmatrices_dat.iterrows():
         home = row[0] # row['Home']
         loc = row[1] # row['Location']
         home = int(home) if home != 'ALL' else home
         loc = int(loc) if (loc != 'ALL' and loc != 'HOME') else loc
             
-        cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[2:]])
+        cmat_indices = np.zeros(len(row[2:]))
+        for i in range(len(row[2:])):
+            ckey = row[2:][i]
+            if ckey in py_contact_matrices_key_to_index:
+                cmat_indices[i] = py_contact_matrices_key_to_index[ckey]
+            elif pd.isnull(ckey):
+                cmat_indices[i] = -1
+            else:
+                raise Exception("Contact matrix '%s' does not exist." % ckey)
         
         for home_i in range(max_node_index+1):
             _loc = home_i if loc == 'HOME' else loc
@@ -620,11 +631,11 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
                         n = aij_to_node.get((age_a, home_i, loc_j))
                         if not n is None:
                             n.contact_matrices_used = cmat_indices[py_infection_classes_indices]
-
+    
     # Set cnode contact matrices
 
     for cn in py_cnodes:
-        for row_i, row in cnode_parameters_dat.iterrows():
+        for row_i, row in cnode_cmatrices_dat.iterrows():
             home = row[0] #row['Home']
             fro = row[1] #row['From']
             to = row[2] #row['To']
@@ -632,7 +643,15 @@ def initialize(self, sim_config_path='', model_dat='', commuter_networks_dat='',
             fro = int(loc) if (fro != 'ALL' and fro != 'HOME') else fro
             to = int(to) if (to != 'ALL' and to != 'HOME') else to
 
-            cmat_indices = np.array([py_contact_matrices_key_to_index[ckey] if ckey in py_contact_matrices_key_to_index else -1 for ckey in row[3:]])
+            cmat_indices = np.zeros(len(row[3:]))
+            for i in range(len(row[3:])):
+                ckey = row[3:][i]
+                if ckey in py_contact_matrices_key_to_index:
+                    cmat_indices[i] = py_contact_matrices_key_to_index[ckey]
+                elif pd.isnull(ckey):
+                    cmat_indices[i] = -1
+                else:
+                    raise Exception("Contact matrix '%s' does not exist." % ckey)
 
             if not (home == cn.home or home == 'ALL'):
                 continue

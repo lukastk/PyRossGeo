@@ -12,13 +12,13 @@ import scipy.stats
 from pyrossgeo.__defs__ import DTYPE, contact_scaling_types
 
 #@cython.wraparound(False)
-#@cython.boundscheck(True)
-#@cython.cdivision(False)
-#@cython.nonecheck(True)
+#@cython.boundscheck(False)
+#@cython.cdivision(True)
+#@cython.nonecheck(False)
 @cython.wraparound(False)
-@cython.boundscheck(False)
-@cython.cdivision(True)
-@cython.nonecheck(False)
+@cython.boundscheck(True)
+@cython.cdivision(False)
+@cython.nonecheck(True)
 cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_end, object _dts, int steps_per_save=-1,
                             str save_path="", bint only_save_nodes=False, int steps_per_print=-1,
                             int random_seed=-1):
@@ -66,6 +66,10 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
     cdef DTYPE_t[:,:] cNs = cNs_arr
     cdef DTYPE_t[:,:,:] Os = Os_arr
     cdef DTYPE_t[:,:,:] cOs = cOs_arr
+
+    # Measuring simulation times
+    cdef bint measure_sim_times = self.measure_sim_times
+    cdef DTYPE_t t_contact, t_node, t_cnode, t_T, t_cT, t_ff, t_rest
 
     # Model
     cdef model_term* model_linear_terms = self.model_linear_terms
@@ -119,6 +123,10 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
     # Contact matrix scaling
     cdef int contact_scaling_type = self.contact_scaling_type
+    cdef int contact_scaling_types_linear = contact_scaling_types.linear
+    cdef int contact_scaling_types_powerlaw = contact_scaling_types.powerlaw
+    cdef int contact_scaling_types_exp = contact_scaling_types.exp
+    cdef int contact_scaling_types_log = contact_scaling_types.log
     cdef DTYPE_t[:] contact_scaling_params = self.contact_scaling_params
     cdef DTYPE_t _f, _g, _cg
     
@@ -306,6 +314,15 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     is_event_on_arr[step_i][event_i] = 1
                     is_a_event_on[step_i] = 1
 
+    #Ns0 = np.zeros( (max_node_index+1, age_groups) )
+    #for loc in range(max_node_index+1):
+    #    for age in range(age_groups):
+    #        for i in range(nodes_at_j_len[age][loc]):
+    #            n = nodes[nodes_at_j[age][loc][i]]
+
+    #            for o in range(model_dim):
+    #                Ns0[loc,age] += X_state[n.state_index + o]
+
     ####################################################################
     #### Simulation ####################################################
     ####################################################################
@@ -325,6 +342,8 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         #### Dynamics ##################################################
         ################################################################
 
+        if measure_sim_times: t_contact = time.time()
+
         #### Contact matrix scaling ####################################
 
         for i in range(age_groups):
@@ -335,8 +354,8 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
             # Reset arrays
             for age in range(age_groups):
-                Ns_arr[loc,age] = 0
-                cNs_arr[loc,age] = 0
+                Ns[loc,age] = 0
+                cNs[loc,age] = 0
                 for o in range(model_dim):
                     Os[loc,age,o] = 0
                     cOs[loc,age,o] = 0
@@ -352,9 +371,9 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                         _N += X_state[n.state_index + o]
 
                     if _N < 1e-1:
-                        n.is_on = False
+                        nodes[nodes_at_j[age][loc][i]].is_on = False
                     else:
-                        n.is_on = True
+                        nodes[nodes_at_j[age][loc][i]].is_on = True
 
                     Ns[loc,age] += _N
 
@@ -379,27 +398,51 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     _g = Ns[loc, i]*Ns[loc, j] * location_r_area[loc]*location_r_area[loc]
                     _cg = cNs[loc, i]*cNs[loc, j] * commuterverse_r_area[loc]*commuterverse_r_area[loc]
 
-                    if contact_scaling_type == contact_scaling_types.linear:
-                        _g = contact_scaling_linear(_g, contact_scaling_params)
-                        _cg = contact_scaling_linear(_cg, contact_scaling_params)
-                    elif contact_scaling_type == contact_scaling_types.powerlaw:
-                        _g = contact_scaling_powerlaw(_g, contact_scaling_params)
-                        _cg = contact_scaling_powerlaw(_cg, contact_scaling_params)
-                    elif contact_scaling_type == contact_scaling_types.exp:
-                        _g = contact_scaling_exp(_g, contact_scaling_params)
-                        _cg = contact_scaling_exp(_cg, contact_scaling_params)
-                    elif contact_scaling_type == contact_scaling_types.log:
-                        _g = contact_scaling_log(_g, contact_scaling_params)
-                        _cg = contact_scaling_log(_cg, contact_scaling_params)
-                    
-                    _f = libc.math.sqrt( total_N[i] * Ns[loc, j] / (Ns[loc, i] * total_N[j]) )
-                    cmat_scaling_fg[loc,i,j] = _f*_g
-                    cmat_scaling_a[i,j] += Ns[loc, i]*cmat_scaling_fg[loc,i,j]
+                    if contact_scaling_type == contact_scaling_types_linear:
+                        _g = contact_scaling_params[0] + contact_scaling_params[1]*_g
+                        _cg = contact_scaling_params[0] + contact_scaling_params[1]*_cg
+                    elif contact_scaling_type == contact_scaling_types_powerlaw:
+                        _g = contact_scaling_params[0] + contact_scaling_params[1] * libc.math.pow(_g, contact_scaling_params[2])
+                        _cg = contact_scaling_params[0] + contact_scaling_params[1] * libc.math.pow(_cg, contact_scaling_params[2])
+                    elif contact_scaling_type == contact_scaling_types_exp:
+                        _g = contact_scaling_params[0] * libc.math.pow(contact_scaling_params[1], _g)
+                        _cg = contact_scaling_params[0] * libc.math.pow(contact_scaling_params[1], _cg)
+                    elif contact_scaling_type == contact_scaling_types_log:
+                        _g = libc.math.log(contact_scaling_params[0] + contact_scaling_params[1]*_g)
+                        _cg = libc.math.log(contact_scaling_params[0] + contact_scaling_params[1]*_cg)
 
-                    if cNs[loc, i] != 0:
+                    if False and _g!=_g:
+                        print(1)
+                        print(location_r_area[loc])
+                        print(Ns[loc, i])
+                        print(Ns[loc, j])
+                        print(total_N[j])
+                        print(_g)
+                        print("---")
+
+                    if False and _g == 0:
+                        print(2)
+                        print(location_r_area[loc])
+                        print(Ns[loc, i], loc, i)
+                        print(Ns[loc, j], loc, j)
+                        print(_g)
+                        print("---")
+                    
+                    if _g != 0 and _g==_g:
+                        _f = libc.math.sqrt( total_N[i] * Ns[loc, j] / (Ns[loc, i] * total_N[j]) )
+                        #_f = total_N[i] / Ns[loc, i]
+                        cmat_scaling_fg[loc,i,j] = _f*_g
+                        cmat_scaling_a[i,j] += Ns[loc, i]*cmat_scaling_fg[loc,i,j]
+                        #cmat_scaling_a[i,j] += cmat_scaling_fg[loc,i,j]
+                    else:
+                        cmat_scaling_fg[loc,i,j] = 0
+
+                    if _cg != 0 and _cg==_cg:
                         _f = libc.math.sqrt( total_N[i] * cNs[loc, j] / (cNs[loc, i] * total_N[j]) )
+                        #_f = total_N[i] / cNs[loc, i]
                         cmat_scaling_fg_cverse[loc,i,j] = _f*_cg
                         cmat_scaling_a[i,j] += cNs[loc, i]*cmat_scaling_fg_cverse[loc,i,j]
+                        #cmat_scaling_a[i,j] += cmat_scaling_fg_cverse[loc,i,j]
                     else:
                         cmat_scaling_fg_cverse[loc,i,j]=0
 
@@ -415,7 +458,11 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     cmat_scaling_fg[loc,i,j] = cmat_scaling_fg[loc,i,j] / cmat_scaling_a[i,j]
                     cmat_scaling_fg_cverse[loc,i,j] = cmat_scaling_fg_cverse[loc,i,j] / cmat_scaling_a[i,j]
 
+        if measure_sim_times: t_contact = time.time() - t_contact
+
         #### Node dynamics #############################################
+        
+        if measure_sim_times: t_node = time.time()
 
         for loc_j in range(max_node_index+1):
 
@@ -453,7 +500,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
             #### Compute the derivatives at each node
 
             # Stochastic
-
+            
             if stochastic_simulation and loc_j_is_stochastic[loc_j]:
                 for age_a in range(age_groups):
                     for i in range(nodes_at_j_len[age_a][loc_j]): 
@@ -464,7 +511,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                         si = n.state_index
                         S = X_state[si] # S is always located at the state index
-
+                        
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]   
                             if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
@@ -496,7 +543,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
                         si = n.state_index
                         S = X_state[si] # S is always located at the state index
-
+                        
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]
                             if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
@@ -513,7 +560,11 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
 
+        if measure_sim_times: t_node = time.time() - t_node
+
         #### CNode dynamics ############################################
+
+        if measure_sim_times: t_cnode = time.time()
 
         for to_k in range(max_node_index+1):
 
@@ -578,9 +629,9 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                         for j in range(model_linear_terms_len):
                             mt = model_linear_terms[j]
                             if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
-                                #dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
-                                #term = dist(gen) * r_dt
-                                term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
+                                dist = poisson_distribution[int](dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling])
+                                term = dist(gen) * r_dt
+                                #term = scipy.stats.poisson.rvs(dt*cn.linear_coeffs[j]*X_state[si+mt.oi_coupling]) * r_dt
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
 
@@ -588,9 +639,9 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                             mt = model_infection_terms[j]
                             if X_state[si+mt.oi_neg] > 0: # Only allow interaction if the class is positive
                                 cmat_i = cn.contact_matrix_indices[mt.infection_index]
-                                #dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
-                                #term = dist(gen) * r_dt
-                                term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
+                                dist = poisson_distribution[int](dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S)
+                                term = dist(gen) * r_dt
+                                #term = scipy.stats.poisson.rvs(dt*cn.infection_coeffs[j]*_lambdas[cmat_i][age_a][mt.infection_index]*S) * r_dt
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term
             # Deterministic
@@ -620,9 +671,13 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                                 dX_state[si+mt.oi_pos] += term
                                 dX_state[si+mt.oi_neg] -= term               
         
+        if measure_sim_times: t_cnode = time.time() - t_cnode
+        
         ################################################################
         #### Transport #################################################
         ################################################################
+
+        if measure_sim_times: t_T = time.time()
 
         #### Node to CNode #############################################
 
@@ -648,7 +703,7 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                     else:
                         Ts[Ti].N0 = Ts[Ti].move_N
                     Ts[Ti].is_on = True
-                    cn.is_on = True # Turn on commuter node. It will be turned off in the "CNode to Node" section
+                    cnodes[Ts[Ti].cnode_index].is_on = True # Turn on commuter node. It will be turned off in the "CNode to Node" section
 
                 # Compute the transport profile
                 transport_profile_exponent = (tday - t1)*Ts[Ti].r_T_Delta_t - transport_profile_m
@@ -679,8 +734,12 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
 
             else:
                 Ts[Ti].is_on = False
+
+        if measure_sim_times: t_T = time.time() - t_T
         
         #### CNode to Node #############################################
+
+        if measure_sim_times: t_cT = time.time()
         
         for cTi in range(cTs_num):
 
@@ -742,18 +801,30 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
                 cn = cnodes[cTs[cTi].cnode_index]
                 cn.is_on = False # Turn off commuter node
                 
+        if measure_sim_times: t_cT = time.time() - t_cT
 
         ################################################################
         #### Forward-Euler #############################################
         ################################################################
+
+        if measure_sim_times: t_ff = time.time()
         
         for j in prange(X_state_size, nogil=True):
             X_state[j] += dX_state[j]*dt
 
         t += dt
+
+        if measure_sim_times: t_ff = t_ff - time.time()
         
         if steps_per_print != -1 and step_i % steps_per_print==0:
             print("Step %s out of %s" % (step_i, steps))
+
+            #for loc in range(max_node_index+1):
+            #    for age in range(age_groups):
+            #        if abs(Ns0[loc, age] - Ns[loc, age]) > 0.1:
+            #            print(loc, age, Ns0[loc, age], Ns[loc, age])
+
+        if measure_sim_times: t_rest = time.time()
         
         #### Store state
 
@@ -781,6 +852,22 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
         #if cevent_steps[step_i]:
         #    cevent_function(self, step_i, t, dt, X_state, dX_state)
 
+        if measure_sim_times: t_rest = time.time() - t_rest
+
+        if measure_sim_times:
+            print("""
+            step = %s, time = %s
+            t_contact = %s
+            t_node = %s
+            t_cnode = %s
+            t_T = %s
+            t_cT = %s
+            t_ff = %s
+            t_rest = %s
+            t_total = %s
+            --------------
+            """ % (step_i, t, t_contact, t_node, t_cnode, t_T, t_cT, t_ff, t_rest, t_contact+t_node+t_cnode+t_T+t_cT+t_ff+t_rest))
+
     free(loc_j_is_stochastic)
     free(to_k_is_stochastic)
 
@@ -799,19 +886,3 @@ cdef simulate(Simulation self, DTYPE_t[:] X_state, DTYPE_t t_start, DTYPE_t t_en
             np.save("%s/%s" % (save_path, save_ts_path), ts_saved)
 
         return sim_data
-
-cdef contact_scaling_linear(DTYPE_t rho, DTYPE_t[:] params):
-    """a + b*rho"""
-    return params[0] + params[1]*rho
-
-cdef contact_scaling_powerlaw(DTYPE_t rho, DTYPE_t[:] params):
-    """a + b*rho^c"""
-    return params[0] + params[1] * libc.math.pow(rho, params[2])
-
-cdef contact_scaling_exp(DTYPE_t rho, DTYPE_t[:] params):
-    """a * b^rho"""
-    return params[0] * libc.math.pow(params[1], rho)
-
-cdef contact_scaling_log(DTYPE_t rho, DTYPE_t[:] params):
-    """log(a + b*rho)"""
-    return libc.math.log(params[0] + params[1]*rho)
