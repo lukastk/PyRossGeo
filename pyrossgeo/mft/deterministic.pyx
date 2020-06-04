@@ -1155,10 +1155,10 @@ cdef class SEI5R:
         self.CMh   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in HOME
         self.CMw   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in WORK
         self.CMt   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in TRANS
-        self.Dnm   = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# census data matrix WR
+        self.Dnm   = np.zeros( (self.M, self.Nd, self.Nd), dtype=np.uint32)# census data matrix WR
         self.Dnm   = Dnm
-        self.Dnm0  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# backup od Dnm
-        self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
+        #self.Dnm0  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# backup of Dnm
+        #self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         #self.PWRw  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         self.aveS  = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)   # average S at i node
         self.aveI  = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)   # average I at i node
@@ -1286,7 +1286,7 @@ cdef class SEI5R:
         self.seed    = 1
         np.random.seed(self.seed)
         self.RM    = np.random.rand(100*self.M*self.Nd) # random matrix 
-        self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
+        #self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         #self.PWRw  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         self.drpdt = np.zeros( 8*self.Nd*self.M, dtype=DTYPE)      # right hand side
         self.indexJ= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
@@ -1372,8 +1372,9 @@ cdef class SEI5R:
             double [:,:]   CMh     = self.CMh
             double [:,:]   CMw     = self.CMw
             double [:,:]   CMt     = self.CMt
-            double [:,:,:] Dnm     = self.Dnm
-            double [:,:,:] PWRh    = self.PWRh
+            #double [:,:,:] Dnm     = self.Dnm
+            unsigned int [:,:,:]Dnm= self.Dnm
+            #double [:,:,:] PWRh    = self.PWRh
             #double [:,:,:] PWRw    = self.PWRw
             double [:,:]   aveS    = self.aveS
             double [:,:]   aveI    = self.aveI
@@ -1425,7 +1426,8 @@ cdef class SEI5R:
                     for j in range(1, indexJ[alp,i,0] + 1):
                         jj = indexJ[alp,i,j]
                         t_j = alp*Nd + jj
-                        aveI[alp,i] += PWRh[alp,i,jj]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])
+                        #aveI[alp,i] += PWRh[alp,i,jj]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])
+                        aveI[alp,i] += Dnm[alp,i,jj]*iNh[alp,jj]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])
                 for alp in range(M):
                     Lambda[alp, i] = 0.0
                     for gam in range(M):
@@ -1454,7 +1456,8 @@ cdef class SEI5R:
                     for j in range(1, indexI[alp,i,0] + 1):
                         ii = indexI[alp,i,j]
                         if S[t_i] > 0.0:
-                            aa = Lambda[alp,ii]*PWRh[alp,ii,i]*S[t_i]
+                            #aa = Lambda[alp,ii]*PWRh[alp,ii,i]*S[t_i]
+                            aa = Lambda[alp,ii]*Dnm[alp,ii,i]*iNh[alp,i]*S[t_i]
                             X[t_i]        += -aa
                             X[t_i + M1]   += aa
 
@@ -1475,7 +1478,8 @@ cdef class SEI5R:
                         t_i = alp*Nd + i
                         FF[alp,i] = 0.0
                         for gam in range(M):
-                            FF[alp,i] += CMt[alp,gam]*PWRh[gam,i,i]*(Ia[t_i] + fsa*Is[t_i] + fh*Ih[t_i])*PWRh[alp,i,i]*iNw[gam,i] # add i->i
+                            #FF[alp,i] += CMt[alp,gam]*PWRh[gam,i,i]*(Ia[t_i] + fsa*Is[t_i] + fh*Ih[t_i])*PWRh[alp,i,i]*iNw[gam,i] # add i->i
+                            FF[alp,i] += CMt[alp,gam]*Dnm[gam,i,i]*iNh[gam,i]*(Ia[t_i] + fsa*Is[t_i] + fh*Ih[t_i])*Dnm[alp,i,i]*iNh[alp,i]*iNw[gam,i] # add i->i
                             aa = aveI[gam,0]
                             age_id = alp
                             if indexI[alp,i,0] > indexI[gam,i,0]:
@@ -1484,7 +1488,8 @@ cdef class SEI5R:
                                 ii = indexI[age_id,i,j]
                                 t_j = gam*Nd + i
                                 bb = Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j]
-                                FF[alp,i] += CMt[alp,gam]*(PWRh[gam,ii,i]*bb + (Ntrans[gam,ii,i] - Dnm[gam,ii,i])*aa)*PWRh[alp,ii,i]*iNtrans[gam,ii,i] # add i->j
+                                #FF[alp,i] += CMt[alp,gam]*(PWRh[gam,ii,i]*bb + (Ntrans[gam,ii,i] - Dnm[gam,ii,i])*aa)*PWRh[alp,ii,i]*iNtrans[gam,ii,i] # add i->j
+                                FF[alp,i] += CMt[alp,gam]*(Dnm[gam,ii,i]*iNh[gam,i]*bb + (Ntrans[gam,ii,i] - Dnm[gam,ii,i])*aa)*Dnm[alp,ii,i]*iNh[alp,i]*iNtrans[gam,ii,i] # add i->j
                                 
                         aa = rT*beta*FF[alp,i]*S[t_i]
                     
@@ -1513,7 +1518,8 @@ cdef class SEI5R:
                             jj  = indexJ[alp,i,j]
                             if route_index[i,jj,0] >= 2:
                                 for k in range(1, route_index[i,jj,0]):
-                                    II[alp,route_index[i,jj,k+1],route_index[i,jj,k]] += PWRh[alp,i,jj]*aveI[alp,jj]
+                                    #II[alp,route_index[i,jj,k+1],route_index[i,jj,k]] += PWRh[alp,i,jj]*aveI[alp,jj]
+                                    II[alp,route_index[i,jj,k+1],route_index[i,jj,k]] += Dnm[alp,i,jj]*iNh[alp,jj]*aveI[alp,jj]
                                     TT[alp,route_index[i,jj,k+1],route_index[i,jj,k]] += Dnm[alp,i,jj]
 
                 for i in prange(Nd, nogil=True):
@@ -1532,9 +1538,11 @@ cdef class SEI5R:
                             for j in range(1, indexI[alp,i,0] + 1):
                                 ii = indexI[alp,i,j]
                                 if Ntrans[gam,ii,i] > 0.0:
-                                    bb += CMt[alp,gam]*IT[gam,ii,i]*PWRh[alp,ii,i]/Ntrans[gam,ii,i]
+                                    #bb += CMt[alp,gam]*IT[gam,ii,i]*PWRh[alp,ii,i]/Ntrans[gam,ii,i]
+                                    bb += CMt[alp,gam]*IT[gam,ii,i]*Dnm[alp,ii,i]*iNh[alp,i]/Ntrans[gam,ii,i]
                             t_j = gam*Nd + i
-                            bb += CMt[alp,gam]*PWRh[gam,i,i]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])*iNw[gam,i]*PWRh[alp,i,i]
+                            #bb += CMt[alp,gam]*PWRh[gam,i,i]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])*iNw[gam,i]*PWRh[alp,i,i]
+                            bb += CMt[alp,gam]*Dnm[gam,i,i]*iNh[gam,i]*(Ia[t_j] + fsa*Is[t_j] + fh*Ih[t_j])*iNw[gam,i]*Dnm[alp,i,i]*iNh[alp,i]
                         aa = rT*beta*bb*S[t_i]
                     
                         X[t_i]        = -aa
@@ -1570,12 +1578,12 @@ cdef class SEI5R:
                         else:
                             Nw[alp,k]  = 0.0
                             iNw[alp,k] = 0.0
-                        Dnm[alp,k,i] -= aa
+                        Dnm[alp,k,i] -= <int> aa
                         if Dnm[alp,k,i] <= 0.0:
                             indexI[alp,i,ii] = indexI[alp,i,indexI[alp,i,0]]
                             indexI[alp,i,0] -= 1
-                            Dnm[alp,k,i] = 0.0
-                        PWRh[alp,k,i] = Dnm[alp,k,i]*iNh[alp,i]
+                            Dnm[alp,k,i] = 0
+                        #PWRh[alp,k,i] = Dnm[alp,k,i]*iNh[alp,i]
                         #PWRw[alp,k,i] = Dnm[alp,k,i]*iNw[alp,k]
                     else:
                         N[t_i] = 0.0
@@ -1590,9 +1598,9 @@ cdef class SEI5R:
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, max_route_num, restart=_restart
             unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count
             double cutoff=self.cutoff, cij, ccij, t_restriction=_travel_restriction
-            double [:,:,:] Dnm     = self.Dnm
-            double [:,:,:] Dnm0    = self.Dnm0
-            double [:,:,:] PWRh    = self.PWRh
+            unsigned int [:,:,:] Dnm     = self.Dnm
+            #double [:,:,:] Dnm0    = self.Dnm0
+            #double [:,:,:] PWRh    = self.PWRh
             #double [:,:,:] PWRw    = self.PWRw
             double [:,:]   Nh     = self.Nh
             double [:,:]   Nw     = self.Nw
@@ -1621,16 +1629,16 @@ cdef class SEI5R:
             dij  = self.II[0]    # the distance between node i and j
             pred = self.PP       # predecessor node belong the route i -> j
 
-        if restart == 0:
-            for alp in prange(M, nogil=True):
-                for i in range(Nd):
-                    for j in range(Nd):
-                        Dnm0[alp,i,j] = Dnm[alp,i,j]
-        else:
-            for alp in prange(M, nogil=True):
-                for i in range(Nd):
-                    for j in range(Nd):
-                        Dnm[alp,i,j] = Dnm0[alp,i,j]            
+        #if restart == 0:
+        #    for alp in prange(M, nogil=True):
+        #        for i in range(Nd):
+        #            for j in range(Nd):
+        #                Dnm0[alp,i,j] = Dnm[alp,i,j]
+        #else:
+        #    for alp in prange(M, nogil=True):
+        #        for i in range(Nd):
+        #            for j in range(Nd):
+        #                Dnm[alp,i,j] = Dnm0[alp,i,j]            
             
         #travel restriction
         for alp in prange(M, nogil=True):
@@ -1640,8 +1648,8 @@ cdef class SEI5R:
                         cij = Dnm[alp,i,j]
                         #ccij = round(cij*t_restriction)
                         ccij = cij*t_restriction
-                        Dnm[alp,i,j] -= ccij
-                        Dnm[alp,j,j] += ccij
+                        Dnm[alp,i,j] -= <int> ccij
+                        Dnm[alp,j,j] += <int> ccij
     
         #cutoff
         cdef int nonzero_element = 0
@@ -1650,15 +1658,15 @@ cdef class SEI5R:
         for alp in prange(M, nogil=True):
             for i in range(Nd):
                 for j in range(Nd):
-                    cij = Dnm0[alp,i,j]
+                    cij = Dnm[alp,i,j]
                     if i != j:
                         #if int(cij) > int(cutoff):
                         if cij > cutoff:
                             if alp != M:
                                 nonzero_element += 1
                         else:
-                            Dnm[alp,i,j] = 0.0
-                            Dnm[alp,j,j] += cij
+                            Dnm[alp,i,j] = 0
+                            Dnm[alp,j,j] += <int> cij
                     if alp != M:
                         #if int(cij) > int(cutoff):
                         if cij > cutoff:
@@ -1784,10 +1792,10 @@ cdef class SEI5R:
                 index_j = 0
                 index_i = 0
                 for j in range(Nd):
-                    if Nh[alp,j] != 0:
-                        PWRh[alp,i,j] = Dnm[alp,i,j]/Nh[alp,j]
-                    else:
-                        PWRh[alp,i,j] = 0.0
+                    #if Nh[alp,j] != 0:
+                    #    PWRh[alp,i,j] = Dnm[alp,i,j]/Nh[alp,j]
+                    #else:
+                    #    PWRh[alp,i,j] = 0.0
                 
                     #if Nw[alp,i] != 0:
                     #    PWRw[alp,i,j] = Dnm[alp,i,j]/Nw[alp,i]
