@@ -573,7 +573,8 @@ cdef class SIR:
         cdef:
             int highSpeed=self.highSpeed
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, t_divid_100=int(tt/100)
-            unsigned short i, j, k, alp, gam, age_id, ii, jj
+            #unsigned short i, j, k, alp, gam, age_id, ii, jj
+            int i, j, k, alp, gam, age_id, ii, jj
             unsigned long t_i, t_j
             double alpha=self.alpha, beta=self.beta, gIa=self.gIa
             double aa=0.0, bb=0.0, cc=0.0, t_p_24 = tt%24
@@ -761,7 +762,8 @@ cdef class SIR:
     cdef prepare_fixed_variable(self, _travel_restriction, _restart):
         cdef:
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, max_route_num, restart=_restart
-            unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count
+            #unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count
+            int i, j, k, alp, index_i, index_j, index_agj, ii, count
             double cutoff=self.cutoff, cij, ccij, t_restriction=_travel_restriction
             double [:,:,:] Dnm     = self.Dnm
             double [:,:,:] Dnm0    = self.Dnm0
@@ -1155,21 +1157,20 @@ cdef class SEI5R:
         self.CMh   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in HOME
         self.CMw   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in WORK
         self.CMt   = np.zeros( (self.M, self.M), dtype=DTYPE) # contact matrix C in TRANS
-        self.Dnm   = np.zeros( (self.M, self.Nd, self.Nd), dtype=np.uint32)# census data matrix WR
+        self.Dnm   = np.zeros( (self.M, self.Nd, self.Nd), dtype=np.uint16)# census data matrix WR
         self.Dnm   = Dnm
         #self.Dnm0  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# backup of Dnm
         #self.PWRh  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
         #self.PWRw  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# probability of Dnm at w
-        self.aveS  = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)   # average S at i node
-        self.aveI  = np.zeros( (self.M+1, self.Nd), dtype=DTYPE)   # average I at i node
-        self.Lambda= np.zeros( (self.M, self.Nd), dtype=DTYPE)     # effective infection rate
-        self.drpdt = np.zeros( 8*self.Nd*self.M, dtype=DTYPE)      # right hand side
-        self.indexJ= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
-        self.indexI= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
+        self.aveS  = np.zeros( (self.M, self.Nd), dtype=DTYPE)   # average S at i node
+        self.aveI  = np.zeros( (self.M, self.Nd), dtype=DTYPE)   # average I at i node
+        self.Lambda= np.zeros( (self.M, self.Nd), dtype=DTYPE)   # effective infection rate
+        self.drpdt = np.zeros( 8*self.Nd*self.M, dtype=DTYPE)    # right hand side
+        #self.indexJ= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i 
+        #self.indexI= np.zeros( (self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
         #self.indexAGJ= np.zeros( (self.M, self.M, self.Nd, self.Nd + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij*Dnm_gam_ij at specifi alp, gam and i
         #self.distances = np.zeros((self.Nd,self.Nd), DTYPE)
-        self.FF = np.zeros( (self.M, self.Nd), dtype=DTYPE)               # Working memory
-        self.PP = np.zeros( (self.Nd, self.Nd), dtype=np.int32)        # Working memory
+        self.FF = np.zeros( (self.M, self.Nd), dtype=DTYPE)       # Working memory
 
         self.alpha  = np.zeros( self.M, dtype=DTYPE)
         self.alphab = np.zeros( self.M, dtype=DTYPE)
@@ -1216,7 +1217,7 @@ cdef class SEI5R:
             self.II = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
             self.IT = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
             self.TT = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE) # Working memory
-
+            self.PP = np.zeros( (self.Nd, self.Nd), dtype=np.int32)   # Working memory
 
             from scipy.sparse.csgraph import shortest_path, floyd_warshall, dijkstra, bellman_ford, johnson
             from scipy.sparse import csr_matrix
@@ -1342,7 +1343,8 @@ cdef class SEI5R:
         cdef:
             int highSpeed=self.highSpeed
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, t_divid_100=int(tt/100)
-            unsigned short i, j, k, alp, gam, age_id, ii, jj
+            #unsigned short i, j, k, alp, gam, age_id, ii, jj
+            int i, j, k, alp, gam, age_id, ii, jj
             unsigned long t_i, t_j
             double beta=self.beta, gIa=self.gIa
             double fsa=self.fsa, fh=self.fh, gE=self.gE
@@ -1373,7 +1375,7 @@ cdef class SEI5R:
             double [:,:]   CMw     = self.CMw
             double [:,:]   CMt     = self.CMt
             #double [:,:,:] Dnm     = self.Dnm
-            unsigned int [:,:,:]Dnm= self.Dnm
+            unsigned short[:,:,:]Dnm= self.Dnm
             #double [:,:,:] PWRh    = self.PWRh
             #double [:,:,:] PWRw    = self.PWRw
             double [:,:]   aveS    = self.aveS
@@ -1596,9 +1598,10 @@ cdef class SEI5R:
     cdef prepare_fixed_variable(self, _travel_restriction, _restart):
         cdef:
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, max_route_num, restart=_restart
-            unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count
+            #unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count
+            int i, j, k, alp, index_i, index_j, index_agj, ii, count
             double cutoff=self.cutoff, cij, ccij, t_restriction=_travel_restriction
-            unsigned int [:,:,:] Dnm     = self.Dnm
+            unsigned short[:,:,:] Dnm     = self.Dnm
             #double [:,:,:] Dnm0    = self.Dnm0
             #double [:,:,:] PWRh    = self.PWRh
             #double [:,:,:] PWRw    = self.PWRw
@@ -1607,8 +1610,8 @@ cdef class SEI5R:
             double [:,:]   iNh    = self.iNh
             double [:,:]   iNw    = self.iNw
             #double [:,:] distances = self.distances
-            unsigned short [:,:,:]   indexJ  = self.indexJ
-            unsigned short [:,:,:]   indexI  = self.indexI
+            unsigned short [:,:,:]   indexJ#  = self.indexJ
+            unsigned short [:,:,:]   indexI#  = self.indexI
             #unsigned short [:,:,:,:] indexAGJ= self.indexAGJ
             unsigned short [:] route           # working memory
             #double [:,:,:] C_Dnm   = self.IT
@@ -1776,6 +1779,9 @@ cdef class SEI5R:
                     for j in range(Nd):
                         Ntrans[alp,i,j] = Ntrans0[alp,i,j]
         #End Generating the Ntrans from route and predecessor
+
+        cdef move_J_num = np.zeros(M*Nd, dtype=int)
+        cdef move_I_num = np.zeros(M*Nd, dtype=int)
         
         for alp in range(M):
             for i in range(Nd):
@@ -1809,6 +1815,40 @@ cdef class SEI5R:
                             iNtrans[alp,i,j] = 0.0
                     
                     if Dnm[alp,i,j] > cutoff or i == j:
+                        #indexJ[alp,i,index_j + 1] = j
+                        index_j += 1
+                    elif Dnm[alp,i,j] != 0 and i != j:
+                        print('Error!! ' + str(i) + ',' + str(j) + ' ' + str(Dnm[alp,i,j]) + '\n')
+
+                    if Dnm[alp,j,i] > cutoff or i == j:
+                        #indexI[alp,i,index_i + 1] = j
+                        index_i += 1
+                    elif Dnm[alp,j,i] != 0 and i != j:
+                        print('Error!! ' + str(i) + ',' + str(j) + ' ' + str(Dnm[alp,j,i]) + '\n')
+                    
+                #indexJ[alp,i,0] = index_j
+                #indexI[alp,i,0] = index_i
+
+                move_J_num[Nd*alp + i] = <int> index_j
+                move_I_num[Nd*alp + i] = <int> index_i
+
+        move_J_num.sort() # should be improved
+        max_move_J = move_J_num[M*Nd - 1]
+        print("Max index J", move_J_num[0], max_move_J)
+        self.indexJ = np.zeros( (self.M, self.Nd, max_move_J + 1), dtype=np.uint16) # the list j for non zero Dnm_alp_ij at specifi alp and i
+        indexJ = self.indexJ
+        move_I_num.sort() # should be improved
+        max_move_I = move_I_num[M*Nd - 1]
+        print("Max index I", move_I_num[0], max_move_I)
+        self.indexI = np.zeros( (self.M, self.Nd, max_move_I + 1), dtype=np.uint16) # the list i for non zero Dnm_alp_ij at specifi alp and j
+        indexI = self.indexI
+        
+        for alp in range(M):
+            for i in range(Nd):
+                index_j = 0
+                index_i = 0
+                for j in range(Nd):
+                    if Dnm[alp,i,j] > cutoff or i == j:
                         indexJ[alp,i,index_j + 1] = j
                         index_j += 1
                     elif Dnm[alp,i,j] != 0 and i != j:
@@ -1822,7 +1862,7 @@ cdef class SEI5R:
                     
                 indexJ[alp,i,0] = index_j
                 indexI[alp,i,0] = index_i
-                
+
         #for alp in range(M):
         #    for gam in range(M):
         #        for i in range(Nd):
@@ -2247,7 +2287,8 @@ cdef class SEI8R:
         cdef:
             int highSpeed=self.highSpeed
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, t_divid_100=int(tt/100)
-            unsigned short i, j, k, alp, gam, age_id, ii, jj
+            #unsigned short i, j, k, alp, gam, age_id, ii, jj
+            int i, j, k, alp, gam, age_id, ii, jj
             unsigned long t_i, t_j
             double beta=self.beta, gIa=self.gIa
             double fsa=self.fsa, fh=self.fh, gE=self.gE
@@ -2512,7 +2553,8 @@ cdef class SEI8R:
     cdef prepare_fixed_variable(self, _travel_restriction, _restart):
         cdef:
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, max_route_num, restart=_restart
-            unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count, count0
+            #unsigned short i, j, k, alp, index_i, index_j, index_agj, ii, count, count0
+            int i, j, k, alp, index_i, index_j, index_agj, ii, count, count0
             double cutoff=self.cutoff, cij, ccij, t_restriction=_travel_restriction
             double [:,:,:] Dnm     = self.Dnm
             double [:,:,:] Dnm0    = self.Dnm0
