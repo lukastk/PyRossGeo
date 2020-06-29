@@ -339,7 +339,7 @@ def get_dt_schedule(times, end_time):
 
     Parameters
     ----------
-        times : lost
+        times : list
             list of tuples
         end_time : float
             The final time of the schedule.
@@ -375,3 +375,56 @@ def construct_local_contact_matrices(cmat, loc_pops, scaling_function):
     Constructs local contact matrices from a global contact matrix that
     scale with population density as well as obey local 
     """
+
+def construct_spatial_contact_matrix(density_scaling_b, work_ratio, age_groups, node_populations, areas, commuter_network):
+    """A wrapper for `pyross.contactMatrix.SpatialContactMatrix`.
+
+    Uses PyRossGeo input files to construct a spatial contact matrix.
+
+    Parameters
+    ----------
+        density_scaling_b : float
+            Density scaling parameter.
+        work_ratio : float
+            Work ratio.
+        age_groups : int
+            The number of age groups.
+        node_populations : string or pandas.DataFrame
+            Path to the node population configuration file, or the configuration file itself.
+        areas : np.array
+            1D array, containing the area of each location
+        commuter_network : string or pandas.DataFrame
+            Path to the commuter network configuration file, or the configuration file itself.
+            The helper function assumes that commutes are cyclical of length 2. In other
+            words, all commuting edges come in pairs: One commuting edge
+            leading from the home node to the destination node, and one
+            leading back to the home node.
+
+    Returns
+    -------
+        pyross.contactMatrix.SpatialContactMatrix
+            The spatial contact matrix.
+    """
+    
+    import pandas as pd
+    import pyross
+
+    if type(node_populations) == str:
+        node_populations = pd.DataFrame(node_populations)
+    if type(commuter_network) == str:
+        commuter_network = pd.DataFrame(commuter_network)
+
+    max_node_index = max( commuter_network.iloc[:,0:3].max().max(), node_populations.iloc[:,0:2].max().max() )
+
+    compartment_pops = node_populations.iloc[:,2:]
+    populations = np.zeros( (max_node_index+1, age_groups) )
+    
+    for i in range(age_groups):
+        populations[:,i] = compartment_pops.iloc[:,i*age_groups:(i+1)*age_groups].sum(axis=1)
+
+    commutes = np.zeros( (max_node_index+1, max_node_index+1, age_groups) )
+    sel = commuter_network[ commuter_network.iloc[:,0] == commuter_network.iloc[:,1] ]
+    commutes[ sel.iloc[:,1], sel.iloc[:,2], sel.iloc[:,3] ] = sel.iloc[:,4]
+
+    scm_generator = pyross.contactMatrix.SpatialContactMatrix(density_scaling_b, work_ratio, populations, areas, commutes)
+    return populations, commutes, scm_generator
