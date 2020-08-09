@@ -948,7 +948,7 @@ cdef class SEI8R:
 @cython.boundscheck(False)
 @cython.cdivision(True)
 @cython.nonecheck(False)
-cdef class RapidTransport:
+cdef class MeanFieldTheory:
     """
     Susceptible, Exposed, Infected, Recovered (SEIR)
     The infected class has 5 groups:
@@ -1016,11 +1016,13 @@ cdef class RapidTransport:
     simulate
     """
     cdef:
-        readonly int transport, highSpeed, mortal
+        readonly int transport, highSpeed, mortal, geographical_model
+        readonly int RapidTransport, SpacialCompartment
         readonly int M, Nd, model_dim, max_route_num, t_divid_100, t_old, ir, seed
-        readonly double beta, gE, gIa, gIs, gIh, gIc, fsa, fh, rW, rT
+        #readonly double beta, gE, gIa, gIs, gIh, gIc, fsa, fh
+        readonly double rW, rT, w_period_ratio, h_period_ratio
         readonly double cutoff, travel_restriction
-        readonly np.ndarray alpha, hh, cc, mm, alphab
+        #readonly np.ndarray alpha, hh, cc, mm, alphab
         readonly np.ndarray rp0, Nh, Nw, Ntrans, Ntrans0, drpdt, CMh, CMw, CMt, Dnm, Dnm0, RM
         readonly np.ndarray lCMh, lCMw, lCMt
         readonly np.ndarray route_index, route_ratio
@@ -1030,11 +1032,13 @@ cdef class RapidTransport:
         readonly np.ndarray infect_source, infect_param , infected_class, infected_coeff
         readonly np.ndarray l_pos_source, l_neg_source, l_pos_param, l_neg_param
         
-    def __init__(self, model, parameters, M, Nd, Dnm, dnm, Area, travel_restriction, cutoff, transport=0, highSpeed=0):
+    def __init__(self, g_model, model, parameters, M, Nd, Dnm, dnm, Area, travel_restriction, cutoff, transport=0, highSpeed=0):
         self.mortal = 0
         self.cutoff = cutoff                              # cutoff value of census data
         self.transport = transport
         self.highSpeed = highSpeed
+        self.RapidTransport = 0
+        self.SpacialCompartment = 1
         self.M    = M
         self.Nd   = Nd
         self.travel_restriction = travel_restriction
@@ -1064,6 +1068,20 @@ cdef class RapidTransport:
         self.ir    = 0
 
         self.define_model(model, parameters)
+
+        if g_model == 'RapidTransport':
+            self.geographical_model = self.RapidTransport
+        elif g_model == 'SpacialCompartment':
+            self.geographical_model = self.SpacialCompartment
+        else:
+            self.geographical_model = self.RapidTransport
+
+        if g_model == 'SpacialCompartment':
+            self.w_period_ratio = 10.0/24.0
+            self.h_period_ratio = 14.0/24.0
+        else:
+            self.w_period_ratio = 1.0
+            self.h_period_ratio = 0.0
 
         if transport == 1:
             self.Ntrans = np.zeros( (self.M+1, self.Nd, self.Nd), dtype=DTYPE)# people comuteing i->j
@@ -1616,14 +1634,18 @@ cdef class RapidTransport:
     cdef rhs(self, rp, tt):
         cdef:
             int transport=self.transport, highSpeed=self.highSpeed, model_dim=self.model_dim
+            int geographical_model = self.geographical_model
             int M=self.M, Nd=self.Nd, M1=self.M*self.Nd, t_divid_100=int(tt/100)
             #unsigned short i, j, k, alp, gam, age_id, ii, jj
             int i, j, k, alp, gam, age_id, ii, jj
             unsigned long t_i, t_j
-            double beta=self.beta, gIa=self.gIa
-            double fsa=self.fsa, fh=self.fh, gE=self.gE
-            double gIs=self.gIs, gIh=self.gIh, gIc=self.gIc
+            #double beta=self.beta
+            #double gIa=self.gIa
+            #double fsa=self.fsa, fh=self.fh, gE=self.gE
+            #double gIs=self.gIs, gIh=self.gIh, gIc=self.gIc
             double rW=self.rW, rT=self.rT
+            double w_period_ratio=self.w_period_ratio
+            double h_period_ratio=self.h_period_ratio
             double aa=0.0, bb=0.0, ccc=0.0, t_p_24 = tt%24
             double [:] X0                     = rp
             unsigned short [:] infect_source  = self.infect_source
@@ -1681,7 +1703,7 @@ cdef class RapidTransport:
             print('Time', tt)
             self.t_old = t_divid_100
         #t_p_24 = tt%24
-        if t_p_24 < 8.0 or t_p_24 > 18.0: #HOME
+        if (t_p_24 < 8.0 or t_p_24 > 18.0) and geographical_model == self.RapidTransport: #HOME
         #if True: #HOME
             #print("TIME_in_HOME", t_p_24)
             for i in prange(Nd, nogil=True):
@@ -1694,7 +1716,7 @@ cdef class RapidTransport:
                         for gam in range(M):
                             t_j = gam*Nd + i
                             #ccc = 0.0
-                            aveI[alp,i] = 0.0
+                            aveI[alp,i] = 0.0 #ave. infected source
                             for j in range(1,infect_source[0] + 1):
                                 #ccc += X0[t_j + infect_source[j]*M1]*infect_param[j]
                                 aveI[alp,i] += X0[t_j + infect_source[j]*M1]*infect_param[j]
@@ -1710,12 +1732,11 @@ cdef class RapidTransport:
                             if X0[t_i + j*M1] > 0.0:
                                 X[t_i + j*M1] -= X0[t_i + l_neg_source[j, k]*M1]*l_neg_param[j, k]
                     #Infection
-                    if X0[t_i] > 0.0:
-                        X[t_i] -= aa
-                        for j in range(1, infected_class[0] + 1):
-                            X[t_i + infected_class[j]*M1] += infected_coeff[j,alp]*aa
+                    X[t_i] -= aa
+                    for j in range(1, infected_class[0] + 1):
+                        X[t_i + infected_class[j]*M1] += infected_coeff[j,alp]*aa
 
-        elif t_p_24  > 9.0 and t_p_24  < 17.0 or transport == 0: #WORK
+        elif (t_p_24  > 9.0 and t_p_24  < 17.0 or transport == 0) or geographical_model != self.RapidTransport: #WORK
         #elif True: #WORK
             #print("TIME_in_WORK", t_p_24)
             for i in prange(Nd, nogil=True):
@@ -1751,9 +1772,31 @@ cdef class RapidTransport:
                         if X0[t_i] > 0.0:
                             #aa = Lambda[alp,ii]*PWRh[alp,ii,i]*S[t_i]
                             aa = Lambda[alp,ii]*Dnm[alp,ii,i]*iNh[alp,i]*X0[t_i]
+                            aa *= w_period_ratio
                             X[t_i]        += -aa
                             for k in range(1, infected_class[0] + 1):
                                 X[t_i + infected_class[k]*M1] += infected_coeff[k,alp]*aa
+
+                    if geographical_model == self.SpacialCompartment:
+                        aa = 0.0
+                        if X0[t_i] > 0.0:
+                            FF[alp,i] = 0.0
+                            #bb = 0.0
+                            for gam in range(M):
+                                t_j = gam*Nd + i
+                                #ccc = 0.0
+                                aveI[alp,i] = 0.0 #ave. infected source
+                                for j in range(1,infect_source[0] + 1):
+                                    #ccc += X0[t_j + infect_source[j]*M1]*infect_param[j]
+                                    aveI[alp,i] += X0[t_j + infect_source[j]*M1]*infect_param[j]
+                                FF[alp,i] += lCMh[alp,gam,i]*CMh[alp,gam]*aveI[alp,i]*iNh[gam,i]
+                            aa = FF[alp,i]*X0[t_i]
+                            aa *= h_period_ratio
+
+                            #Infection
+                            X[t_i] += -aa
+                            for j in range(1, infected_class[0] + 1):
+                                X[t_i + infected_class[j]*M1] += infected_coeff[j,alp]*aa
 
         else: #TRANS
             #print("TIME_in_TRANS", t_p_24)
@@ -1926,20 +1969,8 @@ cdef class RapidTransport:
         """
         Parameters
         ----------
-        S0: np.array
-            Initial number of susceptables.
-        E0: np.array
-            Initial number of exposeds.
-        Ia0: np.array
-            Initial number of asymptomatic infectives.
-        Is0: np.array
-            Initial number of symptomatic infectives.
-        Ih0: np.array
-            Initial number of hospitalized infectives.
-        Ic0: np.array
-            Initial number of ICU infectives.
-        Im0: np.array
-            Initial number of mortality.
+        XX0: np.array
+            Initial numbers of Model Variable.
         contactMatrix: python function(t)
              The social contact matrix C_{ij} denotes the
              average number of contacts made per day by an
@@ -1959,6 +1990,11 @@ cdef class RapidTransport:
             'X': output path from integrator, 't': time points evaluated at,
             'param': input param to integrator.
         """
+        
+        if self.geographical_model == self.RapidTransport:
+            print('RapidTransport')
+        elif self.geographical_model == self.SpacialCompartment:
+            print('SpacialCompartment')
 
         print('travel restriction', self.travel_restriction)
         print('cutoff', self.cutoff)
@@ -1982,7 +2018,8 @@ cdef class RapidTransport:
         time_step = 1.0*Tf/Nf
         u = solve_ivp(rhs0, [Ti, Tf], XX0, method='RK23', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
             
-        data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M,'alpha':self.alpha, 'beta':self.beta,'gIa':self.gIa, 'gIs':self.gIs }
+        #data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M,'alpha':self.alpha, 'beta':self.beta,'gIa':self.gIa, 'gIs':self.gIs }
+        data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M}
 
         return data
 
