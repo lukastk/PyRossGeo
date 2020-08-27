@@ -70,7 +70,7 @@ Install PyRossGeo and required dependencies using
 
 #### Via [Anaconda](https://docs.conda.io/projects/continuumio-conda/en/latest/user-guide/install/index.html)
 
-Install PyRossGeo and its dependencies in a `pyrossgeo` [environment](https://github.com/rajeshrinet/pyross/blob/master/environment.yml)
+Install PyRossGeo and its dependencies in a `pyrossgeo` [environment](https://github.com/lukastk/PyRossGeo/blob/master/environment.yml)
 
 ```bash
 >> git clone https://github.com/lukastk/PyRossGeo.git
