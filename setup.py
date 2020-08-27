@@ -47,7 +47,7 @@ with open(os.path.join(cwd, 'pyrossgeo', '__init__.py')) as fp:
 
 
 setup(                                                                                                                
-    name='PyRossGeo',                                                                                                 
+    name='pyrossgeo',                                                                                                 
     version=version,                                                                                                  
     url='https://github.com/lukastk/PyRossGeo.git',                                                                   
     project_urls={
@@ -56,7 +56,7 @@ setup(
             },
     author='The PyRossGeo team',                                                                                      
     license='MIT',                                                                                                    
-    description='python library for spatial numerical simulation of infectious diseases',                             
+    description='PyRossGeo is a python library for spatially resolved numerical simulation of infectious diseases',                             
     long_description=long_description,
     long_description_content_type='text/markdown',
     platforms='works on all platforms (such as LINUX, macOS, and Microsoft Windows)',                                 
@@ -68,6 +68,9 @@ setup(
     package_data={
                 'pyrossgeo': ['*pyx', '*.pxd'],                                                                            
                 'pyrossgeo/mft': ['*pyx', '*.pxd']},                                                                            
+    install_requires=['cython','numpy','scipy','matplotlib',
+                     'pandas','zarr','geopandas'],
+    include_package_data=True,
     classifiers=[
                 'License :: OSI Approved :: MIT License',
                 'Programming Language :: Python :: 3',
