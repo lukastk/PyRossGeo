@@ -1016,14 +1016,16 @@ cdef class MeanFieldTheory:
     simulate
     """
     cdef:
-        readonly int transport, highSpeed, mortal, geographical_model
+        readonly int transport, highSpeed, mortal, local_consistency
+        readonly int geographical_model
         readonly int RapidTransport, SpacialCompartment
         readonly int M, Nd, model_dim, max_route_num, t_divid_100, t_old, ir, seed
         #readonly double beta, gE, gIa, gIs, gIh, gIc, fsa, fh
         readonly double rW, rT, w_period_ratio, h_period_ratio
         readonly double cutoff, travel_restriction
         #readonly np.ndarray alpha, hh, cc, mm, alphab
-        readonly np.ndarray rp0, Nh, Nw, Ntrans, Ntrans0, drpdt, CMh, CMw, CMt, Dnm, Dnm0, RM
+        readonly np.ndarray rp0, Nh, Nw, Ni, Ntrans, Ntrans0, drpdt
+        readonly np.ndarray CMh, CMw, CMt, Dnm, Dnm0, RM
         readonly np.ndarray lCMh, lCMw, lCMt
         readonly np.ndarray route_index, route_ratio
         readonly np.ndarray PWRh, PWRw, PP, FF, II, IT, TT
@@ -1032,11 +1034,12 @@ cdef class MeanFieldTheory:
         readonly np.ndarray infect_source, infect_param , infected_class, infected_coeff
         readonly np.ndarray l_pos_source, l_neg_source, l_pos_param, l_neg_param
         
-    def __init__(self, g_model, model, parameters, M, Nd, Dnm, dnm, Area, travel_restriction, cutoff, transport=0, highSpeed=0):
+    def __init__(self, g_model, model, parameters, M, Nd, Dnm, dnm, Area, travel_restriction, cutoff, transport=0, highSpeed=0, local_consistency=0):
         self.mortal = 0
         self.cutoff = cutoff                              # cutoff value of census data
         self.transport = transport
         self.highSpeed = highSpeed
+        self.local_consistency = local_consistency
         self.RapidTransport = 0
         self.SpacialCompartment = 1
         self.M    = M
@@ -1046,6 +1049,7 @@ cdef class MeanFieldTheory:
         self.Nw   = np.zeros( (self.M, self.Nd), dtype=DTYPE)         # # people working at node i
         self.iNh  = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people living in node i
         self.iNw  = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people working at node i
+        self.Ni   = np.zeros(self.M, dtype=DTYPE) # # people at age group i
         self.seed = 1
         np.random.seed(self.seed)
         self.RM    = np.random.rand(100*self.M*self.Nd) # random matrix 
@@ -1099,7 +1103,7 @@ cdef class MeanFieldTheory:
             self.II[0], self.PP = shortest_path(dnm, return_predecessors=True)
         print('#Start to calculate fixed variables')
         self.prepare_fixed_variable(travel_restriction, 0)
-        print('#Finish calculating fixed variables')
+        print('#Finish calculating fixed variablesWWWWWW')
         
         #Set local contact matrix
         cdef scaling_params = np.zeros(3, dtype=DTYPE)
@@ -1112,6 +1116,7 @@ cdef class MeanFieldTheory:
         cdef iAreaSQ  = np.zeros( self.Nd, dtype=DTYPE)
         cdef Nh=self.Nh, iNh=self.iNh
         cdef Nw=self.Nh, iNw=self.iNw
+        cdef Ni=self.Ni
         cdef Nh_total = np.zeros( self.M, dtype=DTYPE)
         cdef Nw_total = np.zeros( self.M, dtype=DTYPE)
 
@@ -1119,15 +1124,16 @@ cdef class MeanFieldTheory:
             gij = self.functor_from_name(model['settings']['contact_scaling'])
             scaling_params = np.array(model['settings']['contact_scaling_parameters'], dtype=DTYPE)
             if model['settings']['contact_scaling'] != 'none':
-                #print("contact scaling", model['settings']['contact_scaling'])
-                #print(scaling_params)
-                #print(gij(1, scaling_params[0], scaling_params[1], scaling_params[2]))
+                print("contact scaling", model['settings']['contact_scaling'])
+                print(scaling_params)
+                print(gij(1, scaling_params[0], scaling_params[1], scaling_params[2]))
 
                 for i in range(Nd):
                     iAreaSQ[i]  = 1.0/Area[i]/Area[i]
                     for j in range(M):
                         Nh_total[j] += Nh[j,i]
                         Nw_total[j] += Nw[j,i]
+                        Ni[j] += Nh[j,i]
                         
                 for i in range(M):
                     for j in range(M):
@@ -1139,15 +1145,26 @@ cdef class MeanFieldTheory:
                     
                             gij_h = gij(rho_ij_h, scaling_params[0], scaling_params[1], scaling_params[2])
                             gij_w = gij(rho_ij_w, scaling_params[0], scaling_params[1], scaling_params[2])
-
-                            fij_h = sqrt(Nh_total[i]*Nh[j,k]*iNh[i,k]/Nh_total[j])
-                            fij_w = sqrt(Nw_total[i]*Nw[j,k]*iNw[i,k]/Nw_total[j])
+                            if local_consistency == 0:
+                                fij_h =  Ni[i]/Nh[i,k]
+                                fij_w =  fij_h
+                            elif local_consistency == -1:
+                                fij_h =  Ni[i]/((14.0/24.0)*Nh[i,k] + (10.0/24.0)*Nw[i,k])
+                                fij_w =  fij_h
+                            else:
+                                fij_h = sqrt(Nh_total[i]*Nh[j,k]*iNh[i,k]/Nh_total[j])
+                                fij_w = sqrt(Nw_total[i]*Nw[j,k]*iNw[i,k]/Nw_total[j])
 
                             lCMh[i,j,k] = gij_h*fij_h
                             lCMw[i,j,k] = gij_w*fij_w
 
-                            aij_h += gij_h*sqrt(Nh[i,k]*Nh[j,k]/Nh_total[i]/Nh_total[j])
-                            aij_w += gij_w*sqrt(Nw[i,k]*Nw[j,k]/Nw_total[i]/Nw_total[j])
+                            if local_consistency == 0 or local_consistency == -1:
+                                aij_h += gij_h
+                                aij_w += gij_w
+                            else:
+                                aij_h += gij_h*sqrt(Nh[i,k]*Nh[j,k]/Nh_total[i]/Nh_total[j])
+                                aij_w += gij_w*sqrt(Nw[i,k]*Nw[j,k]/Nw_total[i]/Nw_total[j])
+                                
                         for k in range(Nd):
                             lCMh[i,j,k] /= aij_h
                             lCMw[i,j,k] /= aij_w
@@ -1670,6 +1687,7 @@ cdef class MeanFieldTheory:
             #double [:] mm          = self.mm
             double [:,:]   Nh      = self.Nh
             double [:,:]   Nw      = self.Nw
+            double [:]     Ni      = self.Ni
             double [:,:,:] Ntrans  = self.Ntrans
             double [:,:]   iNh     = self.iNh
             double [:,:]   iNw     = self.iNw
@@ -1772,6 +1790,7 @@ cdef class MeanFieldTheory:
                         if X0[t_i] > 0.0:
                             #aa = Lambda[alp,ii]*PWRh[alp,ii,i]*S[t_i]
                             aa = Lambda[alp,ii]*Dnm[alp,ii,i]*iNh[alp,i]*X0[t_i]
+                            #aa *= Ni[alp]*iNw[alp,ii] #Adapt I
                             aa *= w_period_ratio
                             X[t_i]        += -aa
                             for k in range(1, infected_class[0] + 1):
@@ -1792,6 +1811,7 @@ cdef class MeanFieldTheory:
                                 FF[alp,i] += lCMh[alp,gam,i]*CMh[alp,gam]*aveI[alp,i]*iNh[gam,i]
                             aa = FF[alp,i]*X0[t_i]
                             aa *= h_period_ratio
+                            #aa *= Ni[alp]*iNh[alp,i] #Adapt I
 
                             #Infection
                             X[t_i] += -aa
@@ -1995,6 +2015,8 @@ cdef class MeanFieldTheory:
             print('RapidTransport')
         elif self.geographical_model == self.SpacialCompartment:
             print('SpacialCompartment')
+
+        print('TEST')
 
         print('travel restriction', self.travel_restriction)
         print('cutoff', self.cutoff)
