@@ -1,6 +1,6 @@
 ![Imagel](https://raw.githubusercontent.com/lukastk/PyRossGeo/master/docs/figs/banner.jpg)
 
-## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples) ![Installation](https://github.com/lukastk/PyRossGeo/workflows/Installation/badge.svg)
+## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples) ![CI](https://github.com/lukastk/PyRossGeo/workflows/CI/badge.svg)[![PyPI](https://img.shields.io/pypi/v/pyrossgeo.svg)](https://pypi.python.org/pypi/pyrossgeo) [![Python Version](https://img.shields.io/pypi/pyversions/pyrossgeo)](https://pypi.org/project/pyrossgeo)
 
 [About](#about) | [Model](#model) | [Installation](#installation) | [Documentation](#documentation)  | <!--[Publications](#publications) |--> [License](#license) |  [Contact](#contact)
 
@@ -57,7 +57,20 @@ For a more detailed description of the model, please read [this](https://github.
 
 You can take PyRossGeo for a spin **without installation**: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples). Please be patient while Binder loads.
 
-Clone (or download) the repository and use a terminal to install using
+### From a checkout of this repository
+
+Install PyRossGeo and required dependencies using
+
+```bash
+>> git clone https://github.com/lukastk/PyRossGeo.git
+>> cd PyRossGeo
+>> pip install -r requirements.txt
+>> python setup.py install
+```
+
+#### Via [Anaconda](https://docs.conda.io/projects/continuumio-conda/en/latest/user-guide/install/index.html)
+
+Install PyRossGeo and its dependencies in a `pyrossgeo` [environment](https://github.com/rajeshrinet/pyross/blob/master/environment.yml)
 
 ```bash
 >> git clone https://github.com/lukastk/PyRossGeo.git
@@ -66,6 +79,15 @@ Clone (or download) the repository and use a terminal to install using
 >> conda activate pyrossgeo
 >> make
 ```
+
+### Via pip
+
+Install the latest [PyPI](https://pypi.org/project/pyrossgeo) version
+
+```bash
+>> pip install pyrossgeo
+```
+
 
 PyRossGeo requires the following software
 
