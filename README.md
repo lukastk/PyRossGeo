@@ -1,6 +1,6 @@
 ![Imagel](https://raw.githubusercontent.com/lukastk/PyRossGeo/master/docs/figs/banner.jpg)
 
-## PyRossGeo: Spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples) ![CI](https://github.com/lukastk/PyRossGeo/workflows/CI/badge.svg)[![PyPI](https://img.shields.io/pypi/v/pyrossgeo.svg)](https://pypi.python.org/pypi/pyrossgeo) [![Python Version](https://img.shields.io/pypi/pyversions/pyrossgeo)](https://pypi.org/project/pyrossgeo)
+## PyRossGeo: spatially resolved infectious disease models in Python [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/lukastk/PyRossGeo/master?filepath=examples) ![CI](https://github.com/lukastk/PyRossGeo/workflows/CI/badge.svg) [![PyPI](https://img.shields.io/pypi/v/pyrossgeo.svg)](https://pypi.python.org/pypi/pyrossgeo) [![Python Version](https://img.shields.io/pypi/pyversions/pyrossgeo)](https://pypi.org/project/pyrossgeo)
 
 [About](#about) | [Model](#model) | [Installation](#installation) | [Documentation](#documentation)  | <!--[Publications](#publications) |--> [License](#license) |  [Contact](#contact)
 

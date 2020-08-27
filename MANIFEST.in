@@ -1,0 +1,7 @@
+include pyrossgeo/*pyx
+include pyrossgeo/mft/*pyx
+include pyrossgeo/*pxd
+include LICENSE
+include requirements.txt
+include README.md
+

@@ -6,3 +6,4 @@ zarr
 jupyter
 matplotlib
 pytest
+geopandas

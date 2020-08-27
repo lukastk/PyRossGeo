@@ -11,3 +11,5 @@ dependencies:
   - pandas
   - geopandas
   - zarr
+  - ipython
+  - nbconvert
