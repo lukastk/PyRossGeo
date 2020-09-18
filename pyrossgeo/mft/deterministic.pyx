@@ -1016,7 +1016,7 @@ cdef class MeanFieldTheory:
     simulate
     """
     cdef:
-        readonly int transport, highSpeed, mortal, local_consistency
+        readonly int transport, highSpeed, mortal, fij_form
         readonly int geographical_model
         readonly int RapidTransport, SpacialCompartment
         readonly int M, Nd, model_dim, max_route_num, t_divid_100, t_old, ir, seed
@@ -1024,7 +1024,7 @@ cdef class MeanFieldTheory:
         readonly double rW, rT, w_period_ratio, h_period_ratio
         readonly double cutoff, travel_restriction
         #readonly np.ndarray alpha, hh, cc, mm, alphab
-        readonly np.ndarray rp0, Nh, Nw, Ni, Ntrans, Ntrans0, drpdt
+        readonly np.ndarray rp0, Nh, Nw, Ntrans, Ntrans0, drpdt
         readonly np.ndarray CMh, CMw, CMt, Dnm, Dnm0, RM
         readonly np.ndarray lCMh, lCMw, lCMt
         readonly np.ndarray route_index, route_ratio
@@ -1033,13 +1033,14 @@ cdef class MeanFieldTheory:
         readonly np.ndarray i_clss, i_source, i_parameter
         readonly np.ndarray infect_source, infect_param , infected_class, infected_coeff
         readonly np.ndarray l_pos_source, l_neg_source, l_pos_param, l_neg_param
+        readonly np.ndarray density_factor, norm_factor ## should be deleted
         
-    def __init__(self, g_model, model, parameters, M, Nd, Dnm, dnm, Area, travel_restriction, cutoff, transport=0, highSpeed=0, local_consistency=0):
+    def __init__(self, g_model, model, parameters, M, Nd, Dnm, dnm, Area, travel_restriction, cutoff, transport=0, highSpeed=0, fij_form=0):
         self.mortal = 0
         self.cutoff = cutoff                              # cutoff value of census data
         self.transport = transport
         self.highSpeed = highSpeed
-        self.local_consistency = local_consistency
+        self.fij_form = fij_form
         self.RapidTransport = 0
         self.SpacialCompartment = 1
         self.M    = M
@@ -1049,7 +1050,6 @@ cdef class MeanFieldTheory:
         self.Nw   = np.zeros( (self.M, self.Nd), dtype=DTYPE)         # # people working at node i
         self.iNh  = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people living in node i
         self.iNw  = np.zeros( (self.M, self.Nd), dtype=DTYPE)        # inv people working at node i
-        self.Ni   = np.zeros(self.M, dtype=DTYPE) # # people at age group i
         self.seed = 1
         np.random.seed(self.seed)
         self.RM    = np.random.rand(100*self.M*self.Nd) # random matrix 
@@ -1063,6 +1063,11 @@ cdef class MeanFieldTheory:
         self.Dnm   = np.zeros( (self.M, self.Nd, self.Nd), dtype=np.uint16)# census data matrix WR
         self.Dnm   = Dnm
         #self.Dnm0  = np.zeros( (self.M, self.Nd, self.Nd), dtype=DTYPE)# backup of Dnm
+
+        self.density_factor = np.zeros((2, self.Nd, self.M, self.M), dtype=DTYPE)
+        self.norm_factor    = np.zeros((2, self.M, self.M), dtype=DTYPE)
+        density_factor = self.density_factor
+        norm_factor    = self.norm_factor
 
         self.aveS  = np.zeros( (self.M, self.Nd), dtype=DTYPE)   # average S at i node
         self.aveI  = np.zeros( (self.M, self.Nd), dtype=DTYPE)   # average I at i node
@@ -1103,7 +1108,7 @@ cdef class MeanFieldTheory:
             self.II[0], self.PP = shortest_path(dnm, return_predecessors=True)
         print('#Start to calculate fixed variables')
         self.prepare_fixed_variable(travel_restriction, 0)
-        print('#Finish calculating fixed variablesWWWWWW')
+        print('#Finish calculating fixed variables')
         
         #Set local contact matrix
         cdef scaling_params = np.zeros(3, dtype=DTYPE)
@@ -1112,11 +1117,11 @@ cdef class MeanFieldTheory:
         cdef double gij_h, gij_w
         cdef double fij_h, fij_w
         cdef double rho_ij_h, rho_ij_w
+        cdef double N_ill
         cdef int i,j,k
         cdef iAreaSQ  = np.zeros( self.Nd, dtype=DTYPE)
         cdef Nh=self.Nh, iNh=self.iNh
-        cdef Nw=self.Nh, iNw=self.iNw
-        cdef Ni=self.Ni
+        cdef Nw=self.Nw, iNw=self.iNw
         cdef Nh_total = np.zeros( self.M, dtype=DTYPE)
         cdef Nw_total = np.zeros( self.M, dtype=DTYPE)
 
@@ -1125,51 +1130,72 @@ cdef class MeanFieldTheory:
             scaling_params = np.array(model['settings']['contact_scaling_parameters'], dtype=DTYPE)
             if model['settings']['contact_scaling'] != 'none':
                 print("contact scaling", model['settings']['contact_scaling'])
-                print(scaling_params)
-                print(gij(1, scaling_params[0], scaling_params[1], scaling_params[2]))
+                #print(scaling_params)
+                #print(gij(4, scaling_params[0], scaling_params[1], scaling_params[2]))
 
                 for i in range(Nd):
                     iAreaSQ[i]  = 1.0/Area[i]/Area[i]
                     for j in range(M):
                         Nh_total[j] += Nh[j,i]
                         Nw_total[j] += Nw[j,i]
-                        Ni[j] += Nh[j,i]
                         
                 for i in range(M):
                     for j in range(M):
                         aij_h = 0.0
                         aij_w = 0.0
-                        for k in range(Nd):
-                            rho_ij_h = Nh[i,k]*Nh[j,k]*iAreaSQ[k]
-                            rho_ij_w = Nw[i,k]*Nw[j,k]*iAreaSQ[k]
+                        for ll in range(Nd):
+                            rho_ij_h = Nh[i,ll]*Nh[j,ll]*iAreaSQ[ll]
+                            rho_ij_w = Nw[i,ll]*Nw[j,ll]*iAreaSQ[ll]
                     
                             gij_h = gij(rho_ij_h, scaling_params[0], scaling_params[1], scaling_params[2])
                             gij_w = gij(rho_ij_w, scaling_params[0], scaling_params[1], scaling_params[2])
-                            if local_consistency == 0:
-                                fij_h =  Ni[i]/Nh[i,k]
-                                fij_w =  fij_h
-                            elif local_consistency == -1:
-                                fij_h =  Ni[i]/((14.0/24.0)*Nh[i,k] + (10.0/24.0)*Nw[i,k])
-                                fij_w =  fij_h
-                            else:
-                                fij_h = sqrt(Nh_total[i]*Nh[j,k]*iNh[i,k]/Nh_total[j])
-                                fij_w = sqrt(Nw_total[i]*Nw[j,k]*iNw[i,k]/Nw_total[j])
+                            density_factor[0,ll,i,j] = gij_h
+                            density_factor[1,ll,i,j] = gij_w
 
-                            lCMh[i,j,k] = gij_h*fij_h
-                            lCMw[i,j,k] = gij_w*fij_w
+                            bij_h = sqrt(Nh[i,ll]*Nh[j,ll]/Nh_total[i]/Nh_total[j])
+                            bij_w = sqrt(Nw[i,ll]*Nw[j,ll]/Nw_total[i]/Nw_total[j])
+                            if fij_form == 0:
+                                bij_h = 1.0
+                                bij_w = 1.0
 
-                            if local_consistency == 0 or local_consistency == -1:
-                                aij_h += gij_h
-                                aij_w += gij_w
-                            else:
-                                aij_h += gij_h*sqrt(Nh[i,k]*Nh[j,k]/Nh_total[i]/Nh_total[j])
-                                aij_w += gij_w*sqrt(Nw[i,k]*Nw[j,k]/Nw_total[i]/Nw_total[j])
-                                
-                        for k in range(Nd):
-                            lCMh[i,j,k] /= aij_h
-                            lCMw[i,j,k] /= aij_w
+                            fij_h =  Nh_total[i]*iNh[i,ll]
+                            fij_w =  Nh_total[i]*iNw[i,ll]
+
+                            lCMh[i,j,ll] = gij_h*fij_h*bij_h
+                            lCMw[i,j,ll] = gij_w*fij_w*bij_w
+
+                            aij_h += gij_h*bij_h
+                            aij_w += gij_w*bij_w
+
+                        norm_factor[0,i,j] = aij_h
+                        norm_factor[1,i,j] = aij_w
+                        
+                        for ll in range(Nd):
+                            lCMh[i,j,ll] /= aij_h
+                            lCMw[i,j,ll] /= aij_w
             else:
                 print("contact scaling", model['settings']['contact_scaling'])
+
+    def spatial_CM(self, np.ndarray[np.float_t, ndim=2] CM):
+        cdef:
+            int i,j,k,alp,gam
+            double [:,:]   Nh      = self.Nh
+            double [:,:]   Nw      = self.Nw
+            double [:,:]   iNh     = self.iNh
+            double [:,:]   iNw     = self.iNw
+            double [:,:,:] lCMh    = self.lCMh
+            double [:,:,:] lCMw    = self.lCMw
+            unsigned short[:,:,:]Dnm= self.Dnm
+            np.ndarray[np.float_t, ndim=4] spatial_CM = np.zeros((self.Nd, self.M, self.Nd, self.M))
+            
+        for alp in prange(self.M, nogil=True):
+            for i in range(self.Nd):
+                for gam in range(self.M):
+                    spatial_CM[i,alp,i,gam] += (14.0/24.0)*lCMh[alp,gam,i]*CM[alp,gam]
+                    for j in range(self.Nd):
+                        for k in range(self.Nd):
+                            spatial_CM[i,alp,j,gam] += (10.0/24.0)*lCMw[alp,gam,k]*CM[alp,gam]*Dnm[alp,k,i]*Dnm[gam,k,j]*iNw[gam,k]*iNh[alp,i]
+        return spatial_CM
 
     def initialize(self, model, parameters, travel_restriction):
         """
@@ -1422,8 +1448,15 @@ cdef class MeanFieldTheory:
         #    for alp in prange(M, nogil=True):
         #        for i in range(Nd):
         #            for j in range(Nd):
-        #                Dnm[alp,i,j] = Dnm0[alp,i,j]            
-            
+        #                Dnm[alp,i,j] = Dnm0[alp,i,j]
+
+        #Total number ofresidence people
+        for alp in prange(M, nogil=True):
+            for i in range(Nd):
+                Nh[alp,i] = 0.0 ## N^{H}_i residence in Node i and age gourp alp
+                for j in range(Nd):
+                    Nh[alp,i] += <double> Dnm[alp,j,i]
+
         #travel restriction
         for alp in prange(M, nogil=True):
             for i in range(Nd):
@@ -1432,8 +1465,8 @@ cdef class MeanFieldTheory:
                         cij = Dnm[alp,i,j]
                         #ccij = round(cij*t_restriction)
                         ccij = cij*t_restriction
-                        Dnm[alp,i,j] -= <int> ccij
-                        Dnm[alp,j,j] += <int> ccij
+                        Dnm[alp,i,j] -= <unsigned short> ccij
+                        Dnm[alp,j,j] += <unsigned short> ccij
     
         #cutoff
         cdef int nonzero_element = 0
@@ -1450,20 +1483,26 @@ cdef class MeanFieldTheory:
                                 nonzero_element += 1
                         else:
                             Dnm[alp,i,j] = 0
-                            Dnm[alp,j,j] += <int> cij
+                            #Dnm[alp,j,j] += <int> cij
                     if alp != M:
                         #if int(cij) > int(cutoff):
                         if cij > cutoff:
                             cutoff_total += cij
         print("Nonzero element " + str(nonzero_element) + '/' + str(M1**2) + ' ' + str(cutoff_total))
-
+        
         for alp in prange(M, nogil=True):
             for i in range(Nd):
-                Nh[alp,i] = 0.0 ## N^{H}_i residence in Node i and age gourp alp
+                Dnm[alp,i,i] = <unsigned short> Nh[alp,i]
+                for j in range(Nd):
+                    if i != j:
+                        Dnm[alp,i,i] -= Dnm[alp,j,i]
+
+        #Total number of working people
+        for alp in prange(M, nogil=True):
+            for i in range(Nd):
                 Nw[alp,i] = 0.0 ## N^{w}_i working in Node i and age group alp
                 for j in range(Nd):
-                    Nh[alp,i] += Dnm[alp,j,i]
-                    Nw[alp,i] += Dnm[alp,i,j]
+                    Nw[alp,i] += <double> Dnm[alp,i,j]
 
         #for i in prange(Nd, nogil=True):
         #    for alp in range(M):
@@ -1648,6 +1687,26 @@ cdef class MeanFieldTheory:
                 indexJ[alp,i,0] = index_j
                 indexI[alp,i,0] = index_i
 
+        cdef double total_raw, total_J, total_I
+        for alp in range(M):
+            for i in range(Nd):
+                total_raw = 0.0
+                for j in range(Nd):
+                    total_raw += Dnm[alp,i,j]
+                total_J = 0.0
+                for j in range(1, indexJ[alp,i,0] + 1):
+                    total_J += Dnm[alp, i, indexJ[alp,i,j]]
+                if total_raw != total_J:
+                    print("Check_J", alp, i, total_raw, total_J)
+                total_raw = 0.0
+                for j in range(Nd):
+                    total_raw += Dnm[alp,j,i]
+                total_I = 0.0
+                for j in range(1, indexI[alp,i,0] + 1):
+                    total_I += Dnm[alp, indexI[alp,i,j], i]
+                if total_raw != total_I:
+                    print("Check_I", alp, i, total_raw, total_I)
+
     cdef rhs(self, rp, tt):
         cdef:
             int transport=self.transport, highSpeed=self.highSpeed, model_dim=self.model_dim
@@ -1687,7 +1746,7 @@ cdef class MeanFieldTheory:
             #double [:] mm          = self.mm
             double [:,:]   Nh      = self.Nh
             double [:,:]   Nw      = self.Nw
-            double [:]     Ni      = self.Ni
+            #double [:]     Ni      = self.Ni
             double [:,:,:] Ntrans  = self.Ntrans
             double [:,:]   iNh     = self.iNh
             double [:,:]   iNw     = self.iNw
@@ -1734,11 +1793,11 @@ cdef class MeanFieldTheory:
                         for gam in range(M):
                             t_j = gam*Nd + i
                             #ccc = 0.0
-                            aveI[alp,i] = 0.0 #ave. infected source
+                            aveI[gam,i] = 0.0 #ave. infected source
                             for j in range(1,infect_source[0] + 1):
                                 #ccc += X0[t_j + infect_source[j]*M1]*infect_param[j]
-                                aveI[alp,i] += X0[t_j + infect_source[j]*M1]*infect_param[j]
-                            FF[alp,i] += lCMh[alp,gam,i]*CMh[alp,gam]*aveI[alp,i]*iNh[gam,i]
+                                aveI[gam,i] += X0[t_j + infect_source[j]*M1]*infect_param[j]
+                            FF[alp,i] += lCMh[alp,gam,i]*CMh[alp,gam]*aveI[gam,i]*iNh[gam,i]
                         aa = FF[alp,i]*X0[t_i]
 
                     #Linear
@@ -1757,7 +1816,8 @@ cdef class MeanFieldTheory:
         elif (t_p_24  > 9.0 and t_p_24  < 17.0 or transport == 0) or geographical_model != self.RapidTransport: #WORK
         #elif True: #WORK
             #print("TIME_in_WORK", t_p_24)
-            for i in prange(Nd, nogil=True):
+            #for i in prange(Nd, nogil=True):
+            for i in range(Nd):
                 for alp in range(M):
                     aveI[alp,i] = 0.0
                     for j in range(1, indexJ[alp,i,0] + 1):
@@ -1775,7 +1835,8 @@ cdef class MeanFieldTheory:
                         Lambda[alp,i] += lCMw[alp,gam,i]*CMw[alp,gam]*aveI[gam,i]*iNw[gam,i]
                     Lambda[alp, i] = rW*Lambda[alp,i]
                             
-            for i in prange(Nd, nogil=True):
+            #for i in prange(Nd, nogil=True):
+            for i in range(Nd):
                 for alp in range(M):
                     t_i = alp*Nd + i
                     for j in range(model_dim):
@@ -1985,7 +2046,7 @@ cdef class MeanFieldTheory:
 
         return
 
-    def simulate(self, XX0, contactMatrix, Tf, Nf, Ti=0):
+    def simulate(self, XX0, contactMatrix, Tf, Nf, Ti=0, method='default'):
         """
         Parameters
         ----------
@@ -2012,11 +2073,9 @@ cdef class MeanFieldTheory:
         """
         
         if self.geographical_model == self.RapidTransport:
-            print('RapidTransport')
+            print('RapidTransport', self.fij_form)
         elif self.geographical_model == self.SpacialCompartment:
-            print('SpacialCompartment')
-
-        print('TEST')
+            print('SpacialCompartment', self.fij_form)
 
         print('travel restriction', self.travel_restriction)
         print('cutoff', self.cutoff)
@@ -2038,8 +2097,17 @@ cdef class MeanFieldTheory:
         from scipy.integrate import solve_ivp
         time_points=np.linspace(Ti, Tf, int(Tf/24 + 1));  ## intervals at which output is returned by integrator.
         time_step = 1.0*Tf/Nf
-        u = solve_ivp(rhs0, [Ti, Tf], XX0, method='RK23', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
-            
+        if method == 'RK23':
+            print('Numerical Integrate RK23')
+            u = solve_ivp(rhs0, [Ti, Tf], XX0, method='RK23', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
+        elif method == 'RK45':
+            print('Numerical Integrate RK45')
+            u = solve_ivp(rhs0, [Ti, Tf], XX0, method='RK45', t_eval=time_points, dense_output=False, events=None, vectorized=False, args=None, max_step=time_step)
+        else:
+            print('Numerical Integrate default')
+            u = solve_ivp(rhs0, [Ti, Tf], XX0, t_eval=time_points)
+
+        
         #data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M,'alpha':self.alpha, 'beta':self.beta,'gIa':self.gIa, 'gIs':self.gIs }
         data={'X':u.y, 't':u.t, 'N':self.Nd, 'M':self.M}
 
